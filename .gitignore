@@ -1,0 +1,17 @@
+#exclude all files
+*
+
+#include ignore file
+!/.gitignore
+
+#include source file(s)
+#add any relevant file that is not generated
+!/bachelor-thesis.tex
+!/MRI-for-RT.bib
+
+#include
+!/*.png
+!/*.txt
+!/*.xcf
+!/*.psd
+!/*.ods
