@@ -28,6 +28,7 @@
 \usepackage[onehalfspacing]{setspace}
 \usepackage{enumitem}
 \setlist{nosep}
+%\addtolength{\jot}{1em} %% adds extra space between each "align" line
 
 % \usepackage[%
 %   backend=bibtex      % biber or bibtex
@@ -87,6 +88,32 @@ Purpose, Materials and Methods, Results, Conclusion
 % o Overview of literature connected to your topic
 % o Purpose of the thesis
 % o based on the literature research, describe which information is missing, describe briefly what your thesis is about and what is the novelty of your work
+
+\section{Photon interaction}
+
+The intensity of light decreases as it travels through matter as described by Beer's law:
+
+\begin{align}
+I(x) = I(0) exp[-\mu(h\nu,Z)x]
+\end{align}
+
+where x is the thickness of the material,
+$\mu$ is the linear attenuation coefficient, which is dependent on the energy of the photons ($h\nu$) and the proton number of the material ($Z$).
+
+The reduction of intensity is due to interactions with electrons (photoelectric effect, Rayleigh scattering, Compton effect), the electric field of the nuclei (pair production) or the nuclei itself (photonuclear reactions). The probability of those interactions differ for each material ($Z$) and photon energy ()$h\nu$). This behaviour is expressed in the attenuation coefficient $mu$
+
+FIGURE WITH ATTENUATION COEFFICIENT
+
+
+\section{Computer Tomography - CT}
+
+CT is a three-dimensional (3-D) imaging modality based on the measurement of X-ray attenuation. A X-ray tube emits photons aimed at a receptor positioned on the opposite side of a patient. While travelling through the tissue they interact with atoms in various ways (see \ref{photon_action}). These processes effectively reduce the number of photons reaching the receptor.  Measuring the intensity of the transmitted light corresponds to the projection of attenuation shadows on to the receptor.
+
+By positioning the source and receptor on a rotary ring with the patient in the centre the angle of projection can be varied.
+
+Since its clinical introduction in 1971, computer tomography (CT) has become a widely used 3-D imaging modality for a range of applications including radiation oncology. 
+
+
 
 \section{Types of External Beam Radiation Therapy}
 External Beam Radiation Therapy (EBRT) utilizes ionizing radiation to damage cancer cells in order to stop them from multiplying.
@@ -361,13 +388,13 @@ Being closed at one end and having a capillary shape (small diameter) makes it i
 Instead of adding the fluid at the top, it has to be injected starting at the bottom.
 This way the contained air would pushed out through the opening on the top.
 A thin plastic tube was used to leave room for the gas to escape.
-Between different liquids the tube was flushed with \textbf{\#1} (destilled water) or \textbf{\#2} (main component of most solutions).
+Between different liquids the tube was flushed with \textbf{\#1} (distilled water) or \textbf{\#2} (main component of most solutions).
 
 In order to minimize the amount of gas dissolved, the liquids were brought to boil shortly before injecting. Gas solubility generally decreases with rising temperature \cite{Henry1803, Sander2015}
 After injecting the solution in the rods, they were left to cool down. Before closing the rods were topped up completely (no trapped air bubbles).
 The oil based liquids, \textbf{\#16} and \textbf{\#17}, were not brought to boil.
 Number \textbf{\#14} could be injected without problems, the solution remained fluid even after reaching room temperature.
-Number \textbf{\#15} on the other hand changed to a gel like conistence and clogged the tube right after the rod was filled. The tube could not be used again.
+Number \textbf{\#15} on the other hand changed to a gel like consistence and clogged the tube right after the rod was filled. The tube could not be used again.
 
 
 
@@ -433,14 +460,14 @@ For better visibility images are printed with inverted colors. Dark pixels have 
 \begin{tabular}{l|l|l|l}
 resample factor  & z (not affected) &  y (same as x) & x \\
 \toprule
-x1     & 0.600006 & 0.976563	& 0.976563	\\
-x4     & 0.600006 & 0.488281	& 0.488281	\\
-x9     & 0.600006 & 0.325521	& 0.325521	\\
-% x16    & 0.600006 & 0.244141	& 0.244141	\\
-x25    & 0.600006 & 0.195313	& 0.195313	\\
-x100   & 0.600006 & 0.097656	& 0.097656
+x1     & 0.60 & 0.99	& 0.98	\\
+x4     & 0.60 & 0.49	& 0.49	\\
+x9     & 0.60 & 0.33	& 0.33	\\
+% x16    & 0.60 & 0.244	& 0.24	\\
+x25    & 0.60 & 0.2 	& 0.2	\\
+x100   & 0.60 & 0.2 	& 0.1
 \end{tabular}
-\caption{pixel Spacing [$mm$]}
+\caption{pixel Spacing (rounded values) [$mm$]}
 \label{tab:spacing}
 \end{table}
 
@@ -540,7 +567,6 @@ The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 
 \begin{align}
 DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
-% what application used to align CT and MRI
 \end{align}
 
 The implementation into python is based on the open source python package ``Medpy''. \cite{MedPy} A part of it's module called ``metric'' was adapted. \cite{MedPy_dc-code}
@@ -660,25 +686,25 @@ Only \textbf{\#1}, \textbf{\#9}, \textbf{\#10}, \& \textbf{\#17} resulted in sig
 
 \begin{table}[]
 \centering
-\begin{tabular}{@{}lllllllr@{}}
+\begin{tabular}{@{}lllllll@{}}
 \toprule
-Nr. & Min  & Max  & Mean   & Median & RMS    & $\sigma$     & Volume [$mm$] \\ \midrule
-1   & 182  & 371  & 288    & 269    & 296,3  & 69,8  & 48.8 \\
-2   & 1044 & 1921 & 1443,8 & 1405   & 1477,3 & 312,9 & 39.1 \\
-3   & 941  & 2075 & 1451,2 & 1394,5 & 1508,9 & 413,2 & 39.1 \\
-4   & 1176 & 1709 & 1440   & 1437,5 & 1458,6 & 232,5 & 39.1 \\
-5   & 1125 & 2111 & 1583,8 & 1549,5 & 1623   & 355   & 39.1 \\
-7   & 971  & 2241 & 1466,8 & 1316   & 1540,6 & 471,2 & 48.8 \\
-8   & 1459 & 1947 & 1704   & 1705   & 1713,5 & 180,5 & 39.1 \\
-9   & 385  & 584  & 486,8  & 489    & 495,6  & 93    & 39.1 \\
-10  & 247  & 502  & 343,6  & 266    & 361,1  & 111   & 48.8 \\
-11  & 830  & 1268 & 1036,2 & 1023,5 & 1049   & 163,2 & 39.1 \\
-12  & 1158 & 2211 & 1648,8 & 1613   & 1695,2 & 394,2 & 39.1 \\
-13  & 836  & 1657 & 1146,8 & 1047   & 1190,9 & 321,2 & 39.1 \\
-14  & 800  & 2062 & 1383   & 1335   & 1461,7 & 473,1 & 39.1 \\
-15  & 1156 & 1829 & 1476,2 & 1460   & 1501,2 & 272,7 & 39.1 \\
-16  & 1102 & 1967 & 1509   & 1483,5 & 1543,8 & 325,8 & 39.1 \\
-17  & 356  & 938  & 629,6  & 602    & 668,1  & 223,6 & 48.8 \\ \bottomrule
+Nr. & Min  & Max  & Mean   & Median & RMS    & $\sigma$   \\ \midrule
+1   & 182  & 371  & 288    & 269    & 296,3  & 69,8   \\
+2   & 1044 & 1921 & 1443,8 & 1405   & 1477,3 & 312,9  \\
+3   & 941  & 2075 & 1451,2 & 1394,5 & 1508,9 & 413,2  \\
+4   & 1176 & 1709 & 1440   & 1437,5 & 1458,6 & 232,5  \\
+5   & 1125 & 2111 & 1583,8 & 1549,5 & 1623   & 355    \\
+7   & 971  & 2241 & 1466,8 & 1316   & 1540,6 & 471,2  \\
+8   & 1459 & 1947 & 1704   & 1705   & 1713,5 & 180,5  \\
+9   & 385  & 584  & 486,8  & 489    & 495,6  & 93     \\
+10  & 247  & 502  & 343,6  & 266    & 361,1  & 111    \\
+11  & 830  & 1268 & 1036,2 & 1023,5 & 1049   & 163,2  \\
+12  & 1158 & 2211 & 1648,8 & 1613   & 1695,2 & 394,2  \\
+13  & 836  & 1657 & 1146,8 & 1047   & 1190,9 & 321,2  \\
+14  & 800  & 2062 & 1383   & 1335   & 1461,7 & 473,1  \\
+15  & 1156 & 1829 & 1476,2 & 1460   & 1501,2 & 272,7  \\
+16  & 1102 & 1967 & 1509   & 1483,5 & 1543,8 & 325,8  \\
+17  & 356  & 938  & 629,6  & 602    & 668,1  & 223,6  \\ \bottomrule
 \end{tabular}
 \caption{liquid visibility on MRI scan}
 \label{tab:visibility}
@@ -979,12 +1005,12 @@ Future improvements of the developed software tool are supposed to:
 \end{itemize}
 
 
-\bibliography{MRI-for-RT.bib}
+\bibliography{library.bib}
 \bibliographystyle{ieeetr}
 
 \end{document}
 
-
+% todo:
 % what application used to align CT and MRI
 % photo of phantom
 % image of COM shift
@@ -992,7 +1018,9 @@ Future improvements of the developed software tool are supposed to:
 % add slice thickness to figures (DC, Warp, etc.)
 % MRI values are 
 % CTNumbers = HU
-% remove "Volume" Column from table with mean, max, min values of MRI rods
 % add reference circle to figure showing resampled CT and MRI slices
-% only 2 digits after komma in table with pixel spacing
 % use examples for different DC values + images
+
+% done:
+% remove "Volume" Column from table with mean, max, min values of MRI rods
+% only 2 digits after komma in table with pixel spacing
