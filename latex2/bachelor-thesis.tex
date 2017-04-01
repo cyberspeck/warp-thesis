@@ -1,0 +1,81 @@
+\documentclass[12pt,a4paper,twoside,open=right,%
+bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseitig für Seitenränder, Bindcorrection
+\input{header.tex}
+\input{titlepage.tex}
+\writeIn{english} % Siehe header.tex. Setzt Dokumentsprache und damit Sprache von "Abstract", "Inhaltsverzeichnis", Datumsangaben etc.
+
+\hypersetup{ % Setzt einige Werte die in den Eigenschaften des PDF gespeichert sind.
+	pdfauthor = {David Blacher},
+	pdftitle = {xxxxxxxxxxxxxx},
+	pdfsubject = {xxxxxxxxxxxx},
+	pdfkeywords = {xxxx, xxxxx},
+	pdfdisplaydoctitle = true,
+	colorlinks = false, % Für Druck auf "false" setzen!
+}
+
+\linespread{1.3} % space between lines
+\addtolength{\oddsidemargin}{0.73cm}
+\addtolength{\evensidemargin}{-1.73cm}
+\addtolength{\textwidth}{1cm}
+\addtolength{\topmargin}{-0.5cm}
+\addtolength{\textheight}{1.0cm}
+
+\addbibresource{../bib/library.bib}
+\begin{document}
+
+\AbschlussarbeitTUWienPhysikTitlePage{
+	titel={Software implementation of the quality assurance tool for magnetic resonance imaging distortion assessment},
+	institut=AKH,
+	prof={Professor}, % citeauthor nimmt Namen der Person aus der Bibliography in bib/example.bib
+	autor=David Blacher,
+	adresse={Lindenbauergasse 7/29, 1110 Wien},
+	typ={bacc},
+	% Vordefinierte Typen sind: sem (Seminararbeit), bacc (Bachelorarbeit), proj (Projektarbeit), mast (Diplomarbeit), dipl (Diplomarbeit), diss (Dissertation)
+	% Laut Auskunft des Dekants muss auch eine Masterarbeit den Titel "Diplomarbeit" tragen.
+	% Bei allen anderen Typen werden die Texte direkt übernommen.
+	schwarzweisslogo=false % Definiert, ob das Logo der TU in Schwarz-Weiß oder Farbe ist.
+	}
+
+\pagenumbering{gobble} % Keine Seitenzahl drucken
+\titlePageTUWienPhysik
+
+\input{abstract.tex}
+\tableofcontents \newpage
+\cleardoublepage % Macht, dass openright funktioniert.
+% \chapter macht das automatisch \tableofcontents und \printbibliography machen das nicht.
+% Falls es Probleme gibt hilft auch der Befehl \blankpage (siehe header.tex)
+\pagenumbering{arabic} \setcounter{page}{1}
+
+\input{intro.tex}
+\input{material_methods.tex}
+\input{results.tex}
+\input{discussion.tex}
+\input{conclusio.tex}
+
+\cleardoublepage
+%\pagenumbering{roman} \setcounter{page}{1}
+\nocite{*}
+\printbibliography
+%\input{thanks.tex}
+
+%\appendix
+%\input{appendix01.tex}
+
+
+% todo:
+% what application used to align CT and MRI
+% photo of phantom
+% image of COM shift
+% interpolate CT slices where plastic pane is??!?
+% add slice thickness to figures (DC, Warp, etc.)
+% -MRI values are 
+% -CTNumbers = HU
+% add reference circle to figure showing resampled CT and MRI slices
+% use examples for different DC values + images
+
+% done:
+% remove "Volume" Column from table with mean, max, min values of MRI rods
+% only 2 digits after komma in table with pixel spacing
+
+
+\end{document}
