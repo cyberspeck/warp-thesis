@@ -17,28 +17,103 @@
 The intensity of light decreases as it travels through matter as described by Beer's law:
 
 \begin{align}
-I(x) = I(0) exp[-\mu(h\nu,Z)x]
+I(x) = I_0 e^{-\mu(h\nu,Z)x}
 \end{align}
 
-where x is the thickness of the material,
-$\mu$ is the linear attenuation coefficient, which is dependent on the energy of the photons ($h\nu$) and the proton number of the material ($Z$).
+where x is the thickness of a homogeneous material and
+$\mu$ its linear attenuation coefficient, which is dependent on the energy of the photons ($h\nu$) and the proton number of the material ($Z$).
 
-The reduction of intensity is due to an number of effects. The photons interaction with electrons (photoelectric effect, Rayleigh scattering, Compton effect), with the electric field of the nuclei (pair production) or with the nuclei itself (photonuclear reactions). The probability of those interactions differ for each material ($Z$) and photon energy ($h\nu$). This behaviour is expressed in the attenuation coefficient $\mu$.
+The reduction of intensity is due to an number of effects. The photons interaction with electrons (photoelectric effect, Rayleigh scattering, Compton effect), with the electric field of the nuclei (pair production) or with the nuclei itself (photonuclear reactions). The probability of those interactions differ for each material ($Z$) and photon energy ($h\nu$). This behaviour is implicitly considered in the attenuation coefficient $\mu(h\nu,Z)$.
 
+For a photon being transmitted through matter with varying properties, the attenuation coefficient changes, too. After travelling a distance d, the intensity can be expressed as:
+
+\begin{align}
+\label{eq:mu_int}
+I(x) = I_0 e^{- \int_{0}^{d} \mu(x)dx}
+\end{align}
+
+Where $\mu(x)$ describes the attenuation at every distance $x$.
 
 FIGURE WITH ATTENUATION COEFFICIENT
 
 
-\section{Computer Tomography - CT}
 
-CT is a three-dimensional (3-D) imaging modality based on the measurement of X-ray attenuation.
-An X-ray tube emits photons aimed at a receptor positioned on the opposite side of a patient. While travelling through the human body they interact with atoms in various ways (see \ref{sec:photon}). These processes effectively reduce the number of photons reaching the receptor.  Measuring the intensity of the transmitted light corresponds to the projection of attenuation shadows on to the receptor.
-As described earlier, the reduction of photons depends on their energy and the tissue (e.g. proton number).
+\section{X-ray projection imaging}
+The patient is placed between an X-ray sensitive film-cassette or digital sensor (receptor) and an X-ray tube. During the imaging process all X-ray photons which make it to the 2-D receptor are recorded. While travelling through the human body they interact with atoms in various ways (see \ref{sec:photon}). These processes effectively reduce the number of photons reaching the receptor. Measuring the intensity of the transmitted light corresponds to the projection of attenuation shadows on to the receptor.
+As described earlier, the reduction of photons depends on their energy and the tissue's properties (e.g. proton number).
 Consequently, the attenuation shadows depict inner structures of the patient, such as bone material.
-By mounting source and receptor on a rotary ring with a patient at the centre, images from any angle can be taken. Combining the acquired data results in a 3-D model.
+Soft tissue such as brain matter and muscles cast a lighter shadow than bone. For this reason, X-ray projection imaging is widely used to diagnose bone fractures quickly and reliably. At the same time it is not suited to clearly delineate soft tissue structures, since they differ only slightly on attenuation, owing to the relatively small difference in atomic numbers and density.
+Other imaging modalities have proven to excel in this field, such as medical ultrasound and Magnetic Resonance Imaging (MRI) and are therefore preferred in those cases.
+If a different imaging modality is no option, X-ray projection can still be of some use in combination with contrast agents. Those substances fill the bloodstream with heavier atoms, which can be clearly seen against the background of surrounding soft-tissue. For instance they employ Barium compounds to study the gastrointestinal tract and iodine for the circulatory system.
+For patients allergic to those chemicals a number of alternative agents have been developed. Unfortunately most introduce slight, sometimes serious side-effects. There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nanoparticles.
 
-Since its clinical introduction in 1971, computer tomography (CT) has become a widely used 3-D imaging modality for a range of applications including radiation oncology. 
+\section{Computer Tomography - CT}
+CT is a three-dimensional (3-D) imaging modality based on the measurement of X-ray attenuation.
+The technique has evolved from 2-D X-ray scanning.
+By mounting source and receptor on a rotary ring with a patient at the centre, projections from any angle can be obtained.
+However, the receptor resembles an arc made up by 800 to 900 detector elements.
+A single image taken by the receptor is therefore only 1-D. Yet, by repeating this process from a sufficient number of different angles and along the entire patient (z-axis) a 3-D model can by computed.
+In contrast to 2-D methods, where the patients interior is compressed onto a flat image, CT preserves the exact location information. This feature lead to a radical improvement in diagnostics.	 \\
 
+Since its clinical introduction in 1971, computer tomography (CT) has become a widely used 3-D imaging modality for a range of applications including radiation oncology. Especially in radiation therapy knowledge of the exact geometry is crucial, which is why CT plays such an important role in treatment planning.
+
+\subsection{3-D image reconstruction}
+As a photon passes through the patient, it encounters different materials associated with characteristic linear attenuation coefficients.
+It is practical to think of the scanned body as a collection of $N = N_X\cdot N_Y\cdot N_Z$ finite size ($\Delta x$) cubes called 'voxels' (analogous to pixels in a 2-D digital photograph).
+The entire model can then be regarded as a 3-D matrix, with the attenuation coefficients $\mu_i$ for all voxels as its entries.
+Figure \ref{fig:voxel_matrix} represents a ($4, 4, 1$) matrix.
+It depicts the path an X-ray may follow passing through voxels with different values $\mu_i$.
+This discretisation allows us to change equation \ref{eq:mu_int} to:
+
+
+\begin{align}
+\label{eq:mu_sum}
+I(x) = I_0 e^{- \sum\limits_{i=1}^{N_X} \mu_i \Delta x}
+\end{align}
+
+Measuring the initial and final intensity is easily done. Image reconstruction algorithms use them to derive the linear attenuation coefficient matrix, which is the fundamental for future processing.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=0.5\linewidth]{intro/screenshot001.png}
+	\caption{Simplified attenuation matrix (4,4,1)}
+	\label{fig:voxel_matrix}
+\end{figure}
+
+\subsection{Houndsfield Units}
+
+In a final CT scan voxel values are saved in Houndsfield Units (HU), which relate to the attenuation of water at room temperature:
+
+\begin{align}
+HU_{material} = \frac{\mu_{material} - \mu_{water}}{\mu_{water}} \cdot 1000
+\end{align}
+
+Table \ref{tab:HU} lists human tissue and their value on the HU scale. Generally HU values are being recorded in the range of -1024 to +3071 (12 bit), but the upper limit can be extended to 15,359 (14 bit) if materials with even higher attenuation need to be visualised (e.g. implants).
+
+\begin{table}[]
+	\centering
+	\caption{Average HU values for various types of human tissue}
+	\label{tab:HU}
+	\begin{tabular}{@{}lllll@{}}
+		\toprule
+		Substance           & HU                    &  &  &  \\ \midrule
+		Air                 & –1000                 &  &  &  \\
+		Lung                & –750 (–950 to –600)   &  &  &  \\
+		Fat                 & –90 (–100 to –80)     &  &  &  \\
+		Water               & 0                     &  &  &  \\
+		Muscle              & +25 (+10 to +40)      &  &  &  \\
+		Brain, white matter & +25 (+20 to +30)      &  &  &  \\
+		Kidneys             & +30 (+20 to +40)      &  &  &  \\
+		Brain, grey matter  & +35 (+30 to +40)      &  &  &  \\
+		Blood               & +55 (+50 to +60)      &  &  &  \\
+		Liver               & +60 (+50 to +70)      &  &  &  \\
+		Compact bone        & +1000 (+300 to +2500) &  &  &  \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+Typically, CT scans are displayed on Computer monitors, which map the values to a 8-bit greyscale (256 values of luminosity).
+The wide range of possible values (dynamic range) on the HU scale cannot fit in the 
+Delineating cancer cells from healthy parts 
 
 
 \section{Types of External Beam Radiation Therapy}
