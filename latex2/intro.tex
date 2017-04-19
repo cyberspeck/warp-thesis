@@ -56,18 +56,23 @@ Anything other than bone differs only slightly in attenuation, owing to the rela
 For this reason, X-ray projection imaging can be used to diagnose bone fractures, while at the same time it is not suited to clearly delineate soft tissue structures.
  
 Other imaging modalities are better suited for the latter like medical ultrasound and Magnetic Resonance Imaging (MRI), to name a few. They are preferred for non invasive soft tissue examinations.
-If those imaging modalities are no option, X-ray projection can still be of some use in combination with contrast agents. Those substances fill the bloodstream with heavier atoms, which can be clearly seen against the dark background of surrounding soft-tissue. Studies of the gastrointestinal tract employ Barium compounds, for instance. Iodine is used as contrast agent for the circulatory system.
+If those imaging modalities are no option, X-ray projection can still be of some use in combination with contrast agents.
+Those substances fill e.g. the bloodstream with heavier atoms, which can be clearly seen against the dark background of surrounding soft-tissue.
+In CT angiography, for instance, iodine is administered intravenously enhancing vessel to vessel-wall contrast.
+In studies of the abdomen a diluted iodine solution or barium compounds swallowed by the patient leads improved visibility of the gastrointestinal tract.
 
 For patients allergic to those chemicals, a number of alternative agents have been developed.
 Unfortunately most introduce slight, sometimes serious side-effects.
 There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nanoparticles.
 
+
 \section{Computer Tomography - CT}
 Computer Tomography (CT) is a three-dimensional (3-D) imaging modality based on the measurement of X-ray attenuation.
 The technique has evolved from 2-D X-ray scanning.
 By mounting source and receptor on a rotary ring with a patient at the centre, projections from any angle can be obtained.
-However, the receptor resembles an arc made up by 800 to 900 neighbouring detector elements instead of a 2-D array.
-A single image taken by the receptor is therefore only 1-D. Yet, by repeating this process from a sufficient number of different angles and along the entire patient (z-axis) a 3-D model can be computed.
+However, in contrast to 2-D projection methods, the receptor resembles an arc made up by 800 to 900 neighbouring detector elements.
+A single 'image' taken by the receptor is therefore only in 1-D.
+Yet, by repeating this process from a sufficient number of different angles and along the entire patient (z-axis) a 3-D model can be computed.
 In contrast to 2-D methods, where the patients interior is projected/compressed onto a flat image, CT preserves the exact location information. This feature lead to a radical improvement in diagnostics.	 \\
 
 Since its clinical introduction in 1971, CT has become a widely used 3-D imaging modality for a range of applications including radiation oncology. Especially in radiation therapy, knowledge of the exact geometry is crucial, which is why CT plays such an important role in treatment planning (see \ref{sec:planning}).
@@ -79,7 +84,6 @@ The entire model can then be regarded as a 3-D matrix, with the attenuation coef
 Figure \ref{fig:voxel_matrix} represents a ($4, 4, 1$) matrix.
 It depicts the path an X-ray may follow passing through voxels with different values $\mu_i$.
 This discretisation allows us to change equation \ref{eq:mu_int} to:
-
 
 \begin{align}
 \label{eq:mu_sum}
@@ -144,6 +148,84 @@ While showing very good soft tissue contrast, all bones would be depicted with e
 For bone structures a range from 300 to 2500 HU might show sufficient contrast.
 Standard computer programs used to display CT images allow the user to change the window interactively to any value range.
 
+\subsection{Image acquisition}
+The time necessary to collect 1-D attenuation projections from sufficient angles is called 'acquisition time'.
+In 2-D X-ray scanning only one picture is taken, while a 3-D CT model is made up of a photo sequence.
+If the patient moves during the imaging process, the final model would show motion artefacts which might lead to wrong conclusions.
+Consequently, CT scanners are designed to minimise acquisition time while ensuring sufficient image quality.
+Very fast CT protocols result in smaller resolution, because less images are taken.
+
+\subsection{Image quality} %282
+CT offers excellent low contrast resolution, making structures that differ only slightly in signal from their surroundings visible to doctors.
+This aspect of image quality is mainly limited by noise.
+Noise is random patterns underlying the actual signal which always present to some extent.
+It's prominence in the final image is described by the Signal to Noise Ratio (SNR).
+If the SNR is too low, fine structures blend with the noise and cannot be distinguished. 
+Strategies to achieve a high SNR include raising the initial photon flux (intensity) or employing contrast agents.
+The intensity is governed by the tube current, which is limited by the heat capacity of the tube and health considerations regarding the patient.
+
+Alternatively, the spatial resolution can be decreased, effectively combining neighbouring image slices.
+While SNR for combined slices is increased, fine structures along the z-axis might be lost due to the reduced resolution.
+
+\subsection{Health considerations}
+CT utilizes the same type of radiation used for destroying cancer cells.
+Even though the radiation dose of a CT is low compared to radiation therapy, cancer patients need to be imaged frequently during treatment planning.
+Especially children treated with EBRT typically suffer from induced cancer occurring up to 40 years later.
+So while the benefit from using CT for diagnostics far outweighs the damage, there have been major efforts to reduce dose while maintaining reasonable image quality.
+\cite{Murphy2007, Brenner2001, Sodickson2009, Smith2007, McCollough2009, Goldman2013}
+
+
+\section{Magnetic Resonance Imaging - MRI}
+Magnetic Resonance Imaging (MRI) is a 3-D imaging modality based on  Nuclear Magnetic Resonance (NMR).
+spin relaxation of atomic nuclei.
+
+
+MRI uses strong stationary magnetic fields to align magnetic spin moments of protons.
+Then an additional alternating field resonating with the spins is applied shortly to flip them $90^o$.
+Depending on the material spins then take longer or shorter to align again with the stationary field.
+Those differences can be measured in a pick-up coil surrounding the region of interest.
+The nature of this effect leads to a great contrast between soft tissue. \cite{Currie2013}
+Delineating tumours using MRI images is more accurate than using CT. \cite{Rasch1999, Debois1999a, Roach1996}
+
+% mri needs coils
+% mri can create differently weighted images (T1, T2, etc..)
+
+\subsection{Image Quality}
+Generally, diagnostics benefit from greater image quality.
+However, at some point diagnostic accuracy stops increasing with field strength.
+Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
+At the same time astonishing improvements can be achieved at low fields.
+A ``combination of field independent polarization [...] with frequency optimized MRI detection coils [...] results in low-field MRI sensitivity approaching and even rivaling that of high-field MRI.'' \cite{Coffey2013}
+
+\subsection{Health considerations}
+
+
+\section{Open bore MRI scanners}
+
+% advantages of low tesla, brachytherapy
+The radiation oncology department of the Vienna General Hospital (AKH) is equipped with an 0.35T open-bore, c-arm MRI scanner.
+The open design improves the well-being of patients experiencing anxiety in closed scanners.
+Consequently, the number of incomplete MR examinations due to a claustrophobic events is low. \cite{Enders2011a, Bangard2007}
+Besides, patients who wouldn't fit in closed designed scanners can be imaged.
+Also, brachytherapy patients can be placed in the scanner with applicators attached.
+
+This type of scanner is weaker than a conventional closed bore scanner (1-3 Tesla).
+High field strengths would result in greater resolution, better Signal to Noise (SNR) ratio, and faster imaging time.
+However, ``There are definite cost advantages (capital, operating, siting) to the use of lower field MRI.'' \cite{Rutt1996}
+% capital, operating, siting????
+Permanent magnets are sufficient to create the 0.35T field.
+Therefore there is no need for constant cooling using liquid helium compared to superconducting magnets.
+Consequently, maintenance and service costs are considerably lower.
+
+
+\subsection{more stuff to be looked at}
+One drawback of MRI, and especially open bore scanners, is the occuring distortion due to inhomogeneities in the magnetic field.
+For most applications small position shifts and deformations are of minor importance.
+In RTTP however, those effects can have a big impact.
+Therefore MRI scanners usually come equipped with an internal distortion correction algorithm.
+Those methods are developed by the company designing the scanners. Knowing the technical details enables them to drastically reduce the distortion.
+
+Field of view (FOV) of the MRI scanner is smaller than the CT scanner's.
 
 \section{Types of External Beam Radiation Therapy}
 \label{sec:planning}
@@ -182,25 +264,6 @@ Secondly, CT images generate 3D images with little distortion. Exact geometries 
 \vspace{2cm}
 
 \section{Role of MRI}
-
-% mri needs coils
-% mri can create differently weighted images (T1, T2, etc..)
-
-
-Today RTTP often combines CT images with data acquired using Magnetic Resonance Imaging (MRI).
-MRI scans also record luminosity values, but they do not correspond to $HU$ (radiodensity measured by CT).
-The signal intensity depends on many factors and even varies between MRI scanners.
-
-MRI uses strong stationary magnetic fields to align magnetic spin moments of protons. Then an additional alternating field resonating with the spins is applied shortly to flip them $90^o$.
-Depending on the material spins then take longer or shorter to align again with the stationary field. Those differences can be measured in a pick-up coil surrounding the
-region of interest. The nature of this effect leads to a great contrast between soft tissue. \cite{Currie2013} Delineating tumours using MRI images is more accurate than using CT.
-\cite{Rasch1999, Debois1999a, Roach1996}
-
-Another advantage of MRI over CT is the harmlessness of magnetic fields. CT utilizes the same type of radiation used for destroying cancer cells. Even though the radiation dose of a
-CT is low compared to radiation therapy, cancer patients need to be imaged frequently during treatment planning. Especially children treated with EBRT typically
-suffer from induced cancer occurring up to 40 years later. So while the benefit from using CT for diagnostics far outweighs the damage, there have been major efforts to
-reduce dose while maintaining reasonable image quality. \cite{Murphy2007, Brenner2001, Sodickson2009, Smith2007, McCollough2009, Goldman2013}
-
 There are some difficulties arising from combining CT and MRI for EBRT:
 In order to profit from separately acquired data, the resulting images must be aligned either manually or automatically. This is a hard task since non-rigid objects (organs) change their shape and location between measurements. This leads to inaccuracies.
 Therefore MRI-only radiation therapy protocols are being developed:
@@ -208,32 +271,12 @@ MRI data is used to create a Pseudo-CT, which contains information about electro
 In charged particle therapy the resulting dose gain in healthy tissue and dose loss in cancer regions due to inaccurately assigned electron density values is bigger.
 However, current development is promising. \cite{Rank2013, Stanescu2006, Nyholm2015, Greer2015, Chen2004}
 
-\section{Open bore MRI scanners}
 
-% advantages of low tesla, brachytherapy
-The radiation oncology department of the Vienna General Hospital (AKH) is equipped with an 0.35T open-bore, c-arm MRI scanner. The open design improves the well-being of patients
-experiencing anxiety in closed scanners. Consequently, the number of incomplete MR examinations due to a claustrophobic events is low. \cite{Enders2011a, Bangard2007}
-Besides, patients who wouldn't fit in closed designed scanners can be imaged.
-Also, brachytherapy patients can be placed in the scanner with applicators attached.
+Today RTTP often combines CT images with data acquired using Magnetic Resonance Imaging (MRI).
+MRI scans also record luminosity values, but they do not correspond to $HU$ (radiodensity measured by CT).
+The signal intensity depends on many factors and even varies between MRI scanners.
 
-This type of scanner is weaker than a conventional closed bore scanner (1-3 Tesla). High field strengths would result in greater resolution, better Signal to Noise (SNR) ratio, and faster imaging time.
-However, ``There are definite cost advantages (capital, operating, siting) to the use of lower field MRI.'' \cite{Rutt1996}
-% capital, operating, siting????
-Permanent magnets are sufficient to create the 0.35T field. Therefore there is no need for constant cooling using liquid helium compared to superconducting magnets.
-Consequently, maintenance and service costs are considerably lower.
 
-Generally, diagnostics benefit from greater image quality. However, at some point diagnostic accuracy stops increasing with field strength.
-Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing
-``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
-At the same time astonishing improvements can be achieved at low fields.
-A ``combination of field independent polarization [...] with frequency optimized MRI detection coils [...] results in low-field MRI sensitivity approaching and even rivaling that of high-field MRI.'' \cite{Coffey2013}
-
-One drawback of MRI, and especially open bore scanners, is the occuring distortion due to inhomogeneities in the magnetic field.
-For most applications small position shifts and deformations are of minor importance. In RTTP however, those effects can have a big impact.
-Therefore MRI scanners usually come equipped with an internal distortion correction algorithm.
-Those methods are developed by the company designing the scanners. Knowing the technical details enables them to drastically reduce the distortion.
-
-Field of view (FOV) of the MRI scanner is smaller than the CT scanner's.
 
 \section{Aim of this work}
 The used open bore MRI scanner is not intended to be used for RTTP. The on board correction algorithm might not be good enough for effetive EBRT.
