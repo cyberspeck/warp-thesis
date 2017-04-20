@@ -13,7 +13,8 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 	colorlinks = false, % Für Druck auf "false" setzen!
 }
 
-\linespread{1.3} % space between lines
+\onehalfspacing
+%\linespread{1.3} % space between lines
 \addtolength{\oddsidemargin}{0.73cm}
 \addtolength{\evensidemargin}{-1.73cm}
 \addtolength{\textwidth}{1cm}
@@ -25,9 +26,17 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 
 \AbschlussarbeitTUWienPhysikTitlePage{
 	titel={Software implementation of the quality assurance tool for magnetic resonance imaging distortion assessment},
-	institut=AKH,
-	prof={Professor}, % citeauthor nimmt Namen der Person aus der Bibliography in bib/example.bib
-	autor=David Blacher,
+	institut={AKH},
+	prof={Ao.Univ.Prof. Dipl.-Ing. Dr.techn. Martin Gröschl \\
+		Institut für Angewandte Physik \\
+		Technische Universität Wien},
+	% citeauthor nimmt Namen der Person aus der Bibliography in bib/example.bib
+	coop={Peter Küss, PhD \\
+		\& Piotr Andrzejewski, MSc Eng \\
+		Department of Radiooncology \\
+		Medical University Vienna, AKH Vienna},
+	autor={David Blacher \\
+		1327545},
 	adresse={Lindenbauergasse 7/29, 1110 Wien},
 	typ={bacc},
 	% Vordefinierte Typen sind: sem (Seminararbeit), bacc (Bachelorarbeit), proj (Projektarbeit), mast (Diplomarbeit), dipl (Diplomarbeit), diss (Dissertation)

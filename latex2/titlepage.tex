@@ -4,6 +4,7 @@
 \define@cmdkey{AbschlussarbeitTUWienPhysikTitlePage}{titel}[Titel]{}
 \define@cmdkey{AbschlussarbeitTUWienPhysikTitlePage}{institut}[Institut]{}
 \define@cmdkey{AbschlussarbeitTUWienPhysikTitlePage}{prof}[Professor]{}
+\define@cmdkey{AbschlussarbeitTUWienPhysikTitlePage}{coop}[In Kooperation mit]{}
 \define@cmdkey{AbschlussarbeitTUWienPhysikTitlePage}{adresse}[Adresse]{}
 \define@cmdkey{AbschlussarbeitTUWienPhysikTitlePage}{typ}[Typ der Arbeit]{}
 \define@cmdkey{AbschlussarbeitTUWienPhysikTitlePage}{schwarzweisslogo}[TU Logo in Schwarz-Weiss]{}
@@ -35,13 +36,16 @@
 	\begin{figure}[h]
 		\centering
 			\IfStrEq{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@schwarzweisslogo}{true}%
-			{\includegraphics[width=0.5\textwidth]{TU_Wien_Logo_SW.pdf}}%
-			{\includegraphics[width=0.5\textwidth]{TU_Wien_Logo.pdf}}
-		 %Logo gracefully taken from http://www.tuwien.ac.at/dle/pr/publishing_web_print/corporate_design/tu_logo/
+			{\includegraphics[width=0.2\textwidth]{TU_Logo_SW.png}}%
+			{\includegraphics[width=0.2\textwidth]{TU_Logo.png}}
+			%or take logo with text from http://www.tuwien.ac.at/dle/pr/publishing_web_print/corporate_design/tu_logo/
+%			{\includegraphics[width=0.5\textwidth]{TU_Wien_Logo_SW.pdf}}%
+%			{\includegraphics[width=0.5\textwidth]{TU_Wien_Logo.pdf}}
 	\end{figure}
 	
+	\begin{singlespace*}
 	\vspace{\stretch{1}}
-	\begin{LARGE}
+	\begin{large}
 
 	\par\noindent%
 	 \IfStrEqCase{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@typ}{%
@@ -53,33 +57,40 @@
 	  {diss}{DISSERTATION}%
 	  }[\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@typ]
 
-	\vspace{\stretch{1.8}}
-
+	\vspace{\stretch{1.5}}
+	\end{large}
+	
+	\begin{LARGE}
 	\textbf{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@titel} \\
-
 	\end{LARGE}
 	
 	\vspace{\stretch{1.8}}
 	\begin{large}
-	ausgeführt am \cmdKV@AbschlussarbeitTUWienPhysikTitlePage@institut \\
-	%der Technischen Universität Wien
+%	ausgeführt am \cmdKV@AbschlussarbeitTUWienPhysikTitlePage@institut \\
+%	%der Technischen Universität Wien
+	
+%	\vspace{\stretch{0.5}}
+%	unter der Anleitung von \\
+	Betreuer: \\
+	\vspace{\stretch{0.1}}
+	\textit{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@prof}
 	
 	\vspace{\stretch{0.5}}
-	
-	unter der Anleitung von \\
-	\textbf{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@prof}
+	in Kooperation mit: \\
+	\vspace{\stretch{0.1}}
+	\textit{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@coop}
 	
 	\vspace{\stretch{1}}
 	
-	durch \\
+	von: \\
+	\vspace{\stretch{0.2}}
+	\textbf{\textit{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@autor}} \\
 	
-	\vspace{\stretch{0.3}}
+	\vspace{\stretch{1}}
 	
-	\textbf{\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@autor} \\
-	
-	\vspace{\stretch{0.3}}
-	
-	\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@adresse \\
+%	\cmdKV@AbschlussarbeitTUWienPhysikTitlePage@adresse \\
+	Technische Physik \\
+	E033261
 	
 	\vspace{\stretch{2}}
 	
@@ -88,7 +99,8 @@
 	\today & \line(1,0){120}\\Unterschrift StudentIn
 	\end{tabular}
 	\end{large}
-	
+
+	\end{singlespace*}
 	\end{center}
 	\end{titlepage}
 	\restoregeometry
