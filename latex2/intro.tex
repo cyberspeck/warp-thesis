@@ -12,20 +12,20 @@
 % o Purpose of the thesis
 % o based on the literature research, describe which information is missing, describe briefly what your thesis is about and what is the novelty of your work
 
-\section{Photon interaction}
+\section{Photon - matter interactions}
 \label{sec:photon}
 
 As light passes through matter, its intensity decreases.
 This phenomenon is due to photons interacting with electrons, nuclei, and their electric fields.
 All processes either change the direction they travels in, alter it's energy, or result in the disappearance of single photons.
-The probability of those interactions differ for each material (dependent on its density; proton number $Z$) and photon energy ($h\nu$).
+The probability of those interactions differ for each material (dependent on its density; proton number $Z$) and photon energy ($h\nu$). \\
 
 If a photon's energy exceeds the binding energy of an orbital electron, the \textbf{photoelectric interaction} might occur.
 Also known as 'photo effect', it describes a photon being completely absorbed by a tightly bound orbital electron which then is ejected from its atom.
 The now free electron is called 'photo-electron'. Its kinetic Energy is the difference of the photons energy and the binding energy:
 \begin{align}
 E_{kin} &= h\nu - E_{binding}
-\end{align}
+\end{align} \\
 
 Instead of being absorbed, photons might just 'bounce off' electrons or entire atoms, transferring momentum and in some cases a part of their energy to the electron.
 \textbf{Rayleigh (coherent) scattering} happens when a photon interacts with a tightly bound orbital electron (transferring momentum to the entire atom).
@@ -34,19 +34,21 @@ This event can be seen as elastic, because only a negligible part of the photon'
 The \textbf{Compton effect (incoherent scattering)} involves a essentially free electron, such as an orbital electron with a relatively small binding energy compared to the photon's energy.
 Due to the weak binding, momentum is transferred only to the electron.
 This 'recoil electron' (or 'Compton electron') leaves its atom with a significant kinetic energy, which originated from the scattered photon.
-Since the photon loses part of its energy, the event is considered inelastic.
+Since the photon loses part of its energy, the event is considered inelastic. \\
 
-When a photon with an energy above $1.02 MeV$ passes through the electric field of a nucleus, it might disappear to create an electron-positron pair.
+When a photon with an energy above $1.02 \, MeV$ passes through the electric field of a nucleus, it might disappear to create an electron-positron pair.
 This effect is called \textbf{pair production}.
-The threshold of $1.02 MeV$ equals exactly the rest mass $E_m = 2m_ec^2$ for the two equally heavy particles.
-The new particles travel in opposite directions with the combined kinetic energy being $E_{kin, tot} = h\nu - 1.02MeV$.
+The threshold of $1.02 \, MeV$ equals exactly the rest mass $E_m = 2m_ec^2$ for the two equally heavy particles.
+The new particles travel in opposite directions with the same kinetic energy
+\begin{align}
+ E_{kin} = \frac{h\nu - 1.02 \, MeV}{2}
+\end{align} \\
 
-A photon with energy of the order of 2 MeV or higher can also interact directly with the nucleus.
+A photon with energy of the order of $2 \, MeV$ or higher can also interact directly with the nucleus.
 Such a \textbf{Photonuclear reaction} is similar to the photo effect, in the sense that the photon is completely absorbed.
-Its energy is transferred to the nucleus resulting in the emission of either a proton or neutron.
-%The remaining nucleus is referred to as radioactive reaction product, which might undergo further radioactive processes
+Its energy is transferred to the nucleus resulting in the emission of either a proton or neutron. \\
 
-
+\subsubsection{Attenuation}
 All those interactions result in a gradual decrease of light intensity as it travels through matter.
 The combined effect is described by \textbf{Beer's law}:
 
@@ -55,23 +57,7 @@ I(x) = I_0 e^{-\mu(h\nu,Z)x}
 \end{align}
 
 where $x$ is the thickness of a homogeneous material and $\mu$ its linear attenuation coefficient.
-The different probabilities for the interactions to occur is implicitly considered by the attenuation coefficient $\mu(h\nu,Z)$.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.5\linewidth]{/intro/attenuation_e}
-	\caption{Photon attenuation schematic \\		\url{http://www.onmeda.de/strahlenmedizin/ionisierende_strahlung_reichweite-schwaechungsgesetz,-reichweite-von-photonenstrahlung-2413-6.html}}
-	\label{fig:attenuation_e}
-\end{figure}
-
-\todo{better diagramm??}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\linewidth]{../fig/intro/Ironattenuation}
-	\caption{Photon attenuation for iron \\ \url{https://commons.wikimedia.org/wiki/File:Ironattenuation.PNG?uselang=en}}
-	\label{fig:Ironattenuation}
-\end{figure}
+The different probabilities for the interactions to occur is implicitly considered by the attenuation coefficient $\mu(h\nu,Z)$ (see Figure \ref{fig:attenuation_water} and \ref{fig:attenuation_iron}).
 
 For a photon being transmitted through matter with varying properties, the attenuation coefficient changes, too.
 After travelling a distance d, the intensity can be expressed as:
@@ -83,11 +69,81 @@ I(x) = I_0 e^{- \int_{0}^{d} \mu(x)dx}
 
 Where $\mu(x)$ describes the attenuation at every distance $x$.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{/intro/attenuation_e}
+	\caption{Photon attenuation schematic \\		\url{http://www.onmeda.de/strahlenmedizin/ionisierende_strahlung_reichweite-schwaechungsgesetz,-reichweite-von-photonenstrahlung-2413-6.html}}
+	\label{fig:attenuation_water}
+\end{figure}
+
+\todo{better diagramm??}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../fig/intro/Ironattenuation}
+	\caption{Photon attenuation for iron \\ \url{https://commons.wikimedia.org/wiki/File:Ironattenuation.PNG?uselang=en}}
+	\label{fig:attenuation_iron}
+\end{figure}
+
+
 \section{Radiobiology}
 \label{sec:cell}
+\subsection{The human cell}
+All living creatures consist of cells working together to form what is called tissue.
+A collection of tissues which perform one or more functions is considered an organ. \\
 
-\section{X-ray projection imaging}
-A widely used imaging technique based on the aforementioned photon interactions is X-ray projection.
+Even though different types of cells serve different causes, all of them originated from the same totipotent zygote containing a original set of DNA.
+A zygote is a stem cell, it has the ability to replicate indefinitely, passing on its DNA to the daughter cells.
+At the same time it can change into any type of body cell. This feature is why it is called 'totipotent'.
+As soon as the zygote has divided into a sufficient of identical cells, all of them differentiate into the various human tissues.
+In favour of becoming more specialised cells, they lose their totipotency.
+During the early stages of an embryo they are still capable of developing into a number of different cell types, but all within their own tissue type  either nerve, skin or blood \& muscle.
+As those cells further specialise, they limit their potential even more.
+In a fully grown human body there are still stem cells present, like bone marrow stem cells.
+Other than the zygote, bone marrow can only give rise to blood cells, but not to e.g. nerve or skin cells.
+A blood cell itself cannot replicate, it is considered a 'mature cell'.
+
+The whole process follows the guidelines dictated by the DNA. Every cell inherited its own personal copy of the original set.
+Inevitably mistakes happen during the replication, resulting in changes to the DNA called 'mutation'.
+Most of these alterations are repaired or do not lead to changes in the cells behaviour.
+As the human body ages the repair mechanism slows down and mutations accumulate.
+At one point a cell is reprogrammed to act in a unpredictable way, giving up its duties and duplicating without restraint, forming tumours.
+External factors are known influence cell behaviour and able to induce such 'malign' cells (carcinogenesis).
+Cancer cells usually replicate more frequent than healthy cells, eventually leading to characteristic symptoms.
+
+Different approaches have been developed to treat chancer, not all of which are suited to tackle every type of tumour.
+If the tumour's location is unknown or metastases in many places have formed already, chemotherapy might be considered.
+An easily accessible tumour could be removed in a surgery.
+Non invasive therapies also include radiotherapy, destroying cancer cells using radiation.
+
+Generally, early treatments have high chances of success, but tumours are often not noticed until they reached a certain stage. 
+Reliable ways of diagnosing tumours are made possible by imaging techniques visualising the interior of the human body 
+
+\subsection{Effects of radiation}
+
+As described in \ref{sec:photon}, light passing through matter transfer some of its energy to the medium.
+Most interactions, such as the photo effect, incoherent (Compton) scattering, and pair production result in electrons being freed from their atoms.
+If the electron has a sufficiently high kinetic Energy, it may free additional orbital electrons from surrounding atoms.
+The remaining ions are positively charged, with a single unpaired valence electron.
+This type of chemical is called 'radical' and considered extremely reactive.
+They are likely to take part in chemical events which include the breakage of chemical bonds.
+Such processes can either induce changes in DNA sequences and eventually produce biological damage.
+
+A irradiated cell can be affected in various ways ranging from no effect to cell death.
+The cell might survive containing a minor mutation.
+A more fundamental mutation might lead to carcinogenesis.
+Irradiated cells might send signals to their neighbours, inducing genetic damage known as 'bystander effects'.
+Cells have been observed to react to radiation, becoming more resistant to future irradiation.
+
+Changes to the DNA might not become apparent ever, others take years until they result in biological effects.
+A well known consequence of ionizing radiation is leukaemia.
+Damage to germ cells (sperm and eggs) might even result in genetic damages expressed in subsequent generations.
+
+While imaging modalities utilising X-rays are designed to apply as little dose as possible to keep effects of irradiation low, radiotherapy makes use of the lethal effects targeting cancer cells.
+
+\section{Imaging modalities}
+\subsection{X-ray projection imaging}
+A widely used imaging technique based on photon interactions is X-ray projection.
 Its setup is made up by a light source, the object of interest, and a receptor.
 Since the technique is about projection, a patient needs to be placed between an X-ray tube and the receptor (usually film-cassette or digital sensor).
 In the first stage of the imaging process, X-ray photons emitted by the tube enter the body.
@@ -114,7 +170,7 @@ Unfortunately most introduce slight, sometimes serious side-effects.
 There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nanoparticles.
 
 
-\section{Computer Tomography - CT}
+\subsection{Computer Tomography - CT}
 Computer Tomography (CT) is a three-dimensional (3-D) imaging modality based on the measurement of X-ray attenuation.
 The technique has evolved from 2-D X-ray scanning.
 By mounting source and receptor on a rotary ring with a patient at the centre, projections from any angle can be obtained.
@@ -125,7 +181,7 @@ In contrast to 2-D methods, where the patients interior is projected/compressed 
 
 Since its clinical introduction in 1971, CT has become a widely used 3-D imaging modality for a range of applications including radiation oncology. Especially in radiation therapy, knowledge of the exact geometry is crucial, which is why CT plays such an important role in treatment planning (see \ref{sec:planning}).
 
-\subsection{3-D image reconstruction}
+\subsubsection{3-D image reconstruction}
 As a photon passes through the patient, it encounters different materials associated with characteristic linear attenuation coefficients.
 It is practical to think of the scanned body as a collection of $N = N_X\cdot N_Y\cdot N_Z$ finite size cubes ($\Delta x$ cube length) called 'voxels' (analogous to pixels in a 2-D digital photograph).
 The entire model can then be regarded as a 3-D matrix, with the attenuation coefficients $\mu_i$ for all voxels as its entries.
@@ -149,7 +205,7 @@ For convenience the computed numbers are converted to Houndsfield Units, which a
 	\label{fig:voxel_matrix}
 \end{figure}
 
-\subsection{Houndsfield Units}
+\subsubsection{Houndsfield Units}
 
 In a final CT scan voxel values are recorded in Houndsfield Units (HU), which relate to the attenuation of water at room temperature:
 
@@ -196,14 +252,14 @@ While showing very good soft tissue contrast, all bones would be depicted with e
 For bone structures a range from 300 to 2500 HU might show sufficient contrast.
 Standard computer programs used to display CT images allow the user to change the window interactively to any value range.
 
-\subsection{Image acquisition}
+\subsubsection{Image acquisition}
 The time necessary to collect 1-D attenuation projections from sufficient angles is called 'acquisition time'.
 In 2-D X-ray scanning only one picture is taken, while a 3-D CT model is made up of a photo sequence.
 If the patient moves during the imaging process, the final model would show motion artefacts which might lead to wrong conclusions.
 Consequently, CT scanners are designed to minimise acquisition time while ensuring sufficient image quality.
 Very fast CT protocols result in smaller resolution, because less images are taken.
 
-\subsection{Image quality} %282
+\subsubsection{Image quality} %282
 CT offers excellent low contrast resolution, making structures that differ only slightly in signal from their surroundings visible to doctors.
 This aspect of image quality is mainly limited by noise.
 Noise is random patterns underlying the actual signal which always present to some extent.
@@ -215,15 +271,18 @@ The intensity is governed by the tube current, which is limited by the heat capa
 Alternatively, the spatial resolution can be decreased, effectively combining neighbouring image slices.
 While SNR for combined slices is increased, fine structures along the z-axis might be lost due to the reduced resolution.
 
-\subsection{Health considerations}
-CT utilizes the same type of radiation used for destroying cancer cells.
+\subsubsection{Health considerations}
+A CT scan describes the attenuation throughout a patient, which is directly related to how much energy is transferred from photons to matter.
+Only because X-rays are absorbed by the human body, this imaging modality gives insight in the density distribution of a body's interior.
+Exactly this transferred energy causes biological damage.
+Fortunately the light intensity needed for a single CT scan is almost negligible compared to other 
 Even though the radiation dose of a CT is low compared to radiation therapy, cancer patients need to be imaged frequently during treatment planning.
 Especially children treated with EBRT typically suffer from induced cancer occurring up to 40 years later.
 So while the benefit from using CT for diagnostics far outweighs the damage, there have been major efforts to reduce dose while maintaining reasonable image quality.
 \cite{Murphy2007, Brenner2001, Sodickson2009, Smith2007, McCollough2009, Goldman2013}
 
 
-\section{Magnetic Resonance Imaging - MRI}
+\subsection{Magnetic Resonance Imaging - MRI}
 Magnetic Resonance Imaging (MRI) is a 3-D imaging modality based on  Nuclear Magnetic Resonance (NMR).
 spin relaxation of atomic nuclei.
 
@@ -238,17 +297,18 @@ Delineating tumours using MRI images is more accurate than using CT. \cite{Rasch
 % mri needs coils
 % mri can create differently weighted images (T1, T2, etc..)
 
-\subsection{Image Quality}
+\subsubsection{Image Quality}
 Generally, diagnostics benefit from greater image quality.
 However, at some point diagnostic accuracy stops increasing with field strength.
 Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
 At the same time astonishing improvements can be achieved at low fields.
 A ``combination of field independent polarization [...] with frequency optimized MRI detection coils [...] results in low-field MRI sensitivity approaching and even rivaling that of high-field MRI.'' \cite{Coffey2013}
 
-\subsection{Health considerations}
+\subsubsection{Health considerations}
 
+It's a giant microwave!
 
-\section{Open bore MRI scanners}
+\subsubsection{Open bore MRI scanners}
 
 % advantages of low tesla, brachytherapy
 The radiation oncology department of the Vienna General Hospital (AKH) is equipped with an 0.35T open-bore, c-arm MRI scanner.
@@ -266,7 +326,7 @@ Therefore there is no need for constant cooling using liquid helium compared to 
 Consequently, maintenance and service costs are considerably lower.
 
 
-\subsection{more stuff to be looked at}
+\subsubsection{more stuff to be looked at}
 One drawback of MRI, and especially open bore scanners, is the occuring distortion due to inhomogeneities in the magnetic field.
 For most applications small position shifts and deformations are of minor importance.
 In RTTP however, those effects can have a big impact.
@@ -275,7 +335,7 @@ Those methods are developed by the company designing the scanners. Knowing the t
 
 Field of view (FOV) of the MRI scanner is smaller than the CT scanner's.
 
-\section{Types of External Beam Radiation Therapy}
+\section{External Beam Radiation Therapy}
 \label{sec:planning}
 External Beam Radiation Therapy (EBRT) utilizes ionizing radiation to damage cancer cells in order to stop them from multiplying.
 This prevents the growth of tumours and eventually cures the patient. 
@@ -295,7 +355,8 @@ A comparison between x-rays and protons is shown in figure \ref{fig:bragg}.
 While travelling through matter both types of radiation release energy mostly due to coulomb interactions with the outer shell electrons of atoms.
 Knowing the electron density of of the targeted tissue area is therefore essential. In order to reach a specific penetration depth, the particles' initial energy has to be chosen accordingly.
 
-\section{Role of CT}
+\clearpage
+\subsection{Role of CT}
 
 Until recently radiotherapy treatment planning (RTTP) relied heavily on Computer Tomography (CT). There are two main reasons for this:
 
@@ -311,7 +372,7 @@ Secondly, CT images generate 3D images with little distortion. Exact geometries 
 \textit{Image of RTTP}
 \vspace{2cm}
 
-\section{Role of MRI}
+\subsection{Role of MRI}
 There are some difficulties arising from combining CT and MRI for EBRT:
 In order to profit from separately acquired data, the resulting images must be aligned either manually or automatically. This is a hard task since non-rigid objects (organs) change their shape and location between measurements. This leads to inaccuracies.
 Therefore MRI-only radiation therapy protocols are being developed:
