@@ -14,18 +14,67 @@
 
 \section{Photon interaction}
 \label{sec:photon}
-The intensity of light decreases as it travels through matter as described by Beer's law:
+
+As light passes through matter, its intensity decreases.
+This phenomenon is due to photons interacting with electrons, nuclei, and their electric fields.
+All processes either change the direction they travels in, alter it's energy, or result in the disappearance of single photons.
+The probability of those interactions differ for each material (dependent on its density; proton number $Z$) and photon energy ($h\nu$).
+
+If a photon's energy exceeds the binding energy of an orbital electron, the \textbf{photoelectric interaction} might occur.
+Also known as 'photo effect', it describes a photon being completely absorbed by a tightly bound orbital electron which then is ejected from its atom.
+The now free electron is called 'photo-electron'. Its kinetic Energy is the difference of the photons energy and the binding energy:
+\begin{align}
+E_{kin} &= h\nu - E_{binding}
+\end{align}
+
+Instead of being absorbed, photons might just 'bounce off' electrons or entire atoms, transferring momentum and in some cases a part of their energy to the electron.
+\textbf{Rayleigh (coherent) scattering} happens when a photon interacts with a tightly bound orbital electron (transferring momentum to the entire atom).
+This event can be seen as elastic, because only a negligible part of the photon's energy is transferred.
+
+The \textbf{Compton effect (incoherent scattering)} involves a essentially free electron, such as an orbital electron with a relatively small binding energy compared to the photon's energy.
+Due to the weak binding, momentum is transferred only to the electron.
+This 'recoil electron' (or 'Compton electron') leaves its atom with a significant kinetic energy, which originated from the scattered photon.
+Since the photon loses part of its energy, the event is considered inelastic.
+
+When a photon with an energy above $1.02 MeV$ passes through the electric field of a nucleus, it might disappear to create an electron-positron pair.
+This effect is called \textbf{pair production}.
+The threshold of $1.02 MeV$ equals exactly the rest mass $E_m = 2m_ec^2$ for the two equally heavy particles.
+The new particles travel in opposite directions with the combined kinetic energy being $E_{kin, tot} = h\nu - 1.02MeV$.
+
+A photon with energy of the order of 2 MeV or higher can also interact directly with the nucleus.
+Such a \textbf{Photonuclear reaction} is similar to the photo effect, in the sense that the photon is completely absorbed.
+Its energy is transferred to the nucleus resulting in the emission of either a proton or neutron.
+%The remaining nucleus is referred to as radioactive reaction product, which might undergo further radioactive processes
+
+
+All those interactions result in a gradual decrease of light intensity as it travels through matter.
+The combined effect is described by \textbf{Beer's law}:
 
 \begin{align}
 I(x) = I_0 e^{-\mu(h\nu,Z)x}
 \end{align}
 
-where $x$ is the thickness of a homogeneous material and
-$\mu$ its linear attenuation coefficient, which is dependent on the energy of the photons ($h\nu$) and the proton number of the material ($Z$).
+where $x$ is the thickness of a homogeneous material and $\mu$ its linear attenuation coefficient.
+The different probabilities for the interactions to occur is implicitly considered by the attenuation coefficient $\mu(h\nu,Z)$.
 
-The reduction of intensity is due to a number of effects. The photons interact with electrons (photoelectric effect, Rayleigh scattering, Compton effect), with the electric field of the nuclei (pair production) or with the nuclei itself (photo nuclear reactions). The probability of those interactions differ for each material ($Z$) and photon energy ($h\nu$). This behaviour is implicitly considered in the attenuation coefficient $\mu(h\nu,Z)$.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{/intro/attenuation_e}
+	\caption{Photon attenuation schematic \\		\url{http://www.onmeda.de/strahlenmedizin/ionisierende_strahlung_reichweite-schwaechungsgesetz,-reichweite-von-photonenstrahlung-2413-6.html}}
+	\label{fig:attenuation_e}
+\end{figure}
 
-For a photon being transmitted through matter with varying properties, the attenuation coefficient changes, too. After travelling a distance d, the intensity can be expressed as:
+\todo{better diagramm??}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{../fig/intro/Ironattenuation}
+	\caption{Photon attenuation for iron \\ \url{https://commons.wikimedia.org/wiki/File:Ironattenuation.PNG?uselang=en}}
+	\label{fig:Ironattenuation}
+\end{figure}
+
+For a photon being transmitted through matter with varying properties, the attenuation coefficient changes, too.
+After travelling a distance d, the intensity can be expressed as:
 
 \begin{align}
 \label{eq:mu_int}
@@ -34,9 +83,8 @@ I(x) = I_0 e^{- \int_{0}^{d} \mu(x)dx}
 
 Where $\mu(x)$ describes the attenuation at every distance $x$.
 
-FIGURE WITH ATTENUATION COEFFICIENT
-
-
+\section{Radiobiology}
+\label{sec:cell}
 
 \section{X-ray projection imaging}
 A widely used imaging technique based on the aforementioned photon interactions is X-ray projection.
