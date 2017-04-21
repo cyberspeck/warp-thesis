@@ -1,3 +1,4 @@
+
 \chapter{Introduction}
 \label{chap:intro}
 % o General: Start with very general description and focus step by step on your topic
@@ -46,7 +47,7 @@ The new particles travel in opposite directions with the same kinetic energy
 
 A photon with energy of the order of $2 \, MeV$ or higher can also interact directly with the nucleus.
 Such a \textbf{Photonuclear reaction} is similar to the photo effect, in the sense that the photon is completely absorbed.
-Its energy is transferred to the nucleus resulting in the emission of either a proton or neutron. \\
+Its energy is transferred to the nucleus resulting in the emission of either a proton or neutron. \cite{Podgorsak, Maidment2014}\\
 
 \subsubsection{Attenuation}
 All those interactions result in a gradual decrease of light intensity as it travels through matter.
@@ -117,7 +118,7 @@ An easily accessible tumour could be removed in a surgery.
 Non invasive therapies also include radiotherapy, destroying cancer cells using radiation.
 
 Generally, early treatments have high chances of success, but tumours are often not noticed until they reached a certain stage. 
-Reliable ways of diagnosing tumours are made possible by imaging techniques visualising the interior of the human body 
+Reliable ways of diagnosing tumours are made possible by imaging techniques visualising the interior of the human body.  \cite{Baumann2017} \todo{Citation needed! Or should I take it out completely?}
 
 \subsection{Effects of radiation}
 
@@ -139,7 +140,7 @@ Changes to the DNA might not become apparent ever, others take years until they 
 A well known consequence of ionizing radiation is leukaemia.
 Damage to germ cells (sperm and eggs) might even result in genetic damages expressed in subsequent generations.
 
-While imaging modalities utilising X-rays are designed to apply as little dose as possible to keep effects of irradiation low, radiotherapy makes use of the lethal effects targeting cancer cells.
+While imaging modalities utilising X-rays are designed to apply as little dose as possible to keep effects of irradiation low, radiotherapy makes use of the lethal effects targeting cancer cells. \cite{Podgorsak, Maidment2014}
 
 \section{Imaging modalities}
 \subsection{X-ray projection imaging}
@@ -167,7 +168,7 @@ In studies of the abdomen a diluted iodine solution or barium compounds swallowe
 
 For patients allergic to those chemicals, a number of alternative agents have been developed.
 Unfortunately most introduce slight, sometimes serious side-effects.
-There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nanoparticles.
+There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nanoparticles. \cite{Podgorsak, Maidment2014}
 
 
 \subsection{Computer Tomography - CT}
@@ -179,7 +180,7 @@ A single 'image' taken by the receptor is therefore only in 1-D.
 Yet, by repeating this process from a sufficient number of different angles and along the entire patient (z-axis) a 3-D model can be computed.
 In contrast to 2-D methods, where the patients interior is projected/compressed onto a flat image, CT preserves the exact location information. This feature lead to a radical improvement in diagnostics.	 \\
 
-Since its clinical introduction in 1971, CT has become a widely used 3-D imaging modality for a range of applications including radiation oncology. Especially in radiation therapy, knowledge of the exact geometry is crucial, which is why CT plays such an important role in treatment planning (see \ref{sec:planning}).
+Since its clinical introduction in 1971, CT has become a widely used 3-D imaging modality for a range of applications including radiation oncology. Especially in radiation therapy, knowledge of the exact geometry is crucial, which is why CT plays such an important role in treatment planning (see \ref{sec:planning}). \cite{Podgorsak, Maidment2014}
 
 \subsubsection{3-D image reconstruction}
 As a photon passes through the patient, it encounters different materials associated with characteristic linear attenuation coefficients.
@@ -196,7 +197,7 @@ I(x) = I_0 e^{- \sum\limits_{i=1}^{N_X} \mu_i \Delta x}
 
 The initial and final intensities can be read of the settings of the X-ray tube and the detected signal.
 Based on those values, image reconstruction algorithms derive the three-dimensional linear attenuation coefficient matrix.
-For convenience the computed numbers are converted to Houndsfield Units, which are displayed in the final image.
+For convenience the computed numbers are converted to Houndsfield Units, which are displayed in the final image. \cite{Podgorsak, Maidment2014}
 
 \begin{figure}[!htb]
 	\centering
@@ -250,14 +251,14 @@ This selected range can be mapped directly and uncompressed to a 8-bit greyscale
 Any values above 155 HU will be assigned the brightest value (white = 255), below -100 the darkest (black = 0).
 While showing very good soft tissue contrast, all bones would be depicted with exactly the same brightness (255), even though they might have a varying HU values.
 For bone structures a range from 300 to 2500 HU might show sufficient contrast.
-Standard computer programs used to display CT images allow the user to change the window interactively to any value range.
+Standard computer programs used to display CT images allow the user to change the window interactively to any value range. \cite{Podgorsak, Maidment2014}
 
 \subsubsection{Image acquisition}
 The time necessary to collect 1-D attenuation projections from sufficient angles is called 'acquisition time'.
 In 2-D X-ray scanning only one picture is taken, while a 3-D CT model is made up of a photo sequence.
 If the patient moves during the imaging process, the final model would show motion artefacts which might lead to wrong conclusions.
 Consequently, CT scanners are designed to minimise acquisition time while ensuring sufficient image quality.
-Very fast CT protocols result in smaller resolution, because less images are taken.
+Very fast CT protocols result in smaller resolution, because less images are taken. \cite{Podgorsak, Maidment2014}
 
 \subsubsection{Image quality} %282
 CT offers excellent low contrast resolution, making structures that differ only slightly in signal from their surroundings visible to doctors.
@@ -269,28 +270,53 @@ Strategies to achieve a high SNR include raising the initial photon flux (intens
 The intensity is governed by the tube current, which is limited by the heat capacity of the tube and health considerations regarding the patient.
 
 Alternatively, the spatial resolution can be decreased, effectively combining neighbouring image slices.
-While SNR for combined slices is increased, fine structures along the z-axis might be lost due to the reduced resolution.
+While SNR for combined slices is increased, fine structures along the z-axis might be lost due to the reduced resolution. \cite{Podgorsak, Maidment2014}
 
 \subsubsection{Health considerations}
-A CT scan describes the attenuation throughout a patient, which is directly related to how much energy is transferred from photons to matter.
+CT scans describe the attenuation throughout a patient, which is directly related to how much energy is transferred from photons to matter.
 Only because X-rays are absorbed by the human body, this imaging modality gives insight in the density distribution of a body's interior.
-Exactly this transferred energy causes biological damage.
-Fortunately the light intensity needed for a single CT scan is almost negligible compared to other 
-Even though the radiation dose of a CT is low compared to radiation therapy, cancer patients need to be imaged frequently during treatment planning.
-Especially children treated with EBRT typically suffer from induced cancer occurring up to 40 years later.
+However, this transferred energy is capable of causing biological damage.
+Fortunately the radiation dose administered during a single CT scan is almost negligible.
+Nevertheless, cancer patients need to be imaged frequently during treatment planning.
+Especially children receiving a great number of CTs typically suffer from induced cancer occurring up to 40 years later.
 So while the benefit from using CT for diagnostics far outweighs the damage, there have been major efforts to reduce dose while maintaining reasonable image quality.
 \cite{Murphy2007, Brenner2001, Sodickson2009, Smith2007, McCollough2009, Goldman2013}
 
 
 \subsection{Magnetic Resonance Imaging - MRI}
-Magnetic Resonance Imaging (MRI) is a 3-D imaging modality based on  Nuclear Magnetic Resonance (NMR).
-spin relaxation of atomic nuclei.
+Magnetic Resonance Imaging (MRI) is a 3-D imaging modality based on Nuclear Magnetic Resonance (NMR), a phenomenon discovered 1938 by physicist Isidor I. Rabi.
+Atomic particles like protons have an inherent quantum mechanic feature called 'spin', which is associated with a magnetic moment $\mu$.
+Without an external field a protons spin and magnetic moment is oriented in a random direction in space.
+The sum of magnetic moments belonging to a great number of protons results in a net magnetisation.
+Due to their random orientation, looked at from a great distance the net magnetisation will be zero.
+On average for every proton's spin there is always another particle's spin oriented exactly the opposite way, cancelling its magnetic moment.
+
+In the case of an applied external magnetic field, the spins will either align parallel or anti-parallel to the direction of this field, minimising their energy.
+Protons aligned parallel have a slightly lower energy than those looking the other way.
+In a collection of many spins, the number of parallel spins will therefore dominate, resulting in a net magnetisation other than zero.
+
+By applying a radio frequency pulse the total external magnetic field changes and the magnetic moments start precessing around that new external field.
+The additional pulse in usually exactly long enough to flip the spins by a $90^o$ angle.
+They are now oriented in the transverse plane to the original external field.
+Similar to a spinning top rotating not entirely upright, the magnetic moments will now precess around the direction of the external field.
+Again they would like to minimise their energy by aligning with the external field, but in order to do so they need to give away the additional energy, transferring it to surrounding lattice.
+Those spin-lattice interactions happen with different efficiency depending on the tissue.
+The amount of time it takes for the spins to align is expressed in a material specific time constant $T_1$.
+Shortly after applying the radio frequency pulse, regions of the body where magnetic moments align quickly (short $T_1$) have a stronger net magnetisation than those with energy being transferred slowly (long $T_2$).
+
+At the same time the spins interact with each other, changing the local magnetic field.
+The magnetic moments, which initially started out precessing in phase directly after the radio frequency pulse flipped them, will precess at slightly different frequencies, because of the small fluctuations in local magnetic field.
+So after a while the net magnetisation in the transverse plane will vanish.
+This process due to spin-spin interactions is described by the material specific time constant $T_2$
+
+Eventually all spins will be again aligned either parallel or anti-parallel to the external field, just as they were before the rf-pulse. 
 
 
-MRI uses strong stationary magnetic fields to align magnetic spin moments of protons.
-Then an additional alternating field resonating with the spins is applied shortly to flip them $90^o$.
-Depending on the material spins then take longer or shorter to align again with the stationary field.
-Those differences can be measured in a pick-up coil surrounding the region of interest.
+Measuring the net magnetisation throughout the body can therefore give information about tissue differences.
+
+
+be measured with a pick-up coil surrounding the region of interest.
+
 The nature of this effect leads to a great contrast between soft tissue. \cite{Currie2013}
 Delineating tumours using MRI images is more accurate than using CT. \cite{Rasch1999, Debois1999a, Roach1996}
 
@@ -306,7 +332,7 @@ A ``combination of field independent polarization [...] with frequency optimized
 
 \subsubsection{Health considerations}
 
-It's a giant microwave!
+It's a glorified microwave!
 
 \subsubsection{Open bore MRI scanners}
 
