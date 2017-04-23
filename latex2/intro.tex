@@ -78,6 +78,8 @@ Where $\mu(x)$ describes the attenuation at every distance $x$.
 \end{figure}
 
 \todo{better diagramm??}
+\todo{explain LET? (linear energy transfer)}
+\todo{explain 'dose'?}
 
 \begin{figure}[h!]
 	\centering
@@ -121,6 +123,7 @@ Generally, early treatments have high chances of success, but tumours are often 
 Reliable ways of diagnosing tumours are made possible by imaging techniques visualising the interior of the human body.  \cite{Baumann2017} \todo{Citation needed! Or should I take it out completely?}
 
 \subsection{Effects of radiation}
+\label{sec:irradiate}
 
 As described in \ref{sec:photon}, light passing through matter transfer some of its energy to the medium.
 Most interactions, such as the photo effect, incoherent (Compton) scattering, and pair production result in electrons being freed from their atoms.
@@ -197,7 +200,7 @@ I(x) = I_0 e^{- \sum\limits_{i=1}^{N_X} \mu_i \Delta x}
 
 The initial and final intensities can be read of the settings of the X-ray tube and the detected signal.
 Based on those values, image reconstruction algorithms derive the three-dimensional linear attenuation coefficient matrix.
-For convenience the computed numbers are converted to Houndsfield Units, which are displayed in the final image. \cite{Podgorsak, Maidment2014}
+For convenience the computed numbers are converted to Hounsfield Units, which are displayed in the final image. \cite{Podgorsak, Maidment2014}
 
 \begin{figure}[!htb]
 	\centering
@@ -206,9 +209,9 @@ For convenience the computed numbers are converted to Houndsfield Units, which a
 	\label{fig:voxel_matrix}
 \end{figure}
 
-\subsubsection{Houndsfield Units}
+\subsubsection{Hounsfield Units}
 
-In a final CT scan voxel values are recorded in Houndsfield Units (HU), which relate to the attenuation of water at room temperature:
+In a final CT scan voxel values are recorded in Hounsfield Units (HU), which relate to the attenuation of water at room temperature:
 
 \begin{align}
 HU_{material} = \frac{\mu_{material} - \mu_{water}}{\mu_{water}} \cdot 1000
@@ -275,7 +278,7 @@ While SNR for combined slices is increased, fine structures along the z-axis mig
 \subsubsection{Health considerations}
 CT scans describe the attenuation throughout a patient, which is directly related to how much energy is transferred from photons to matter.
 Only because X-rays are absorbed by the human body, this imaging modality gives insight in the density distribution of a body's interior.
-However, this transferred energy is capable of causing biological damage.
+However, this transferred energy is capable of causing biological damage. (see \ref{sec:irradiate})
 Fortunately the radiation dose administered during a single CT scan is almost negligible.
 Nevertheless, cancer patients need to be imaged frequently during treatment planning.
 Especially children receiving a great number of CTs typically suffer from induced cancer occurring up to 40 years later.
@@ -284,46 +287,57 @@ So while the benefit from using CT for diagnostics far outweighs the damage, the
 
 
 \subsection{Magnetic Resonance Imaging - MRI}
-Magnetic Resonance Imaging (MRI) is a 3-D imaging modality based on Nuclear Magnetic Resonance (NMR), a phenomenon discovered 1938 by physicist Isidor I. Rabi.
-Atomic particles like protons have an inherent quantum mechanic feature called 'spin', which is associated with a magnetic moment $\mu$.
-Without an external field a protons spin and magnetic moment is oriented in a random direction in space.
+Magnetic Resonance Imaging (MRI) is a 3-D imaging modality based on Nuclear Magnetic Resonance (NMR), a phenomenon discovered by physicist Isidor I. Rabi in 1938.
+Atomic particles such as protons have an inherent quantum mechanic feature called 'spin', which is associated with a magnetic moment $\mu$.
+Without an external field a proton's spin is oriented in a random direction in space and with it its magnetic moment.
 The sum of magnetic moments belonging to a great number of protons results in a net magnetisation.
-Due to their random orientation, looked at from a great distance the net magnetisation will be zero.
-On average for every proton's spin there is always another particle's spin oriented exactly the opposite way, cancelling its magnetic moment.
+Due to their random orientation, the net magnetisation will be zero measured from a great distance (in relation to the spins' distances).
+On average, for every proton's spin there is always another particle's spin oriented exactly the opposite way, cancelling its magnetic moment.
 
 In the case of an applied external magnetic field, the spins will either align parallel or anti-parallel to the direction of this field, minimising their energy.
 Protons aligned parallel have a slightly lower energy than those looking the other way.
-In a collection of many spins, the number of parallel spins will therefore dominate, resulting in a net magnetisation other than zero.
+In a collection of many spins, the number of parallel spins will therefore dominate, resulting in a net magnetisation greater than zero (see figure \ref{fig:spin_align}).
 
-By applying a radio frequency pulse the total external magnetic field changes and the magnetic moments start precessing around that new external field.
-The additional pulse in usually exactly long enough to flip the spins by a $90^o$ angle.
-They are now oriented in the transverse plane to the original external field.
-Similar to a spinning top rotating not entirely upright, the magnetic moments will now precess around the direction of the external field.
-Again they would like to minimise their energy by aligning with the external field, but in order to do so they need to give away the additional energy, transferring it to surrounding lattice.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{../fig/intro/spin_align}
+\caption{The spins, initially oriented randomly in space, become aligned either parallel or antiparallel to an externally applied magnetic field $B_0$.}
+\label{fig:spin_align}
+\end{figure}
+
+By applying a radio frequency pulse, the total external magnetic field changes and the magnetic moments start precessing around that new external field.
+The pulse duration is usually chosen in such a way it causes the spins to flip by a $90^o$ angle.
+They are now oriented in the transverse plane to the original external field, and so is the resulting net magnetisation.
+Similar as to how a spinning top rotating at an angle to the direction of gravity precesses, the magnetic moments will now precess about the direction of the external field with a frequency linearly proportional to the external field strength.
+This precession movement can be detected, because the net magnetisation still follows their orientation. 
+Again the particles would like to minimise their energy by aligning their spins with the external field, but in order to do so they need to give away the additional energy, transferring it to the surrounding lattice.
 Those spin-lattice interactions happen with different efficiency depending on the tissue.
 The amount of time it takes for the spins to align is expressed in a material specific time constant $T_1$.
-Shortly after applying the radio frequency pulse, regions of the body where magnetic moments align quickly (short $T_1$) have a stronger net magnetisation than those with energy being transferred slowly (long $T_2$).
+Shortly after applying the radio frequency pulse, regions of the body where magnetic moments align quickly (short $T_1$) have a stronger net magnetisation (in the direction of the external field) than those where energy is being transferred slowly (long $T_2$).
 
-At the same time the spins interact with each other, changing the local magnetic field.
-The magnetic moments, which initially started out precessing in phase directly after the radio frequency pulse flipped them, will precess at slightly different frequencies, because of the small fluctuations in local magnetic field.
-So after a while the net magnetisation in the transverse plane will vanish.
+At the same time, the spins interact with each other, affecting the local magnetic field and spins in their vicinity.
+The magnetic moments, which started out precessing in phase directly after the radio frequency pulse flipped them, will precess at slightly different frequencies, because of the small fluctuations in local magnetic field.
+The differences cause the collection of magnetic moments to de-phase and the net magnetisation in the transverse plane to vanish.
 This process due to spin-spin interactions is described by the material specific time constant $T_2$
 
 Eventually all spins will be again aligned either parallel or anti-parallel to the external field, just as they were before the rf-pulse. 
-
+Applying the RF pulse with a homogeneous field strength along the body would excite all spins simultaneously.
+In order to localise differences in tissue magnetisation, the RF pulse is instead combined with a linear magnetic gradient field 'selecting' a slice to be imaged at a time.
+The rest of the body is unaffected, the signal measured after such a pulse comes only from the chosen slice.
 
 Measuring the net magnetisation throughout the body can therefore give information about tissue differences.
+During a MRI scan procedure, the region of interest is surrounded by a pick-up coil measuring the net magnetisation.
+Doctors can choose to create images that reflect the spin-lattice interactions ($T_1$ weighted) or the spin-spin interactions ($T_2$ weighted). 
+A set of imaging parameters/settings that influence the outcome of the scan are called 'image sequence'.
+Delineating tumours or lesions is often accomplished by looking at both $T_1$ and $T_2$ weighted images and drawing the right conclusions.
 
+Soft tissue contains a lot of water, which is made up by Oxygen and Hydrogen. Hydrogen nuclei are the protons and their NMR is which MRI is tuned to make visible. This is why soft tissue appears as bright areas in MRI, whereas bone material has only little contrast. \cite{Currie2013}
+Studies have shown that delineating certain types of tumours, for example prostate cancer, is more accurate using MRI images than using CT. \cite{Rasch1999, Debois1999a, Roach1996}
+While in diagnostics MRI scans might be sufficient, radio therapy treatment planning needs more and other information about the regions surrounding the tumour. CT has other advantages which make it an essential part for external beam radiation therapy. (see \ref{sec:planning})
 
-be measured with a pick-up coil surrounding the region of interest.
-
-The nature of this effect leads to a great contrast between soft tissue. \cite{Currie2013}
-Delineating tumours using MRI images is more accurate than using CT. \cite{Rasch1999, Debois1999a, Roach1996}
-
-% mri needs coils
-% mri can create differently weighted images (T1, T2, etc..)
 
 \subsubsection{Image Quality}
+\todo{rewrite}
 Generally, diagnostics benefit from greater image quality.
 However, at some point diagnostic accuracy stops increasing with field strength.
 Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
@@ -332,10 +346,30 @@ A ``combination of field independent polarization [...] with frequency optimized
 
 \subsubsection{Health considerations}
 
-It's a glorified microwave!
+Strong static magnetic fields up to $3T$ are present around MRI scanners at all times, and precautions are necessary to ensure safety for patients and medical personnel.
+Ferromagnetic materials (such as steel and iron) can become dangerous projectiles in vicinity of the MRI scanner. They must be excluded from the room containing the magnet without exception.
+Furthermore, medical implants including, but not restricted to cardiac pacemakers and hearing-aids might malfunction or become damaged in strong fields, regardless whether they contain ferromagnetic materials.
+Patients with such implants might still be imaged using scanners producing weak fields up to $0.5T$.
+
+The RF pulses used to manipulate the local magnetisation repeatedly puts spins in excited states, transferring energy to the human body. MRI scanners are designed to limit the rise of a patient's body temperature to $0.5^oC$ during standard imaging. Only with either medical or appropriate psychological monitoring the limit raises to $1^oC$ in body temperature. For any higher values a ethics committee approval is necessary.
+In general patients should be exposed to RF fields only as strong as their thermoregulatory system is capable to cope with.
+
+To encode signal with a location, magnetic fields gradient are applied together with the RF pulse.
+They are switched at high frequencies leading to induced currents in conducting body tissue.
+In principle, those currents stimulate nerves which might result in muscle twitching or pain.
+However, gradient levels are set to avoid negative effects.
+
+\todo{incorporate following quote/source}
+"The HPA (2008) [15.4] has summarized the literature on the effects of
+low frequency time varying fields typical of those used in MRI. No consistent
+evidence of harm following short term exposures was found, although some subtle
+biological effects have been reported. Subjects with epilepsy or who are taking
+drugs that reduce seizure activity may exhibit increased sensitivity to stimulation
+by electric fields induced in the cortex and should be imaged with caution."
+
 
 \subsubsection{Open bore MRI scanners}
-
+\todo{rewrite}
 % advantages of low tesla, brachytherapy
 The radiation oncology department of the Vienna General Hospital (AKH) is equipped with an 0.35T open-bore, c-arm MRI scanner.
 The open design improves the well-being of patients experiencing anxiety in closed scanners.
@@ -353,6 +387,7 @@ Consequently, maintenance and service costs are considerably lower.
 
 
 \subsubsection{more stuff to be looked at}
+\todo{incorporate into existing sections:}
 One drawback of MRI, and especially open bore scanners, is the occuring distortion due to inhomogeneities in the magnetic field.
 For most applications small position shifts and deformations are of minor importance.
 In RTTP however, those effects can have a big impact.
@@ -383,11 +418,12 @@ Knowing the electron density of of the targeted tissue area is therefore essenti
 
 \clearpage
 \subsection{Role of CT}
+\todo{rewrite}
 
 Until recently radiotherapy treatment planning (RTTP) relied heavily on Computer Tomography (CT). There are two main reasons for this:
 
 Firstly, CT uses low energy x-rays to create a 3D image of the patient. The luminosity value (brightness) assigned to each voxel (like pixel, but three-dimensional) corresponds to
-the local radiodensity recorded in Hounsfield units ($HU$). Materials with a higher radiodensity (e.g. bones) absorb more x-ray photons than those with less (e.g. water, brain-mater).
+the local radiodensity recorded in Hounsfield units ($HU$). Materials with a higher radiodensity (e.g. bones) absorb more x-ray photons than those with less (e.g. water, brain-matter).
 Calculating the electron density using data obtained with CT is an easy task and used widely for RTTP. \cite{Constantinou2012, Schneider1996}
 In order not to induce new cancer cells in healthy tissue during EBRT, the radiation beams are carefully targeted using the measured radiodensity. 
 This way the absorbed dose accumulates in the cancer regions, while the nearby healthy tissue receives less radiation.
@@ -399,6 +435,7 @@ Secondly, CT images generate 3D images with little distortion. Exact geometries 
 \vspace{2cm}
 
 \subsection{Role of MRI}
+\todo{rewrite}
 There are some difficulties arising from combining CT and MRI for EBRT:
 In order to profit from separately acquired data, the resulting images must be aligned either manually or automatically. This is a hard task since non-rigid objects (organs) change their shape and location between measurements. This leads to inaccuracies.
 Therefore MRI-only radiation therapy protocols are being developed:
@@ -414,10 +451,10 @@ The signal intensity depends on many factors and even varies between MRI scanner
 
 
 \section{Aim of this work}
-The used open bore MRI scanner is not intended to be used for RTTP. The on board correction algorithm might not be good enough for effetive EBRT.
+The used open bore MRI scanner is not intended to be used for RTTP. The on board correction algorithm might not be good enough for effective EBRT.
 The goal of this work is to commence the development of a quality assurance tool to asses the spatial distortion (after applying the internal correction).
 This is achieved by comparing MRI images to CT images used as a gold standard.
-An alerady existing custom designed phantom is provided by the AKH Vienna for this purpose.
+An already existing custom designed phantom is provided by the AKH Vienna for this purpose.
 However, the liquid to fill the rods with has not been chosen yet.
 Therefore, this paper focuses mainly on the acquired data and which liquids to use the phantom with, not its entire design.
 However, possible fillings have to be produced and tested.
