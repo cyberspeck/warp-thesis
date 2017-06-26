@@ -32,21 +32,7 @@ CT	&		&		& --------
 
 \section{Custom build phantom}
 
-To measure distortion the scanners must image a rigid object with known dimensions.
-Such phantoms are commercially available, but often expensive and designed for a specific calibration protocol.
-Some institutions build their own to fullfill exactly the requirements of a given application.
-
-For the AKH it was important to create a lightweight phantom which can be imaged by CT and MRI scanners.
-Due to the underlying physics, only fluids are visible in MRI scans. CT however, also shows plastic.
-See figure \ref{fig:sagittal_comparison} for a comparison (MRI/CT visibility).
-Therefore, they decided on plastic rods with a suitable fluid filling.
-Such a liquid should be easily produced, non-toxic, and yielding sufficient signal in MRI scans.
-
-Commercially available phantoms often resemble water filled tanks containing plastic grids as a reference.
-This design results in stronger signal, but exceeds practical weight.
-There are few brands offering solutions utilising liquid fiducial markers in the shape of pellets.
-They are arranged in a regular pattern surrounded by air or plastic.
-The AKH's design however relies on replaceable rods, which makes it a novelty.
+To measure distortion the scanners must image a rigid object with known dimensions. Such a so called 'phantom' is often made from plastics containing a liquid. The AKH's design relies on an array of replaceable fillable plastic rods.
 
 
 \begin{figure}[!htb]
@@ -109,19 +95,11 @@ Frame and rods were already build and assembled before the author started workin
 
 For this study 17 different liquids were produced to be tested as possible fillings. They are listed in Table \ref{tab:solutions}.
 
-Most tested fluids are based on water. This makes it easy to empty and clean the rods if needed. They could then be filled again with a different liquid.
-The chosen components are either non-toxic or harmless if not swallowed.
-Unfortunately the water might evaporate over time. To improve the mobility of trapped air bubbles, soap was added to some fluids.
-
-As an alternative 2 oils were proposed. They do not contain water and air is not soluble in oil. Once a rod is completely with oil, no air bubbles should form.
-Using vegetable oil would be a non-toxic solution. This has been ruled out as a filling, because it would eventually rot.
-Mineral oil on the other hand does not rot.
-
 
 \begin{table}[!hbt]
 \centering
 \begin{tabular}{@{}l|rrrrrr@{}}
-Nr.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & Primovist [volume-\%]\\
+No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & Primovist [volume-\%]\\
 \toprule
 \#1  &             &                   &      &               &           &		\\
 \#2  & 3.6         & 1.96              &      &               &           &		\\
@@ -148,7 +126,7 @@ Nr.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
 
 \newpage
 \begin{enumerate}[label=\textbf{\#\arabic*}]
- \item \textit{destilled water} (as reference)
+ \item \textit{distilled water} (as reference)
  \item $NaCl$ + $CuSO_4\cdot5H_2O$ (as suggested by AAPM MR Subcommittee \cite{Jackson2009})
  \item increased concentration of $CuSO_4\cdot5H_2O$
  \item further increased concentration of $CuSO_4\cdot5H_2O$
@@ -176,7 +154,7 @@ This way the contained air would pushed out through the opening on the top.
 A thin plastic tube was used to leave room for the gas to escape.
 Between different liquids the tube was flushed with \textbf{\#1} (distilled water) or \textbf{\#2} (main component of most solutions).
 
-In order to minimize the amount of gas dissolved, the liquids were brought to boil shortly before injecting. Gas solubility generally decreases with rising temperature \cite{Henry1803, Sander2015}
+In order to minimise the amount of gas dissolved, the liquids were brought to boil shortly before injecting. Gas solubility generally decreases with rising temperature \cite{Henry1803, Sander2015}
 After injecting the solution in the rods, they were left to cool down. Before closing the rods were topped up completely (no trapped air bubbles).
 The oil based liquids, \textbf{\#16} and \textbf{\#17}, were not brought to boil.
 Number \textbf{\#14} could be injected without problems, the solution remained fluid even after reaching room temperature.
@@ -207,7 +185,7 @@ In order to asses the distortion of the MRI scanner, a tool was programmed.
 It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} (``\textit{Digital Imaging and Communications in Medicine}'') files. \cite{Python, DICOM}
 \textit{SimpleITK} is a object-oriented ``C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby''. \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
 It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a ``free and open source software package for
-visualization and medical image computing''. \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop images, quickly read values and visualize the results.
+visualisation and medical image computing''. \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop images, quickly read values and visualise the results.
 Documentation and code examples of SimpleITK can be found at \cite{InsightSoftwareConsortium, Kyriakou-SimpleITK}
 An alternative way to handle DICOM data in Python would be Pydicom. \cite{Pydicom, Kyriakou-Pydicom-VTK} 
 
@@ -225,21 +203,21 @@ An extensive list of packages used to process data:
 \subsection{Processing MRI and CT scans}
 
 % what application used to align CT and MRI
-Prior to analising their data, the scans had to be prepared.
+Prior to analysing their data, the scans had to be prepared.
 To start with, they were aligned in a way that yields maximum overlap especially in the centre of the image.
 However, the MRI image had a lower resolution than the CT scan.
 Therefore, the MRI voxel's size were changed to match the CT voxels. Both images were resampled to CT resolution.
 Those steps were performed using \textit{MIRADA} (?????).
 
-As described later, resolution might influence the efficiency of the distortion assesment.
+As described later, resolution might influence the efficiency of the distortion assessment.
 The application \textit{3D Slicer} (Version: Slicer-4.5.0-1-linux-amd64) was used to again resample both images to a finer resolution.
 
 Pixel spacing in x and y direction are equal. The z-axis, which lies approximately parallel to the phantom's rods, has a different pixel spacing.
 Overall image resolution could have a significant effect on the results. Therefore all calculations were made using original and interpolated (increased resolution) scans.
 See table \ref{tab:spacing} for more details. Figure \ref{fig:resample} depicts 3 CT/MRI scans of a single rod (axial) with different resolutions.
 ``x1'' stands for the original CT scan resolution (MRI resampled to match).
-``x9'' is a resolution resulting in 1 pixel being splitted in 9 smaller pixels, ``x100'' in 100, and so on.
-For better visibility images are printed with inverted colors. Dark pixels have a high density/intensity value, white pixels are equivalent to air (low density/intensity).
+``x9'' is a resolution resulting in 1 pixel being split in 9 smaller pixels, ``x100'' in 100, and so on.
+For better visibility images are printed with inverted colours. Dark pixels have a high density/intensity value, white pixels are equivalent to air (low density/intensity).
 
 \begin{table}[!htb]
 \centering
@@ -312,12 +290,12 @@ The python script can:
  \item separate pixels representing the rod from surrounding air (masking)
  \item calculate the centroid coordinates along the rod, used to
  \item calculate the local distortion
-  \subitem loaction shift
+  \subitem location shift
   \subitem dice coefficient (roundness/deformation)
  \item plot individual rod slices
   \subitem overlaying one or two centroid coordinates
   \subitem and save it as ``.png'' file
- \item change the pixel values to reflect the distortion occuring along a rod (visualization)
+ \item change the pixel values to reflect the distortion occurring along a rod (visualisation)
  \item write the calculated numbers to a ``.txt'' file
 \end{itemize}
 
@@ -331,15 +309,15 @@ Two phenomena were chosen to reflect the amount of distortion occurring in MRI s
 \end{enumerate}
 
 Since the rods have a cylindrical shape, distortion can only be assessed in radial direction. To make calculations easier, the z-coordinate was put parallel to the rods, x and y radial.
-Each slice (z = const.) should idealy depict the bright circular profile of the liquid (+ plastic rod in CT) surrounded by black (air).
-To calculate the location shift between rods shown in CT and MRI, the coordinates of the center of mass (COM) were subtracted.
+Each slice (z = const.) should ideally depict the bright circular profile of the liquid (+ plastic rod in CT) surrounded by black (air).
+To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
 The location difference in each slice is saved as an array. Additionally, the absolute value of the coordinate shift (absCS) could be calculated.
 
 % image of COM shift
 
 The dice-coefficient ``DC'' (also known as Sorensen-Index) was chosen as indicator for the deviation from a circular profile. Again this value was calculated for every slice using either the CT or MRI scans.
 
-To get a idea of the occuring distortion one should look at both the absolute value of coordinate shift and the dice-coefficient (DC).
+To get a idea of the occurring distortion one should look at both the absolute value of coordinate shift and the dice-coefficient (DC).
 The DC ranges from 0 to 1. A value of 1 indicates a perfect circular shape. A low DC on the other hand could be caused by many things such as:
 little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of rod from background; a small circle with a radius close to a only a few pixels.
 
@@ -356,10 +334,10 @@ DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 \end{align}
 
 The implementation into python is based on the open source python package ``Medpy''. \cite{MedPy} A part of it's module called ``metric'' was adapted. \cite{MedPy_dc-code}
-All pixels above a certain threshold will be counted as input A. The reference B is a circle whose midpoint is placed at the COM.
+All pixels above a certain threshold will be counted as input A. The reference B is a circle whose midpoint is placed at the centre of mass (COM).
 
-The caluclation of the DC is done by comparing an binary image to a circle. The position of the circle's centre and its radius is highly influencing the outcome.
-Both the circle's centre and its radius were varied during the distortion assesment.
+The calculation of the DC is done by comparing an binary image to a circle. The position of the circle's centre and its radius is highly influencing the outcome.
+Both the circle's centre and its radius were varied during the distortion assessment.
 
 
 \subsection{Calculation: center of mass (COM)}
@@ -371,7 +349,7 @@ Before a meaningful result can be obtained, the values need to be shifted to be 
 Additionally, only pixels representing the rod or the liquid should be used for the calculation.
 Otherwise the almost black voxels surrounding the rod would influence the result.
 This error could be observed especially if the rod is not placed in the exact middle of the scan.
-As described earlier, the plastic rod is only visible in CT images. On the MRI scanns solely the liquid containded in the rods is shown. Therefore rods appear to be smaller on the MRI data.
+As described earlier, the plastic rod is only visible in CT images. On the MRI scans solely the liquid containded in the rods is shown. Therefore rods appear to be smaller on the MRI data.
 To find the relevant pixels two algorithms were developed:
 
 \begin{description}
@@ -380,25 +358,26 @@ To find the relevant pixels two algorithms were developed:
 \end{description}
 
 add 1:
-The inner ($4mm$) and outer ($8mm$) diameter of the rods are known. So is the \textit{pixel spacing} which respresents the equivalent size of a voxel in $mm$.
-Calculating the number of pixels which make up the more or less circular profile ot the rod in each slice is calculated like this:
+The inner ($4mm$) and outer ($8mm$) diameter of the rods are known. So is the \textit{pixel spacing} which represents the equivalent size of a voxel in $mm$.
+Calculating the number of pixels which make up the more or less circular profile of the rod in each slice is calculated as follows:
 
 \begin{align}
  pixelNumber = (radius^2 \cdot \pi) \, / \, (spacing^2)
 \end{align}
 
 For CT images $radius = 4mm$, in MRI scans $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
-Next the pixels are sorted by brigthness. The top $pixelNumber$ pixels are then used to calculate the COM.
+Next the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the COM.
 
 add 2:
-This algorithm is a iteration method. It starts by assuming $\approx 50\%$ of all pixels in the image are part of the rod.
+This algorithm is an iteration method. It starts by assuming $\approx 50\%$ of all pixels in the image are part of the rod.
 This first guess of $50\%$ is shifted by multiplying it with $(1 \pm 0.2) \rightarrow 1.2$ and $0.8$.
 So in the first step two possible COMs are obtained using the brightest $50*1.2 = 60\%$ and $50*0.8 = 40\%$ of all pixels.
 It takes note of the values assigned to the darkest and brightest pixels used during both calculations.
 Those values are then set as threshold for the DC coefficient.
-Effectivly it finds COM and DC for $52\%$ and $60\%$. If the DC for using 52\% is bigger, it chooses $(100\% + 50\%) / 2 = 75\%$ as next guess.
+Effectively it finds COM and DC for $52\%$ and $60\%$. If the DC for using 52\% is bigger, it chooses $(100\% + 50\%) / 2 = 75\%$ as next guess.
 If on the other hand the DC for $40\%$ is bigger, it chooses $(0\% + 50\%) / 2 = 25\%$ as next guess.
 In the second iteration it now again shifts the percentage by multiplying it with $1.2$ and $0.8$. Again COM and DC are calculated and the next guess is chosen by comparing the DCs.
 This is continued until the DC value decreases compared to DC found in prior steps. The maximum DC is used as indicator for the best COM.
 
 % image of COM shift
+\todo{flowchart for algorithms (send handwritten draft to Piotr)}

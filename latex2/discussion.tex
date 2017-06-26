@@ -6,18 +6,55 @@
 % o provide an assessment of the weaknesses and strengths of your work
 % o At least 5 pages
 
+\section{Phantom design}
+    
+To measure distortion the scanners must image a rigid object with known dimensions.
+Such phantoms are commercially available, but often expensive and designed for a specific calibration protocol.
+Some institutions build their own to fulfil exactly the requirements of a given application.
+The scanner used at the AKH is a relatively rare model, which is why there are only few available off-the-shelf phantoms that would fit its coil.
+
+For the AKH it was important to create a lightweight phantom which can be imaged by CT and MRI scanners.
+Due to the underlying physics, plastics are not visible in MRI scans. CT however, also shows plastic.
+See figure \ref{fig:sagittal_comparison} for a comparison (MRI/CT visibility).
+Therefore, they decided on plastic rods with a suitable fluid filling.
+Such a liquid should be easily produced, non-toxic, and yielding sufficient signal in MRI scans.
+
+Commercially available phantoms often resemble water filled tanks containing plastic grids as a reference.
+This design results in stronger signal, but exceeds practical weight.
+There are few brands offering solutions utilising liquid fiducial markers in the shape of pellets.
+They are arranged in a regular pattern surrounded by air or plastic.
+The AKH's design however relies on replaceable rods, which makes it a novelty.
+
 
 \section{Tested solutions}
 
+
+Generally, imaging techniques aims for a high signal-to-noise ratio.
+Therefore, Liquids resulting in brighter pixels are favoured.
+
+Most tested fluids are based on water. This makes it easy to empty and clean the rods if needed. They could then be filled again with a different liquid.
+The chosen components are either non-toxic or harmless if not swallowed.
+Unfortunately the water might evaporate over time. To improve the mobility of trapped air bubbles, soap was added to some fluids.
+
+As an alternative 2 oils were proposed. They do not contain water and air is not soluble in oil. Once a rod is completely with oil, no air bubbles should form.
+Using vegetable oil would be a non-toxic solution. This has been ruled out as a filling, because it would eventually rot.
+Mineral oil on the other hand does not rot.
+
+
 For measuring the position of the rods in the CT scans the plastic rods without filling would be enough already, they would not be visible on the MRI scans, though.
 
-Oil generally shows good visibility in CT and MRI scanns and produces no air bubbles after closing.
+Oil generally shows good visibility in CT and MRI scans and produces no air bubbles after closing.
 However, filling all rods of the phantom with Oil is considered the last option. Water based liquids prove to be easier to clean.
-Since topping up over 300 rods regularily is too time consuming, oil seems to be a good alternative.
+Since topping up over 300 rods regularly is too time consuming, oil seems to be a good alternative.
 However, if air bubbles could be easily shifted towards one end of the rod by tilting it slightly, they would lie outside the MRI scanner's field of view.
 Consequently, it would be sufficient to move air bubbles to one end of the rod before imaging.
+
+\todo{Which one is the BEST solution/liquid to use??}
 
 
 \section{Distortion}
 An air bubble might lead to a incorrect COM. Without looking at the dice-coefficient it's hard to tell why this distortion only appears to be present in a few slices.
 If both indicators show unexpected local irregularities, a conclusion might be easier to draw.
+
+\todo{discuss what is visible on the graphs}
+\todo{interpret data table spit out by script}
