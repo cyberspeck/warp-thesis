@@ -8,12 +8,12 @@
 \usepackage{amssymb} % Spezielle mathematische Symbole.
 \usepackage{array} % Matrizen in mathematischen Formeln
 \usepackage{textcomp} % Für textmu und textohm etc. um im Fließtext keine Mathematik 
-\usepackage{textalpha} % Damit können griechische Zeichen direkt im Text verwendet werden (siehe zeichen.txt)
-\usepackage{paralist} % Für compactitem und compactenum
+%\usepackage{textalpha} % Damit können griechische Zeichen direkt im Text verwendet werden (siehe zeichen.txt)
+%\usepackage{paralist} % Für compactitem und compactenum
 \usepackage{xstring} % Für IF in Titelseite
 
-\usepackage[version=3]{mhchem} % Für Chemische Formeln
-\usepackage{braket} % Für das quantenmechanische Bra-Ket
+%\usepackage[version=3]{mhchem} % Für Chemische Formeln
+%\usepackage{braket} % Für das quantenmechanische Bra-Ket
 
 \usepackage{geometry} % Seitenränder und Seiteneigenschaften setzen
 %\usepackage[showframe]{geometry} % Anzeigen der Seitenränder, nützlich für debugging. http://ctan.org/pkg/geometry
@@ -24,7 +24,7 @@
 \usepackage[ % Biblatex für die Zitate und Referenzen
 	backend=bibtex,
 	maxbibnames=99,
-	%backend=biber, 	original setting, didn't work
+	backend=biber, % 	original setting, didn't work
 	%hyperref=true		not quite sure what that does
 	]
 	{biblatex}
@@ -36,7 +36,7 @@
 \usepackage{subcaption} % Einbinden von mehreren Grafiken in einer figure
 
 
-\usepackage{dirtree} % Erlaubt das erstellen von Dateibäumen
+%\usepackage{dirtree} % Erlaubt das erstellen von Dateibäumen
 % \dirtreecomment{Text} erstellt einen Kommentar zu dem Verzeichnis bzw. der Datei
 \newcommand{\dirtreecomment}[1]{\dotfill{} \begin{minipage}[t]{0.5\textwidth}#1\end{minipage}}
 
