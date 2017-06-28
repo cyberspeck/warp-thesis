@@ -178,7 +178,7 @@ There is ongoing research to find materials yielding enhanced contrast while at 
 
 
 \subsection{Computer Tomography - CT}
-%\todo{The most important thing about CT is that it is superfast and that it does not introduce distortions. The dissadvantages are the radiation dose and low soft tissue contrast}
+\todo{The most important thing about CT is that it is super fast and that it does not introduce distortions. The dissadvantages are the radiation dose and low soft tissue contrast}
 
 Computer Tomography (CT) is a three-dimensional (3-D) imaging modality based on the measurement of X-ray attenuation.
 The technique has evolved from 2-D X-ray scanning.
@@ -186,14 +186,14 @@ By mounting source and detector on a rotary ring with a patient at the centre, p
 However, in contrast to 2-D projection methods, the detector resembles an arc made up by 800 to 900 neighbouring detector elements.
 A single 'image' taken by the detector is therefore only in 1-D.
 Yet, by repeating this process from a sufficient number of different angles and along the entire patient (z-axis) a 3-D model can be computed.
-In contrast to 2-D methods, where the patients interior is projected/compressed onto a flat image, CT preserves the exact location information. This feature lead to a radical improvement in diagnostics.	 \\
+In contrast to 2-D methods, where the patients interior is projected/compressed onto a flat image, CT preserves the exact location information. This feature led to a radical improvement in diagnostics.	 \\
 
 Since its clinical introduction in 1971, CT has become a widely used 3-D imaging modality for a range of applications including radiation oncology. Especially in radiation therapy, knowledge of the exact geometry is crucial, which is why CT plays such an important role in treatment planning (see \ref{sec:planning}). \cite{Podgorsak, Maidment2014}
 
 \subsubsection{3-D image reconstruction}
 As a photon passes through the patient, it encounters different materials associated with characteristic linear attenuation coefficients.
 It is practical to think of the scanned body as a collection of $N = N_X\cdot N_Y\cdot N_Z$ finite size cubes ($\Delta x$ cube length) called 'voxels' (analogous to pixels in a 2-D digital photograph).
-The entire model can then be regarded as a 3-D matrix, with the attenuation coefficients $\mu_i$ for all voxels as its entries.
+The entire model can then be regarded as a 3-D matrix, with the attenuation coefficients $\mu_i$ of the voxels as its entries.
 Figure \ref{fig:voxel_matrix} represents a ($4, 4, 1$) matrix.
 It depicts the path an X-ray may follow passing through voxels with different values $\mu_i$.
 This discretisation allows us to change equation \ref{eq:mu_int} to:
@@ -204,8 +204,8 @@ I(x) = I_0 e^{- \sum\limits_{i=1}^{N_X} \mu_i \Delta x}
 \end{align}
 
 The initial and final intensities can be read of the settings of the X-ray tube and the detected signal.
-Based on those values, image reconstruction algorithms derive the three-dimensional linear attenuation coefficient matrix.
-For convenience the computed numbers are converted to Hounsfield Units, which are displayed in the final image. \cite{Podgorsak, Maidment2014}
+Based on these values, image reconstruction algorithms derive the three-dimensional linear attenuation coefficient matrix.
+For convenience, the computed numbers are converted to Hounsfield Units which are displayed in the final image. \cite{Podgorsak, Maidment2014}
 
 \begin{figure}[!htb]
 	\centering
@@ -216,7 +216,7 @@ For convenience the computed numbers are converted to Hounsfield Units, which ar
 
 \subsubsection{Hounsfield Units}
 
-In a final CT scan voxel values are recorded in Hounsfield Units (HU), which relate to the attenuation of water at room temperature:
+In a final CT scan, voxel values are recorded in Hounsfield Units (HU), which relate to the attenuation of water at room temperature:
 
 \begin{align}
 HU_{material} = \frac{\mu_{material} - \mu_{water}}{\mu_{water}} \cdot 1000
