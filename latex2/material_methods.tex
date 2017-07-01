@@ -15,7 +15,8 @@
 
 \section{Scanners}
 
-CT and MRI scanners used during this work are listed in Table \ref{tab:scanners}.
+The radiation oncology department of the Vienna General Hospital (AKH) owns a open-bore, c-arm MRI scanner and a CT scanner (used as reference).
+They are listed in Table \ref{tab:scanners}.
 
 \begin{table}[h]
 \centering
@@ -32,7 +33,9 @@ CT	&		&		& --------
 
 \section{Custom build phantom}
 
-To measure distortion the scanners must image a rigid object with known dimensions. Such a so called 'phantom' is often made from plastics containing a liquid. The AKH's design relies on an array of replaceable fillable plastic rods.
+To compare images from different scanners and asses occurring distortion, a rigid object with known dimensions is necessary.
+Such a 'phantom' is often made from plastics containing a liquid.
+The AKH's design is made up from an array of replaceable, fillable plastic rods.
 
 
 \begin{figure}[!htb]
@@ -58,12 +61,12 @@ To measure distortion the scanners must image a rigid object with known dimensio
 
 \subsection{Frame and rods}
 
-For the open-bore MRI scanner the phantom was build to fit exactly the scanner's coil.
-Three parallel acrylic glass panes in the shape of the coil serve as a rigid frame.
+The phantom was build to fit the largest available rigid coil for the MRI scanner.
+Three parallel acrylic glass panes in the shape of the coil serve as a frame for the plastic rods.
 In the middle an empty area was reserved for an optional additional smaller phantom (not used for this work).
-Figure \ref{fig:phantom_photo} shows an picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
+Figure \ref{fig:phantom_photo} shows a picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
 More than 300 plastic rods (length: 50cm, outer diameter: 8mm, inner diameter: 4mm, volume: approx. 6mL) could be placed in the phantom.
-See figure \ref{fig:rod_schematic} for a schematic sketch.
+See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
 The bottom part of each rod was sealed with a hot glued plastic plug, the top could be closed with a plastic screw.
 Frame and rods were already build and assembled before the author started working on this project.
 
@@ -93,7 +96,8 @@ Frame and rods were already build and assembled before the author started workin
 
 \subsection{Rod fillings}
 
-For this study 17 different liquids were produced to be tested as possible fillings. They are listed in Table \ref{tab:solutions}.
+For this study 17 different liquids were produced to be tested as possible fillings.
+They are listed in Table \ref{tab:solutions}.
 
 
 \begin{table}[!hbt]
@@ -120,7 +124,7 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
 \#16 & \multicolumn{2}{r}{Motor Oil:}   & \multicolumn{4}{l}{\textit{Castrol Power1}}      \\
 \#17 & \multicolumn{2}{r}{Silicon Oil:} & \multicolumn{4}{l}{\textit{Charge: 15HLVY023}}   \\ \bottomrule
 \end{tabular}
-\caption{composition of tested solutions\\(components in $g/L$; exception: Primovist in volume\%)}
+\caption{composition of tested solutions\\(components in $g/L$; exception: Primovist in volume-\%)}
 \label{tab:solutions}
 \end{table}
 
@@ -143,7 +147,7 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
  \item \textit{agar} (or agarose is commonly used as basic reference material for MRI phantoms \cite{BuccioliniCiraolo1989, Mathur-DeVre1985})
  \item increased \textit{agar} concentration
  \item synthetic motor oil
- \item silicon Oil
+ \item silicon oil
 \end{enumerate}
 
 % why those solutions??
