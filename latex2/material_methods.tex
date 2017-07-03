@@ -184,6 +184,9 @@ CT     & -   & -   & -   &
 \end{table}
 
 \section{Developed software tool}
+% conda create --name snowflakes python=2.7 SimpleITK Spyder
+% source activate snowflakes
+% spyder
 
 In order to asses the distortion of the MRI scanner, a tool was programmed.
 It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} (``\textit{Digital Imaging and Communications in Medicine}'') files. \cite{Python, DICOM}
@@ -208,17 +211,23 @@ An extensive list of packages used to process data:
 
 % what application used to align CT and MRI
 Prior to analysing their data, the scans had to be prepared.
-To start with, they were aligned in a way that yields maximum overlap especially in the centre of the image.
-However, the MRI image had a lower resolution than the CT scan.
-Therefore, the MRI voxel's size were changed to match the CT voxels. Both images were resampled to CT resolution.
-Those steps were performed using \textit{MIRADA} (?????).
+Figure \ref{fig:prep_data} gives an impression how the steps performed affected the data.
 
-As described later, resolution might influence the efficiency of the distortion assessment.
-The application \textit{3D Slicer} (Version: Slicer-4.5.0-1-linux-amd64) was used to again resample both images to a finer resolution.
+\begin{enumerate}[label=\textbf{Step \arabic*}]
+\item To start with, they were aligned in a way that yields maximum overlap especially in the centre of the image using \textit{MIRADA}.
+\item However, the MRI image had a lower resolution than the CT scan.
+Therefore, the MRI voxel's size were changed to match the CT voxels. Both images were resampled to CT resolution and exported using \textit{MIRADA}.
+\item Both layers (MRI and CT) were loaded into \textit{3D Slicer} (Version: Slicer-4.5.0-1-linux-amd64)
+\item Its module 'annotations' was used to set a new region of interest (ROI) to include only a single rod.
+\item With the module called 'crop volume' (setting: voxel based cropping) the scans were reduced to show only the selected ROI.
+\item Using the module 'resample scalar volume' a number of interpolated (setting: nearest neighbour) higher resolution copies were created.
+\item All data sets and the cropped original CT/MRI images were exported with 'create a dicom series' and saved in separate folders.
+\end{enumerate}
 
-Pixel spacing in x and y direction are equal. The z-axis, which lies approximately parallel to the phantom's rods, has a different pixel spacing.
-Overall image resolution could have a significant effect on the results. Therefore all calculations were made using original and interpolated (increased resolution) scans.
-See table \ref{tab:spacing} for more details. Figure \ref{fig:resample} depicts 3 CT/MRI scans of a single rod (axial) with different resolutions.
+After this procedure a number of data sets based on the original CT and MRI was available, which all had the same number of slices along the z-axis parallel to the phantom's rods.
+Each pair (CT+MRI) has the same pixel spacing (/resolution) in x and y direction.
+See table \ref{tab:spacing} for more details.
+Figure \ref{fig:resample} depicts 3 CT/MRI scans of a single rod (axial) with different resolutions.
 ``x1'' stands for the original CT scan resolution (MRI resampled to match).
 ``x4'' is a resolution resulting in 1 pixel being split in 4 smaller pixels, ``x9'' in 9, and so on and so forth.
 For better visibility, images shown as figures in this work are printed with inverted colours.
@@ -229,7 +238,7 @@ Dark pixels have a high density/intensity value, white pixels are equivalent to 
 \begin{tabular}{l|l|l|l}
 resample factor  & z (not affected) &  y (same as x) & x \\
 \toprule
-x1     & 0.60 & 0.99	& 0.98	\\
+x1     & 0.60 & 0.98	& 0.98	\\
 x4     & 0.60 & 0.49	& 0.49	\\
 x9     & 0.60 & 0.33	& 0.33	\\
 % x16    & 0.60 & 0.244	& 0.24	\\
@@ -282,7 +291,6 @@ x100   & 0.60 & 0.2 	& 0.1
 \clearpage
 
 
-
 \subsection{Capabilities}
 
 The developed software tool is not able to automatically detect individual rods shown in a CT or MRI scan.
@@ -291,10 +299,9 @@ Instead the acquired 3D images have to be cropped to depict only a single rod.
 The python script can:
 \begin{itemize}
  \item denoise the image data
- \item find the brightness values of the rod, enabling it to
- \item separate pixels representing the rod from surrounding air (masking)
+ \item accepts coordinates to be used as seeds, enabling it to separate bright areas which are not connected ('masking' might be used as future method to automatically detect individual rods
  \item calculate the centroid coordinates along the rod, used to
- \item calculate the local distortion
+ \item measure the local distortion
   \subitem location shift
   \subitem dice coefficient (roundness/deformation)
  \item plot individual rod slices
@@ -313,10 +320,12 @@ Two phenomena were chosen to reflect the amount of distortion occurring in MRI s
  \item deformation (deviation from circular profile ``DC'')
 \end{enumerate}
 
-Since the rods have a cylindrical shape, distortion can only be assessed in radial direction. To make calculations easier, the z-coordinate was put parallel to the rods, x and y radial.
-Each slice (z = const.) should ideally depict the bright circular profile of the liquid (+ plastic rod in CT) surrounded by black (air).
+Since the rods have a cylindrical shape, distortion can only be assessed in radial direction.
+To make calculations easier, the z-coordinate was put parallel to the rods, x and y radial.
+Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (+ plastic rod in CT) surrounded by black (air).
 To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
-The location difference in each slice is saved as an array. Additionally, the absolute value of the coordinate shift (absCS) could be calculated.
+The location difference in each slice is saved as an array.
+Additionally, the absolute value of the coordinate shift (warpMagnitude) could be calculated.
 
 % image of COM shift
 
