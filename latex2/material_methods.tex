@@ -363,7 +363,8 @@ Before a meaningful result can be obtained, the values need to be shifted to be 
 Additionally, only pixels representing the rod or the liquid should be used for the calculation.
 Otherwise the almost black voxels surrounding the rod would influence the result.
 This error could be observed especially if the rod is not placed in the exact middle of the scan.
-As described earlier, the plastic rod is only visible in CT images. On the MRI scans solely the liquid containded in the rods is shown. Therefore rods appear to be smaller on the MRI data.
+As described earlier, the plastic rod is only visible in CT images. On the MRI scans solely the liquid containded in the rods is shown.
+Therefore, rods appear to be smaller on the MRI data.
 To find the relevant pixels two algorithms were developed:
 
 \begin{description}
@@ -371,7 +372,7 @@ To find the relevant pixels two algorithms were developed:
  \item[2] finding a COM resulting in good DC
 \end{description}
 
-add 1:
+\textit{\textbf{add 1:}}
 The inner ($4mm$) and outer ($8mm$) diameter of the rods are known. So is the \textit{pixel spacing} which represents the equivalent size of a voxel in $mm$.
 Calculating the number of pixels which make up the more or less circular profile of the rod in each slice is calculated as follows:
 
@@ -382,16 +383,53 @@ Calculating the number of pixels which make up the more or less circular profile
 For CT images $radius = 4mm$, in MRI scans $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
 Next the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the COM.
 
-add 2:
-This algorithm is an iteration method. It starts by assuming $\approx 50\%$ of all pixels in the image are part of the rod.
-This first guess of $50\%$ is shifted by multiplying it with $(1 \pm 0.2) \rightarrow 1.2$ and $0.8$.
-So in the first step two possible COMs are obtained using the brightest $50*1.2 = 60\%$ and $50*0.8 = 40\%$ of all pixels.
-It takes note of the values assigned to the darkest and brightest pixels used during both calculations.
-Those values are then set as threshold for the DC coefficient.
-Effectively it finds COM and DC for $52\%$ and $60\%$. If the DC for using 52\% is bigger, it chooses $(100\% + 50\%) / 2 = 75\%$ as next guess.
-If on the other hand the DC for $40\%$ is bigger, it chooses $(0\% + 50\%) / 2 = 25\%$ as next guess.
-In the second iteration it now again shifts the percentage by multiplying it with $1.2$ and $0.8$. Again COM and DC are calculated and the next guess is chosen by comparing the DCs.
-This is continued until the DC value decreases compared to DC found in prior steps. The maximum DC is used as indicator for the best COM.
+\textit{\textbf{add 2:}}
+This algorithm is an iteration method.
+First it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$.
+It starts off by assuming that $50\%$ is a reasonable guess for the number of pixels that show the rod and calculates the corresponding DC value.
+To find out whether more or less pixels would result in a better DC, it chooses two new guesses:
+One halfway from the lower limit ($0\%$) to its current guess ($50\%$) which is:
+
+\begin{align}
+ \frac{0+50}{2}=25\% 
+\end{align}
+
+and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) which is:
+ 
+\begin{align}
+ \frac{100+50}{2}=75\%
+\end{align}
+ 
+Now the corresponding DC values are calculated and compared.
+If the lower percentage yields a better DC, the upper half of the range will be neglected in the next iteration, the upper limit becomes the former guess ($50\%$).
+If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the lower limit becomes the former guess ($50\%$).
+
+Now in the second iteration, the range has become smaller and the next guess will be set to be exactly in the middle.
+If, for example, the DC for $25\%$ was higher, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
+In that case, DC values for the lower half of the range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared.
+If, for example, the DC for $18,5\%$ was higher, the next guess will then be $18,5\%$, because the new range goes from $25\%$ to $50\%$.
+The iteration continues until new steps yield no better DCs or a set number of steps has been performed.
+
+After the iteration process, the algorithm will return the COM which resulted in the best DC.
+Figure \ref{fig:COM_iteration} shows the DC values found in the course of the iteration method
+Figure \ref{fig:COM_iteration_flow} summarises the algorithm.
+
+\todo{flowchart for algorithms (send handwritten draft to Piotr)}
+\clearpage
+
+\begin{figure}[!thb]
+  \begin{subfigure}[b]{1\textwidth}
+    \includegraphics[scale=0.7]{python/iteration_COM/CT_x100_iteration_COM.png}
+    \caption{CT x100, (4 steps lead to best result)}
+    \label{fig:CT_x100_iteration}
+  \end{subfigure}
+  \begin{subfigure}[b]{1\textwidth}
+    \includegraphics[scale=0.7]{python/iteration_COM/MR_x100_iteration_COM.png}
+     \caption{MR x100, (15 step performed)}
+     \label{fig:MR_x100_iteration}
+  \end{subfigure}
+  \caption{COM iteration method}
+  \label{fig:COM_iteration}
+\end{figure}
 
 % image of COM shift
-\todo{flowchart for algorithms (send handwritten draft to Piotr)}
