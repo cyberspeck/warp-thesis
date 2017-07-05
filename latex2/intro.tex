@@ -355,6 +355,33 @@ Whereas in diagnostics, MRI scans might be sufficient, radio therapy treatment p
 MRI lacks some of those insights, which is why CT is still an essential part for external beam radiation therapy. (see \ref{sec:planning})
 \todo{Write about other types of MRI - non morpholigic (diffusion weighted imaging, spectroscopy or contrast enhanced imaging}
 
+\subsection{Non morphologic Imaging}
+
+
+% https://www.youtube.com/watch?v=J_aamnpRJE8
+% mri - from picture to proton S. 331 (im pdf auf 344)
+Diffusion weighted (DW) imaging quantifies molecular diffusion in the body.
+Additionally to the gradients needed to select a slice (strenght $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two strong and long consecutive and opposite gradients (strenght $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
+Molecules which are restricted in their movement will experience two equally strong but opposite magnetic fields.
+The first will cause them to precess with a certain speed (linear with field strength), effectively changing their phase.
+The second will cause them to precess exactly the other way around (same strength, but other direction), effectively returning them to their initial state.
+After those two gradients (which actually have to be applied in all three Cartesian directions), the remaining signal is measured by the receiver coil.
+Those molecules which are free to move, however, will not experience a constant field strength.
+As they move through the body they will precess at varying speeds during the first and again different speeds during the second gradient.
+As a result, they will be out of phase when the signal is measured by the receiver coil.
+DW imaging can be used to diagnose acute strokes (brain infarct), because areas with restricted diffusion (blocked blood flow) show a strong signal compared to healthy tissue with normal diffusion in the resulting image.
+Since the time necessary to allow the molecules to move during the two gradients is relatively long, the image will naturally be $T_2$ weighted.
+This is taken into account by taking a second image which is also $T_2$ weighted, but does not apply two consecutive opposite gradients.
+The difference between the DW and the not DW weighted sequences reflects the actual contribution of diffusion (apparent diffusion
+coefficient - ADC).
+
+\todo{Perfusion}
+\todo{Spectroscopy}
+\todo{fMRI, rewrite}
+
+A more recent usage of MRI based on the BOLD (Blood Oxygenation Level Dependent) effect enables us to 'watch the brain thinking'.
+Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
+
 \subsubsection{Image Quality}
 Contrary to CT, MRI is prone to distortion, due to field inhomogeneities.
 For most applications, small position shifts and deformations are of minor importance.
@@ -409,7 +436,6 @@ This scanner's field is weaker than the field of a conventional closed bore scan
 High field strengths would result in greater resolution, better Signal to Noise (SNR) ratio, and faster imaging time.
 Generally, diagnostics benefit from greater image quality.
 However, at some point diagnostic accuracy stops increasing with field strength.
-Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
 At the same time astonishing improvements can be achieved at low fields.
 A ``combination of field independent polarisation [...] with frequency optimized MRI detection coils [...] results in low-field MRI sensitivity approaching and even rivalling that of high-field MRI.'' \cite{Coffey2013}
 
