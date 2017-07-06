@@ -31,12 +31,117 @@ CT	&		&		& --------
 \label{tab:scanners}
 \end{table}
 
+\subsection{MRI scanner - field distribution}
+
+The Magnetom C! MRI scanner comes with a handbook which contains diagrams of the magnetic field strength (fig. \ref{fig:strength_side}), and its gradient (fig. \ref{fig:gradient_side}, \ref{fig:gradient_top}, and  \ref{fig:gradient_front}).
+Figure \ref{fig:scanner} shows an image and different views of the scanner and the planes along which the field strength and gradient are displayed.
+
+\begin{figure}[!htb]
+\centering
+  \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	\includegraphics[scale=0.7]{scanner/scanner_img.jpg}
+	\caption{Image of scanner\\ x,y, \& z -axis}
+	\label{fig:scanner_image}
+  \end{subfigure}
+    \hfill
+  \begin{subfigure}[b]{0.4\textwidth}
+  	\centering
+    \includegraphics[scale=0.7]{scanner/scanner_front.jpg}
+    \caption{side view along z-axis,\\ black line represents plane for front view (see fig. \ref{fig:gradient_front})}
+    \label{fig:scanner_front}
+  \end{subfigure}
+  
+  \begin{subfigure}[b]{0.4\textwidth}
+   	\centering
+   	\includegraphics[scale=0.7]{scanner/scanner_top.jpg}
+   	\caption{front view along x-axis,\\ black line represents plane for top view (see fig. \ref{fig:gradient_top})}
+   	\label{fig:scanner_top}
+  \end{subfigure}
+    \hfill
+  \begin{subfigure}[b]{0.4\textwidth}
+  	\centering
+  	\includegraphics[scale=0.7]{scanner/scanner_side.jpg}
+  	\caption{front view along x-axis,\\ black line represents plane for side view (see fig. \ref{fig:gradient_side} and \ref{fig:strength_side})}
+  	\label{fig:scanner_side}
+  \end{subfigure}
+  \caption{Magnetom C! \cite{magnetom_handbook}}
+  \label{fig:scanner}
+\end{figure}
+
+%diagrams as individual figures:
+\begin{figure}[!htb]
+  	\centering
+      \includegraphics[scale=1.1]{scanner/scanner_field-strength.jpg}
+      \caption{Magnetom C! field strength\\ side view along z-axis (see fig. \ref{fig:scanner_side}) \cite{magnetom_handbook}}
+    \label{fig:strength_side}
+\end{figure}
+
+\begin{figure}[!htb]
+    	\centering
+        \includegraphics[scale=1.1]{scanner/scanner_gradient-side.jpg}
+        \caption{Magnetom C! field gradient\\ side view along z-axis (see fig. \ref{fig:scanner_side}) \cite{magnetom_handbook}}
+        \label{fig:gradient_side}
+\end{figure}
+
+\begin{figure}[!htb]
+  	\centering
+    \includegraphics[scale=1.1]{scanner/scanner_gradient-front.jpg}
+    \caption{Magnetom C! field gradient\\ front view along x-axis (see fig. \ref{fig:scanner_front}) \cite{magnetom_handbook}}
+    \label{fig:gradient_front}
+    \end{figure}
+
+\begin{figure}[!htb]
+  	\centering
+    \includegraphics[scale=1.1]{scanner/scanner_gradient-top.jpg}
+    \caption{Magnetom C! field gradient\\ top view along y-axis (see fig. \ref{fig:scanner_top}) \cite{magnetom_handbook}}
+    \label{fig:gradient_top}
+\end{figure}
+
+
+% diagrams as sets of subfigures:
+%\begin{figure}[!htb]
+%\centering
+%  \begin{subfigure}[b]{\textwidth}
+%  	\centering
+%    \includegraphics[scale=1]{scanner/scanner_gradient-front.jpg}
+%    \caption{field gradient - front view (see fig. \ref{fig:scanner_front})}
+%    \label{fig:gradient_front}
+%  \end{subfigure}
+%  \begin{subfigure}[b]{\textwidth}
+%  	\centering
+%    \includegraphics[scale=1]{scanner/scanner_gradient-top.jpg}
+%    \caption{view along y-axis,\\ field gradient - top view (see fig. \ref{fig:scanner_top})}
+%    \label{fig:gradient_top}
+%  \end{subfigure}
+%  \caption{Magnetom C! field gradient}
+%  \label{fig:scanner}
+%\end{figure}
+%
+%\begin{figure}[!htb]
+%\centering
+%  \begin{subfigure}[b]{\textwidth}
+%    	\centering
+%        \includegraphics[scale=1]{scanner/scanner_gradient-side.jpg}
+%        \caption{field gradient}
+%        \label{fig:gradient_side}
+%  \end{subfigure}
+%  \begin{subfigure}[b]{\textwidth}
+%  	\centering
+%      \includegraphics[scale=1]{scanner/scanner_field-strength.jpg}
+%      \caption{field strength}
+%    \label{fig:strength_side}
+%  \end{subfigure}
+%  \caption{Magnetom C! field gradient and strength - side view (see fig. \ref{fig:scanner_side})}
+%  \label{fig:scanner_gradient}
+%\end{figure}
+
+
 \section{Custom build phantom}
 
 To compare images from different scanners and asses occurring distortion, a rigid object with known dimensions is necessary.
 Such a 'phantom' is often made from plastics containing a liquid.
 The AKH's design is made up from an array of replaceable, fillable plastic rods.
-
 
 \begin{figure}[!htb]
 \centering
@@ -130,20 +235,20 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
 
 \newpage
 \begin{enumerate}[label=\textbf{\#\arabic*}]
- \item \textit{distilled water} (as reference)
- \item $NaCl$ + $CuSO_4\cdot5H_2O$ (as suggested by AAPM MR Subcommittee \cite{Jackson2009})
+ \item \textit{distilled water}
+ \item $NaCl$ + $CuSO_4\cdot5H_2O$
  \item increased concentration of $CuSO_4\cdot5H_2O$
  \item further increased concentration of $CuSO_4\cdot5H_2O$
- \item generic washing-up \textit{soap} added to \textbf{\#2} (suggestion by Data Spectrum Corporation \cite{bubbles})
+ \item generic washing-up \textit{soap} added to \textbf{\#2}
  \item increased \textit{soap} concentration
  \item further increased \textit{soap} concentration
- \item \textit{ascorbic acid} added to \textbf{\#2} (suggested by \cite{Abtahi2008, Bodannes1979} Concentration of $0.36 \; g/L$ corresponds to approx. $0.00204 \; mol/L$)
+ \item \textit{ascorbic acid} added to \textbf{\#2}
  \item increased \textit{ascorbic acid} concentration
  \item further increased \textit{ascorbic acid} concentration
- \item \textit{Primovist} (a common contrast agent used for MRI scans \cite{VanBeers2012, Rohrer, primovist})
+ \item \textit{Primovist}
  \item increased amount of \textit{Primovist}
  \item further increased amount of \textit{Primovist}
- \item \textit{agar} (or agarose is commonly used as basic reference material for MRI phantoms \cite{BuccioliniCiraolo1989, Mathur-DeVre1985})
+ \item \textit{agar}
  \item increased \textit{agar} concentration
  \item synthetic motor oil
  \item silicon oil
@@ -211,7 +316,7 @@ An extensive list of packages used to process data:
 
 % what application used to align CT and MRI
 Prior to analysing their data, the scans had to be prepared.
-Figure \ref{fig:prep_data} gives an impression how the steps performed affected the data.
+Figure \ref{fig:data_prep} gives an impression how the steps performed affected the data.
 
 \begin{enumerate}[label=\textbf{Step \arabic*}]
 \item To start with, they were aligned in a way that yields maximum overlap especially in the centre of the image using \textit{MIRADA}.
@@ -223,6 +328,13 @@ Therefore, the MRI voxel's size were changed to match the CT voxels. Both images
 \item Using the module 'resample scalar volume' a number of interpolated (setting: nearest neighbour) higher resolution copies were created.
 \item All data sets and the cropped original CT/MRI images were exported with 'create a dicom series' and saved in separate folders.
 \end{enumerate}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=0.8\textwidth]{algorithm/data_prep.jpg}
+\caption{Steps performed before analysing data with script}
+\label{fig:data_prep}
+\end{figure}
 
 After this procedure a number of data sets based on the original CT and MRI was available, which all had the same number of slices along the z-axis parallel to the phantom's rods.
 Each pair (CT+MRI) has the same pixel spacing (/resolution) in x and y direction.
