@@ -154,6 +154,8 @@ Low intensity (= high absorption) leads to bright spots on the image and vice-ve
 The whole process could also be described as 'the projection of attenuation shadows on to the detector', since the radiation absorption directly depends on the attenuation coefficient. The attenuation, on the other hand, depend on the tissue's properties (e.g. proton number Z, density, etc).
 Consequently, the attenuation shadows depict inner structures of the patient.
 
+\subsubsection{Soft tissue contrast}
+\label{sec:soft}
 Soft tissue such as brain matter and muscles absorb only little radiation, casting a lighter shadow (dark areas on image) than bone which absorbs more photons (bright areas).
 Anything other than bone differs only slightly in attenuation, owing to the relatively small difference in atomic numbers and density.
 For this reason, X-ray projection imaging is considered reliable when it comes to diagnose bone fractures, while at the same time, it is not suited to clearly delineate soft tissue structures.
@@ -167,11 +169,11 @@ In studies of the abdomen a diluted iodine solution or barium compounds swallowe
 
 For patients allergic to those chemicals, a number of alternative agents have been developed.
 Unfortunately most introduce slight, sometimes serious side-effects.
-There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nanoparticles. \cite{Podgorsak, Maidment2014}
+There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nano particles. \cite{Podgorsak, Maidment2014}
 
 
 \subsection{Computer Tomography - CT}
-\todo{The most important thing about CT is that it is super fast and that it does not introduce distortions. The dissadvantages are the radiation dose and low soft tissue contrast}
+\todo{The most important thing about CT is that it is super fast and that it does not introduce distortions. The disadvantages are the radiation dose and low soft tissue contrast}
 
 Computer Tomography (CT) is a three-dimensional (3-D) imaging modality based on the measurement of X-ray attenuation.
 The technique has evolved from 2-D X-ray scanning.
@@ -266,10 +268,14 @@ It has to be said though that CT acquisition time is usually significantly short
 %\todo{By saying this I do not refer to the same as 'soft tissue contrast' which is dependent on how much soft tissue differ in signal intensity. Instead I refer to a general trait of image quality that would apply for any imaging modality: If the SNR is too low 'low contrast' details blend in with the noise and are useless - this corresponds to a very small 'low contrast resolution'. In this case 'resolution' does not talk about pixel number but instead about distinguishable steps on the brightness scale that are not overlaid with noise.}
 Additionally to the relatively short acquisition time, CT scans show little distortion compared MRI (see \ref{sec:MRI}), which is why they are often used as 'gold standards' (reference scans used for MRI calibration or distortion assessment).
 
-Apart from distortion, there is also the 'low contrast resolution' of the scan.
-This feature directly relates to how much structures and their surroundings have to differ in signal intensity to be clearly distinguishable by doctors.
-This aspect of image quality is mainly limited by noise.
-Noise is random patterns underlying the actual signal which always present to some extent.
+While bone structures are clearly visible in CT scans, 'soft tissue contrast' is relatively low compared to MRI.
+In other words, parts of the body which are considered as 'soft tissue' (intestines, brain, blood vessels, etc.) differ little in brightness and are therefore hard to distinguish.
+See \ref{sec:soft} for more information.
+
+Another aspect of image quality is the 'low contrast resolution' of the scan.
+It directly relates to how much structures and their surroundings have to differ in signal intensity to be clearly distinguishable by doctors.
+The quality of the 'low contrast resolution' is mainly limited by noise.
+Noise is a random pattern underlying the actual signal which always present to some extent.
 It's prominence in the final image is described by the Signal to Noise Ratio (SNR).
 If the SNR is too low, fine structures blend with the noise and cannot be distinguished. 
 Strategies to achieve a high SNR include raising the initial photon flux (intensity) or employing contrast agents.
@@ -350,29 +356,38 @@ MRI lacks some of those insights, which is why CT is still an essential part for
 \subsection{Non morphologic Imaging}
 
 
+\subsubsection{Diffusion Weighed imaging}
 % https://www.youtube.com/watch?v=J_aamnpRJE8
 % mri - from picture to proton S. 331 (im pdf auf 344)
 Diffusion weighted (DW) imaging quantifies molecular diffusion in the body.
-Additionally to the gradients needed to select a slice (strenght $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two strong and long consecutive and opposite gradients (strenght $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
+This imaging technique uses MRI technology slightly different:
+Additionally to the gradients needed to select a slice (strength $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two long strong consecutive and opposite gradients (strength $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
+After those two gradients (which, actually, have to be applied in all three Cartesian directions), the remaining signal (net magnetisation) is measured by the receiver coil.
+
 Molecules which are restricted in their movement will experience two equally strong but opposite magnetic fields.
 The first will cause them to precess with a certain speed (linear with field strength), effectively changing their phase.
 The second will cause them to precess exactly the other way around (same strength, but other direction), effectively returning them to their initial state.
-After those two gradients (which actually have to be applied in all three Cartesian directions), the remaining signal is measured by the receiver coil.
+Now, they will again be in phase and result in a net magnetisation which is not zero, visible as bright areas on the scan.
+
 Those molecules which are free to move, however, will not experience a constant field strength.
-As they move through the body they will precess at varying speeds during the first and again different speeds during the second gradient.
-As a result, they will be out of phase when the signal is measured by the receiver coil.
-DW imaging can be used to diagnose acute strokes (brain infarct), because areas with restricted diffusion (blocked blood flow) show a strong signal compared to healthy tissue with normal diffusion in the resulting image.
+As they move through the body they will precess at varying speeds during the first and then at different speeds during the second gradient.
+As a result, they will be out of phase when the net magnetisation is measured by the receiver coil, not causing bright areas in the scan.
+
+DW imaging can be used to diagnose acute strokes (brain infarct), because areas with restricted diffusion (blocked blood flow) show a strong signal compared to healthy tissue with normal diffusion.
 Since the time necessary to allow the molecules to move during the two gradients is relatively long, the image will naturally be $T_2$ weighted.
-This is taken into account by taking a second image which is also $T_2$ weighted, but does not apply two consecutive opposite gradients.
-The difference between the DW and the not DW weighted sequences reflects the actual contribution of diffusion (apparent diffusion
-coefficient - ADC).
+This is taken into account by creating a second image which is also $T_2$ weighted, but does not apply two consecutive opposite gradients.
+The difference between the DW and the not DW weighted sequences reflects the actual contribution of diffusion (apparent diffusion coefficient - ADC).
 
-\todo{Perfusion}
-\todo{Spectroscopy}
-\todo{fMRI, rewrite}
+\todo{Perfusion?}
+%https://www.youtube.com/watch?v=o6gqqeDfKGM
+\todo{Spectroscopy?}
+\todo{fMRI?}
 
-A more recent usage of MRI based on the BOLD (Blood Oxygenation Level Dependent) effect enables us to 'watch the brain thinking'.
-Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
+%Functional MRI (fMRI) is another ingenious imaging technique which enables doctors to 'watch the brain thinking'.
+%It is based on the BOLD (Blood Oxygenation Level Dependent) effect, the fact that deoxygenated blood is paramagnetic and oxygenated blood diamagnetic.
+%This means that deoxygenated blood looses its signal in the transverse plane quicker (low signal) than oxygenated blood (higer signal).
+%MR signal than fully oxygenated blood
+%Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
 
 \subsubsection{Image Quality}
 Contrary to CT, MRI is prone to distortion, due to field inhomogeneities.

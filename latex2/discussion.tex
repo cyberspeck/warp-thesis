@@ -28,14 +28,21 @@ There are few brands offering solutions utilising liquid fiducial markers in the
 They are arranged in a regular pattern surrounded by air or plastic.
 The AKH's design however relies on replaceable rods, which makes it a novelty.
 
+\subsection{observed issues}
+
+Interestingly, all water based solutions seemed to have evaporated partly.
+This indicates that the plastic stopper is not closing the rod in a way that makes them airtight.
+An airtight container might have lead to other conclusions regarding the formation of air bubbles.
+It is hard to tell if they were caused by evaporation only or if dissolved gases played a role, too.
 
 \section{Tested solutions}
-\newpage
 
 For measuring the position of the rods in the CT scans, the plastic rods without filling would be enough already.
 Hollow plastic rods would not be visible on the MRI scans, though.
 That is why the visibility of the liquids on CT is not important at all.
-From now on 'signal strenght' or 'visibility' will refer to MRI scans only (see table \ref{tab:visibility}).
+From now on 'signal (strength)' or 'visibility' will refer to MRI scans only (see table \ref{tab:visibility}).
+
+\subsection{Thoughts about choosing possible candidates}
 
 The selection of solutions tested were chosen for a number of reasons:
 \begin{enumerate}[label=\textbf{\arabic*.}]
@@ -47,53 +54,84 @@ They could then be filled again with a different liquid if needed.
 \item Preferably, the components which are chosen to be used for the entire phantom should be either non-toxic or harmless if not swallowed.
 \end{enumerate}
 
-\subsection{Choosing a promising candidate}
+\vspace{1cm}
 
-Rod \textbf{\#1} was filled with plain distilled water to be available as reference.
-Without any contrast enhancing substances it yields relatively little signal.
-To achieve a better SNR, liquids \textbf{\#2} to \textbf{\#10} and \textbf{\#14} to \textbf{\#15} are based on distilled water with $NaCl$ (concentration of $0.36 \, g/L$) and $CuSO_4\cdot5H_2O$ (concentration of $1.96 \, g/L$ as suggested by AAPM MR Subcommittee \cite{Jackson2009} apart vom \textbf{\#3} and \textbf{\#4} which contain double and ten-fold the concentration).
-Most of these liquids resulted in an about 5 times brigher signal than distilled water \textbf{\#1}.
-\todo{toxicity of $CuSO_4\cdot5H_2O$?}
-Unfortunately, dissolved gases leave the liquid and water evaporates over time.
+Rod \textbf{\#1} was filled with plain distilled water as reference.
+It was clear from the beginning that it would not result in high signal and was never considered a possible filling.
 
-To improve the mobility of trapped air bubbles, generic washing-up soap was added to \textbf{\#5}, \textbf{\#6}, and \textbf{\#7} (suggestion by Data Spectrum Corporation \cite{bubbles}).
-The higher concentrations of soap were tested as reference, but the smallest amount of 1 g/L was already enough to result in sufficient mobility.
-An even lower concentration might also be acceptable.
-Interestingly, the rod filled with this solution contained the least amount of gas after 2 months.
-If the liquid should happen to leak from the rod, the relatively low concentration of soap would not add to its toxicity.
-The visibility recorded was among the higher candidates, too.
-For those reasons, and because the liquid is cheap and easy to produce, it appears to be a promising candidate.
+\subsubsection{Aiming for high SNR}
+To achieve a better SNR, liquids \textbf{\#2} to \textbf{\#10} and \textbf{\#14} to \textbf{\#15} are based on a solution of sodium chloride ($NaCl$ concentration of $0.36 \, g/L$) and copper(II) sulfate pentahydrate ($CuSO_4\cdot5H_2O$ concentration of $1.96 \, g/L$ as suggested by AAPM MR Subcommittee \cite{Jackson2009};  \textbf{\#3} and \textbf{\#4} contain double and ten-fold the concentration) in distilled water.
+Most of these liquids resulted in an about 5 times brighter signal than plain distilled water.
+Regarding the toxicity of $CuSO_4\cdot5H_2O$, the minimum dose to have caused acute toxic effects in humans is reported to be $11 mg/Kg$.
+As the concentration of $CuSO_4\cdot5H_2O$ is only $1.96 \, g/L$, even a young patient of 4 years and $15kg$ would need to drink more than 80mL to reach that threshold.
+Also, ingestion usually leads to vomiting triggered by its irritating effect on the gastrointestinal tract, which would stop further (more severe) toxic effects from happening.
+Keeping the scanner bed clean and checking the phantom for leakage before and after use should be sufficient to prevent an intoxication.
+% http://pmep.cce.cornell.edu/profiles/extoxnet/carbaryl-dicrotophos/copper-sulfate-ext.html#2
 
-Liquids \textbf{\#8} ($0.36 g/L$), \textbf{\#9} ($3.6 g/L$), and \textbf{\#10} (\$36 g/L\$) contain ascorbic acid.
-Adding this is supposed to reduce forming of air bubbles by binding dissolved oxygen and eventually degrade to dehydro-ascorbic acid and water.
-The amount suggested by \cite{Abtahi2008, Bodannes1979} is $0.00204 \; mol/L$ which corresponds to approx. ($0.36 g/L$).
-As noted in \ref{sec:sol-mech}, the rods containing these liquids still contained air after 2 months.
-The reason why the rod containing the highest concentration of ascorbic acid showed an unexpected colouring is not known.
-Whether this is due to a contamination or a unforeseen chemical reaction involving the high concentration of ascorbic acid is unclear.
-Adding ascorbic acid seems to yield no long term benefits.
+\vspace{1cm}
 
 Primovist (\textbf{\#11} to \textbf{\#13}) is a common contrast agent used for MRI scans \cite{VanBeers2012, Rohrer, primovist} intended to yield a strong signal.
-The limited mobility of air bubbles forming makes it a unsuited candidate.
 
-In an attempt to limit the forming of gas, \textit{agar} was used in soltutions \textbf{\#14} and \textbf{\#15}.
+\subsubsection{Handling dissolved gas}
+Unfortunately, dissolved gases may eventually leave the liquid and form air bubbles.
+
+To improve the mobility of trapped air bubbles, generic washing-up soap was added (\textbf{\#5}, \textbf{\#6}, and \textbf{\#7}; suggestion by Data Spectrum Corporation \cite{bubbles}).
+%The smallest amount of 1 g/L was already enough to result in sufficient mobility and an even lower concentration might also be acceptable.
+The higher concentrations of soap were tested as reference.
+%Interestingly, the rod filled with this solution contained the least amount of gas after 2 months.
+If the liquid should happen to leak from the rod, the relatively low concentration of soap would not add to its toxicity.
+%The visibility recorded was among the higher candidates, too.
+For those reasons, and because the liquid is cheap and easy to produce, it appears to be a promising candidate.
+
+\vspace{1cm}
+
+Liquids \textbf{\#8} ($0.36 g/L$), \textbf{\#9} ($3.6 g/L$), and \textbf{\#10} ($36 g/L$) contain ascorbic acid.
+Adding this is supposed to reduce forming of air bubbles by binding dissolved oxygen and eventually degrade to dehydro-ascorbic acid and water.
+The amount suggested by \cite{Abtahi2008, Bodannes1979} is $0.00204 \; mol/L$ which corresponds to approx. ($0.36 g/L$).
+
+\vspace{1cm}
+
+In an attempt to limit the forming of gas, \textit{agar} was used in solutions \textbf{\#14} and \textbf{\#15}.
 Agar and agarose are commonly used as basic reference material for MRI phantoms \cite{BuccioliniCiraolo1989, Mathur-DeVre1985}
-Since the produced gel cannot be removed from the rods as easily as liquid candidates, and forming air bubbles were also not moving, agar is not suited for this phantom.
+%Since the produced gel cannot be removed from the rods as easily as liquid candidates, and forming air bubbles were also not moving, agar is not suited for this phantom.
 
+\subsubsection{Non water-based liquids}
 As an alternative 2 oils were proposed.
 Since air is not soluble in oil, once a rod is completely with oil, no air bubbles should form.
-Using vegetable oil would be a non-toxic solution.
-This has been ruled out as a filling from the beginning, because it would eventually rot.
-Mineral oil on the other hand does not rot, but it is not as easily removed from a rod as a water based liquid.
+Yet, oil is not as easily removed from a rod as a water based liquid.
 At the same time, it might not be necessary to ever replace the oil.
 Once filled, the rods could be used until the surrounding plastic breaks or starts leaking.
-In that case, however, it might be dangerous if not handled properly as it might leave traces on the MRI scanner bed.
-As the generic motor (\textbf{\#16}) oil resulted in the highest signal intensity of all candidates it seems to be a good alternative to water based liquids.
+Using vegetable oil would be a non-toxic solution, but has been ruled out as a filling from the beginning, because it would eventually rot.
+Mineral oil on the other hand does not rot, however, it might be dangerous if not handled properly as it might leave toxic traces on the MRI scanner bed.
+%As the generic motor (\textbf{\#16}) oil resulted in the highest signal intensity of all candidates it seems to be a good alternative to water based liquids.
+%The silicon oil (\textbf{\#17}) on, the other side, had a low signal compared to most candidates and is therefore not suited.
+
+
+\subsection{Choosing a promising candidate}
+As all rods containing water-based liquids continued to lose liquids due to evaporation, only the early forming of air bubbles might indicate whether solutions effectively hinder dissolved gases to result in trapped air bubbles.
+Apart from the solutions containing ascorbic acid (\textbf{\#8} ($0.36 g/L$), \textbf{\#9} ($3.6 g/L$)) all water based liquids produced some air bubbles after at least two days (see table \ref{sec:sol-mech}).
+Considering the low visibility of \textbf{\#9}, the only suitable water based liquid capable of staying free from air bubbles might be \textbf{\#8}.
+At the same time, long-term observations might have shown that even \textbf{\#8} only delays the formation.
+
+The reason why the rod containing the highest concentration of ascorbic acid showed an unexpected colouring is not known.
+Whether this is due to a contamination or a unforeseen chemical reaction involving the high concentration of ascorbic acid is unclear.
+As the high concentration in \textbf{\#9} and \textbf{\#10} led to a radical reduction in signal with the tested MRI sequence, this solutions is not considered a suitable filling anyway.
+
+Primovist (\textbf{\#11} to \textbf{\#13}) lead to a good signal, but its limited mobility of air bubbles rules it out as a candidate.
+
+If the forming of  a small amount of gas is not considered a problem, adding soap appears to be a reasonable solution.
+The smallest tested amount of soap (\textbf{\#5}, 1 g/L) was already enough to result in sufficient mobility of air bubbles, and an even lower concentration might also be acceptable.
+Interestingly, the rod filled with this solution contained the least amount of gas after 2 months, but this might be because the particular rod closed better than the others.
+The visibility recorded was among the higher candidates, too.
+For those reasons, and because the liquid is cheap and easy to produce, it is a promising candidate.
+
+Solutions containing \textit{agar} (\textbf{\#14} and \textbf{\#15}) are even harder to remove from rods if not impossible.
+As they might lead to air bubbles, too, which cannot be moved to either side of the rod, agar is not suited for this phantom.
+
+Finally, the generic motor (\textbf{\#16}) oil resulted in the highest signal intensity of all candidates.
+Besides the question of its toxicity, it seems to be a good alternative to water based liquids.
 The silicon oil (\textbf{\#17}) on, the other side, had a low signal compared to most candidates and is therefore not suited.
 
-In conclusion, a water based liquid seems to be the right choice to start with.
-Provided the amount of liquid remains high enough to fill the entire FOW of the MRI scanner.
-Oil generally shows good visibility in CT and MRI scans and produces no air bubbles after closing.
-Since topping up over 300 rods regularly is too time consuming, the generic motor oil seems to be a good alternative.
 
 \section{Sequence}
 \todo{why T1 weighted sequence? why this particular sequence? Influence on signal of water/oil, components.}

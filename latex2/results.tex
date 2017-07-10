@@ -61,10 +61,10 @@ Figure \ref{fig:coronal} shows a coronal view of the 16 rods filled with the tes
 CT images show little differences between the tested liquids. The plastic rods themselves result in brighter pixels than any of the tested solutions.
 
 On MRI scans most liquids had a mean and a max brightness value above $1000$ (see table \ref{tab:visibility}).\\
-Only \textbf{\#1}, \textbf{\#9}, \textbf{\#10}, \& \textbf{\#17} resulted in significantly less signal.
+Only \textbf{\#1}, \textbf{\#9}, \textbf{\#10}, \& \textbf{\#17} resulted in significantly less signal (below < $1000$).
 
 
-\begin{table}[]
+\begin{table}[!htb]
 \centering
 \begin{tabular}{@{}lllllll@{}}
 \toprule
@@ -90,43 +90,21 @@ No. & Min  & Max  & Mean   & Median & RMS    & $\sigma$   \\ \midrule
 \label{tab:visibility}
 \end{table}
 
-% 
-% \begin{table}[]
-% \centering
-% \begin{tabular}{@{}l|rrr@{}}
-% No.	& brightest MRI pixel	& darkest CT pixel [$HU$]	& CT @ brightest pixel MRI	\\
-% \toprule
-% \#1	& 342			& -6		& 7		\\
-% \#2	& 1777			& 31		& 31		\\
-% \#3	& 1771		& 5		& 8			\\
-% \#4	& 1589		& 62		& 62			\\
-% \#5	& 1691		& -6		& -2			\\
-% \#6	&  \multicolumn{3}{c}{\textit{------------------------ rod was leaking ---------------------------}}	\\
-% \#7	& 1725		& 7		& 20			\\
-% \#8	& 1868		& -40		& 43			\\
-% \#9	& 514		& -11		& -11			\\
-% \#10	& 477		& 1		& 1			\\
-% \#11	& 1246		& -12		& 7			\\
-% \#12	& 1794		& 18		& 18			\\
-% \#13	& 1416		& 152		& 157			\\
-% \#14	& 1814		& 4		& 4			\\
-% \#15	& 1705		& 11		& 32			\\
-% \midrule
-% \#16	& 1848		& -196		& -196			\\
-% \#17	& 836 		& 123		& 129			\\
-% \bottomrule
-% \end{tabular}
-% \caption{liquid visibility}
-% \label{tab:visibility}
-% \end{table}
+\clearpage
 
 \subsection{Mechanical properties of solutions}
 \label{sec:sol-mech}
-A suitable filling would yield good image contrast in CT and MRI and acceptable mechanical properties.
 
-The liquids were filled in a rod each and observed for several months. Some solutions produced air bubbles, which would eventually lead to incorrect calculations.
-Each rod was free of bubbles after sealing. The amount of gas inside the rods was measured after 2 months. Ideally, tilting the entire phantom slightly should be enough to fix all rods in the phantom at the same time.
-In some of the tested rods the produced air bubbles would stick to the wall. Only after gently hitting the rod they would start moving (see table \ref{tab:bubbles}).
+The liquids were filled in a rod each and observed for several months.
+Each rod was free of bubbles directly after sealing.
+All rods containing water based solutions were filled with some air after 2 months and the amount of liquid continued to decrease further (see table \ref{tab:bubbles}).
+Knowing the inner diameter $d$ of the rods we can easily approximate the volume of gas trapped:
+
+\begin{align}
+ V = \frac{d^2}{4}\cdot \pi \cdot l
+\end{align}
+In some of the tested rods the produced air bubbles would stick to the wall. Only after gently hitting the rod they would start moving.
+
 
 \begin{table}[]
 \centering
@@ -181,23 +159,21 @@ No. & length of trapped bubble $l$ [$mm$] 	& approx. volume $V$ [$mm^3$]	\\
 \label{tab:bubbles}
 \end{table}
 
-Knowing the inner diameter $d$ of the rods we can easily approximate the volume of gas trapped:
 
-\begin{align}
- V = \frac{d^2}{4}\cdot \pi \cdot l
-\end{align}
+While adding generic washing soap (\textbf{\#5}, \textbf{\#6}, and \textbf{\#7}) did not hinder air bubbles from forming, it significantly improved their mobility.
+Not only did they move quickly when the rod was tilted, large quantities also did not block the entire diameter of the rod.
+Instead they formed large but cohesive bubbles that could be moved to one end of the rod easily and at no point sticked to the plastic wall.
 
-The generic washing soap added to liquids \textbf{\#5}, \textbf{\#6}, and \textbf{\#7} significantly improved the mobility of appearing air bubbles.
-Furthermore, large amount of air did not block the entire diameter of the rod.
-Instead they formed large but cohesive bubbles that could be moved to one end of the rod easily.
+The ascorbic acid present \textbf{\#8} (concentration of $0.36 \; g/L$ corresponds to approx. $0.00204 \; mol/L$), \textbf{\#9} ($3.6 g/L$), and \textbf{\#10} (\$36 g/L\$) seemed to have held back the formation of air bubbles for up to one week.
+After two months of observation, however, the rods also contained some air.
+It should be noted that the surface of the screw sealing the rod filled with \textbf{\#10} turned brown.
 
-Liquids \textbf{\#8} (concentration of $0.36 \; g/L$ corresponds to approx. $0.00204 \; mol/L$ as suggested by \cite{Abtahi2008, Bodannes1979}), \textbf{\#9} ($3.6 g/L$), and \textbf{\#10} (\$36 g/L\$) contain ascorbic acid. It is supposed to reduce forming of air bubbles by binding dissolved oxygen and eventually degrade to dehydro-ascorbic acid and water.
-Even though the rods showed still no air bubbles after one week, they were filled with an average amount of air after two months of observation.
-Besides, the surface of the screw sealing the rod filled with \textbf{\#10} turned brown.
+The rods filled with Primovist (\textbf{\#11} to \textbf{\#13}) were filled with some air bubbles after at least two days.
+Moreover, the bubbles sticked to the walls of the rod and only shaking it violently made them move to one side of the rod.
 
-Primovist (\textbf{\#11} to \textbf{\#13}) is a common contrast agent used for MRI scans \cite{VanBeers2012, Rohrer, primovist} intended to yield a strong signal.
-While the measured intensity was high, and the amount of gas trapped in the rod after 2 months was close to average, the air bubbles sticked to the walls of the rod.
-Only shaking the rod violently made them move to one side of the rod.
+It took more than a week until the rod containing the low concentration of agar (\textbf{\#14}) contained an air bubble.
+The very slow running consistency made it impossible to coerce it to either end of the rod.
+Rod \textbf{\#15} on the other hand did not form bubbles in the middle of the rod, but seemed to have dried starting at the end with the plastic stopper.
 
 % \begin{table}[p]
 %   \centering
