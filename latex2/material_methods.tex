@@ -322,10 +322,10 @@ Figure \ref{fig:data_prep} gives an impression how the steps performed affected 
 \item To start with, they were aligned in a way that yields maximum overlap especially in the centre of the image using \textit{MIRADA}.
 \item However, the MRI image had a lower resolution than the CT scan.
 Therefore, the MRI voxel's size were changed to match the CT voxels. Both images were resampled to CT resolution and exported using \textit{MIRADA}.
-\item Both layers (MRI and CT) were loaded into \textit{3D Slicer} (Version: Slicer-4.5.0-1-linux-amd64)
+\item Both layers (MRI and CT) were loaded into \textit{3D Slicer} (Versions: Slicer-4.5.0-1-linux-amd64, Slicer-4.6.2-win-amd64)
 \item Its module 'annotations' was used to set a new region of interest (ROI) to include only a single rod.
 \item With the module called 'crop volume' (setting: voxel based cropping) the scans were reduced to show only the selected ROI.
-\item Using the module 'resample scalar volume' a number of interpolated (setting: nearest neighbour) higher resolution copies were created.
+\item Using the module 'resample scalar volume' a number of interpolated (setting: 'bspline') higher resolution copies were created.
 \item All data sets and the cropped original CT/MRI images were exported with 'create a dicom series' and saved in separate folders.
 \end{enumerate}
 
