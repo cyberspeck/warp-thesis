@@ -282,32 +282,32 @@ slice & $warp_x$  & $warp_y$  & $warp$ & $DC_{CT}$  & $DC^*_{CT}$ & $DC_{MR}$  &
 
 \begin{figure}[!tbp]
   \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/centroid/CT_x100@0_centroids.png}
+    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@0_centroids.png}
     \caption{CT @ 0}
     \label{fig:CT_x100_centroids@0}
   \end{subfigure}
   \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/centroid/CT_x100@150_centroids.png}
+    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@150_centroids.png}
     \caption{CT @ 150}
     \label{fig:CT_x100_centroids@150}
   \end{subfigure}
   \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/centroid/CT_x100@304_centroids.png}
+    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@304_centroids.png}
     \caption{CT @ 304}
     \label{fig:CT_x100_centroids@304}
   \end{subfigure}
   \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/centroid/MR_x100@0_centroids.png}
+    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@0_centroids.png}
     \caption{MRI @ 0}
     \label{fig:MR_x100_centroids@0}
   \end{subfigure}
   \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/centroid/MR_x100@150_centroids.png}
+    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@150_centroids.png}
     \caption{MRI @ 150}
     \label{fig:MR_x100_centroids@150}
   \end{subfigure}
   \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/centroid/MR_x100@304_centroids.png}
+    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@304_centroids.png}
     \caption{MRI @ 304}
     \label{fig:MR_x100_centroids@304}
   \end{subfigure}
@@ -321,33 +321,33 @@ slice & $warp_x$  & $warp_y$  & $warp$ & $DC_{CT}$  & $DC^*_{CT}$ & $DC_{MR}$  &
 
 \begin{figure}[!bp]
   \centering
-  \includegraphics[scale=0.6]{python/warp/warpXY_x100--.png}
+  \includegraphics[scale=0.6]{python/ph2/warp/warpXY_x100--.png}
   \caption{warp XY [$mm$], CT-MRI x100}
   \label{fig:warpXY_x100}
 \end{figure}
 
 \begin{figure}[!tp]
     \centering
-    \includegraphics[scale=0.6]{python/warp/warpMagnitude_x100--.png}
+    \includegraphics[scale=0.6]{python/ph2/warp/warpMagnitude_x100--.png}
     \caption{warp Magnitude [$mm$], CT-MRI x100}
     \label{fig:warpMagnitude_x100}
 \end{figure}
 \begin{figure}[!bp]
     \centering
-    \includegraphics[scale=0.6]{python/dice/CT_MR_x100_DC.png}
+    \includegraphics[scale=0.6]{python/ph2/dice/CT_MR_x100_DC.png}
     \caption{DC (optimised) for CT \& MRI \& MRI (using CT COM)}
     \label{fig:CT_MR_x100_DC}
 \end{figure}
 
 \begin{figure}[!tp]
     \centering
-    \includegraphics[scale=0.6]{python/warpDC/warpDC_x100.png}
+    \includegraphics[scale=0.6]{python/ph2/warpDC/warpDC_x100.png}
     \caption{artificial indicator warp*DC using real DC and optimised DC of MRI x100}
     \label{fig:warpDC_x100}
 \end{figure}
 \begin{figure}[!bp]
   \centering
-  \includegraphics[scale=0.6]{python/dice/CT-51iter.png}
+  \includegraphics[scale=0.6]{python/ph2/dice/CT-51iter.png}
   \caption{CT: DC of varied radii \& resolutions}
   \label{fig:CT_dc}
 \end{figure}
@@ -355,13 +355,13 @@ slice & $warp_x$  & $warp_y$  & $warp$ & $DC_{CT}$  & $DC^*_{CT}$ & $DC_{MR}$  &
 \begin{figure}[!tbp]
   \begin{subfigure}[b]{\textwidth}
     \centering
-    \includegraphics[scale=0.6]{python/dice/MR-51iter.png}
+    \includegraphics[scale=0.6]{python/ph2/dice/MR-51iter.png}
     \caption{MRI: DC of varied radii \& resolutions}
     \label{fig:MR_dc-opti}
   \end{subfigure}
   \begin{subfigure}[!b]{\textwidth}
     \centering
-    \includegraphics[scale=0.6]{python/dice/MR_CT-COM_51iter.png}
+    \includegraphics[scale=0.6]{python/ph2/dice/MR_CT-COM_51iter.png}
     \caption{MRI: DC of varied radii \& resolutions (using CT-COM)}
     \label{fig:MR_CT-COM_dc-opti}
   \end{subfigure}
@@ -379,13 +379,13 @@ Figure \ref{fig:CT_dc} and \ref{fig:MR_dc} show the DC (optimised) obtained usin
 % \begin{figure}[!tbp]
 %   \begin{subfigure}[b]{\textwidth}
 %     \centering
-%     \includegraphics[scale=0.65]{python/dice/CT_dice-comparison_fast-51iter.png}
+%     \includegraphics[scale=0.65]{python/ph2/dice/CT_dice-comparison_fast-51iter.png}
 %     \caption{CT: x1, x4, x9, x16, x25, x100}
 %     \label{fig:MR_dice-comp}
 %   \end{subfigure}
 %   \begin{subfigure}[b]{\textwidth}
 %     \centering
-%     \includegraphics[scale=0.65]{python/dice/MR_dice-comparison_fast-51iter.png}
+%     \includegraphics[scale=0.65]{python/ph2/dice/MR_dice-comparison_fast-51iter.png}
 %     \caption{MRI: x1, x4, x9, x16, x25, x100}
 %     \label{fig:MR_dice_comp}
 %   \end{subfigure}

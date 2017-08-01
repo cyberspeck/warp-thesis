@@ -1,0 +1,33 @@
+
+vol_list = [[CT, CT_x4, CT_x9, CT_x25, CT_x100],[MR, MR_x4, MR_x9, MR_x25, MR_x100]]
+modality, sets = np.shape(vol_list)
+
+sliceNumbers = np.arange(CT.zSize, dtype=int)
+warp = np.zeros((sets, CT.zSize, 2))
+warpMagnitude = np.zeros((sets, CT.zSize, 1))
+
+# 2 dc for CT, 4 dc for MR (2 using MR.centroid, 2 using CT.centroid!)
+dc_CT = np.zeros((sets, CT.zSize, 2))
+dc_CT_average = np.zeros((sets, 2))
+dc_MR = np.zeros((sets, CT.zSize, 4))
+dc_MR_average = np.zeros((sets, 4))
+iterate = 51
+
+
+fig = plt.figure()
+plt.ylim(ymin=0.6, ymax=1)
+plt.xlim(xmin=(3.5-.1), xmax=(4.5+.1))
+#calculates dc for CT
+for i in range(sets):
+    vol_list[0][i].getCentroid()
+#    a = vol_list[0][i].getDice()
+#    aa = vol_list[0][i].diceAverage
+    b = vol_list[0][i].getDice(centroid=vol_list[0][i].centroid, iterations=iterate, plot=True,
+                               # save='{}_x{}-{}iter'.format(vol_list[1][i].method, vol_list[1][i].resample, iterate)
+                               )
+#    bb = vol_list[0][i].diceAverage
+#    dc_CT[i] = np.column_stack((a,b))
+#    dc_CT_average[i] = aa,bb
+#    
+
+plt.legend(loc='lower right')

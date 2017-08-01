@@ -169,14 +169,19 @@ The AKH's design is made up from an array of replaceable, fillable plastic rods.
 The phantom was build to fit the largest available rigid coil for the MRI scanner.
 Three parallel acrylic glass panes in the shape of the coil serve as a frame for the plastic rods.
 In the middle an empty area was reserved for an optional additional smaller phantom (not used for this work).
-Figure \ref{fig:phantom_photo} shows a picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
+Figure \ref{fig:photo_ph3} shows a picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
 More than 300 plastic rods (length: 50cm, outer diameter: 8mm, inner diameter: 4mm, volume: approx. 6mL) could be placed in the phantom.
 See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
 The bottom part of each rod was sealed with a hot glued plastic plug, the top could be closed with a plastic screw.
 Frame and rods were already build and assembled before the author started working on this project.
 
 
-% photo of phantom
+\begin{figure}[!bp]
+\centering
+\includegraphics[width=\textwidth]{photo/ph3_CT-scanner.png}
+\caption{Picture of phantom on CT desk}
+\label{fig:photo_ph3}
+\end{figure}
 
 \begin{figure}[!tbp]
 \centering
@@ -192,12 +197,7 @@ Frame and rods were already build and assembled before the author started workin
 \label{fig:rod_schematic}
 \end{figure}
 
-\vspace{4cm}
-\textit{photo of Phantom}
-\vspace{2cm}
-\vspace{4cm}
-\textit{photo of single rod}
-\vspace{2cm}
+\clearpage
 
 \subsection{Rod fillings}
 
@@ -429,12 +429,12 @@ Two phenomena were chosen to reflect the amount of distortion occurring in MRI s
 
 \begin{enumerate}[label=\textbf{\arabic*)}]
  \item location shift (``warp'')
- \item deformation (deviation from circular profile ``DC'')
+ \item deformation (deviation from circular profile, dice-coefficient)
 \end{enumerate}
 
 Since the rods have a cylindrical shape, distortion can only be assessed in radial direction.
 To make calculations easier, the z-coordinate was put parallel to the rods, x and y radial.
-Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (+ plastic rod in CT) surrounded by black (air).
+Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (and plastic rod in CT) surrounded by black pixels (air).
 To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
 The location difference in each slice is saved as an array.
 Additionally, the absolute value of the coordinate shift (warpMagnitude) could be calculated.
@@ -475,7 +475,7 @@ Before a meaningful result can be obtained, the values need to be shifted to be 
 Additionally, only pixels representing the rod or the liquid should be used for the calculation.
 Otherwise the almost black voxels surrounding the rod would influence the result.
 This error could be observed especially if the rod is not placed in the exact middle of the scan.
-As described earlier, the plastic rod is only visible in CT images. On the MRI scans solely the liquid containded in the rods is shown.
+As described earlier, the plastic rod is only visible in CT images. On the MRI scans, solely the liquid containded in the rods is shown.
 Therefore, rods appear to be smaller on the MRI data.
 To find the relevant pixels two algorithms were developed:
 
@@ -484,7 +484,7 @@ To find the relevant pixels two algorithms were developed:
  \item[2] finding a COM resulting in good DC
 \end{description}
 
-\textit{\textbf{add 1:}}
+\textbf{add 1:}
 The inner ($4mm$) and outer ($8mm$) diameter of the rods are known. So is the \textit{pixel spacing} which represents the equivalent size of a voxel in $mm$.
 Calculating the number of pixels which make up the more or less circular profile of the rod in each slice is calculated as follows:
 
@@ -495,7 +495,7 @@ Calculating the number of pixels which make up the more or less circular profile
 For CT images $radius = 4mm$, in MRI scans $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
 Next the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the COM.
 
-\textit{\textbf{add 2:}}
+\textbf{add 2:}
 This algorithm is an iteration method.
 First it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$.
 It starts off by assuming that $50\%$ is a reasonable guess for the number of pixels that show the rod and calculates the corresponding DC value.
@@ -513,14 +513,15 @@ and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) whi
 \end{align}
  
 Now the corresponding DC values are calculated and compared.
-If the lower percentage yields a better DC, the upper half of the range will be neglected in the next iteration, the upper limit becomes the former guess ($50\%$).
-If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the lower limit becomes the former guess ($50\%$).
+If the lower percentage yields a better DC, the upper half of the range will be neglected in the next iteration, the new upper limit becomes the former guess ($50\%$).
+If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the new lower limit becomes the former guess ($50\%$).
 
-Now in the second iteration, the range has become smaller and the next guess will be set to be exactly in the middle.
-If, for example, the DC for $25\%$ was higher, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
-In that case, DC values for the lower half of the range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared.
-If, for example, the DC for $18,5\%$ was higher, the next guess will then be $18,5\%$, because the new range goes from $25\%$ to $50\%$.
-The iteration continues until new steps yield no better DCs or a set number of steps has been performed.
+Now, at the start of the second iteration, the range is smaller (half of the entire range) and the new guess will be set to be exactly in its middle.
+If, for example, the DC for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
+In that case, DC values for the lower half of that range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared to decide which half to eliminate in the third iteration.
+If, on the other hand, the DC for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
+In that case, DC values for $62,5\%$ and $82,5\%$ will be compared.
+The iteration continues until further steps yield no better DC values or a set number of steps has been performed.
 
 After the iteration process, the algorithm will return the COM which resulted in the best DC.
 Figure \ref{fig:COM_iteration} shows the DC values found in the course of the iteration method
@@ -531,13 +532,13 @@ Figure \ref{fig:COM_iteration_flow} summarises the algorithm.
 
 \begin{figure}[!thb]
   \begin{subfigure}[b]{1\textwidth}
-    \includegraphics[scale=0.7]{python/iteration_COM/CT_x100_iteration_COM.png}
+    \includegraphics[scale=0.7]{python/ph2/iteration_COM/CT_x100_iteration_COM.png}
     \caption{CT x100, (4 steps lead to best result)}
     \label{fig:CT_x100_iteration}
   \end{subfigure}
   \begin{subfigure}[b]{1\textwidth}
-    \includegraphics[scale=0.7]{python/iteration_COM/MR_x100_iteration_COM.png}
-     \caption{MR x100, (15 step performed)}
+    \includegraphics[scale=0.7]{python/ph2/iteration_COM/MR_x100_iteration_COM.png}
+     \caption{MR x100, (15 steps performed)}
      \label{fig:MR_x100_iteration}
   \end{subfigure}
   \caption{COM iteration method}

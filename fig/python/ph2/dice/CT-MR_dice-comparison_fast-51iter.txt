@@ -1,0 +1,17 @@
+
+for mode in range(modality):
+    fig = plt.figure()
+    plt.ylim(ymin=0.65, ymax=1)
+    plt.xlim(xmin=0, xmax=101)
+    for vol in range(sets):
+        vol_list[mode][vol].getCentroid()
+        vol_list[mode][vol].getDice()
+        plt.plot(vol_list[mode][vol].resample, vol_list[mode][vol].diceAverage, 'bx')
+        iterate = 51
+        img_title = "{}_x{}-{}iter".format(vol_list[mode][vol].method, vol_list[mode][vol].resample, iterate)
+        vol_list[mode][vol].getDice(iterations=iterate, save=img_title)
+        vol_list[mode][vol].getDice(iterations=iterate)
+        plt.plot(vol_list[mode][vol].resample, vol_list[mode][vol].diceAverage, 'r+')
+    img_title = "{}_dice-comparison_fast-51iter".format(str(datetime.datetime.now()))
+#    fig.savefig(img_title + ".png")
+
