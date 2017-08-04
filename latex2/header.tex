@@ -1,3 +1,4 @@
+\usepackage{cmap}
 \usepackage[utf8]{inputenc} % Richtiges anzeigen von Umlauten und quasi allen anderen Schriftzeichen
 \usepackage[T1]{fontenc} % Wichtig für alles was mehr als ASCII verwendet
 \usepackage{csquotes} % Schöne Anführungsstriche mit \enquote{Text}
@@ -11,6 +12,9 @@
 %\usepackage{textalpha} % Damit können griechische Zeichen direkt im Text verwendet werden (siehe zeichen.txt)
 %\usepackage{paralist} % Für compactitem und compactenum
 \usepackage{xstring} % Für IF in Titelseite
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
 
 %\usepackage[version=3]{mhchem} % Für Chemische Formeln
 %\usepackage{braket} % Für das quantenmechanische Bra-Ket
@@ -46,8 +50,8 @@
 
 \newcommand{\writeIn}[1]{\usepackage[#1]{babel}} % Definiert einen neuen Befehl um die Sprache des Dokuments zu setzen
 
-\usepackage[usenames,dvipsnames]{color} % Farben für den todo Befehl
-\newcommand{\todo}[1]{{\color{Cyan}(TODO: #1)}} % Einfach \todo{Text} verwenden! Cerulean
+\usepackage{color} % Farben für den todo Befehl
+\newcommand{\todo}[1]{{\color{blue}(TODO: #1)}} % Einfach \todo{Text} verwenden! Cerulean
 \newcommand{\blankpage}{ \newpage \thispagestyle{empty} \mbox{} \newpage }
 
 %Joschis Addons
