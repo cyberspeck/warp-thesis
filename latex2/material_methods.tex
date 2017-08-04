@@ -410,12 +410,13 @@ Instead the acquired 3D images have to be cropped to depict only a single rod.
 
 The python script can:
 \begin{itemize}
- \item denoise the image data
- \item accepts coordinates to be used as seeds, enabling it to separate bright areas which are not connected ('masking' might be used as future method to automatically detect individual rods
+ \item de-noise the image data
+ \item accepts coordinates to be used as seeds, enabling it to separate bright areas which are not connected ('masking' might be used as future method to automatically detect individual rods)
+ \item find slices which show irregularities and mark those as such
  \item calculate the centroid coordinates along the rod, used to
  \item measure the local distortion
-  \subitem location shift
-  \subitem dice coefficient (roundness/deformation)
+  \subitem location shift ( \textbf{``warp''})
+  \subitem dice coefficient ( \textbf{``DC''}) describing the roundness
  \item plot individual rod slices
   \subitem overlaying one or two centroid coordinates
   \subitem and save it as ``.png'' file
@@ -423,35 +424,35 @@ The python script can:
  \item write the calculated numbers to a ``.txt'' file
 \end{itemize}
 
-\subsection{Measuring distortion}
+\subsubsection{Irregularities}
 
-Two phenomena were chosen to reflect the amount of distortion occurring in MRI scans:
+When the script loads the image data it also asks for a reference slice.
+This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
+It is the user's responsibility to find one that is free from any such objects and set it tp be the reference slice.
+Ideally, it is located close to the iso-centre and has a brightness that is representative for the whole image.
 
-\begin{enumerate}[label=\textbf{\arabic*)}]
- \item location shift (``warp'')
- \item deformation (deviation from circular profile, dice-coefficient)
-\end{enumerate}
+To decide whether a slice is 'irregular', it's average brightness will be compared to the reference slice's.
+If the difference exceeds a certain value, the slice will be marked as irregular and consequently not used to calculate its DC or COM.
+Instead all associated values will be set to '$-1$'.
 
+\subsubsection{Measuring distortion}
+
+Two phenomena were chosen to reflect the amount of distortion occurring in MRI scans.
+The distance which the rod appears to be shifted in the MRI scan compared to the CT scan in a particular slice is what will be referred to as \textbf{``warp''}.
+The rod's deformation (deviation from circular profile) in a particular slice will be described using the dice-coefficient \textbf{``DC''} (also known as Sorensen-Index).
+\\
 Since the rods have a cylindrical shape, distortion can only be assessed in radial direction.
 To make calculations easier, the z-coordinate was put parallel to the rods, x and y radial.
 Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (and plastic rod in CT) surrounded by black pixels (air).
-To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
-The location difference in each slice is saved as an array.
-Additionally, the absolute value of the coordinate shift (warpMagnitude) could be calculated.
-
-% image of COM shift
-
-The dice-coefficient ``DC'' (also known as Sorensen-Index) was chosen as indicator for the deviation from a circular profile. Again this value was calculated for every slice using either the CT or MRI scans.
-
-To get a idea of the occurring distortion one should look at both the absolute value of coordinate shift and the dice-coefficient (DC).
-The DC ranges from 0 to 1. A value of 1 indicates a perfect circular shape. A low DC on the other hand could be caused by many things such as:
-little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of rod from background; a small circle with a radius close to a only a few pixels.
-
-
-% A proposed third indicator combining warp magnitude and the DC:
-% $warpDC = warpMagnitude * (1-DC)$
 
 \subsection{Calculation: dice-coefficient (DC)}
+
+The dice-coefficient was chosen as indicator for the deviation from a circular profile.
+This value was calculated for the CT and MRI scans in every slice and saved in an array.
+The DC ranges from 0 to 1.
+A value of 1 indicates a perfect circular shape.
+A low DC, on the other hand, means the shape differs greatly from a circle and could be caused by many things such as:
+little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of rod from background; a small circle with a radius close to a only a few pixels.
 
 The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 
@@ -466,16 +467,20 @@ The calculation of the DC is done by comparing an binary image to a circle. The 
 Both the circle's centre and its radius were varied during the distortion assessment.
 
 
-\subsection{Calculation: center of mass (COM)}
+\subsection{Calculation: warp \& centre of mass (COM)}
 
+To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
+The x- and y-shift (\textit{warpXY}) measured in each slice was saved in an array.
+Furthermore, the absolute value of the coordinate shift (\textit{warpMagnitude}) was calculated.
+\\
 The calculation of the COM is done with help of the ``scipy'' python package.
 It's module ``ndimage'' contains the function ``$center\_of\_mass()$'', which returns the COM's coordinates of a given input array.
 The values assigned to voxels in CT images lie in the range from -1024 HU (air) to around 200 HU (plastic rod).
 Before a meaningful result can be obtained, the values need to be shifted to be $>$ 0.
 Additionally, only pixels representing the rod or the liquid should be used for the calculation.
 Otherwise the almost black voxels surrounding the rod would influence the result.
-This error could be observed especially if the rod is not placed in the exact middle of the scan.
-As described earlier, the plastic rod is only visible in CT images. On the MRI scans, solely the liquid containded in the rods is shown.
+As described earlier, the plastic rod is only visible in CT images.
+On the MRI scans, solely the liquid contained in the rods is shown.
 Therefore, rods appear to be smaller on the MRI data.
 To find the relevant pixels two algorithms were developed:
 
@@ -497,9 +502,49 @@ Next the pixels are sorted by brightness. The top $pixelNumber$ pixels are then 
 
 \textbf{add 2:}
 This algorithm is an iteration method.
+Figure \ref{flo:COM-iter} shows in what order the scripts executes individual steps during the iteration.
+
+% Define block styles
+\tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=16em, text centered, minimum height=4em]
+\tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{decision} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{line} = [draw, very thick, color=black!80, -latex']
+%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
+
+\begin{figure}[!h]
+    \centering
+    \label{flo:COM-iter}
+	\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes
+    \node [blockb] (init-range) {Start with whole range:\\\texttt{min=0\%; max=100\%}};
+    \node [blockb, below of=init-range, node distance=2cm] (init-guess) {Guess at middle of range:\\\texttt{guess =  (min+max)/2 = 50\%}};
+    \node [block, below of=init-guess] (getDC) {calculate DC for\\upper and lower half\\of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
+    \node [blockb, right of=getDC, text width=8em, node distance=6cm] (repeat!) {Repeat\\ iteration step};
+    \node [decision, below of=getDC, node distance=3cm] (bigger) {which one is bigger?};
+    \node [block, left of=bigger, text width=9em, node distance=7cm, xshift=4cm, yshift=-2.5cm] (lower) {Neglect upper half:\\\texttt{max = guess}};
+    \node [block, right of=bigger, text width=9em, node distance=7cm, xshift=-4cm, yshift=-2.5cm] (upper) {Neglect lower half:\\\texttt{min = guess}};
+    \node [block, below of=bigger, yshift=-2.5cm] (next-guess) {New current guess at middle of new range:\\\texttt{guess =  (min+max)/2}};
+    \node [decision, below of=next-guess, node distance=2cm] (repeat) {Repeat?};
+    \node [blockb, below of=repeat] (fin) {End of iteration:\\\texttt{return best guess}};
+    % Draw edges
+    \path [line] (init-range) -- (init-guess);
+    \path [line] (init-guess) -- (getDC);
+    \path [line] (getDC) -- (bigger);
+    \path [line] (bigger.east)  to node {$DC_{up} > DC_{lo}$} (upper);
+    \path [line] (bigger.west)  to node [xshift=-3cm, yshift=0.8cm] {$DC_{up} < DC_{lo}$} (lower);
+    \path [line] (lower) -- (next-guess);
+    \path [line] (upper) -- (next-guess);
+    \path [line] (next-guess) -- (repeat);
+    \path [line] (repeat.east) -| node [xshift=1cm, yshift=1cm] {yes} (repeat!);
+    \path [line] (repeat!) -- (getDC);
+    \path [line] (repeat.south) to node {no} (fin);
+	\end{tikzpicture}
+	\caption{Iteration method, finding COM}
+\end{figure}
+
 First it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$.
 It starts off by assuming that $50\%$ is a reasonable guess for the number of pixels that show the rod and calculates the corresponding DC value.
-To find out whether more or less pixels would result in a better DC, it chooses two new guesses:
+Now, in the first iteration, to find out whether more or less pixels would result in a better DC, it considers two new guesses:
 One halfway from the lower limit ($0\%$) to its current guess ($50\%$) which is:
 
 \begin{align}
@@ -512,23 +557,22 @@ and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) whi
  \frac{100+50}{2}=75\%
 \end{align}
  
-Now the corresponding DC values are calculated and compared.
-If the lower percentage yields a better DC, the upper half of the range will be neglected in the next iteration, the new upper limit becomes the former guess ($50\%$).
-If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the new lower limit becomes the former guess ($50\%$).
 
-Now, at the start of the second iteration, the range is smaller (half of the entire range) and the new guess will be set to be exactly in its middle.
+The corresponding DC values are calculated and compared.
+If the lower number of pixels yields a better DC, the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
+If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
+At the end of the iteration, the value resulting in the higher DC is the new current guess.
+
+Now, at the start of the second iteration, the range is smaller (half of the entire range) and the current guess is set exactly in its middle.
 If, for example, the DC for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
 In that case, DC values for the lower half of that range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared to decide which half to eliminate in the third iteration.
 If, on the other hand, the DC for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
 In that case, DC values for $62,5\%$ and $82,5\%$ will be compared.
+
 The iteration continues until further steps yield no better DC values or a set number of steps has been performed.
-
 After the iteration process, the algorithm will return the COM which resulted in the best DC.
-Figure \ref{fig:COM_iteration} shows the DC values found in the course of the iteration method
-Figure \ref{fig:COM_iteration_flow} summarises the algorithm.
+Figure \ref{fig:COM_iteration} shows the DC values found in the course of the iteration method.
 
-\todo{flowchart for algorithms (send handwritten draft to Piotr)}
-\clearpage
 
 \begin{figure}[!thb]
   \begin{subfigure}[b]{1\textwidth}
