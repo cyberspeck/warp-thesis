@@ -137,10 +137,24 @@ The silicon oil (\textbf{\#17}) on, the other side, had a low signal compared to
 \todo{why T1 weighted sequence? why this particular sequence? Influence on signal of water/oil, components.}
 
 \section{Distortion}
+
+
+\subsection{Irregularities}
+
+In the case of a slice located at a plastic pane, the CT image will be mostly very bright, as the plastic results in a high intensity.
+Consequently, this slice will be marked as irregular as the average brightness differs greatly from the reference slice's.
+However, the MRI scan will not show such a increase in brightness at that location, as plastic is not visible for the MRI scanner.
+Here the MRI data will not be marked as irregular, provided there is no other cause for a change in brightness, like an air bubble.
+Such an absence of liquid would result in a drastic decrease of brightness and result in an irregular slice.
+In CT, on the other hand, an air bubble would hardly make a difference, as the surrounding plastic is far brighter than the contained liquid.
+
+
+
 %Gnerally this graphs are OK, but we discused before you left that there is need to comment of what we actually see on them, as you explained that to me. Also we dicussed that you could add a figure showing a particular slice on which a certain problem occures (why is the extra-high distortion dettected: a bubble or artefact). 
 
 %We also talked that the XY axes have to properly called, so on X distance from the middle instead of the slice etc. Based on this descriptoion we could write smth clever in the discussion.  
 
+To get a idea of the occurring distortion one should look at both the absolute value of coordinate shift and the dice-coefficient (DC).
 An air bubble might lead to a incorrect COM. Without looking at the dice-coefficient it's hard to tell why this distortion only appears to be present in a few slices.
 If both indicators show unexpected local irregularities, a conclusion might be easier to draw.
 
