@@ -32,6 +32,7 @@ CT	&		&		& --------
 \end{table}
 
 \subsection{MRI scanner - field distribution}
+\label{sec:magnetom}
 
 The Magnetom C! MRI scanner comes with a handbook which contains diagrams of the magnetic field strength (fig. \ref{fig:strength_side}), and its gradient (fig. \ref{fig:gradient_side}, \ref{fig:gradient_top}, and  \ref{fig:gradient_front}).
 Figure \ref{fig:scanner} shows an image and different views of the scanner and the planes along which the field strength and gradient are displayed.
@@ -175,6 +176,11 @@ See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
 The bottom part of each rod was sealed with a hot glued plastic plug, the top could be closed with a plastic screw.
 Frame and rods were already build and assembled before the author started working on this project.
 
+Additionally to the rods which would be used to assess the distortion, a number of vitamin-e pills were attached to the frame.
+These pills are visible in both CT and MRI images were used to align both scans.
+This way there is another way of checking the alignment in addition to the rods.
+\todo{show picture/CT-/MRI-scan of vitamin-e pills??}
+
 
 \begin{figure}[!bp]
 \centering
@@ -254,9 +260,7 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
  \item silicon oil
 \end{enumerate}
 
-% why those solutions??
-
-Being closed at one end and having a capillary shape (small diameter) makes it impossible for the rods to be filled by pouring in the liquid.
+Being closed at one end and having a capillary shape (small diameter) makes it impossible to fill the rods by simply pouring the liquid through the opening.
 Instead of adding the fluid at the top, it has to be injected starting at the bottom.
 This way the contained air would be pushed out by the injected liquid through the opening at the top.
 A thin plastic tube was inserted and used for injection, leaving enough room for the gas to escape.
@@ -266,15 +270,12 @@ In order to minimise the amount of gas dissolved, the liquids were brought to bo
 After injecting the solution in the rods, they were left to cool down.
 Before closing, the rods were topped up completely (no trapped air bubbles).
 The oil based liquids, \textbf{\#16} and \textbf{\#17}, were not brought to boil.
-Number \textbf{\#14} could be injected without problems, the solution remained fluid even after reaching room temperature.
-Number \textbf{\#15} on the other hand changed to a gel like consistence and clogged the tube right after the rod was filled. The tube could not be used again.
-
 
 
 \section{Sequences}
 \todo{elaborate!}
-Following the suggestions given in the Report of AAPM MR Subcommittee TG1 ``MR Acceptance Testing and
-Quality Control'' \cite{Jackson2009}, T1 weighted sequences were chosen to evaluate the possible solutions. (Table \ref{tab:settings})
+Following the suggestions given in the Report of AAPM MR Subcommittee TG1 "MR Acceptance Testing and
+Quality Control" \cite{Jackson2009}, T1 weighted sequences were chosen to evaluate the possible solutions. (Table \ref{tab:settings})
 
 \begin{table}[h]
 \centering
@@ -294,14 +295,14 @@ CT     & -   & -   & -   &
 % spyder
 
 In order to asses the distortion of the MRI scanner, a tool was programmed.
-It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} (``\textit{Digital Imaging and Communications in Medicine}'') files. \cite{Python, DICOM}
-\textit{SimpleITK} is a object-oriented ``C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby''. \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
-It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a ``free and open source software package for
-visualisation and medical image computing''. \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop images, quickly read values and visualise the results.
+It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
+\textit{SimpleITK} is a object-oriented "C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
+It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a "free and open source software package for
+visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop and resample images, quickly read values, and visualise the results.
 Documentation and code examples of SimpleITK can be found at \cite{InsightSoftwareConsortium, Kyriakou-SimpleITK}
 An alternative way to handle DICOM data in Python would be Pydicom. \cite{Pydicom, Kyriakou-Pydicom-VTK} 
 
-An extensive list of packages used to process data:
+This is an extensive list of python packages used to process data after using 3D Slicer:
 \begin{itemize}
  \item SimpleITK
  \item numpy
@@ -312,21 +313,22 @@ An extensive list of packages used to process data:
  \item os
 \end{itemize}
 
-\subsection{Processing MRI and CT scans}
+\subsection{Pre-processing MRI and CT scans}
+\label{sec:prep}
 
 % what application used to align CT and MRI
 Prior to analysing their data, the scans had to be prepared.
 Figure \ref{fig:data_prep} gives an impression how the steps performed affected the data.
 
 \begin{enumerate}[label=\textbf{Step \arabic*}]
-\item To start with, they were aligned in a way that yields maximum overlap especially in the centre of the image using \textit{MIRADA}.
-\item However, the MRI image had a lower resolution than the CT scan.
-Therefore, the MRI voxel's size were changed to match the CT voxels. Both images were resampled to CT resolution and exported using \textit{MIRADA}.
+\item After loading the CT and MRI scan into \textit{MIRADA}, they were aligned using the vitamin-e pills, yielding maximum overlap in the centre of the image.
+\item Next, as the MRI image had a lower resolution than the CT scan, the MRI scan was resampled.
+Its voxel's size were changed to match the CT voxels and both scans exported.
 \item Both layers (MRI and CT) were loaded into \textit{3D Slicer} (Versions: Slicer-4.5.0-1-linux-amd64, Slicer-4.6.2-win-amd64)
 \item Its module 'annotations' was used to set a new region of interest (ROI) to include only a single rod.
 \item With the module called 'crop volume' (setting: voxel based cropping) the scans were reduced to show only the selected ROI.
-\item Using the module 'resample scalar volume' a number of interpolated (setting: 'bspline') higher resolution copies were created.
-\item All data sets and the cropped original CT/MRI images were exported with 'create a dicom series' and saved in separate folders.
+\item Using the module 'resample scalar volume' a number of interpolated (setting: 'bspline') higher resolution pairs (CT/MRI) were created.
+\item All new pairs and the cropped original CT/MRI pair were exported with 'create a dicom series' and saved in a separate folder each.
 \end{enumerate}
 
 \begin{figure}[!tbp]
@@ -336,12 +338,13 @@ Therefore, the MRI voxel's size were changed to match the CT voxels. Both images
 \label{fig:data_prep}
 \end{figure}
 
-After this procedure a number of data sets based on the original CT and MRI was available, which all had the same number of slices along the z-axis parallel to the phantom's rods.
-Each pair (CT+MRI) has the same pixel spacing (/resolution) in x and y direction.
+After this procedure a number of pairs based on the original CT and MRI were available, all of which had the same number of slices along the z-axis parallel to the phantom's rods.
+They only differ in the number of pixels making up each slice, their resolution varying from the original up to a hundred times finer.
+Each pair (CT/MRI) has the same pixel spacing (and resolution) in x and y direction.
 See table \ref{tab:spacing} for more details.
 Figure \ref{fig:resample} depicts 3 CT/MRI scans of a single rod (axial) with different resolutions.
-``x1'' stands for the original CT scan resolution (MRI resampled to match).
-``x4'' is a resolution resulting in 1 pixel being split in 4 smaller pixels, ``x9'' in 9, and so on and so forth.
+"x1" stands for the original CT scan resolution (MRI resampled to match).
+"x4" is a resolution caused by 1 pixel being split in 4 smaller pixels, "x9" in 9, and so on and so forth.
 For better visibility, images shown as figures in this work are printed with inverted colours.
 Dark pixels have a high density/intensity value, white pixels are equivalent to air (low density/intensity).
 
@@ -406,44 +409,47 @@ x100   & 0.60 & 0.2 	& 0.1
 \subsection{Capabilities}
 
 The developed software tool is not able to automatically detect individual rods shown in a CT or MRI scan.
-Instead the acquired 3D images have to be cropped to depict only a single rod.
+Instead the acquired 3D images have to be cropped to depict only a single rod (see section \ref{sec:prep})
 
-The python script can:
+The python script can be used to:
 \begin{itemize}
  \item de-noise the image data
- \item accepts coordinates to be used as seeds, enabling it to separate bright areas which are not connected ('masking' might be used as future method to automatically detect individual rods)
- \item find slices which show irregularities and mark those as such
- \item calculate the centroid coordinates along the rod, used to
- \item measure the local distortion
-  \subitem location shift ( \textbf{``warp''})
-  \subitem dice coefficient ( \textbf{``DC''}) describing the roundness
- \item plot individual rod slices
-  \subitem overlaying one or two centroid coordinates
-  \subitem and save it as ``.png'' file
- \item change the pixel values to reflect the distortion occurring along a rod (visualisation)
- \item write the calculated numbers to a ``.txt'' file
+ \item separate bright areas which are not connected ('masking' might be used as future method to automatically detect individual rods)
+ \item find and mark slices which show irregularities
+ \item calculate the centroid coordinates along the rod
+ \item measure the local distortion described by the
+  \subitem location shift ( \textbf{"warp"})
+  \subitem dice coefficient ( \textbf{"DC"} equivalent to roundness)
+ \item visualise individual rod slices
+ \item plot the average/peak brightness, warp, or DC along the rod
+ \item write the warp and DC values for each slice in a combined ".txt" file
+ \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation)
 \end{itemize}
-
-\subsubsection{Irregularities}
-
-When the script loads the image data it also asks for a reference slice.
-This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
-It is the user's responsibility to find one that is free from any such objects and set it tp be the reference slice.
-Ideally, it is located close to the iso-centre and has a brightness that is representative for the whole image.
-
-To decide whether a slice is 'irregular', it's average brightness will be compared to the reference slice's.
-If the difference exceeds a certain value, the slice will be marked as irregular and consequently not used to calculate its DC or COM.
-Instead all associated values will be set to '$-1$'.
 
 \subsubsection{Measuring distortion}
 
-Two phenomena were chosen to reflect the amount of distortion occurring in MRI scans.
-The distance which the rod appears to be shifted in the MRI scan compared to the CT scan in a particular slice is what will be referred to as \textbf{``warp''}.
-The rod's deformation (deviation from circular profile) in a particular slice will be described using the dice-coefficient \textbf{``DC''} (also known as Sorensen-Index).
-\\
 Since the rods have a cylindrical shape, distortion can only be assessed in radial direction.
-To make calculations easier, the z-coordinate was put parallel to the rods, x and y radial.
+The z-coordinate is parallel to the rods, x and y are radial.
 Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (and plastic rod in CT) surrounded by black pixels (air).
+\\
+Two phenomena were chosen to reflect the amount of distortion occurring in each slice of the MRI scans.
+The distance which the rod appears to be shifted in the MRI slice compared to the CT slice is referred to as \textbf{"warp"}.
+The rod's deformation (deviation from circular profile) is described using the dice-coefficient \textbf{"DC"} (also known as Sorensen-Index).
+
+\subsubsection{Detection of irregularities}
+
+When the script loads the image data it also asks for a reference slice.
+This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
+It is the user's responsibility to chose one that is free from any such objects as reference slice.
+Ideally, it is located near the iso-centre and has a brightness that is representative for the whole image.
+
+To decide whether a slice is "irregular", it's average brightness will be compared to the reference slice's.
+If the difference exceeds a certain value, the slice will be marked as irregular and consequently won't be used to calculate its DC or COM.
+Instead these and the values describing the location shift will be set to "$-1$", indicating that no meaningful value could be obtained.
+As the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers, these are easily understood to be invalid, indicating that the particular slice was marked as "irregular".
+The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
+To be consistent with the other calculated numbers, they are still set to "$-1$".
+The other values associated with the slice and discontinuities (values jumping to exactly "-1") where they meet neighbouring "regular" slices also indicate that this value is not representing the true distortion.
 
 \subsection{Calculation: dice-coefficient (DC)}
 
@@ -460,7 +466,7 @@ The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 \end{align}
 
-The implementation into python is based on the open source python package ``Medpy''. \cite{MedPy} A part of it's module called ``metric'' was adapted. \cite{MedPy_dc-code}
+The implementation into python is based on the open source python package "Medpy". \cite{MedPy} A part of it's module called "metric" was adapted. \cite{MedPy_dc-code}
 All pixels above a certain threshold will be counted as input A. The reference B is a circle whose midpoint is placed at the centre of mass (COM).
 
 The calculation of the DC is done by comparing an binary image to a circle. The position of the circle's centre and its radius is highly influencing the outcome.
@@ -473,8 +479,8 @@ To calculate the location shift between rods shown in CT and MRI, the coordinate
 The x- and y-shift (\textit{warpXY}) measured in each slice was saved in an array.
 Furthermore, the absolute value of the coordinate shift (\textit{warpMagnitude}) was calculated.
 \\
-The calculation of the COM is done with help of the ``scipy'' python package.
-It's module ``ndimage'' contains the function ``$center\_of\_mass()$'', which returns the COM's coordinates of a given input array.
+The calculation of the COM is done with help of the "scipy" python package.
+It's module "ndimage" contains the function "$center\_of\_mass()$", which returns the COM's coordinates of a given input array.
 The values assigned to voxels in CT images lie in the range from -1024 HU (air) to around 200 HU (plastic rod).
 Before a meaningful result can be obtained, the values need to be shifted to be $>$ 0.
 Additionally, only pixels representing the rod or the liquid should be used for the calculation.

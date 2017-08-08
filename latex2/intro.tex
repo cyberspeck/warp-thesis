@@ -353,39 +353,6 @@ Studies have shown that delineating certain types of tumours, for example prosta
 Whereas in diagnostics, MRI scans might be sufficient, radio therapy treatment planning needs more/other information about the regions surrounding the tumour.
 MRI lacks some of those insights, which is why CT is still an essential part for external beam radiation therapy. (see \ref{sec:planning})
 
-\subsection{Non morphologic Imaging}
-
-
-\subsubsection{Diffusion Weighed imaging}
-% https://www.youtube.com/watch?v=J_aamnpRJE8
-% mri - from picture to proton S. 331 (im pdf auf 344)
-Diffusion weighted (DW) imaging quantifies molecular diffusion in the body.
-This imaging technique uses MRI technology slightly different:
-Additionally to the gradients needed to select a slice (strength $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two long strong consecutive and opposite gradients (strength $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
-After those two gradients (which, actually, have to be applied in all three Cartesian directions), the remaining signal (net magnetisation) is measured by the receiver coil.
-
-Molecules which are restricted in their movement will experience two equally strong but opposite magnetic fields.
-The first will cause them to precess with a certain speed (linear with field strength), effectively changing their phase.
-The second will cause them to precess exactly the other way around (same strength, but other direction), effectively returning them to their initial state.
-Now, they will again be in phase and result in a net magnetisation which is not zero, visible as bright areas on the scan.
-
-Those molecules which are free to move, however, will not experience a constant field strength.
-As they move through the body they will precess at varying speeds during the first and then at different speeds during the second gradient.
-As a result, they will be out of phase when the net magnetisation is measured by the receiver coil, not causing bright areas in the scan.
-
-DW imaging can be used to diagnose acute strokes (brain infarct), because areas with restricted diffusion (blocked blood flow) show a strong signal compared to healthy tissue with normal diffusion.
-Since the time necessary to allow the molecules to move during the two gradients is relatively long, the image will naturally be $T_2$ weighted.
-This is taken into account by creating a second image which is also $T_2$ weighted, but does not apply two consecutive opposite gradients.
-The difference between the DW and the not DW weighted sequences reflects the actual contribution of diffusion (apparent diffusion coefficient - ADC).
-
-\todo{Add more? (Perfusion Spectroscopy, fMRI?)}
-%https://www.youtube.com/watch?v=o6gqqeDfKGM
-
-%Functional MRI (fMRI) is another ingenious imaging technique which enables doctors to 'watch the brain thinking'.
-%It is based on the BOLD (Blood Oxygenation Level Dependent) effect, the fact that deoxygenated blood is paramagnetic and oxygenated blood diamagnetic.
-%This means that deoxygenated blood looses its signal in the transverse plane quicker (low signal) than oxygenated blood (higer signal).
-%MR signal than fully oxygenated blood
-%Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
 
 \subsubsection{Image Quality}
 Contrary to CT, MRI is prone to distortion, due to field inhomogeneities.
@@ -432,7 +399,7 @@ Such subjects should be imaged with caution. \cite{Maidment2014}
 \subsubsection{Open bore MRI scanners}
 \todo{low fields -> less distortion??}
 % advantages of low tesla, brachytherapy
-The radiation oncology department of the Vienna General Hospital (AKH) is equipped with an $0.35  T$ open-bore, c-arm MRI scanner.
+The radiation oncology department of the Vienna General Hospital (AKH) is equipped with an $0.35  T$ open-bore, c-arm MRI scanner (see Section \ref{sec:magnetom} for more details).
 This open design has proven to drastically improve the well-being of patients who experience anxiety in closed-bore scanners which is why the number of incomplete MR examinations due to a claustrophobic events is low. \cite{Enders2011a, Bangard2007}
 Besides, patients who wouldn't fit in closed designed scanners can be imaged.
 Furthermore, brachytherapy patients can be placed in the scanner with applicators attached.
@@ -450,6 +417,40 @@ Permanent magnets might be weaker, but do not require constant cooling.
 Low fields allow facilities to build smaller rooms and magnetic objects are less dangerous.
 
 
+\subsubsection{Diffusion Weighed Imaging - an example for non morphologic Imaging}
+
+Despite the fact this type of MRI imaging was not used for this thesis, it will be mentioned here as an example of the vast range of measurements possible with MRI techniques.
+\\
+% https://www.youtube.com/watch?v=J_aamnpRJE8
+% mri - from picture to proton S. 331 (im pdf auf 344)
+Diffusion weighted (DW) imaging quantifies molecular diffusion in the body.
+This imaging technique uses MRI technology slightly different:
+Additionally to the gradients needed to select a slice (strength $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two long strong consecutive and opposite gradients (strength $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
+After those two gradients (which, actually, have to be applied in all three Cartesian directions), the remaining signal (net magnetisation) is measured by the receiver coil.
+
+Molecules which are restricted in their movement will experience two equally strong but opposite magnetic fields.
+The first will cause them to precess with a certain speed (linear with field strength), effectively changing their phase.
+The second will cause them to precess exactly the other way around (same strength, but other direction), effectively returning them to their initial state.
+Now, they will again be in phase and result in a net magnetisation which is not zero, visible as bright areas on the scan.
+
+Those molecules which are free to move, however, will not experience a constant field strength.
+As they move through the body they will precess at varying speeds during the first and then at different speeds during the second gradient.
+As a result, they will be out of phase when the net magnetisation is measured by the receiver coil, not causing bright areas in the scan.
+
+DW imaging can be used to diagnose acute strokes (brain infarct), because areas with restricted diffusion (blocked blood flow) show a strong signal compared to healthy tissue with normal diffusion.
+Since the time necessary to allow the molecules to move during the two gradients is relatively long, the image will naturally be $T_2$ weighted.
+This is taken into account by creating a second image which is also $T_2$ weighted, but does not apply two consecutive opposite gradients.
+The difference between the DW and the not DW weighted sequences reflects the actual contribution of diffusion (apparent diffusion coefficient - ADC).
+
+%\todo{Add more? (Perfusion Spectroscopy, fMRI?)}
+%https://www.youtube.com/watch?v=o6gqqeDfKGM
+
+%Functional MRI (fMRI) is another ingenious imaging technique which enables doctors to 'watch the brain thinking'.
+%It is based on the BOLD (Blood Oxygenation Level Dependent) effect, the fact that deoxygenated blood is paramagnetic and oxygenated blood diamagnetic.
+%This means that deoxygenated blood looses its signal in the transverse plane quicker (low signal) than oxygenated blood (higer signal).
+%MR signal than fully oxygenated blood
+%Nevertheless, high field scanners are key to developing new methods such as functional MRI (fMRI) of the brain \cite{Duyn2012} and observing ``metabolic reactions occurring in a human body in addition to producing very precise images of body structures'' \cite{Wada2010}.
+
 
 \section{External Beam Radiation Therapy}
 \label{sec:planning}
@@ -463,7 +464,7 @@ This may result in energy being transferred to cells all the way from the point 
 Charged particles (e.g. protons or carbon ions) minimise the damage done to healthy tissue due to their distinctive behaviour in energy loss called ``Bragg Peak''.
 They release most of their energy only shortly before being stopped completely.
 \cite{Nakamura2010} This effect can be used to spare tissue lying behind the tumour from radiation entirely and also reduce the amount of energy transferred to those lying before. \cite{Paganetti2005}
-A comparison betweenthe behaviour of x-rays and protons is shown in figure \ref{fig:bragg}.
+A comparison between the behaviour of x-rays and protons is shown in figure \ref{fig:bragg}.
 
 \begin{figure}[!h]
 	\centering
@@ -476,6 +477,15 @@ A comparison betweenthe behaviour of x-rays and protons is shown in figure \ref{
 While travelling through matter both types of radiation release energy mostly due to coulomb interactions with the outer shell electrons of atoms.
 Knowing the electron density of the targeted tissue area is therefore essential.
 In order to reach a specific penetration depth, the particles' initial energy has to be chosen accordingly.
+The necessity to treat the tumour with a required amount of radiation leads to a Radiation Therapy Treatment Plan which can be visualised (see Figure \ref{fig:plan}).
+
+\begin{figure}[!tbh]
+	\centering
+	\includegraphics[width=0.6\textwidth]{abdoplan.jpg}
+	\caption{Example of Radio Therapy Plan: colored areas represent different values of radiation administered during treatment \todo{use own image!}}
+	\label{fig:plan}
+\end{figure}
+
 
 \clearpage
 \subsection{Role of CT}
@@ -494,9 +504,6 @@ Distorted images might lead to wrong calculations of how much energy is needed f
 If, for example, bone structure is depicted as thicker than it really is, RTTP would suggest a treatment which would deposit more energy behind the tumour than intended. The opposite holds for cases where tissue appears to be thinner, which would result in areas lying before the tumour being irradiated.
 This is why CT images are preferred as they show little to no distortion.
 
-\vspace{4cm}
-\textit{Image of RTTP}
-\vspace{2cm}
 
 \subsection{Role of MRI}
 Today RTTP often combines CT images with data acquired using Magnetic Resonance Imaging (MRI).
