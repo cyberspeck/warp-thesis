@@ -177,7 +177,7 @@ The bottom part of each rod was sealed with a hot glued plastic plug, the top co
 Frame and rods were already build and assembled before the author started working on this project.
 
 Additionally to the rods which would be used to assess the distortion, a number of vitamin-e pills were attached to the frame.
-These pills are visible in both CT and MRI images were used to align both scans.
+These pills are visible in both CT and MRI images and were used to align them (see section \ref{sec:prep}).
 This way there is another way of checking the alignment in addition to the rods.
 \todo{show picture/CT-/MRI-scan of vitamin-e pills??}
 
@@ -192,14 +192,14 @@ This way there is another way of checking the alignment in addition to the rods.
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=\textwidth]{slicer3D/full_phantom/axial_CT_pane.png}
-\caption{plastic pane, no rods inserted}
+\caption{An axial view of one of three plastic panes that make up the frame of the phantom. This scan shows how the pane would look like with no rods inserted.}
 \label{fig:axial_CT_pane}
 \end{figure}
 
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=0.8\textwidth]{slicer3D/full_phantom/rod_schematic.png}
-\caption{empty plastic rod, schematic (not true proportions); }
+\caption{A schematic of an empty plastic rod as they are used for the phantom. On the left the rod ends with a hot glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
 \label{fig:rod_schematic}
 \end{figure}
 
@@ -235,7 +235,7 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
 \#16 & \multicolumn{2}{r}{Motor Oil:}   & \multicolumn{4}{l}{\textit{Castrol Power1}}      \\
 \#17 & \multicolumn{2}{r}{Silicon Oil:} & \multicolumn{4}{l}{\textit{Charge: 15HLVY023}}   \\ \bottomrule
 \end{tabular}
-\caption{composition of tested solutions\\(components in $g/L$; exception: Primovist in volume-\%)}
+\caption{The composition of all tested solutions.\\(components in $g/L$; exception: Primovist in volume-\%)}
 \label{tab:solutions}
 \end{table}
 
@@ -400,7 +400,7 @@ x100   & 0.60 & 0.2 	& 0.1
     \caption{MRI x100}
     \label{fig:MRI_x100}
   \end{subfigure}
-  \caption{CT/MRI: axial image of single rod, filling \#5  (inverted colours)}
+  \caption{CT/MRI axial images of the same rod (filling \#5, inverted colours). The images on the very left show the original (CT) resolution, the resolution of those in the middle and the right were increased by resampling (9 times and 100 times finer)}
   \label{fig:resample}
 \end{figure}
 \clearpage
@@ -451,14 +451,12 @@ The values representing x- and y-shift, on the other hand, are allowed to be neg
 To be consistent with the other calculated numbers, they are still set to "$-1$".
 The other values associated with the slice and discontinuities (values jumping to exactly "-1") where they meet neighbouring "regular" slices also indicate that this value is not representing the true distortion.
 
-\subsection{Calculation: dice-coefficient (DC)}
+\subsection{Calculation: dice coefficient (DC)}
+\label{sec:DC}
 
-The dice-coefficient was chosen as indicator for the deviation from a circular profile.
-This value was calculated for the CT and MRI scans in every slice and saved in an array.
-The DC ranges from 0 to 1.
-A value of 1 indicates a perfect circular shape.
-A low DC, on the other hand, means the shape differs greatly from a circle and could be caused by many things such as:
-little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of rod from background; a small circle with a radius close to a only a few pixels.
+The DC was chosen as indicator for the deviation from a circular profile.
+The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of it's module called "metric" was adapted. \cite{MedPy_dc-code}
+It was calculated individually for the CT and MRI scans in each slice.
 
 The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 
@@ -466,14 +464,35 @@ The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 \end{align}
 
-The implementation into python is based on the open source python package "Medpy". \cite{MedPy} A part of it's module called "metric" was adapted. \cite{MedPy_dc-code}
-All pixels above a certain threshold will be counted as input A. The reference B is a circle whose midpoint is placed at the centre of mass (COM).
+The implemented function compares a binary image (input A) to a circle (reference B).
+In order to reduce the true image to a binary image A, we have to reduce the number of possible pixel values to 2.
+First, a copy of the original picture is created where all (bright) pixels representing the rod are set to the value of "1".
+Those located in the surrounding (dark) area are set to "0".
+A threshold discriminates between pixels which are part of the rod and those which are not (see section \ref{sec:COM} for details on how the threshold is calculated).
+This way the new binary image A still shows were the rod is, but it lost all information on the actual brightness.
 
-The calculation of the DC is done by comparing an binary image to a circle. The position of the circle's centre and its radius is highly influencing the outcome.
-Both the circle's centre and its radius were varied during the distortion assessment.
+Reference B is a circle with its midpoint placed at the centre of mass (COM) of the rod.
+The COM is calculated using just those pixels which exceed the threshold.
+This way the script tries to place the reference circle B in the centre of the input image A.
+The position of the circle's centre and its radius highly influence the outcome (see section \ref{sec:distortion}).
+
+The DC ranges from 0 to 1.
+A value of 1 indicates a perfect circular shape.
+A low DC, on the other hand, means the shape differs greatly from a circle and could be caused by many things such as:
+little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of rod from background; a small circle with a radius close to a only a few pixels.
+
+The obvious choice for the radius of the reference circle B is to use the true size of the physical rod.
+For CT images this would be 4mm, for MRI images it would be 2mm.
+
+Additionally, a small iteration was developed that tries a range of other radii.
+For CT images it chooses values between 3.5 and 4.5, for MRI it varies from 1.8 to 2.8.
+This boundaries could be changed in the future.
+In the end the function returns the highest DC that could be obtained.
+
 
 
 \subsection{Calculation: warp \& centre of mass (COM)}
+\label{sec:COM}
 
 To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
 The x- and y-shift (\textit{warpXY}) measured in each slice was saved in an array.
@@ -505,7 +524,7 @@ Calculating the number of pixels which make up the more or less circular profile
 
 For CT images $radius = 4mm$, in MRI scans $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
 Next the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the COM.
-
+The value of the darkest pixel that is still counted as part of the rod is saved as \textbf{threshold} for future calculations (e.g. finding the DC associated with the COM, see section \ref{sec:DC}).
 \textbf{add 2:}
 This algorithm is an iteration method.
 Figure \ref{flo:COM-iter} shows in what order the scripts executes individual steps during the iteration.
@@ -519,7 +538,6 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
 
 \begin{figure}[!h]
     \centering
-    \label{flo:COM-iter}
 	\begin{tikzpicture}[node distance = 3cm, auto]
     % Place nodes
     \node [blockb] (init-range) {Start with whole range:\\\texttt{min=0\%; max=100\%}};
@@ -546,6 +564,7 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     \path [line] (repeat.south) to node {no} (fin);
 	\end{tikzpicture}
 	\caption{Iteration method, finding COM}
+	\label{flo:COM-iter}
 \end{figure}
 
 First it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$.
@@ -577,7 +596,8 @@ In that case, DC values for $62,5\%$ and $82,5\%$ will be compared.
 
 The iteration continues until further steps yield no better DC values or a set number of steps has been performed.
 After the iteration process, the algorithm will return the COM which resulted in the best DC.
-Figure \ref{fig:COM_iteration} shows the DC values found in the course of the iteration method.
+The percentage of pixels that led to this DC is equivalent to a threshold value which is saved for future calculations.
+Figure \ref{fig:COM_iteration} shows the DC values found in the course of trying different percentages during the iteration method.
 
 
 \begin{figure}[!thb]
