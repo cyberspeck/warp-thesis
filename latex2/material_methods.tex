@@ -176,10 +176,9 @@ See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
 The bottom part of each rod was sealed with a hot glued plastic plug, the top could be closed with a plastic screw.
 Frame and rods were already build and assembled before the author started working on this project.
 
-Additionally to the rods which would be used to assess the distortion, a number of vitamin-e pills were attached to the frame.
+Additionally to the rods which would be used to assess the distortion, a number of vitamin-e pills were attached to the frame (see figure \ref{fig:pills}).
 These pills are visible in both CT and MRI images and were used to align them (see section \ref{sec:prep}).
 This way there is another way of checking the alignment in addition to the rods.
-\todo{show picture/CT-/MRI-scan of vitamin-e pills??}
 
 
 \begin{figure}[!bp]
@@ -201,6 +200,25 @@ This way there is another way of checking the alignment in addition to the rods.
 \includegraphics[width=0.8\textwidth]{slicer3D/full_phantom/rod_schematic.png}
 \caption{A schematic of an empty plastic rod as they are used for the phantom. On the left the rod ends with a hot glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
 \label{fig:rod_schematic}
+\end{figure}
+
+
+\begin{figure}[!thb]
+\centering
+  \begin{subfigure}[b]{0.45\textwidth}
+  \centering
+    \includegraphics[scale=0.6]{slicer3D/pills_here/pills_CT.png}
+    \caption{CT scan}
+    \label{fig:CT_x1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.45\textwidth}
+  \centering
+      \includegraphics[scale=0.6]{slicer3D/pills_here/pills_MRI.png}
+    \caption{MRI scan}
+    \label{fig:MRI_x100}
+  \end{subfigure}
+  \caption{CT/MRI coronal images showing rods and 3 attached vitamin-e pills. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
+  \label{fig:pills}
 \end{figure}
 
 \clearpage
@@ -549,7 +567,7 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     \node [block, right of=bigger, text width=9em, node distance=7cm, xshift=-4cm, yshift=-2.5cm] (upper) {Neglect lower half:\\\texttt{min = guess}};
     \node [block, below of=bigger, yshift=-2.5cm] (next-guess) {New current guess at middle of new range:\\\texttt{guess =  (min+max)/2}};
     \node [decision, below of=next-guess, node distance=2cm] (repeat) {Repeat?};
-    \node [blockb, below of=repeat] (fin) {End of iteration:\\\texttt{return best guess}};
+    \node [blockb, text width=20em, below of=repeat] (fin) {End of iteration:\\\texttt{return best DC\\ return best guess (as threshold)}};
     % Draw edges
     \path [line] (init-range) -- (init-guess);
     \path [line] (init-guess) -- (getDC);

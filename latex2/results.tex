@@ -190,6 +190,158 @@ All results were obtained by manually cropping the 3D image to depict only a sin
 %As described later, resolution might influence the efficiency of the distortion assessment.#	
 %Therefore all calculations were done with the original resolution and interpolated images that have a higher resolution.
 
+\subsection{rod \#5}
+
+The first scans were not only used to asses the brightness of the different solutions, but also to calculate occurring distortion.
+As an example, the rod containing liquid \#5 was analysed.
+Table \ref{tab:spit-out-5} shows the most interesting areas of the rod.
+
+
+The obtained dice coefficient varies not only because of the circle's centre and the radius, it also depends on the images resolution.
+Figure \ref{fig:CT_dc} and \ref{fig:MR_dc} show the DC (optimised) obtained using CT and MRI scans over resample rate.
+
+ \begin{table}[p]
+    \centering
+    \rotatebox{90}{
+      \begin{minipage}{\textheight}\footnotesize
+        \centering
+ \begin{tabular}{rr|lll|ll|llll}
+ slice	& dist [$mm$]	& $warp_x$ [$mm$]	& $warp_y$ [$mm$]	& $warpMagnitude$ [$mm$]	& $DC_{CT}$	& $DC^*_{CT}$	& $DC_{MR}$	& $DC^*_{MR}$	& $DC_{MR(CT-COM)}$	& $DC^*_{MR(CT-COM)}$\\ \hline
+ 0      & -183			& -0.1032			& -1.1191			& 1.1239					& 0.9942	& 0.9942		& 0.7926	& 0.8213		& 0.5894			& 0.5908			\\
+ 1      & -182			& -0.1192			& -1.1175			& 1.1238					& 0.9932	& 0.9932		& 0.8031	& 0.8319		& 0.5953			& 0.5968			\\
+ 2      & -181			& -0.1265			& -1.1149			& 1.122 					& 0.9922	& 0.9922		& 0.8128	& 0.8418		& 0.6031			& 0.6049			\\
+ :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
+ \hline
+ :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
+ 171    & -12 			& 0.0011 			& -0.6894			& 0.6894					& 0.9883	& 0.9883		& 0.9498	& 0.9475		& 0.7543			& 0.7548			\\
+ 172    & -11 			& 0.0075 			& -0.6827			& 0.6828					& 0.9847	& 0.9847		& 0.949 	& 0.9475		& 0.7541			& 0.7554			\\
+ 173    & -10 			& -1     			& -1     			& -1    					& -1    	& -1    		& 0.9498	& 0.9475		& -1    			& -1    			\\
+ :      & :   			& :      			& :      			& :     					& :     	&       		&       	& :     		& :     			& :     			\\
+ \hline &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
+ :      & :   			& :      			& :      			& :     					& :     	&       		&       	& :     		& :     			& :     			\\
+ 193    & 10  			& -1     			& -1     			& -1    					& -1    	& -1    		& 0.9522	& 0.9539		& -1    			& -1    			\\
+ 194    & 11  			& 0.0368 			& -0.7094			& 0.7104					& 0.9834	& 0.9834		& 0.9542	& 0.9536		& 0.7611			& 0.7634			\\
+ 195    & 12  			& 0.0353 			& -0.7052			& 0.706 					& 0.9852	& 0.9852		& 0.9546	& 0.954 		& 0.7614			& 0.7637			\\
+ :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
+ \hline
+ :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
+ 301    & 118 			& 0.3212 			& -0.8604			& 0.9184					& 0.9843	& 0.9843		& 0.3505	& 0.3681		& 0.3417			& 0.3496			\\
+ 302    & 119 			& 0.4215 			& -1.1644			& 1.2383					& 0.9859	& 0.9859		& 0.03  	& 0.0318		& 0.03  			& 0.0318			\\
+ 303    & 120 			& -1     			& -1     			& -1    					& 0.9864	& 0.9864		& -1    	& -1    		& 0     			& 0     			\\
+ 304    & 121 			& -1     			& -1     			& -1    					& 0.9877	& 0.9877		& -1    	& -1    		& 0     			& 0     			\\
+ 305    & 122 			& -1     			& -1     			& -1    					& 0.9897	& 0.9897		& -1    	& -1    		& 0     			& 0     			\\
+ 306    & 123 			& -1     			& -1     			& -1    					& 0.9891	& 0.9891		& -1    	& -1    		& 0     			& 0     			\\
+ 307    & 124 			& -1     			& -1     			& -1    					& 0.991 	& 0.991 		& -1    	& -1    		& 0     			& 0     			\\
+ 308    & 125 			& -1     			& -1     			& -1    					& 0.9873	& 0.9873		& -1    	& -1    		& 0     			& 0     			\\
+ 309    & 126 			& -1     			& -1     			& -1    					& 0.9918	& 0.9918		& -1    	& -1    		& 0     			& 0     			\\
+ 310    & 127 			& 0.3916 			& -2.0083			& 2.0461					& 0.9868	& 0.9868		& 0.0315	& 0.0334		& 0.0045			& 0     			\\
+ 311    & 128 			& 0.3627 			& -1.9906			& 2.0233					& 0.9933	& 0.9933		& 0.1149	& 0.1215		& 0.0546			& 0.044 			\\
+ :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
+ \hline
+ :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
+ 393    & 210 			& 0.1105 			& -0.2561			& 0.2789					& 0.9862	& 0.9862		& 0.9132	& 0.9274		& 0.8751			& 0.8864			\\
+ 394    & 211 			& 0.117  			& -0.2628			& 0.2877					& 0.994 	& 0.994 		& 0.9132	& 0.9274		& 0.8768			& 0.889 			\\
+ 395    & 212 			& 0.1237 			& -0.2453			& 0.2747					& 0.9944	& 0.9944		& 0.9127	& 0.9278		& 0.8771			& 0.8894			 
+ \end{tabular}
+        \caption{rod \#5: script generated data}
+        \label{tab:spit-out-5}
+      \end{minipage}
+    }
+  \end{table}
+ 
+
+
+\begin{figure}[!tbp]
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@0_centroids.png}
+    \caption{CT @ 0}
+    \label{fig:CT_x100_centroids@0}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@150_centroids.png}
+    \caption{CT @ 150}
+    \label{fig:CT_x100_centroids@150}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@304_centroids.png}
+    \caption{CT @ 304}
+    \label{fig:CT_x100_centroids@304}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@0_centroids.png}
+    \caption{MRI @ 0}
+    \label{fig:MR_x100_centroids@0}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@150_centroids.png}
+    \caption{MRI @ 150}
+    \label{fig:MR_x100_centroids@150}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.32\textwidth}
+    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@304_centroids.png}
+    \caption{MRI @ 304}
+    \label{fig:MR_x100_centroids@304}
+  \end{subfigure}
+  \caption{MRI x100 scan of rod filled with \#5. The dark blue dot represents the MRI centroid, the bright red dot represents the CT centroid.
+  			\\ Slice 150 is located approximately at the isocentre, 0 on the very end of the image, 304 on the other but also close to an air bubble.}
+  \label{fig:MR_x100_centroids}
+\end{figure}
+
+
+\begin{figure}[!bp]
+  \centering
+  \includegraphics[scale=0.6]{python/ph2/warp/warpXY_x100--.png}
+  \caption{warp XY [$mm$], CT-MRI x100}
+  \label{fig:warpXY_x100}
+\end{figure}
+
+\begin{figure}[!tp]
+    \centering
+    \includegraphics[scale=0.6]{python/ph2/warp/warpMagnitude_x100--.png}
+    \caption{warp Magnitude [$mm$], CT-MRI x100}
+    \label{fig:warpMagnitude_x100}
+\end{figure}
+\begin{figure}[!bp]
+    \centering
+    \includegraphics[scale=0.6]{python/ph2/dice/CT_MR_x100_DC.png}
+    \caption{DC (optimised) for CT \& MRI \& MRI (using CT COM)}
+    \label{fig:CT_MR_x100_DC}
+\end{figure}
+
+\begin{figure}[!bp]
+  \centering
+  \includegraphics[scale=0.6]{python/ph2/dice/CT-51iter.png}
+  \caption{CT: DC of varied radii \& resolutions}
+  \label{fig:CT_dc}
+\end{figure}
+
+\begin{figure}[!tbp]
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \includegraphics[scale=0.6]{python/ph2/dice/MR-51iter.png}
+    \caption{MRI: DC of varied radii \& resolutions}
+    \label{fig:MR_dc-opti}
+  \end{subfigure}
+  \begin{subfigure}[!b]{\textwidth}
+    \centering
+    \includegraphics[scale=0.6]{python/ph2/dice/MR_CT-COM_51iter.png}
+    \caption{MRI: DC of varied radii \& resolutions (using CT-COM)}
+    \label{fig:MR_CT-COM_dc-opti}
+  \end{subfigure}
+  \caption{}
+  \label{fig:MR_dc}
+\end{figure}
+
+\clearpage
+
+
+
+\subsection{rod \#17}
+
+After deciding which of the possible liquids might be a suitable choice for future use of the phantom, another set of MRI/CT scan was taken.
+This second data set shows the rod conatining liquid \#17.
+Again it was analysed using the developed script.
+Table \ref{tab:spit-out-17} shows the most interesting areas of the rod.
 
 \begin{table}[p]
    \centering
@@ -238,166 +390,11 @@ slice	& dist [$mm$]	& $warp_x$ [$mm$]	& $warp_y$ [$mm$]	& $warpMagnitude$ [$mm$]
 611   	& 250 			& 3.2212	& 0.7379 	& 3.3047			& 0.9878	& 0.9878	& 0.6487	& 0.9392		& 0.2189			& 0.3063				
 \end{tabular}
        \caption{rod \#17: script generated data}
-       \label{tab:spit-out}
+       \label{tab:spit-out-17}
      \end{minipage}
    }
  \end{table}
- 
- 
- 
- \begin{table}[p]
-    \centering
-    \rotatebox{90}{
-      \begin{minipage}{\textheight}\footnotesize
-        \centering
- \begin{tabular}{rr|lll|ll|llll}
- slice	& dist [$mm$]	& $warp_x$ [$mm$]	& $warp_y$ [$mm$]	& $warpMagnitude$ [$mm$]	& $DC_{CT}$	& $DC^*_{CT}$	& $DC_{MR}$	& $DC^*_{MR}$	& $DC_{MR(CT-COM)}$	& $DC^*_{MR(CT-COM)}$\\ \hline
- 0      & -183			& -0.1032			& -1.1191			& 1.1239					& 0.9942	& 0.9942		& 0.7926	& 0.8213		& 0.5894			& 0.5908			\\
- 1      & -182			& -0.1192			& -1.1175			& 1.1238					& 0.9932	& 0.9932		& 0.8031	& 0.8319		& 0.5953			& 0.5968			\\
- 2      & -181			& -0.1265			& -1.1149			& 1.122 					& 0.9922	& 0.9922		& 0.8128	& 0.8418		& 0.6031			& 0.6049			\\
- :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
- \hline
- :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
- 171    & -12 			& 0.0011 			& -0.6894			& 0.6894					& 0.9883	& 0.9883		& 0.9498	& 0.9475		& 0.7543			& 0.7548			\\
- 172    & -11 			& 0.0075 			& -0.6827			& 0.6828					& 0.9847	& 0.9847		& 0.949 	& 0.9475		& 0.7541			& 0.7554			\\
- 173    & -10 			& -1     			& -1     			& -1    					& -1    	& -1    		& 0.9498	& 0.9475		& -1    			& -1    			\\
- :      & :   			& :      			& :      			& :     					& :     	&       		&       	& :     		& :     			& :     			\\
- \hline &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
- :      & :   			& :      			& :      			& :     					& :     	&       		&       	& :     		& :     			& :     			\\
- 193    & 10  			& -1     			& -1     			& -1    					& -1    	& -1    		& 0.9522	& 0.9539		& -1    			& -1    			\\
- 194    & 11  			& 0.0368 			& -0.7094			& 0.7104					& 0.9834	& 0.9834		& 0.9542	& 0.9536		& 0.7611			& 0.7634			\\
- 195    & 12  			& 0.0353 			& -0.7052			& 0.706 					& 0.9852	& 0.9852		& 0.9546	& 0.954 		& 0.7614			& 0.7637			\\
- :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
- \hline
- :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
- 301    & 118 			& 0.3212 			& -0.8604			& 0.9184					& 0.9843	& 0.9843		& 0.3505	& 0.3681		& 0.3417			& 0.3496			\\
- 302    & 119 			& 0.4215 			& -1.1644			& 1.2383					& 0.9859	& 0.9859		& 0.03  	& 0.0318		& 0.03  			& 0.0318			\\
- 303    & 120 			& -1     			& -1     			& -1    					& 0.9864	& 0.9864		& -1    	& -1    		& 0     			& 0     			\\
- 304    & 121 			& -1     			& -1     			& -1    					& 0.9877	& 0.9877		& -1    	& -1    		& 0     			& 0     			\\
- 305    & 122 			& -1     			& -1     			& -1    					& 0.9897	& 0.9897		& -1    	& -1    		& 0     			& 0     			\\
- 306    & 123 			& -1     			& -1     			& -1    					& 0.9891	& 0.9891		& -1    	& -1    		& 0     			& 0     			\\
- 307    & 124 			& -1     			& -1     			& -1    					& 0.991 	& 0.991 		& -1    	& -1    		& 0     			& 0     			\\
- 308    & 125 			& -1     			& -1     			& -1    					& 0.9873	& 0.9873		& -1    	& -1    		& 0     			& 0     			\\
- 309    & 126 			& -1     			& -1     			& -1    					& 0.9918	& 0.9918		& -1    	& -1    		& 0     			& 0     			\\
- 310    & 127 			& 0.3916 			& -2.0083			& 2.0461					& 0.9868	& 0.9868		& 0.0315	& 0.0334		& 0.0045			& 0     			\\
- 311    & 128 			& 0.3627 			& -1.9906			& 2.0233					& 0.9933	& 0.9933		& 0.1149	& 0.1215		& 0.0546			& 0.044 			\\
- :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
- \hline
- :      &     			&        			&        			&       					&       	&       		&       	&       		&       			&       			\\
- 393    & 210 			& 0.1105 			& -0.2561			& 0.2789					& 0.9862	& 0.9862		& 0.9132	& 0.9274		& 0.8751			& 0.8864			\\
- 394    & 211 			& 0.117  			& -0.2628			& 0.2877					& 0.994 	& 0.994 		& 0.9132	& 0.9274		& 0.8768			& 0.889 			\\
- 395    & 212 			& 0.1237 			& -0.2453			& 0.2747					& 0.9944	& 0.9944		& 0.9127	& 0.9278		& 0.8771			& 0.8894			 
- \end{tabular}
-        \caption{rod \#5: script generated data}
-        \label{tab:spit-out}
-      \end{minipage}
-    }
-  \end{table}
- 
 
-
-\todo{add slice which shows particular problem (e.g. high distortion, air bubble or artefact resulting in extra-hihg distortion value)}
-\todo{rename xy axis, x-axis = distance from middle instead of slice number}
-\todo{discuss what is visible on the graphs in discussion section}
-\subsection{Distortion}
-\label{sec:distortion}
-
-
-\begin{figure}[!tbp]
-  \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@0_centroids.png}
-    \caption{CT @ 0}
-    \label{fig:CT_x100_centroids@0}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@150_centroids.png}
-    \caption{CT @ 150}
-    \label{fig:CT_x100_centroids@150}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/ph2/centroid/CT_x100@304_centroids.png}
-    \caption{CT @ 304}
-    \label{fig:CT_x100_centroids@304}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@0_centroids.png}
-    \caption{MRI @ 0}
-    \label{fig:MR_x100_centroids@0}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@150_centroids.png}
-    \caption{MRI @ 150}
-    \label{fig:MR_x100_centroids@150}
-  \end{subfigure}
-  \begin{subfigure}[b]{0.32\textwidth}
-    \includegraphics[scale=0.55]{python/ph2/centroid/MR_x100@304_centroids.png}
-    \caption{MRI @ 304}
-    \label{fig:MR_x100_centroids@304}
-  \end{subfigure}
-  \caption{MRI x100 scan of rod filled with \#5. The dark blue dot represents the MRI centroid, the bright red dot represents the CT centroid.
-  			\\ Slice 150 is located approximately at the isocentre, 0 on the very end of the image, 304 on the other but also close to an air bubble.}
-  \label{fig:MR_x100_centroids}
-\end{figure}
-
-\clearpage
-
-\subsection{DC}
-
-\begin{figure}[!bp]
-  \centering
-  \includegraphics[scale=0.6]{python/ph2/warp/warpXY_x100--.png}
-  \caption{warp XY [$mm$], CT-MRI x100}
-  \label{fig:warpXY_x100}
-\end{figure}
-
-\begin{figure}[!tp]
-    \centering
-    \includegraphics[scale=0.6]{python/ph2/warp/warpMagnitude_x100--.png}
-    \caption{warp Magnitude [$mm$], CT-MRI x100}
-    \label{fig:warpMagnitude_x100}
-\end{figure}
-\begin{figure}[!bp]
-    \centering
-    \includegraphics[scale=0.6]{python/ph2/dice/CT_MR_x100_DC.png}
-    \caption{DC (optimised) for CT \& MRI \& MRI (using CT COM)}
-    \label{fig:CT_MR_x100_DC}
-\end{figure}
-
-\begin{figure}[!tp]
-    \centering
-    \includegraphics[scale=0.6]{python/ph2/warpDC/warpDC_x100.png}
-    \caption{artificial indicator warp*DC using real DC and optimised DC of MRI x100}
-    \label{fig:warpDC_x100}
-\end{figure}
-\begin{figure}[!bp]
-  \centering
-  \includegraphics[scale=0.6]{python/ph2/dice/CT-51iter.png}
-  \caption{CT: DC of varied radii \& resolutions}
-  \label{fig:CT_dc}
-\end{figure}
-
-\begin{figure}[!tbp]
-  \begin{subfigure}[b]{\textwidth}
-    \centering
-    \includegraphics[scale=0.6]{python/ph2/dice/MR-51iter.png}
-    \caption{MRI: DC of varied radii \& resolutions}
-    \label{fig:MR_dc-opti}
-  \end{subfigure}
-  \begin{subfigure}[!b]{\textwidth}
-    \centering
-    \includegraphics[scale=0.6]{python/ph2/dice/MR_CT-COM_51iter.png}
-    \caption{MRI: DC of varied radii \& resolutions (using CT-COM)}
-    \label{fig:MR_CT-COM_dc-opti}
-  \end{subfigure}
-  \caption{}
-  \label{fig:MR_dc}
-\end{figure}
-
-
-The obtained dice coefficient varies not only because of the circle's centre and the radius, it also depends on the images resolution.
-Figure \ref{fig:CT_dc} and \ref{fig:MR_dc} show the DC (optimised) obtained using CT and MRI scans over resample rate.
-
-\todo{include table with actual RESULTS that are spit out by script and reference to python code (which will be in appendix)}
 \todo{PIOTR: create colour coded images}
 
 % \begin{figure}[!tbp]
