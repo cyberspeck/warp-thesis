@@ -217,7 +217,7 @@ This way there is another way of checking the alignment in addition to the rods.
     \caption{MRI scan}
     \label{fig:MRI_x100}
   \end{subfigure}
-  \caption{CT/MRI coronal images showing rods and 3 attached vitamin-e pills. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
+  \caption{CT/MRI coronal images showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
   \label{fig:pills}
 \end{figure}
 
@@ -522,19 +522,21 @@ The values assigned to voxels in CT images lie in the range from -1024 HU (air) 
 Before a meaningful result can be obtained, the values need to be shifted to be $>$ 0.
 Additionally, only pixels representing the rod or the liquid should be used for the calculation.
 Otherwise the almost black voxels surrounding the rod would influence the result.
-As described earlier, the plastic rod is only visible in CT images.
-On the MRI scans, solely the liquid contained in the rods is shown.
-Therefore, rods appear to be smaller on the MRI data.
-To find the relevant pixels two algorithms were developed:
+To be regarded as part of the rod, the pixels' value has to reach a certain threshold.
+In order to find the relevant pixels two methods were developed:
 
 \begin{description}
  \item[1] calculating the number of pixels based on rod size
  \item[2] finding a COM resulting in good DC
 \end{description}
 
+Both methods rely on a single reference slice to calculate the threshold.
+This reference should be representative for the whole scan, because the threshold deduced from it will be used to find pixels belonging to the rod at any other slice.
+
 \textbf{add 1:}
-The inner ($4mm$) and outer ($8mm$) diameter of the rods are known. So is the \textit{pixel spacing} which represents the equivalent size of a voxel in $mm$.
-Calculating the number of pixels which make up the more or less circular profile of the rod in each slice is calculated as follows:
+The inner ($2mm$) and outer ($4mm$) radius of the plastic rods are known.
+So is the pixel \textit{spacing}, the size of a voxel in real space ($mm$).
+Calculating the number of pixels which make up the more or less circular profile of the rod in a slice is calculated as follows:
 
 \begin{align}
  pixelNumber = (radius^2 \cdot \pi) \, / \, (spacing^2)
@@ -558,16 +560,16 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     \centering
 	\begin{tikzpicture}[node distance = 3cm, auto]
     % Place nodes
-    \node [blockb] (init-range) {Start with whole range:\\\texttt{min=0\%; max=100\%}};
-    \node [blockb, below of=init-range, node distance=2cm] (init-guess) {Guess at middle of range:\\\texttt{guess =  (min+max)/2 = 50\%}};
-    \node [block, below of=init-guess] (getDC) {calculate DC for\\upper and lower half\\of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
+    \node [blockb] (init-range) {\textbf{1.} Start with whole range:\\\texttt{min=0\%; max=100\%}};
+    \node [blockb, below of=init-range, node distance=2cm] (init-guess) {\textbf{2. }Guess at middle of range:\\\texttt{guess =  (min+max)/2 = 50\%}};
+    \node [block, below of=init-guess] (getDC) {\textbf{3.} calculate DC for\\upper and lower half\\of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
     \node [blockb, right of=getDC, text width=8em, node distance=6cm] (repeat!) {Repeat\\ iteration step};
-    \node [decision, below of=getDC, node distance=3cm] (bigger) {which one is bigger?};
-    \node [block, left of=bigger, text width=9em, node distance=7cm, xshift=4cm, yshift=-2.5cm] (lower) {Neglect upper half:\\\texttt{max = guess}};
-    \node [block, right of=bigger, text width=9em, node distance=7cm, xshift=-4cm, yshift=-2.5cm] (upper) {Neglect lower half:\\\texttt{min = guess}};
-    \node [block, below of=bigger, yshift=-2.5cm] (next-guess) {New current guess at middle of new range:\\\texttt{guess =  (min+max)/2}};
-    \node [decision, below of=next-guess, node distance=2cm] (repeat) {Repeat?};
-    \node [blockb, text width=20em, below of=repeat] (fin) {End of iteration:\\\texttt{return best DC\\ return best guess (as threshold)}};
+    \node [decision, below of=getDC, node distance=3cm] (bigger) {\textbf{4.} which one is bigger?};
+    \node [block, left of=bigger, text width=9em, node distance=7cm, xshift=4cm, yshift=-2.5cm] (lower) {\textbf{5a.} Neglect upper half:\\\texttt{max = guess}};
+    \node [block, right of=bigger, text width=9em, node distance=7cm, xshift=-4cm, yshift=-2.5cm] (upper) {\textbf{5b.} Neglect lower half:\\\texttt{min = guess}};
+    \node [block, below of=bigger, yshift=-2.5cm] (next-guess) {\textbf{6.} New current guess at middle of new range:\\\texttt{guess =  (min+max)/2}};
+    \node [decision, below of=next-guess, node distance=2.5cm] (repeat) {\textbf{7.} Repeat?};
+    \node [blockb, text width=20em, below of=repeat] (fin) {\textbf{8.} End of iteration:\\\texttt{return best DC\\ return best guess (as threshold)}};
     % Draw edges
     \path [line] (init-range) -- (init-guess);
     \path [line] (init-guess) -- (getDC);
@@ -585,9 +587,9 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
 	\label{flo:COM-iter}
 \end{figure}
 
-First it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$.
-It starts off by assuming that $50\%$ is a reasonable guess for the number of pixels that show the rod and calculates the corresponding DC value.
-Now, in the first iteration, to find out whether more or less pixels would result in a better DC, it considers two new guesses:
+\textbf{1.} To begin with, it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$.
+\textbf{2.} As a reasonable first guess it assumes that $50\%$ of all pixels belong to the rod.
+\textbf{3.} Now, in the first iteration, to find out whether more or less pixels would result in a better DC, it considers two new guesses:
 One halfway from the lower limit ($0\%$) to its current guess ($50\%$) which is:
 
 \begin{align}
@@ -599,14 +601,17 @@ and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) whi
 \begin{align}
  \frac{100+50}{2}=75\%
 \end{align}
- 
 
-The corresponding DC values are calculated and compared.
-If the lower number of pixels yields a better DC, the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
-If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
-At the end of the iteration, the value resulting in the higher DC is the new current guess.
 
-Now, at the start of the second iteration, the range is smaller (half of the entire range) and the current guess is set exactly in its middle.
+This numbers correspond to a threshold each separating the chosen number of pixels from all darker pixels in the slice.
+Using these thresholds, the script calculates the COM and DC for both possible guesses.
+\textbf{4.} Comparing the two DCs will decide which guess is closer to representing the rod better.
+\textbf{5a.} If the lower number of pixels yields a better DC, the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
+\textbf{5b.} If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
+\textbf{6.} At the end of the iteration, the percentage resulting in the higher DC is saved as the new current guess.
+\textbf{7.} After this first iteration the script can either repeat steps 3-6 or continue to step \textbf{8.}
+To explain the purpose of the method, let's suppose the iteration is repeated.
+At the start of the second iteration, the range is smaller (half of the entire range) and the current guess is set exactly in its middle.
 If, for example, the DC for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
 In that case, DC values for the lower half of that range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared to decide which half to eliminate in the third iteration.
 If, on the other hand, the DC for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
