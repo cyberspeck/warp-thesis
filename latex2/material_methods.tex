@@ -307,31 +307,9 @@ CT     & -   & -   & -   &
 \label{tab:settings}
 \end{table}
 
-\section{Developed software tool}
-% conda create --name snowflakes python=2.7 SimpleITK Spyder
-% source activate snowflakes
-% spyder
 
-In order to asses the distortion of the MRI scanner, a tool was programmed.
-It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
-\textit{SimpleITK} is a object-oriented "C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
-It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a "free and open source software package for
-visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop and resample images, quickly read values, and visualise the results.
-Documentation and code examples of SimpleITK can be found at \cite{InsightSoftwareConsortium, Kyriakou-SimpleITK}
-An alternative way to handle DICOM data in Python would be Pydicom. \cite{Pydicom, Kyriakou-Pydicom-VTK} 
 
-This is an extensive list of python packages used to process data after using 3D Slicer:
-\begin{itemize}
- \item SimpleITK
- \item numpy
- \item scipy
- \item matplotlib.pyplot \cite{Hunter2007}
- \item skimage.draw
- \item datetime
- \item os
-\end{itemize}
-
-\subsection{Pre-processing MRI and CT scans}
+\section{Pre-processing MRI and CT scans}
 \label{sec:prep}
 
 % what application used to align CT and MRI
@@ -423,8 +401,32 @@ x100   & 0.60 & 0.2 	& 0.1
 \end{figure}
 \clearpage
 
+\section{Developed software tool}
+% conda create --name snowflakes python=2.7 SimpleITK Spyder
+% source activate snowflakes
+% spyder
 
-\subsection{Capabilities}
+In order to asses the distortion of the MRI scanner, a tool was programmed.
+It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
+\textit{SimpleITK} is a object-oriented "C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
+It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a "free and open source software package for
+visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop and resample images, quickly read values, and visualise the results.
+Documentation and code examples of SimpleITK can be found at \cite{InsightSoftwareConsortium, Kyriakou-SimpleITK}
+An alternative way to handle DICOM data in Python would be Pydicom. \cite{Pydicom, Kyriakou-Pydicom-VTK} 
+
+This is an extensive list of python packages used to process data after using 3D Slicer:
+\begin{itemize}
+ \item SimpleITK
+ \item numpy
+ \item scipy
+ \item matplotlib.pyplot \cite{Hunter2007}
+ \item skimage.draw
+ \item datetime
+ \item os
+\end{itemize}
+
+
+\subsubsection{Capabilities - Overview}
 
 The developed software tool is not able to automatically detect individual rods shown in a CT or MRI scan.
 Instead the acquired 3D images have to be cropped to depict only a single rod (see section \ref{sec:prep})
@@ -444,6 +446,68 @@ The python script can be used to:
  \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation)
 \end{itemize}
 
+
+\subsection{Detection of irregularities}
+
+The method to find irregularities is described in figure \ref{flo:irregular}.
+After loading the image data, the script sets a slice chosen by the user as reference slice (\textbf{1.}).
+This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
+It is the user's responsibility to chose one that is free from any such objects as reference slice.
+Ideally, it is located near the iso-centre and has a brightness that is representative for the whole image.
+
+The script will compare each slice of the volume to the reference slice individually, starting at one end (\textbf{2.}).
+To decide whether a particular slice is "irregular", it's average brightness will be compared to the reference slice's (\textbf{4.}).
+A value of 40 was found to be yield good results for CT scans.
+In the future more sophisticated approach should be implemented where the script chooses a suitable value based on the image modality and the image size.
+If the difference exceeds a this value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its DC or COM.
+
+\subsubsection{Irregular slices and their COM and DC values}
+Instead of actually calculating these and the values describing the location shift between MRI and CT scans, they will all be set to "$-1$".
+The position of the COM cannot lie outside the image, yet coordinates '-1,-1' would indicate this.
+Similarly, the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers
+All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
+The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
+To be consistent, they are still set to "$-1$".
+It is essential to bear this in mind when interpreting the script's output.
+
+% Define block styles
+\tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=18em, text centered, minimum height=4em]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=12em, text centered, minimum height=5em]
+\tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{decisionr} = [diamond, draw, aspect=3, fill=red!20, text width=18em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{decisiong} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{line} = [draw, very thick, color=black!80, -latex']
+%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
+
+\begin{figure}[p]
+    \centering
+	\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes
+    \node [blockb] (1) {\textbf{1.} Calculate average brightness of user defined reference slice: \texttt{average(ref)}};
+    \node [blockb, below of=1, node distance=2.2cm] (2) {\textbf{2.} Initialise loop to start with slice \texttt{i=0} (first slice of Volume)};
+    \node [cloud, below of=2, node distance=2.8cm] (3) {\textbf{3.} Calculate average brightness of slice \#\texttt{i}:\\ \texttt{average(i)}};
+    \node [blockb, right of=3, text width=8em, node distance=8cm] (repeat!) {Repeat comparison with next slice\\ \texttt{i $\rightarrow$ i + 1}};
+    \node [decisionr, below of=3, node distance=3.5cm] (4) {\textbf{4.} \texttt{|average(ref) - average(i)|}};
+    \node [cloud, left of=4, text width=6em, node distance=7cm, xshift=3cm, yshift=-3cm] (5a) {\textbf{5a.} mark slice \#\texttt{i} as 'regular'};
+    \node [cloud, right of=4, text width=6em, node distance=7cm, xshift=-3cm, yshift=-3cm] (5b) {\textbf{5b.} mark slice \#\texttt{i} as 'irregular'};
+    \node [decisionr, below of=4, yshift=-3cm] (6) {\textbf{6.} Has script reached\\ the last slice of the Volume?};
+    \node [blockb, text width=20em, below of=6, yshift=-1cm] (7) {\textbf{7.} End of irregularieties check};
+    % Draw edges
+    \path [line] (1) -- (2);
+    \path [line] (2) -- (3);
+    \path [line] (3) -- (4);
+    \path [line] (4.east)  to node {{\texttt{> 40}}} (5b);
+    \path [line] (4.west)  to node [xshift=-1.3cm, yshift=-0.5cm] {\textbf{\texttt{< 40}}} (5a);
+    \path [line] (5a) -- (6);
+    \path [line] (5b) -- (6);
+    \path [line] (6.east) -| node [xshift=-1cm, yshift=-0.5cm] {\textbf{no}} (repeat!);
+    \path [line] (repeat!) -- (3);
+    \path [line] (6.south) to node {\textbf{yes}} (7);
+	\end{tikzpicture}
+	\caption{Check for irregularities}
+	\label{flo:irregular}
+\end{figure}
+
 \subsubsection{Measuring distortion}
 
 Since the rods have a cylindrical shape, distortion can only be assessed in radial direction.
@@ -454,20 +518,6 @@ Two phenomena were chosen to reflect the amount of distortion occurring in each 
 The distance which the rod appears to be shifted in the MRI slice compared to the CT slice is referred to as \textbf{"warp"}.
 The rod's deformation (deviation from circular profile) is described using the dice-coefficient \textbf{"DC"} (also known as Sorensen-Index).
 
-\subsubsection{Detection of irregularities}
-
-When the script loads the image data it also asks for a reference slice.
-This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
-It is the user's responsibility to chose one that is free from any such objects as reference slice.
-Ideally, it is located near the iso-centre and has a brightness that is representative for the whole image.
-
-To decide whether a slice is "irregular", it's average brightness will be compared to the reference slice's.
-If the difference exceeds a certain value, the slice will be marked as irregular and consequently won't be used to calculate its DC or COM.
-Instead these and the values describing the location shift will be set to "$-1$", indicating that no meaningful value could be obtained.
-As the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers, these are easily understood to be invalid, indicating that the particular slice was marked as "irregular".
-The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
-To be consistent with the other calculated numbers, they are still set to "$-1$".
-The other values associated with the slice and discontinuities (values jumping to exactly "-1") where they meet neighbouring "regular" slices also indicate that this value is not representing the true distortion.
 
 \subsection{Calculation: dice coefficient (DC)}
 \label{sec:DC}
@@ -492,7 +542,7 @@ This way the new binary image A still shows were the rod is, but it lost all inf
 Reference B is a circle with its midpoint placed at the centre of mass (COM) of the rod.
 The COM is calculated using just those pixels which exceed the threshold.
 This way the script tries to place the reference circle B in the centre of the input image A.
-The position of the circle's centre and its radius highly influence the outcome (see section \ref{sec:distortion}).
+The position of the circle's centre and its radius highly influence the outcome.
 
 The DC ranges from 0 to 1.
 A value of 1 indicates a perfect circular shape.
@@ -508,14 +558,43 @@ This boundaries could be changed in the future.
 In the end the function returns the highest DC that could be obtained.
 
 
+\begin{figure}[p]
+    \centering
+	\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes
+    \node [blockb] (1) {\textbf{1.} Calculate average brightness of user defined reference slice: \texttt{average(ref)}};
+    \node [blockb, below of=1, node distance=2.2cm] (2) {\textbf{2.} Initialise loop to start with slice \texttt{i=0} (first slice of Volume)};
+    \node [cloud, below of=2, node distance=2.8cm] (3) {\textbf{3.} Calculate average brightness of slice \#\texttt{i}:\\ \texttt{average(i)}};
+    \node [blockb, right of=3, text width=8em, node distance=8cm] (repeat!) {Repeat comparison with next slice\\ \texttt{i $\rightarrow$ i + 1}};
+    \node [decisionr, below of=3, node distance=3.5cm] (4) {\textbf{4.} \texttt{|average(ref) - average(i)|}};
+    \node [cloud, left of=4, text width=6em, node distance=7cm, xshift=3cm, yshift=-3cm] (5a) {\textbf{5a.} mark slice \#\texttt{i} as 'regular'};
+    \node [cloud, right of=4, text width=6em, node distance=7cm, xshift=-3cm, yshift=-3cm] (5b) {\textbf{5b.} mark slice \#\texttt{i} as 'irregular'};
+    \node [decisionr, below of=4, yshift=-3cm] (6) {\textbf{6.} Has script reached\\ the last slice of the Volume?};
+    \node [blockb, text width=20em, below of=6, yshift=-1cm] (7) {\textbf{7.} End of irregularieties check};
+    % Draw edges
+    \path [line] (1) -- (2);
+    \path [line] (2) -- (3);
+    \path [line] (3) -- (4);
+    \path [line] (4.east)  to node {{\texttt{> 40}}} (5b);
+    \path [line] (4.west)  to node [xshift=-1.3cm, yshift=-0.5cm] {\textbf{\texttt{< 40}}} (5a);
+    \path [line] (5a) -- (6);
+    \path [line] (5b) -- (6);
+    \path [line] (6.east) -| node [xshift=-1cm, yshift=-0.5cm] {\textbf{no}} (repeat!);
+    \path [line] (repeat!) -- (3);
+    \path [line] (6.south) to node {\textbf{yes}} (7);
+	\end{tikzpicture}
+	\caption{Check for irregularities}
+	\label{flo:irregular}
+\end{figure}
+
 
 \subsection{Calculation: warp \& centre of mass (COM)}
 \label{sec:COM}
 
 To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
 The x- and y-shift (\textit{warpXY}) measured in each slice was saved in an array.
-Furthermore, the absolute value of the coordinate shift (\textit{warpMagnitude}) was calculated.
-\\
+Furthermore, the absolute value of the coordinate shift (\textit{warpMagnitude}) was calculated.\\
+
 The calculation of the COM is done with help of the "scipy" python package.
 It's module "ndimage" contains the function "$center\_of\_mass()$", which returns the COM's coordinates of a given input array.
 The values assigned to voxels in CT images lie in the range from -1024 HU (air) to around 200 HU (plastic rod).
@@ -531,7 +610,7 @@ In order to find the relevant pixels two methods were developed:
 \end{description}
 
 Both methods rely on a single reference slice to calculate the threshold.
-This reference should be representative for the whole scan, because the threshold deduced from it will be used to find pixels belonging to the rod at any other slice.
+This reference should be representative for the whole scan, because the threshold deduced from it will be used to find pixels belonging to the rod at any other slice.\\
 
 \textbf{add 1:}
 The inner ($2mm$) and outer ($4mm$) radius of the plastic rods are known.
@@ -549,14 +628,8 @@ The value of the darkest pixel that is still counted as part of the rod is saved
 This algorithm is an iteration method.
 Figure \ref{flo:COM-iter} shows in what order the scripts executes individual steps during the iteration.
 
-% Define block styles
-\tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=16em, text centered, minimum height=4em]
-\tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{decision} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{line} = [draw, very thick, color=black!80, -latex']
-%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
 
-\begin{figure}[!h]
+\begin{figure}[p]
     \centering
 	\begin{tikzpicture}[node distance = 3cm, auto]
     % Place nodes
@@ -564,32 +637,32 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     \node [blockb, below of=init-range, node distance=2cm] (init-guess) {\textbf{2. }Guess at middle of range:\\\texttt{guess =  (min+max)/2 = 50\%}};
     \node [block, below of=init-guess] (getDC) {\textbf{3.} calculate DC for\\upper and lower half\\of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
     \node [blockb, right of=getDC, text width=8em, node distance=6cm] (repeat!) {Repeat\\ iteration step};
-    \node [decision, below of=getDC, node distance=3cm] (bigger) {\textbf{4.} which one is bigger?};
+    \node [decisiong, below of=getDC, node distance=3cm] (bigger) {\textbf{4.} which one is bigger?};
     \node [block, left of=bigger, text width=9em, node distance=7cm, xshift=4cm, yshift=-2.5cm] (lower) {\textbf{5a.} Neglect upper half:\\\texttt{max = guess}};
     \node [block, right of=bigger, text width=9em, node distance=7cm, xshift=-4cm, yshift=-2.5cm] (upper) {\textbf{5b.} Neglect lower half:\\\texttt{min = guess}};
     \node [block, below of=bigger, yshift=-2.5cm] (next-guess) {\textbf{6.} New current guess at middle of new range:\\\texttt{guess =  (min+max)/2}};
-    \node [decision, below of=next-guess, node distance=2.5cm] (repeat) {\textbf{7.} Repeat?};
+    \node [decisiong, below of=next-guess, node distance=2.5cm] (repeat) {\textbf{7.} Repeat?};
     \node [blockb, text width=20em, below of=repeat] (fin) {\textbf{8.} End of iteration:\\\texttt{return best DC\\ return best guess (as threshold)}};
     % Draw edges
     \path [line] (init-range) -- (init-guess);
     \path [line] (init-guess) -- (getDC);
     \path [line] (getDC) -- (bigger);
-    \path [line] (bigger.east)  to node {$DC_{up} > DC_{lo}$} (upper);
-    \path [line] (bigger.west)  to node [xshift=-3cm, yshift=0.8cm] {$DC_{up} < DC_{lo}$} (lower);
+    \path [line] (bigger.east)  to node {\texttt{$DC_{up} > DC_{lo}$}} (upper);
+    \path [line] (bigger.west)  to node [xshift=-3cm, yshift=0.8cm] {\texttt{$DC_{up} < DC_{lo}$}} (lower);
     \path [line] (lower) -- (next-guess);
     \path [line] (upper) -- (next-guess);
     \path [line] (next-guess) -- (repeat);
-    \path [line] (repeat.east) -| node [xshift=1cm, yshift=1cm] {yes} (repeat!);
+    \path [line] (repeat.east) -| node [xshift=-1cm, yshift=-0.5cm] {\textbf{yes}} (repeat!);
     \path [line] (repeat!) -- (getDC);
-    \path [line] (repeat.south) to node {no} (fin);
+    \path [line] (repeat.south) to node {\textbf{no}} (fin);
 	\end{tikzpicture}
 	\caption{Iteration method, finding COM}
 	\label{flo:COM-iter}
 \end{figure}
 
-\textbf{1.} To begin with, it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$.
-\textbf{2.} As a reasonable first guess it assumes that $50\%$ of all pixels belong to the rod.
-\textbf{3.} Now, in the first iteration, to find out whether more or less pixels would result in a better DC, it considers two new guesses:
+To begin with, it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$ (\textbf{1.}).
+As a reasonable first guess it assumes that $50\%$ of all pixels belong to the rod (\textbf{2.}).
+Now, in the first iteration (\textbf{3.}), to find out whether more or less pixels would result in a better DC, it considers two new guesses:
 One halfway from the lower limit ($0\%$) to its current guess ($50\%$) which is:
 
 \begin{align}
@@ -605,12 +678,13 @@ and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) whi
 
 This numbers correspond to a threshold each separating the chosen number of pixels from all darker pixels in the slice.
 Using these thresholds, the script calculates the COM and DC for both possible guesses.
-\textbf{4.} Comparing the two DCs will decide which guess is closer to representing the rod better.
-\textbf{5a.} If the lower number of pixels yields a better DC, the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
-\textbf{5b.} If the higher percentage yields a better DC, the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
-\textbf{6.} At the end of the iteration, the percentage resulting in the higher DC is saved as the new current guess.
-\textbf{7.} After this first iteration the script can either repeat steps 3-6 or continue to step \textbf{8.}
-To explain the purpose of the method, let's suppose the iteration is repeated.
+Comparing the two DCs will decide which guess is closer to representing the rod better (\textbf{4.}).
+If the lower number of pixels yields a better DC (\textbf{5a.}), the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
+If the higher percentage yields a better DC (\textbf{5b.}), the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
+At the end of the iteration (\textbf{6.}), the percentage resulting in the higher DC is saved as the new current guess.
+After this first iteration (\textbf{7.}) the script can either repeat steps 3-6 or end it by returning the best guess and its DC (\textbf{8.}).\\
+
+To get a better understanding, let's suppose the iteration is repeated.
 At the start of the second iteration, the range is smaller (half of the entire range) and the current guess is set exactly in its middle.
 If, for example, the DC for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
 In that case, DC values for the lower half of that range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared to decide which half to eliminate in the third iteration.
@@ -624,17 +698,20 @@ Figure \ref{fig:COM_iteration} shows the DC values found in the course of trying
 
 
 \begin{figure}[!thb]
+\centering
   \begin{subfigure}[b]{1\textwidth}
-    \includegraphics[scale=0.7]{python/ph2/iteration_COM/CT_x100_iteration_COM.png}
-    \caption{CT x100, (4 steps lead to best result)}
+  \centering
+    \includegraphics[scale=0.7]{python/ph2/COM_iter/ph2_CT_x100_COM_iter-far.png}
+    \caption{full iteration process}
     \label{fig:CT_x100_iteration}
   \end{subfigure}
   \begin{subfigure}[b]{1\textwidth}
-    \includegraphics[scale=0.7]{python/ph2/iteration_COM/MR_x100_iteration_COM.png}
-     \caption{MR x100, (15 steps performed)}
+  \centering
+    \includegraphics[scale=0.7]{python/ph2/COM_iter/ph2_CT_x100_COM_iter.png}
+     \caption{close up}
      \label{fig:MR_x100_iteration}
   \end{subfigure}
-  \caption{COM iteration method}
+  \caption{COM iteration method, 8 repetitions}
   \label{fig:COM_iteration}
 \end{figure}
 
