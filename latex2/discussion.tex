@@ -149,6 +149,16 @@ Here the MRI data will not be marked as irregular, provided there is no other ca
 Such an absence of liquid would result in a drastic decrease of brightness and result in an irregular slice.
 In CT, on the other hand, an air bubble would hardly make a difference, as the surrounding plastic is far brighter than the contained liquid.
 
+\subsection{COM calculation}
+DC values calculated with the COM iteration method do not exceed those calculated with method 1.
+However, both methods choose very similar thresholds for their calculations.
+This is good, as the iteration method does not rely on additional information (true dimensions, radii of rods), but yields similar results.
+The iteration method might yield better results if tweaked slightly.
+At the moment it does not take into account the steepness of the DC curve.
+This leads to the left hand side close to very low percentages to be neglected sometimes.
+This happens when the perfect guess lies roughly in the middle of the current range, but a little bit to the left.
+Because the slope is steeper on the left (close to 0\%), a value representing the left hand side (also close to 0\%) yields a much lower result than the value on the right hand side (flat slope).
+This should be taken into account during further improvement of the method.
 
 
 %Gnerally this graphs are OK, but we discused before you left that there is need to comment of what we actually see on them, as you explained that to me. Also we dicussed that you could add a figure showing a particular slice on which a certain problem occures (why is the extra-high distortion dettected: a bubble or artefact). 
