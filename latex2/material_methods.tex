@@ -209,13 +209,13 @@ This way there is another way of checking the alignment in addition to the rods.
   \centering
     \includegraphics[scale=0.6]{slicer3D/pills_here/pills_CT.png}
     \caption{CT scan}
-    \label{fig:CT_x1}
+    \label{fig:pills_CT}
   \end{subfigure}
   \begin{subfigure}[b]{0.45\textwidth}
   \centering
       \includegraphics[scale=0.6]{slicer3D/pills_here/pills_MRI.png}
     \caption{MRI scan}
-    \label{fig:MRI_x100}
+    \label{fig:pills_MR}
   \end{subfigure}
   \caption{CT/MRI coronal images showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
   \label{fig:pills}
@@ -428,41 +428,42 @@ This is an extensive list of python packages used to process data after using 3D
 
 \subsubsection{Capabilities - Overview}
 
-The developed software tool is not able to automatically detect individual rods shown in a CT or MRI scan.
-Instead the acquired 3D images have to be cropped to depict only a single rod (see section \ref{sec:prep})
+The developed software tool is not able to automatically detect individual rods in a CT or MRI scan depicting the whole phantom.
+Instead the acquired 3D images have to be cropped so they include only a single rod (see section \ref{sec:prep}).
 
 The python script can be used to:
 \begin{itemize}
- \item de-noise the image data
+% \item de-noise the image data
  \item separate bright areas which are not connected ('masking' might be used as future method to automatically detect individual rods)
  \item find and mark slices which show irregularities
  \item calculate the centroid coordinates along the rod
  \item measure the local distortion described by the
-  \subitem location shift ( \textbf{"warp"})
-  \subitem dice coefficient ( \textbf{"DC"} equivalent to roundness)
+  \subitem location shift (refered to as \textbf{"warp"})
+  \subitem dice coefficient (the \textbf{"DC"} refers to an object's roundness)
  \item visualise individual rod slices
  \item plot the average/peak brightness, warp, or DC along the rod
- \item write the warp and DC values for each slice in a combined ".txt" file
- \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation)
+ \item write warp and DC values for each slice in a combined ".txt" file
+ \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation, see figure \ref{fig:colour-map}).
 \end{itemize}
 
+\todo{add figure with colour coded map}
 
 \subsection{Detection of irregularities}
 
 The method to find irregularities is described in figure \ref{flo:irregular}.
-After loading the image data, the script sets a slice chosen by the user as reference slice (\textbf{1.}).
+After loading the image data, the script calculates the mean brightness of a reference slice (which was chosen by the user) (\textbf{1.}).
 This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
-It is the user's responsibility to chose one that is free from any such objects as reference slice.
-Ideally, it is located near the iso-centre and has a brightness that is representative for the whole image.
+It is the user's responsibility to make sure the reference is free from any such objects.
+Ideally, it is located near the iso centre and has a brightness that is representative for the whole image.
 
 The script will compare each slice of the volume to the reference slice individually, starting at one end (\textbf{2.}).
 To decide whether a particular slice is "irregular", it's average brightness will be compared to the reference slice's (\textbf{4.}).
+If the difference exceeds a certain value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its DC or COM.
 A value of 40 was found to be yield good results for CT scans.
-In the future more sophisticated approach should be implemented where the script chooses a suitable value based on the image modality and the image size.
-If the difference exceeds a this value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its DC or COM.
+In the future a more sophisticated approach should be implemented where the script chooses a suitable value based on the image modality and the image size.
 
 \subsubsection{Irregular slices and their COM and DC values}
-Instead of actually calculating these and the values describing the location shift between MRI and CT scans, they will all be set to "$-1$".
+Instead of calculating meaningless DC, COM, and warp numbers, they will all be set to "$-1$".
 The position of the COM cannot lie outside the image, yet coordinates '-1,-1' would indicate this.
 Similarly, the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers
 All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
@@ -511,8 +512,8 @@ It is essential to bear this in mind when interpreting the script's output.
 \subsubsection{Measuring distortion}
 
 Since the rods have a cylindrical shape, distortion can only be assessed in radial direction.
-The z-coordinate is parallel to the rods, x and y are radial.
-Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (and plastic rod in CT) surrounded by black pixels (air).
+The z-axis is parallel to the rods, x and y are radial.
+Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (and of the plastic rod in CT) surrounded by black pixels (air).
 \\
 Two phenomena were chosen to reflect the amount of distortion occurring in each slice of the MRI scans.
 The distance which the rod appears to be shifted in the MRI slice compared to the CT slice is referred to as \textbf{"warp"}.
@@ -523,39 +524,46 @@ The rod's deformation (deviation from circular profile) is described using the d
 \label{sec:DC}
 
 The DC was chosen as indicator for the deviation from a circular profile.
-The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of it's module called "metric" was adapted. \cite{MedPy_dc-code}
-It was calculated individually for the CT and MRI scans in each slice.
+The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of it's module called "metric" was adapted. \cite{MedPy_dc-code}\\
 
+
+The calculation of the DC is performed for each slice individually.
+Additionally, to asses the overall distortion occurring along the rod, the average of all those values is also saved.
+As this aspect of distortion does not need a reference scan, the DC is measured for CT and MRI images separately.
 The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 
 \begin{align}
 DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 \end{align}
 
-The implemented function compares a binary image (input A) to a circle (reference B).
-In order to reduce the true image to a binary image A, we have to reduce the number of possible pixel values to 2.
-First, a copy of the original picture is created where all (bright) pixels representing the rod are set to the value of "1".
-Those located in the surrounding (dark) area are set to "0".
-A threshold discriminates between pixels which are part of the rod and those which are not (see section \ref{sec:COM} for details on how the threshold is calculated).
+It compares a binary image (input A) to a circle (reference B).
+In a binary image there are only 2 possible pixel values: "0" and "1".
+However, in the original image, values lie in a range between 0 (or -1024 in CT) and 1000 or higher.
+In order to reduce the true image to a binary image A, the script needs to split the pixels in 2 groups.
+A copy of the original picture is created where all pixels with a value above a certain threshold are set to the value of "1".
+These are regarded as part of the rod.
+Those which are darker are set to "0".
+(See section \ref{sec:COM} for details on how the threshold is calculated).
+Ideally, this procedure separates the surrounding dark area from the bright rod.
 This way the new binary image A still shows were the rod is, but it lost all information on the actual brightness.
 
 Reference B is a circle with its midpoint placed at the centre of mass (COM) of the rod.
-The COM is calculated using just those pixels which exceed the threshold.
-This way the script tries to place the reference circle B in the centre of the input image A.
+The COM is calculated using those pixels which exceed the threshold, but weighted with their actual brightness (not using the binary image)
+
+This way the script is supposed to place the reference circle B in the centre of the input image A.
 The position of the circle's centre and its radius highly influence the outcome.
 
 The DC ranges from 0 to 1.
 A value of 1 indicates a perfect circular shape.
 A low DC, on the other hand, means the shape differs greatly from a circle and could be caused by many things such as:
-little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of rod from background; a small circle with a radius close to a only a few pixels.
+little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of the rod from background; a small circle with a radius close to a only a few pixels.
 
 The obvious choice for the radius of the reference circle B is to use the true size of the physical rod.
 For CT images this would be 4mm, for MRI images it would be 2mm.
-
-Additionally, a small iteration was developed that tries a range of other radii.
-For CT images it chooses values between 3.5 and 4.5, for MRI it varies from 1.8 to 2.8.
+The script calculates the DC using various radii close to those values and returns the result yielding in the highest average DC for the whole rod.
+For CT images it chooses values between 3.5 and 4.5, for MRI it varies from 1.8 to 3.8.
 This boundaries could be changed in the future.
-In the end the function returns the highest DC that could be obtained.
+
 
 
 \begin{figure}[p]
