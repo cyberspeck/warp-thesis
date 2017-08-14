@@ -34,7 +34,7 @@ CT	&		&		& --------
 \subsection{MRI scanner - field distribution}
 \label{sec:magnetom}
 
-The Magnetom C! MRI scanner comes with a handbook which contains diagrams of the magnetic field strength (fig. \ref{fig:strength_side}), and its gradient (fig. \ref{fig:gradient_side}, \ref{fig:gradient_top}, and  \ref{fig:gradient_front}).
+The Magnetom C! MRI scanner comes with a handbook which contains diagrams of the magnetic field strength (fig. \ref{fig:strength_side}) and its gradient (fig. \ref{fig:gradient_side}, \ref{fig:gradient_top} and \ref{fig:gradient_front}).
 Figure \ref{fig:scanner} shows an image and different views of the scanner and the planes along which the field strength and gradient are displayed.
 
 \begin{figure}[!htb]
@@ -410,7 +410,7 @@ In order to asses the distortion of the MRI scanner, a tool was programmed.
 It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
 \textit{SimpleITK} is a object-oriented "C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
 It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a "free and open source software package for
-visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop and resample images, quickly read values, and visualise the results.
+visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop and resample images, quickly read values and visualise the results.
 Documentation and code examples of SimpleITK can be found at \cite{InsightSoftwareConsortium, Kyriakou-SimpleITK}
 An alternative way to handle DICOM data in Python would be Pydicom. \cite{Pydicom, Kyriakou-Pydicom-VTK} 
 
@@ -438,8 +438,8 @@ The python script can be used to:
  \item find and mark slices which show irregularities
  \item calculate the centroid coordinates along the rod
  \item measure the local distortion described by the
-  \subitem location shift (refered to as \textbf{"warp"})
-  \subitem dice coefficient (the \textbf{"DC"} refers to an object's roundness)
+  \subitem location shift (refered to as "warp")
+  \subitem dice coefficient (the "DC" refers to an object's roundness)
  \item visualise individual rod slices
  \item plot the average/peak brightness, warp, or DC along the rod
  \item write warp and DC values for each slice in a combined ".txt" file
@@ -463,7 +463,7 @@ A value of 40 was found to be yield good results for CT scans.
 In the future a more sophisticated approach should be implemented where the script chooses a suitable value based on the image modality and the image size.
 
 \subsubsection{Irregular slices and their COM and DC values}
-Instead of calculating meaningless DC, COM, and warp numbers, they will all be set to "$-1$".
+Instead of calculating meaningless DC, COM and warp numbers, they will all be set to "$-1$".
 The position of the COM cannot lie outside the image, yet coordinates '-1,-1' would indicate this.
 Similarly, the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers
 All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
@@ -631,7 +631,7 @@ Calculating the number of pixels which make up the more or less circular profile
 
 For CT images $radius = 4mm$, in MRI scans $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
 Next the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the COM.
-The value of the darkest pixel that is still counted as part of the rod is saved as \textbf{threshold} for future calculations (e.g. finding the DC associated with the COM, see section \ref{sec:DC}).
+The value of the darkest pixel that is still counted as part of the rod is saved as threshold for future calculations (e.g. finding the DC associated with the COM, see section \ref{sec:DC}).
 \textbf{add 2:}
 This algorithm is an iteration method.
 Figure \ref{flo:COM-iter} shows in what order the scripts executes individual steps during the iteration.
