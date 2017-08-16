@@ -115,7 +115,7 @@ Every cell inherited its own personal copy of the original set.
 Inevitably, mistakes happen during its replication resulting in changes to the DNA called 'mutation'.
 Most of these alterations are repaired or do not lead to changes in the cells behaviour.
 
-As the reparation process needs some time \todo{SAME FOR ALL TISSUES???}, all unwanted changes occurring less frequently than one reparation cycle are less probable to be implemented for good, than those taking place more frequently. This is the reason why cells in tissues and organs that divide more frequently (i.e. gonads) are more prone to mutations than those reproducing more slowly (i.e. bones).
+The time needed for a reparation process to be completed is not the same as the period between cell reproduction. Changes to the DNA (e.g. mutations) occurring less frequently than one reparation cycle are less probable to result in permanent alterations, than those taking place more frequently. This is the reason why cells in tissues and organs that divide more frequently (i.e. gonads) are more prone to cancer development than those reproducing more slowly (i.e. bones).
 
 As the human body ages, the repair mechanism loses some of its efficiency and mutations accumulate.
 At one point, a cell may be reprogrammed to act in a unpredictable way, giving up its duties and duplicating without restraint, possibly forming tumours.
@@ -145,6 +145,8 @@ Reliable ways of diagnosing tumours are made possible by imaging techniques visu
 
 It does not need to be long, but what you have by now is too simplistic.}
 
+Cell damage could either be caused by radiation interacting directly with the critical target in a cell or with other molecules and atoms within the cell.
+For X-rays the biological damage is attributed to indirect action by two thirds.
 As described in \ref{sec:photon}, light transfers some of its energy to the medium it passes through.
 Most interactions, such as the photo effect, incoherent (Compton) scattering and pair production, result in free electrons.
 If the electron has a sufficiently high kinetic energy, it may free additional orbital electrons from atoms in its vicinity.
@@ -159,9 +161,26 @@ A more fundamental mutation might lead to carcinogenesis.
 Irradiated cells might also send signals to their neighbours, inducing genetic damage known as 'bystander effects'.
 However, surviving cells can also react to irradiation and becoming more resistant.
 
+Furthermore, the damage done to a cell can be either lethal, sublethal or potentially lethal.
+Sublethal damage can be repaired, provided it occurrs only once.
+Potentially lethal damage can be manipulated by repair, provided the cell is allowed to remain in a non-dividing state.
+
+The relative biological effectiveness (RBE), which describes the damage done by a specific type of radiation (compared to a reference test radiation) to a certain type of tissue, is dependent on various factors, including the rate at which dose is delivered.
+%In the case of sublethal damage, for instance, if the time for a successful repair cycle is longer than the time between two such damages, the 
+
+Generally, harmful effects by radiation are defined as either stochastic or deterministic.
+The probability of stochastic effects is directly proportional to the dose, but their severity in affected individuals is not.
+These effects arise in single cells (e.g. carcinogenesis), and it is assumed that the probability for such an occurrence is always greater than zero, even for small doses.
+For deterministic effects, on the other hand, the severity scales with the dose.
+They are connected to tissue reaction caused by damage to a population of cells.
+The higher the dose, the more cells die, the graver the biological consequences.
+
 Changes to the DNA might not become apparent ever, others take years until they result in biological effects.
+The same goes for tissue effects, which could either be acute (soon after exposure) or delayed (chronic).
 A well known long term consequence of ionising radiation is leukaemia.
 Damage to germ cells (sperm/egg) might even result in genetic damages expressed in subsequent generations.
+
+
 
 While imaging modalities utilising x-rays are designed to apply a dose as little as possible to keep effects of irradiation low, radiotherapy makes use of the lethal effects targeting cancer cells. \cite{Podgorsak, Maidment2014}
 
@@ -256,7 +275,7 @@ HU_{material} = \frac{\mu_{material} - \mu_{water}}{\mu_{water}} \cdot 1000
 \end{align}
 
 Table \ref{tab:HU} lists types of human tissue and their values on the HU scale.
-Generally, HU values range from -1024 to +3071 (12 bit), but the upper limit can be extended to 15,359 (14 bit) if materials with even higher attenuation need to be visualised (e.g. implants).
+Generally, HU values range from -1024 to +3071 (12 bit), but the upper limit can be extended to 15,359 (14 bit) if materials with even higher attenuation need to be visualised (e.g. implants). \\
 
 \begin{table}[]
 	\centering
@@ -279,7 +298,6 @@ Generally, HU values range from -1024 to +3071 (12 bit), but the upper limit can
 	\end{tabular}
 \end{table}
 
-\todo{add NL???}
 Typically, CT scans are displayed on Computer monitors, which imposes the need to map the HU values to a 8-bit greyscale (256 steps of luminosity).
 Since the number of possible values (dynamic range) on the HU scale is 16 times the shades of grey on a screen (12-8 = 4 bit difference; equivalent to a factor of $2^4$) the screen cannot convey all details at the same time.
 A linear mapping would result in 16 neighbouring HU values being compressed to the same brightness on the sreen.
@@ -463,8 +481,7 @@ However, at some point diagnostic accuracy stops increasing with field strength.
 At the same time significant improvements can be achieved at low fields.
 A ``combination of field independent polarisation [...] with frequency optimized MRI detection coils [...] results in low-field MRI sensitivity approaching and even rivalling that of high-field MRI.'' \cite{Coffey2013}
 
-Low field MRI scanners are also typically characterised by less distorted images.
-\todo{(What is this supposed to mean?)Although the image distortion depends on all magnetic fields applied to the imaged subject during the acquisition (B0, B1 and gradients) and some of their components might be predicted and corrected for, they are all dependent on the initial strength of the B0 field.}
+Low field MRI scanners are also typically characterised by less distorted images. \cite{https://link.springer.com/article/10.1007/PL00002385}
 
 Apart from the often satisfactory image quality, there are considerable cost advantages to the use of lower field MRI.
 The initial purchase price and the ongoing maintenance expenses are considerably lower than those of high field scanners which often use superconducting magnets cooled with liquid helium. \cite{Rutt1996}
