@@ -30,7 +30,7 @@ This work shall be a small contribution to this development.
 \section{Photon - matter interactions}
 \label{sec:photon}
 
-As light passes through matter, its intensity decreases.
+As light (visible and invisible wavelengths) passes through matter, its intensity decreases.
 This phenomenon is due to photons interacting with electrons, nuclei and their electric fields.
 All processes either change the direction they travel in, alter their energy, or result in the disappearance of single photons.
 The probability of these interactions differ for each material (dependent on its density; proton number $Z$) and photon energy ($h\nu$). \\
@@ -64,7 +64,7 @@ Such a Photonuclear reaction is similar to the photo effect, in the sense that t
 Its energy is transferred to the nucleus resulting in the emission of either a proton or neutron.
 
 \subsubsection{Attenuation}
-The aforementioned interactions result in a gradual decrease of light intensity as it travels through matter.
+The aforementioned interactions result in a gradual decrease of radiation intensity as it travels through matter.
 The combined effect is described by Beer's law:
 
 \begin{align}
@@ -146,40 +146,50 @@ Reliable ways of diagnosing tumours are made possible by imaging techniques visu
 It does not need to be long, but what you have by now is too simplistic.}
 
 Cell damage could either be caused by radiation interacting directly with the critical target in a cell or with other molecules and atoms within the cell.
-For X-rays the biological damage is attributed to indirect action by two thirds.
-As described in \ref{sec:photon}, light transfers some of its energy to the medium it passes through.
+For X-rays, two thirds of the biological damage is attributed to indirect action.
+As described in \ref{sec:photon}, radiation transfers some of its energy to the medium it passes through.
 Most interactions, such as the photo effect, incoherent (Compton) scattering and pair production, result in free electrons.
 If the electron has a sufficiently high kinetic energy, it may free additional orbital electrons from atoms in its vicinity.
-The remaining ions are then left positively charged, with a single unpaired valence electron.
-This type of chemical and free electrons are called 'radicals' and considered extremely reactive.
-They are likely to take part in chemical events which lead to the breakage of chemical bonds.
-Such processes can induce changes in DNA sequences and eventually produce biological damage.
+The remaining ions are positively charged, with a single unpaired valence electron.
+This type of chemical and free electrons are both referred to as 'radicals' and considered extremely reactive.
+As the human body consists mainly of water, the radicals created are often $H_2O^+$ (water ion) and $OH \bullet$ (hydroxyl radical).
+They are likely to take part in chemical events leading to the breakage of chemical bonds.
+Such processes can induce changes in DNA sequences and eventually produce biological damage. \\
 
-A irradiated cell can be affected in various ways ranging from no effect to cell death.
-The cell might survive containing a minor mutation.
+A irradiated cell can be affected in various ways ranging from no effect to immediate cell death.
+The cell might also survive containing a minor mutation.
 A more fundamental mutation might lead to carcinogenesis.
 Irradiated cells might also send signals to their neighbours, inducing genetic damage known as 'bystander effects'.
-However, surviving cells can also react to irradiation and becoming more resistant.
+On the other hand, surviving cells can also react to irradiation and becoming more resistant.
 
-Furthermore, the damage done to a cell can be either lethal, sublethal or potentially lethal.
-Sublethal damage can be repaired, provided it occurrs only once.
-Potentially lethal damage can be manipulated by repair, provided the cell is allowed to remain in a non-dividing state.
+One classification separates cell damage into lethal, sublethal or potentially lethal.
+Sublethal damage can be repaired, provided it occurs only once before the repair cycle is complete.
+Potentially lethal damage can be manipulated by repair, provided the cell is allowed to remain in a non-dividing state.\\
 
 The relative biological effectiveness (RBE), which describes the damage done by a specific type of radiation (compared to a reference test radiation) to a certain type of tissue, is dependent on various factors, including the rate at which dose is delivered.
-%In the case of sublethal damage, for instance, if the time for a successful repair cycle is longer than the time between two such damages, the 
+In the case of radiation causing sublethal damage, for instance, the dose rate significantly affects the RBE.
+If the average time between two sublethal damages in a single cell is longer than the time necessary for a full repair cycle, the cell will have a fair chance of survival.
+Does it sustain damage more frequently, the cell will die with a much higher probability.
+Increasing the radiation rate above this threshold results in a jump of the RBE.
 
-Generally, harmful effects by radiation are defined as either stochastic or deterministic.
+Raising the RBE does not automatically correspond in better treatment.
+Only if a differential effect reduces the RBE for healthy tissue compared to the tumour, there is a therapeutic advantage.
+Fortunately, tissues react differently to the same type of radiation.
+This behaviour can be used to increase the RBE for tumours and reduce it for healthy tissue.\\
+
+On a larger scale, the sum of damages done to individual cells gives rise to characteristic symptoms.
+Generally, these harmful effects by radiation are defined as either stochastic or deterministic.
 The probability of stochastic effects is directly proportional to the dose, but their severity in affected individuals is not.
 These effects arise in single cells (e.g. carcinogenesis), and it is assumed that the probability for such an occurrence is always greater than zero, even for small doses.
+If many cells show mutations, the probability of cancer development is higher, but the symptoms of growing tumours will not be worse.
 For deterministic effects, on the other hand, the severity scales with the dose.
 They are connected to tissue reaction caused by damage to a population of cells.
-The higher the dose, the more cells die, the graver the biological consequences.
+The higher the dose, the more cells die, the graver are the biological consequences.
 
 Changes to the DNA might not become apparent ever, others take years until they result in biological effects.
 The same goes for tissue effects, which could either be acute (soon after exposure) or delayed (chronic).
 A well known long term consequence of ionising radiation is leukaemia.
 Damage to germ cells (sperm/egg) might even result in genetic damages expressed in subsequent generations.
-
 
 
 While imaging modalities utilising x-rays are designed to apply a dose as little as possible to keep effects of irradiation low, radiotherapy makes use of the lethal effects targeting cancer cells. \cite{Podgorsak, Maidment2014}
@@ -196,7 +206,7 @@ In the next chapters, X-ray planar imaging and the imaging modalities used for t
 
 \subsection{X-ray projection imaging}
 A widely used imaging technique based on photon interactions is X-ray projection.
-Its setup is made up by a light source, the object of interest and a detector.
+Its setup is made up by a radiation source, the object of interest and a detector.
 Since the technique is about projection, a patient needs to be placed between an X-ray tube and the detector (usually a film-cassette or digital sensor).
 In the first stage of the imaging process, X-ray photons emitted by the tube enter the body.
 Next, while travelling through human tissue, they interact with its atoms in various ways as described above (see \ref{sec:photon}).
@@ -219,7 +229,7 @@ In studies of the abdomen a diluted iodine solution or barium compounds swallowe
 For some examinations, the patient inhales a contrast agent.
 
 For patients allergic to those chemicals, a number of alternative agents have been developed.
-Unfortunately most introduce slight, sometimes serious side-effects.
+Unfortunately most introduce minor, sometimes serious side-effects.
 There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nano particles. \cite{Podgorsak, Maidment2014}
 
 
@@ -402,7 +412,7 @@ For example, areas with increased water level will be dark on T1 weighted ($T_1w
 Additionally, certain types of materials (tissues) can be intentionally not imaged (suppressed) to reveal others that are in their close proximity.
 This is often done with fatty tissue that can cover relevant parts of the field of view.
 There are various methods how this can be achieved.
-MRI imaging gives practically unlimited possibilities in terms of selective imaging and is mostly limited to imaging time and technical characteristics of the scanner.
+MR imaging gives practically unlimited possibilities in terms of selective imaging and is mostly limited to imaging time and technical characteristics of the scanner.
 Medical physicists and scanner vendors are incessantly working on new MR imaging methods and applications. 
 
 The set of parameters governing how the tissue is excited and data acquired are called 'image sequence'.
@@ -415,14 +425,14 @@ This is why soft tissue appears as bright areas in MRI, whereas bone material ha
 
 Most the scanners are build to house a receiver coil in the gantry and they are able to measure the signal using only this, one coil.
 However, a stronger signal could be obtained by placing the coil closer to its source, the patient.
-As the region of interest is usually limited to a specific organ, receiver coils are available in different sizes and shapes, often designed to fit the patient with a comfortable but narrow space in between.
+As the region of interest (ROI) is usually limited to a specific organ, receiver coils are available in different sizes and shapes, often designed to fit the patient with a comfortable but narrow space in between.
 To get even closer, so called 'surface coils' can be placed on the patient, spine coils are hidden the table.
 Typically, for creating images of a patient's head, coils with a fixed arc-like geometry are used.
 This type of coil has also been in use for the data acquisition of this thesis.
 
-Studies have shown that delineating certain types of tumours, for example prostate cancer, is more accurate using MRI images than using CT. \cite{Rasch1999, Debois1999a, Roach1996}
+Studies have shown that delineating certain types of tumours, for example prostate cancer, is more accurate using MR images than using CT. \cite{Rasch1999, Debois1999a, Roach1996}
 
-In diagnostics, MRI scans prove to be very useful.
+In diagnostics, MR images prove to be very useful.
 Also for radiation therapy treatment planning, the superior soft tissue contrast is exploited during the definition of organs at risk and targets.
 Unfortunately, due to the physical principles of MRI, it indirectly provides the information about the proton density, whereas CT can provide information about electron density.
 It is knowledge of the electron density which is necessary in the treatment planning process.
@@ -431,8 +441,12 @@ During this, the dose distributions are calculated based on the applied beam geo
 
 \subsubsection{Image Quality}
 Contrary to CT, MRI is prone to distortion, due to field inhomogeneities.
+Organs might appear shifted, elongated or shrunk.
+The effect is most prominent along the outer edges of the scanners field-of-view (FOV).
+In the isocentre (middle) of the scanner, the distortion is smaller, because here the field is least aberrant.
 For most applications, small position shifts and deformations are of minor importance.
 MRI scanners usually come equipped with an internal distortion correction algorithm.
+Figure \ref{fig:dist_compare} shows the unmodified and the corrected version of an image coming from such a scanner.
 Those methods are developed by the company designing the scanners.
 Knowing the technical details enables them to write tailor-fit scripts which drastically reduce the distortion.
 
@@ -442,6 +456,13 @@ While its soft tissue contrast is superior to CT, a relatively long acquisition 
 This leads to the risk of motion artefacts (patients moving during the scanning procedure).
 To tackle this issue, resolution can be reduced, effectively combining signal from several voxels to create a single voxel, reducing the overall noise.
 The trade-off is that fine structures might get lost.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\linewidth]{../fig/vgl-corr_inverse.jpg}
+\caption{On the left is the original image, on the right the automatically corrected version of a MR image(inverted colours)}
+\label{fig:dist_compare}
+\end{figure}
 
 %Field of view (FOV) of the MRI scanner is smaller than the CT scanner's.
 
@@ -491,12 +512,12 @@ Low fields allow facilities to build smaller rooms and magnetic objects are less
 
 \subsubsection{Diffusion Weighed Imaging - an example for non morphologic Imaging}
 
-Despite the fact this type of MRI imaging was not used for this thesis, it will be mentioned here as an example of the vast range of measurements possible with MRI techniques.
+Despite the fact this type of MR imaging was not used for this thesis, it will be mentioned here as an example of the vast range of measurements possible with MRI techniques.
 \\
 % https://www.youtube.com/watch?v=J_aamnpRJE8
 % mri - from picture to proton S. 331 (im pdf auf 344)
 Diffusion weighted (DW) imaging quantifies molecular diffusion in the body.
-This imaging technique uses MRI technology slightly different:
+This imaging technique uses MRI technology differently:
 Additionally to the gradients needed to select a slice (strength $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two long strong consecutive and opposite gradients (strength $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
 After those two gradients (which, usually, will be applied in all three Cartesian directions), the remaining signal (net magnetisation) is measured by the receiver coil.
 
@@ -517,19 +538,45 @@ This is taken into account by creating a second image which is also $T_2$ weight
 The difference between the DW and the not DW weighted sequences reflects the actual contribution of diffusion (apparent diffusion coefficient - ADC).
 
 
-\section{External Beam Radiation Therapy Planning}
+\section{Radiation therapy}
 \label{sec:planning}
-External Beam Radiation Therapy (EBRT) planning utilizes ionizing radiation to damage cancer cells in order to stop them from multiplying.
-This prevents the growth of tumours and hopefully cures the patient. 
+Radiation therapy utilizes ionizing radiation to damage and kill cancer cells in order to stop them from multiplying.
+This prevents the growth of tumours, makes them shrink in size and hopefully cures the patient. 
+
+During treatment planning, 3-D models of the patient are used to define targets (regions where the dose should go) and organs at risk (where the dose should not go).
+This ensures that vulnerable organs are spared from radiation while making sure the tumours receive sufficient dose.
+Moreover, methods to quantify the amount of radiation that different body parts absorbed are needed, because the actual treatment might be different to the plan.\\
+
+There are two well established methods for applying the radiation.
+External beam radiotherapy (EBRT) is performed from afar:
+Gantries are able to position the radiation source around the patient in a way covering virtually any possible angle.
+During treatment, the smaller parts of the total dose are administered from many different locations.
+The sum of those individual treatments result in the required dose distribution.
+Figure \ref{plan} shows an example of two differently calculated treatment plans.
+
 In conventional EBRT, photons (x-rays) in the range of 4MeV to 20MeV are used to administer the necessary dose at the location of the tumour.
-Unfortunately, light interacts with all cells it is passing through until it is fully absorbed.
+Unfortunately, radiation interacts with all cells it is passing through until it is fully absorbed.
 It releases its energy along its entire path while travelling through the patient.
 This may result in energy being transferred to cells all the way from the point of entry to the point where the (weakened) ray leaves the patient.
 
 Charged particles (e.g. protons or carbon ions) minimise the damage done to healthy tissue due to their distinctive behaviour in energy loss called ``Bragg Peak''.
 They release most of their energy only shortly before being stopped completely.
 \cite{Nakamura2010} This effect can be used to spare tissue lying behind the tumour from radiation entirely and also reduce the amount of energy transferred to those lying before. \cite{Paganetti2005}
-A comparison between the behaviour of x-rays and protons is shown in figure \ref{fig:bragg}.
+A comparison between the behaviour of x-rays and protons is shown in figure \ref{fig:bragg}.\\
+
+Brachytherapy, on the other hand, is when the radiation source is placed close to or inside of the patient.
+Either the source is moved close to the target area using applicators (temporary treatment) or implanted permanently.
+The latter method is done by inserting so called "seeds" (sealed metal containers with radioactive material) directly into the target area where they release high amounts of radiation.
+Over time they become less active and eventually the treatment stops automatically.
+These rice seed sized implants can remain in the body without causing any harm.
+Treatment of prostate and cervix cancer is often done with this technique.
+In comparison to EBRT, Brachytherapy allows higher doses while at the same time minimising the radiation reaching organs at risk - precise dose distributions can be achieved.
+At the same time not all cancer types can be treated this way.
+For some, a non-invasive method (EBRT) is the only option.\\
+
+Other types of ionising radiation are also, but less common.
+Electrons and low energy X-rays are favoured for some superficial tumours, rare methods using neutrons and even muons also exist.
+Charged particle therapy is on the rise, but still not as common as X-rays.
 
 \begin{figure}[!h]
 	\centering
@@ -546,21 +593,27 @@ The necessity to treat the tumour with a required amount of radiation leads to a
 
 \begin{figure}[!tbh]
 	\centering
-	\includegraphics[width=0.6\textwidth]{abdoplan.jpg}
-	\caption{Example of Radio Therapy Plan: colored areas represent different values of radiation administered during treatment \todo{use own image!}}
+	\includegraphics[width=\textwidth]{Plans.png}
+	\caption{Example of Radio Therapy Plan: colored areas represent different values of radiation administered during treatment (image source: \cite{piotr})}
 	\label{fig:plan}
 \end{figure}
 
 
-\clearpage
+
+%\subsection{Types of radiation therapy}
+%\todo{(Based on the IAEA Handbook Radiation Oncology Physics) Tele – is typically delivered in the range of few to some 20MV with linear accelerators (describe briefly the dose depth curve and that to be able to accumulate dose in the target and spare the OAR normally multiple number of beams is combined), typically photons are used but also electrons can be produced to treat superficial targets. For the latter also a low energy X-rays can be utilized – orthovoltage units. Then there are also havier particles to utilize like protons, neutrons or light ions – here few words about the Bragg peak. }
+
+
 \subsection{Role of CT}
-Until recently, radiotherapy treatment planning (RTP) relied heavily on Computer Tomography (CT).
+\todo{Generally the paragraph is carrying the right message but is should be better organised. Some of that you already mentioned before in the chapter about CT. Make use of this and put the two arguments in more elegant words.}
+
+Until recently, radiotherapy treatment planning (RTP) relied almost entirely on Computer Tomography (CT).
 There are two main reasons for this:
 
 Firstly, CT uses low energy x-rays to create a 3D image of the patient.
-The luminosity value (brightness) assigned to each voxel (like pixel, but three-dimensional) corresponds to the local radiodensity recorded in Hounsfield units ($HU$).
+The luminosity value (brightness) assigned to each voxel corresponds to the local radiodensity recorded in Hounsfield units ($HU$).
 Materials with a higher radiodensity (e.g. bones) absorb more x-ray photons than those with less (e.g. water, brain-matter).
-Calculating the electron density using data obtained with CT is an easy task and used widely for RTP. \cite{Constantinou2012, Schneider1996}
+Calculating the electron density using data obtained with CT is an straightforward task and used widely for RTP. \cite{Constantinou2012, Schneider1996}
 In order not to induce new cancer cells in healthy tissue during EBRT, the radiation beams are carefully targeted using the measured radiodensity. 
 This way the absorbed dose accumulates in the cancer regions, while the nearby healthy tissue receives less radiation.
 
@@ -572,35 +625,38 @@ This is why CT images are preferred as they show little to no distortion.
 
 \subsection{Role of MRI}
 Today RTP often combines CT images with data acquired using Magnetic Resonance Imaging (MRI).
-MRI scans also record luminosity values, but they do not correspond to $HU$ (which is directly related to radiodensity, measured by CT).
+MR images also record luminosity values, but they do not correspond to $HU$ (which is directly related to radiodensity, measured by CT).
 The signal intensity depends on other factors (see \ref{sec:MRI}) and even varies between MRI scanners.
-Due to the better visibility of tumours on MRI images, RTP often uses combined data from both imaging modalities.
+Due to the better visibility of tumours on MR images, RTP often uses combined data from both imaging modalities.
 However, there are some difficulties arising from combining CT and MRI for EBRT:
-In order to profit from separately acquired data, the resulting images must be aligned either manually or automatically. This is a hard task since non-rigid objects (organs) change their shape and location between measurements which may lead to inaccuracies.
+In order to profit from separately acquired data, the resulting images must be aligned (registered) either manually or automatically.
+This is a hard task since non-rigid objects (organs) change their shape and location between measurements which may lead to inaccuracies.
+\todo{Write a snetence that there are algorithms supporting non rigid registration but that there is still space for a lot of imporvement. Therefore typically rigid registration is performed locally to support taget and OAR definition.}
 Therefore MRI-only radiation therapy protocols are being developed:
-MRI data is used to create a Pseudo-CT, which contains information about electron density. Comparisons to using CT and MRI have shown acceptable deviations for X-ray therapy.
+A way to that is when MRI data is used to create a Pseudo-CT, which contains information about electron density.
+Comparisons to using CTs and MRI-based pseudo CTs have shown acceptable deviations for X-ray therapy.
 In charged particle therapy the resulting dose gain in healthy tissue and dose loss in cancer regions owed to inaccurately assigned electron density values is bigger.
 However, current development is promising. \cite{Rank2013, Stanescu2006, Nyholm2015, Greer2015, Chen2004}
-
+\todo{Add that in that way one can also save time and money by only performing one imaging - MRI insetead of CT and MRI. And also there is benefit of not adding dose and the quantitative fictional parameters from DW-MRI or DCE-MRI support response prediction and assessment.}
 
 
 \section{Aim of this work}
-The idea of only using MRI for treatment planning seems close to realisation, but there are some issues that need to be addressed first.
+The idea of only using MRI for treatment planning is approaching the clinics, but there are still some issues that need to be addressed.
 
-The key difference between CT and MRI is the unavoidable distortion occurring in MRI images.
-Mainly caused by inhomogeneities of the magnetic fields, organs might appear shifted, elongated or shrunk.
-The effect is most prominent along the outer edges of the scanners field-of-view (FOV).
-In the isocentre (middle) of the scanner, the distortion is smaller, because here the field is least aberrant.
-
-Due to the possible image distortion, great care needs to be taken and the images must be verified before they are used for RT target definition.
+Due to the possible image distortion, great care needs to be taken and the MR images must be verified before they are used for RT target definition and dose calculation.
 The available MRI scanner at the AKH is equipped with an on board correction algorithm which is supposed to reduce distortion.
-The goal of this work is to commence the development of a quality assurance tool to asses the spatial distortion of the MRI scans (after applying the internal correction).
-This is achieved by comparing MRI images to CT images used as a gold standard.
-An already existing custom designed phantom is provided by the AKH Vienna for this purpose.
-However, the liquid to fill the rods with has not been chosen yet.
-Therefore, this work focuses mainly on the acquired data and which liquids to use the phantom with, not its entire design.
+
+The goal of this work is to:
+find an optimal (providing satisfactory image quality and convenience of use) liquid filling for the rod cavities in an already existing custom designed distortion phantom provided by the AKH Vienna to be able to acquire the reference CT image and test MR acquisitions.
+
+develop and implement a method to assess and illustrate the distortion of the MR image based on tracking of the distortion of one of the phantom rods, with an option to further extend the tool for mutli-rod tracking.
+% develop and implement in silico a method to assess and illustrate the distortion of the MR image based on tracking of the distortion of one of the phantom rods, with an option to further extend the tool for mutli-rod tracking.
+
+Therefore, this work focuses mainly on the assessment of the acquired imaging data (using the implemented software tools), choosing which liquids to fill the phantom with, but not its entire design.
 However, possible fillings have to be produced and tested.
 Similar approaches are being used for distortion correction by other facilities. \cite{Price2015, Petersch2004, Torfeh2015, Wang2004, Wang2004b, Mizowaki2000}
+
+
 
 %to me \footnote{Auszug aus \citetitle{BohemRhap}~\cite{BohemRhap} von \citeauthor{Queen}~\cite{Queen} }\\
 %\section{Farrokh Bulsara aka. Freddie Mercury}

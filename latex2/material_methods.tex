@@ -36,6 +36,7 @@ CT	&		&		& --------
 
 The Magnetom C! MRI scanner comes with a handbook which contains diagrams of the magnetic field strength (fig. \ref{fig:strength_side}) and its gradient (fig. \ref{fig:gradient_side}, \ref{fig:gradient_top} and \ref{fig:gradient_front}).
 Figure \ref{fig:scanner} shows an image and different views of the scanner and the planes along which the field strength and gradient are displayed.
+Patient are positioned as to place the ROI at the isocentre, the area where the B0 field is most homogeneous (where there is a low gradient).
 
 \begin{figure}[!htb]
 \centering
@@ -141,7 +142,7 @@ Figure \ref{fig:scanner} shows an image and different views of the scanner and t
 \section{Custom build phantom}
 
 To compare images from different scanners and asses occurring distortion, a rigid object with known dimensions is necessary.
-Such a 'phantom' is often made from plastics containing a liquid.
+Such a 'phantom' is often made from plastics filled with liquids which are easy to handle and typically well seen on MR and CT images.
 The AKH's design is made up from an array of replaceable, fillable plastic rods.
 
 \begin{figure}[!htb]
@@ -171,34 +172,34 @@ The phantom was build to fit the largest available rigid coil for the MRI scanne
 Three parallel acrylic glass panes in the shape of the coil serve as a frame for the plastic rods.
 In the middle an empty area was reserved for an optional additional smaller phantom (not used for this work).
 Figure \ref{fig:photo_ph3} shows a picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
-More than 300 plastic rods (length: 50cm, outer diameter: 8mm, inner diameter: 4mm, volume: approx. 6mL) could be placed in the phantom.
+More than 300 plastic rods (length: 50cm, outer diameter: 8mm, inner diameter: 4mm, volume: approx. 6ml) could be placed in the phantom.
 See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
-The bottom part of each rod was sealed with a hot glued plastic plug, the top could be closed with a plastic screw.
+The bottom part of each rod was sealed with a glued plastic plug, the top could be closed with a plastic screw.
 Frame and rods were already build and assembled before the author started working on this project.
 
-Additionally to the rods which would be used to assess the distortion, a number of vitamin-e pills were attached to the frame (see figure \ref{fig:pills}).
+Additionally to the rods which would be used to assess the distortion, a number of vitamin-e pills were attached to the frame as reference markers (see figure \ref{fig:pills}).
 These pills are visible in both CT and MRI images and were used to align them (see section \ref{sec:prep}).
-This way there is another way of checking the alignment in addition to the rods.
+This way there is another way of checking the alignment during the prototyping process in addition to the rods.
 
 
 \begin{figure}[!bp]
 \centering
 \includegraphics[width=\textwidth]{photo/ph3_CT-scanner.png}
-\caption{Picture of phantom on CT desk}
+\caption{Picture of phantom on CT table}
 \label{fig:photo_ph3}
 \end{figure}
 
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=\textwidth]{slicer3D/full_phantom/axial_CT_pane.png}
-\caption{An axial view of one of three plastic panes that make up the frame of the phantom. This scan shows how the pane would look like with no rods inserted.}
+\caption{An axial view of one of three plastic panes that make up the frame of the phantom. This scan shows how the pane looks like with no rods inserted.}
 \label{fig:axial_CT_pane}
 \end{figure}
 
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=0.8\textwidth]{slicer3D/full_phantom/rod_schematic.png}
-\caption{A schematic of an empty plastic rod as they are used for the phantom. On the left the rod ends with a hot glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
+\caption{A schematic of an empty plastic rod as they are used for the phantom. On the left the rod ends with a glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
 \label{fig:rod_schematic}
 \end{figure}
 
@@ -217,7 +218,7 @@ This way there is another way of checking the alignment in addition to the rods.
     \caption{MRI scan}
     \label{fig:pills_MR}
   \end{subfigure}
-  \caption{CT/MRI coronal images showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
+  \caption{CT (a) MR (b) coronal images showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
   \label{fig:pills}
 \end{figure}
 
@@ -280,8 +281,8 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
 
 Being closed at one end and having a capillary shape (small diameter) makes it impossible to fill the rods by simply pouring the liquid through the opening.
 Instead of adding the fluid at the top, it has to be injected starting at the bottom.
-This way the contained air would be pushed out by the injected liquid through the opening at the top.
-A thin plastic tube was inserted and used for injection, leaving enough room for the gas to escape.
+This way the contained air is pushed out by the injected liquid through the opening at the top.
+A long, thin plastic tube was inserted and used for injection, leaving enough room for the gas to escape.
 Between injections of different liquids, the tube was flushed with \textbf{\#1} (distilled water) or \textbf{\#2} (main component of most solutions).
 
 In order to minimise the amount of gas dissolved, the liquids were brought to boil shortly before injecting. Gas solubility generally decreases with rising temperature \cite{Henry1803, Sander2015}.
@@ -313,8 +314,8 @@ CT     & -   & -   & -   &
 \label{sec:prep}
 
 % what application used to align CT and MRI
-Prior to analysing their data, the scans had to be prepared.
-Figure \ref{fig:data_prep} gives an impression how the steps performed affected the data.
+Prior to analysing the data, the scans had to be prepared.
+Figure \ref{fig:data_prep} explains the image processing workflow.
 
 \begin{enumerate}[label=\textbf{Step \arabic*}]
 \item After loading the CT and MRI scan into \textit{MIRADA}, they were aligned using the vitamin-e pills, yielding maximum overlap in the centre of the image.
@@ -330,7 +331,7 @@ Its voxel's size were changed to match the CT voxels and both scans exported.
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=0.8\textwidth]{algorithm/data_prep.jpg}
-\caption{Steps performed before analysing data with script}
+\caption{Steps performed before analysing data with script \todo{remake}}
 \label{fig:data_prep}
 \end{figure}
 
@@ -406,7 +407,7 @@ x100   & 0.60 & 0.2 	& 0.1
 % source activate snowflakes
 % spyder
 
-In order to asses the distortion of the MRI scanner, a tool was programmed.
+In order to asses the distortion of the MRI scanner, a software tool was programmed.
 It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
 \textit{SimpleITK} is a object-oriented "C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
 It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a "free and open source software package for
@@ -458,14 +459,15 @@ Ideally, it is located near the iso centre and has a brightness that is represen
 
 The script will compare each slice of the volume to the reference slice individually, starting at one end (\textbf{2.}).
 To decide whether a particular slice is "irregular", it's average brightness will be compared to the reference slice's (\textbf{4.}).
-If the difference exceeds a certain value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its DC or COM.
+If the difference exceeds a certain value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its DC or centre of mass (COM).
 A value of 40 was found to be yield good results for CT scans.
 In the future a more sophisticated approach should be implemented where the script chooses a suitable value based on the image modality and the image size.
 
 \subsubsection{Irregular slices and their COM and DC values}
-Instead of calculating meaningless DC, COM and warp numbers, they will all be set to "$-1$".
+As irregular slices cannot be used to asses distortion caused by the scanner, numbers describing their distortion are not of interest.
+Instead of calculating DC, COM and warp numbers, they will all be set to "$-1$".
 The position of the COM cannot lie outside the image, yet coordinates '-1,-1' would indicate this.
-Similarly, the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers
+Similarly, the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers.
 All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
 The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
 To be consistent, they are still set to "$-1$".
@@ -565,37 +567,6 @@ For CT images it chooses values between 3.5 and 4.5, for MRI it varies from 1.8 
 This boundaries could be changed in the future.
 
 
-
-\begin{figure}[p]
-    \centering
-	\begin{tikzpicture}[node distance = 3cm, auto]
-    % Place nodes
-    \node [blockb] (1) {\textbf{1.} Calculate average brightness of user defined reference slice: \texttt{average(ref)}};
-    \node [blockb, below of=1, node distance=2.2cm] (2) {\textbf{2.} Initialise loop to start with slice \texttt{i=0} (first slice of Volume)};
-    \node [cloud, below of=2, node distance=2.8cm] (3) {\textbf{3.} Calculate average brightness of slice \#\texttt{i}:\\ \texttt{average(i)}};
-    \node [blockb, right of=3, text width=8em, node distance=8cm] (repeat!) {Repeat comparison with next slice\\ \texttt{i $\rightarrow$ i + 1}};
-    \node [decisionr, below of=3, node distance=3.5cm] (4) {\textbf{4.} \texttt{|average(ref) - average(i)|}};
-    \node [cloud, left of=4, text width=6em, node distance=7cm, xshift=3cm, yshift=-3cm] (5a) {\textbf{5a.} mark slice \#\texttt{i} as 'regular'};
-    \node [cloud, right of=4, text width=6em, node distance=7cm, xshift=-3cm, yshift=-3cm] (5b) {\textbf{5b.} mark slice \#\texttt{i} as 'irregular'};
-    \node [decisionr, below of=4, yshift=-3cm] (6) {\textbf{6.} Has script reached\\ the last slice of the Volume?};
-    \node [blockb, text width=20em, below of=6, yshift=-1cm] (7) {\textbf{7.} End of irregularieties check};
-    % Draw edges
-    \path [line] (1) -- (2);
-    \path [line] (2) -- (3);
-    \path [line] (3) -- (4);
-    \path [line] (4.east)  to node {{\texttt{> 40}}} (5b);
-    \path [line] (4.west)  to node [xshift=-1.3cm, yshift=-0.5cm] {\textbf{\texttt{< 40}}} (5a);
-    \path [line] (5a) -- (6);
-    \path [line] (5b) -- (6);
-    \path [line] (6.east) -| node [xshift=-1cm, yshift=-0.5cm] {\textbf{no}} (repeat!);
-    \path [line] (repeat!) -- (3);
-    \path [line] (6.south) to node {\textbf{yes}} (7);
-	\end{tikzpicture}
-	\caption{Check for irregularities}
-	\label{flo:irregular}
-\end{figure}
-
-
 \subsection{Calculation: warp \& centre of mass (COM)}
 \label{sec:COM}
 
@@ -604,7 +575,7 @@ The x- and y-shift (\textit{warpXY}) measured in each slice was saved in an arra
 Furthermore, the absolute value of the coordinate shift (\textit{warpMagnitude}) was calculated.\\
 
 The calculation of the COM is done with help of the "scipy" python package.
-It's module "ndimage" contains the function "$center\_of\_mass()$", which returns the COM's coordinates of a given input array.
+Its module "ndimage" contains the function "$center\_of\_mass()$", which returns the COM's coordinates of a given input array.
 The values assigned to voxels in CT images lie in the range from -1024 HU (air) to around 200 HU (plastic rod).
 Before a meaningful result can be obtained, the values need to be shifted to be $>$ 0.
 Additionally, only pixels representing the rod or the liquid should be used for the calculation.
