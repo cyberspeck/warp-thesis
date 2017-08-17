@@ -13,7 +13,6 @@
 % o Purpose of the thesis
 % o based on the literature research, describe which information is missing, describe briefly what your thesis is about and what is the novelty of your work
 
-%\todo{Some introductory intorduction is needed. This should be some half a page of bla bla about the interdisciplinary of the current and future medicine where the success and development is dependent on the work of both medical personnel such as doctors nurses, but also biologists, chemists, physicists and engineers. That the problems we are putting ourselves in front of are becoming more and more complex and need the interdisciplinary expertise. This means that trying to answer questions that seem to be easy and sometimes are so, if you are satisfied with a more or less precise answer, become very complex when we try to improve the precision and go towards targeted therapies which are tailored very precisely to the needs of certain patient to improve his or her quality of life, chance of survival and in the long run also the cost of used resources. And that this work is a small contribution to this development.}
 
 \section{Preface}
 
@@ -133,18 +132,6 @@ Reliable ways of diagnosing tumours are made possible by imaging techniques visu
 \subsection{Effects of radiation}
 \label{sec:irradiate}
 
-\todo{Please work on that a bit more. As a guideline use the following chapters from the ref [41]:
-
-14.4.1. 
-14.4.2
-14.5.2.
-14.5.4.
-14.5.5.
-14.9
-14.12 introductory part (till the figure).
-
-It does not need to be long, but what you have by now is too simplistic.}
-
 Cell damage could either be caused by radiation interacting directly with the critical target in a cell or with other molecules and atoms within the cell.
 For X-rays, two thirds of the biological damage is attributed to indirect action.
 As described in \ref{sec:photon}, radiation transfers some of its energy to the medium it passes through.
@@ -192,7 +179,7 @@ A well known long term consequence of ionising radiation is leukaemia.
 Damage to germ cells (sperm/egg) might even result in genetic damages expressed in subsequent generations.
 
 
-While imaging modalities utilising x-rays are designed to apply a dose as little as possible to keep effects of irradiation low, radiotherapy makes use of the lethal effects targeting cancer cells. \cite{Podgorsak, Maidment2014}
+While imaging modalities utilising X-rays are designed to apply a dose as little as possible to keep effects of irradiation low, radiotherapy makes use of the lethal effects targeting cancer cells. \cite{Podgorsak, Maidment2014}
 
 \section{Imaging modalities}
 
@@ -200,7 +187,7 @@ The imaging of human body's interior has diametrically changed medicine.
 It has its use in almost all medical disciplines.
 Currently, there are many ways to acquire section images (or also volumes) of our organism without causing serious and sustained side effects.
 They differ not only in size of the depicted volume and the image quality, but also in what additional information they provide besides purely morphologic data.
-This other features can be functional, for example describing effectiveness of a metabolic process; or even molecular, revealing pathways of a certain molecules distribution.
+These other features can be functional, for example describing effectiveness of a metabolic process; or even molecular, revealing pathways of a certain molecule's distribution.
 In the next chapters, X-ray planar imaging and the imaging modalities used for this thesis (computer tomography and magnetic resonance imaging) will be explained in more detail.
 
 
@@ -214,8 +201,8 @@ These processes govern how much radiation is absorbed or scattered.
 Finally, photons which make it through the patient are recorded as they reach the detector on the opposite side.
 This results in a negative greyscale image, where brightness values correspond to the intensity reduction.
 Low intensity (= high absorption) leads to bright spots on the image and vice-versa.
-The whole process could also be described as 'the projection of attenuation shadows on to the detector', since the radiation absorption directly depends on the attenuation coefficient. The attenuation, on the other hand, depend on the tissue's properties (e.g. atomic number Z, density, etc).
-Consequently, the attenuation shadows depict projection of the patient.
+The whole process could also be described as 'the projection of attenuation shadows onto the detector', since the radiation absorption directly depends on the attenuation coefficient. The attenuation, on the other hand, depend on the tissue's properties (e.g. atomic number Z, density, etc).
+Consequently, the attenuation shadows depict a projection of the patient.
 
 \subsubsection{Soft tissue contrast}
 \label{sec:soft}
@@ -229,7 +216,7 @@ In studies of the abdomen a diluted iodine solution or barium compounds swallowe
 For some examinations, the patient inhales a contrast agent.
 
 For patients allergic to those chemicals, a number of alternative agents have been developed.
-Unfortunately most introduce minor, sometimes serious side-effects.
+Unfortunately, most introduce minor, sometimes serious side-effects.
 There is ongoing research to find materials yielding enhanced contrast while at the same time minimising adverse reactions, a promising candidate being gold nano particles. \cite{Podgorsak, Maidment2014}
 
 
@@ -312,7 +299,7 @@ Typically, CT scans are displayed on Computer monitors, which imposes the need t
 Since the number of possible values (dynamic range) on the HU scale is 16 times the shades of grey on a screen (12-8 = 4 bit difference; equivalent to a factor of $2^4$) the screen cannot convey all details at the same time.
 A linear mapping would result in 16 neighbouring HU values being compressed to the same brightness on the sreen.
 This way, the brightest (bone) and darkest parts (soft tissue) of the image would be clearly distinguishable.
-At the same time small differences (<16 HU) would appear as exactly the same intensity.
+At the same time small differences (<16 HU) would appear to have exactly the same intensity.
 However, most of the time, the doctor's focus might lie either on soft tissue or bone material.
 Bearing in mind that soft tissue values range only from 10 HU to 70 HU at most (see table \ref{tab:HU}), such a compression would make distinguishing tissues using CT very unreliable.
 Instead of showing detail from the lowest to the highest value, a range of values - a so called window - can be chosen.
@@ -320,7 +307,7 @@ Let's assume, for example, a range from -100 to 155 HU to be of interest.
 This selected range can be mapped directly and uncompressed to a 8-bit greyscale.
 Any values above 155 HU will be assigned the brightest value (white = 255), below -100 the darkest (black = 0).
 While showing very good soft tissue contrast, all bones would be depicted with exactly the same brightness (255), even though they might have a varying HU values.
-For bone structures a range from 300 to 2500 HU might show sufficient contrast.
+For bone structures, a range from 300 to 2500 HU might show sufficient contrast.
 Standard computer programs used to display CT images allow the user to change the window interactively to any value range. \cite{Podgorsak, Maidment2014}
 
 \subsubsection{Image acquisition}
@@ -329,7 +316,7 @@ In 2-D X-ray scanning only one picture is taken, while a 3-D CT model is made up
 If the patient moves during the imaging process, the final model would show motion artefacts which might lead to wrong conclusions.
 Consequently, CT scanners are designed to minimise acquisition time while ensuring sufficient image quality.
 Very fast CT protocols result in smaller resolution, because less images are taken.
-It has to be said though that CT acquisition time is usually significantly shorter than MRI. \cite{Podgorsak, Maidment2014}
+It has to be said, though, that CT acquisition time is usually already significantly shorter than MRI. \cite{Podgorsak, Maidment2014}
 
 \subsubsection{Image quality} %282
 Additionally to the relatively short acquisition time, CT scans show little distortion compared MRI (see \ref{sec:MRI}), which is why they are often used as 'gold standards' (reference scans used for MRI distortion assessment).
@@ -341,7 +328,7 @@ See \ref{sec:soft} for more information.
 Another aspect of image quality is the 'low contrast resolution' of the scan.
 It directly relates to how much structures and their surroundings have to differ in signal intensity to be clearly distinguishable by doctors.
 The quality of the 'low contrast resolution' is mainly limited by noise.
-Noise is a random pattern underlying the actual signal which always present to some extent.
+Noise is a random pattern underlying the actual signal and is always present to some extent.
 It's prominence in the final image is described by the Signal to Noise Ratio (SNR).
 If the SNR is too low, fine structures blend with the noise and cannot be distinguished. 
 Strategies to achieve a high SNR include raising the initial photon flux (intensity) or employing contrast agents.
@@ -367,15 +354,15 @@ So while the benefit from using CT for diagnostics far outweighs the damage, the
 \label{sec:MRI}
 Magnetic Resonance Imaging (MRI) is a 3-D imaging modality based on Nuclear Magnetic Resonance (NMR), a phenomenon discovered by physicist Isidor I. Rabi in 1938.
 Atomic particles such as protons have an inherent quantum mechanic feature called 'spin', which is associated with a magnetic moment $\mu$.
-Without an external field a proton's spin is oriented in a random direction in space and so is its magnetic moment.
-The sum of magnetic moments belonging to a great number of protons results in a net magnetisation.
-Due to their random orientation, the net magnetisation will be zero.
-This is because, on average, for every proton's spin there is always another particle's spin oriented exactly the opposite way, cancelling its magnetic moment.
+Without an external field, a proton's spin is oriented in a random direction in space and so is its magnetic moment.
+The sum of magnetic moments belonging to a number of protons results in a net magnetisation.
+Due to their random orientation, the net magnetisation will be zero for a sufficiently high number of particles.
+This is because, on average, for every proton's spin there is always another particle's spin oriented exactly the opposite way cancelling its magnetic moment.
 
-In the case of an applied external magnetic field (this static field is often called B0), the spins will either align parallel (pointing in the same direction) or anti-parallel (opposite direction) to this field, minimising their energy.
-Parallel protons have a lower energy than those pointing the other way.
+In the case of an applied external magnetic field (this static field is often called B0), the spins will either align parallel (pointing in the same direction) or anti-parallel (opposite direction) to this field, where their energy reaches a local minimum.
+Parallel protons have an even lower energy than those pointing the other way.
 In a collection of many spins, the number of parallel spins will therefore slightly dominate, resulting in a net magnetisation greater than zero (see figure \ref{fig:spin_align}).
-In other words, only the amount of protons that is not compensated with the ones looking in the opposite direction contributes to the MRI.
+In other words, only the amount of protons that is not compensated by those looking in the opposite direction contributes to a detectable magnetic field.
 
 \begin{figure}[h!]
 \centering
@@ -387,9 +374,9 @@ In other words, only the amount of protons that is not compensated with the ones
 By applying a short radio frequency pulse (often referred to as B1), the total external magnetic field changes and the magnetic moments start precessing around that new external field.
 The pulse duration is usually chosen as to flip the spins by a $90^o$ angle.
 They are now oriented in the transverse plane to the original external field, and so is the resulting net magnetisation.
-Similar as to how a spinning top rotating at an angle to the direction of gravity precesses, the magnetic moments will now precess about the direction of the external field with a frequency linearly proportional to the external field strength.
+Similar to how a spinning top rotating at an angle to the direction of gravity precesses, the magnetic moments will now precess about the direction of the external field with a frequency linearly proportional to the external field strength.
 This precession movement can be detected as induced current in a receiver coil, because the net magnetisation still follows the spins' orientation. 
-Again, the particles would like to minimise their energy by aligning their spins to the external field, but in order to do so they need to give away the additional energy, transferring it to the surrounding lattice.
+Again, the particles would like to minimise their energy by aligning their spins to the external field, but in order to do so they need to give away the surplus energy, transferring it to the surrounding lattice.
 Those spin-lattice interactions happen with different efficiency depending on the tissue.
 The time it takes the spins to align is expressed in a material specific time constant $T_1$.
 Shortly after applying the radio frequency pulse, regions of the body where magnetic moments align quickly (short $T_1$) have a stronger net magnetisation (in the direction of the external field) than those where energy is being transferred slowly (long $T_1$).
@@ -402,8 +389,8 @@ Eventually, all spins will be again aligned either parallel or anti-parallel to 
 
 Applying the RF pulse with a homogeneous field strength along the whole body would excite all spins simultaneously.
 In order to localise differences in tissue magnetisation, the RF pulse is instead combined with a linear magnetic gradient field 'selecting' a slice to be imaged at a time.
-The rest of the body is unaffected, and the signal measured directly after such a pulse originates only from the chosen slice.
-Consequently, collecting data on the net magnetisation throughout the body in different locations ('scanning' the patient slice by slice) results in a 3-D image.
+The rest of the body is unaffected, the signal measured directly after such a pulse was applied originates only from the chosen slice.
+Eventually, by collecting data on the net magnetisation throughout the body in different locations ('scanning' the patient slice by slice), a 3-D image can be computed.
 
 Depending on the information required from the examination, Doctors can choose to create images that reflect spin-lattice interactions ($T_1$ weighted) or spin-spin interactions ($T_2$ weighted).
 
@@ -412,10 +399,10 @@ For example, areas with increased water level will be dark on T1 weighted ($T_1w
 Additionally, certain types of materials (tissues) can be intentionally not imaged (suppressed) to reveal others that are in their close proximity.
 This is often done with fatty tissue that can cover relevant parts of the field of view.
 There are various methods how this can be achieved.
-MR imaging gives practically unlimited possibilities in terms of selective imaging and is mostly limited to imaging time and technical characteristics of the scanner.
+MR imaging gives practically endless possibilities in terms of selective imaging and is mostly limited to imaging time and technical characteristics of the scanner.
 Medical physicists and scanner vendors are incessantly working on new MR imaging methods and applications. 
 
-The set of parameters governing how the tissue is excited and data acquired are called 'image sequence'.
+The set of parameters governing how the tissue is excited and data acquired is called 'image sequence'.
 Delineating tumours or lesions is often accomplished by looking at both $T_1w$ and $T_2w$ weighted images and drawing the right conclusions.
 
 Soft tissue contains a lot of water, which is made up by oxygen and hydrogen.
@@ -423,12 +410,13 @@ Hydrogen nuclei are single protons and their nuclear magnetic resonance is what 
 This is why soft tissue appears as bright areas in MRI, whereas bone material has only little contrast. \cite{Currie2013}
 
 
-Most the scanners are build to house a receiver coil in the gantry and they are able to measure the signal using only this, one coil.
+Most the scanners are build to house a receiver coil in the gantry and they are able to measure the signal using only this one coil.
 However, a stronger signal could be obtained by placing the coil closer to its source, the patient.
 As the region of interest (ROI) is usually limited to a specific organ, receiver coils are available in different sizes and shapes, often designed to fit the patient with a comfortable but narrow space in between.
-To get even closer, so called 'surface coils' can be placed on the patient, spine coils are hidden the table.
+To get even closer, so called 'surface coils' can be placed on the patient.
+'Spine coils' are sometimes hidden in the table on which the patient lies during the examination.
 Typically, for creating images of a patient's head, coils with a fixed arc-like geometry are used.
-This type of coil has also been in use for the data acquisition of this thesis.
+This type of coil was also used for the data acquisition of this thesis.
 
 Studies have shown that delineating certain types of tumours, for example prostate cancer, is more accurate using MR images than using CT. \cite{Rasch1999, Debois1999a, Roach1996}
 
@@ -440,9 +428,9 @@ During this, the dose distributions are calculated based on the applied beam geo
 
 
 \subsubsection{Image Quality}
-Contrary to CT, MRI is prone to distortion, due to field inhomogeneities.
+Contrary to CT, MRI is prone to distortion due to field inhomogeneities.
 Organs might appear shifted, elongated or shrunk.
-The effect is most prominent along the outer edges of the scanners field-of-view (FOV).
+The effect is most prominent along the outer edges of the scanner's field-of-view (FOV).
 In the isocentre (middle) of the scanner, the distortion is smaller, because here the field is least aberrant.
 For most applications, small position shifts and deformations are of minor importance.
 MRI scanners usually come equipped with an internal distortion correction algorithm.
@@ -450,7 +438,7 @@ Figure \ref{fig:dist_compare} shows the unmodified and the corrected version of 
 Those methods are developed by the company designing the scanners.
 Knowing the technical details enables them to write tailor-fit scripts which drastically reduce the distortion.
 
-However, for Radio Therapy Treatment Planning this might not be enough and it is necessary to additionally monitor the distortion and, if necessary, take additional corrective measures. 
+However, for Radiotherapy treatment planning this might not be enough and it is necessary to additionally monitor the distortion and, if necessary, take additional corrective measures. 
 
 While its soft tissue contrast is superior to CT, a relatively long acquisition time is necessary to achieve a sufficient high SNR.
 This leads to the risk of motion artefacts (patients moving during the scanning procedure).
@@ -460,7 +448,7 @@ The trade-off is that fine structures might get lost.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=\linewidth]{../fig/vgl-corr_inverse.jpg}
-\caption{On the left is the original image, on the right the automatically corrected version of a MR image(inverted colours)}
+\caption{On the left is the original image, on the right the automatically corrected version of the same MR image (inverted colours)}
 \label{fig:dist_compare}
 \end{figure}
 
@@ -469,66 +457,70 @@ The trade-off is that fine structures might get lost.
 
 \subsubsection{Health considerations}
 
-Strong static magnetic fields (typically up to $3T$) are present around MRI scanners at all times, and precautions have to be taken to ensure safety for patients and medical personnel.
+Strong, static magnetic fields (typically up to $3T$) are present around MRI scanners at all times, and precautions have to be taken to ensure safety for patients and medical personnel.
 Ferromagnetic materials (such as steel and iron) can become dangerous projectiles in vicinity of the MRI scanner.
-They must be excluded from the room housing the magnet without exception.
+They must be excluded from the room housing the magnet without exception.\\
 
 %It is also important to remember that medical implants, including but not restricted to cardiac pacemakers and hearing-aids, might malfunction or become damaged in strong fields regardless whether they contain ferromagnetic materials.
 %Patients with such implants might still be imaged with scanners utilising weak fields up to $0.5T$.
 
-The RF pulses repeatedly put spins in excited states, transferring energy to the human body. MRI scanners are designed to limit the rise of a patient's body temperature to $0.5^oC$ during standard imaging. Only with either medical or appropriate psychological monitoring the limit raises to $1^oC$. For any higher values a ethics committee approval is necessary.
-In general, patients should be exposed to RF fields only as strong as their thermoregulatory system is capable to cope with.
+The RF pulses repeatedly put spins in excited states, transferring energy to the human body.
+MRI scanners are designed to limit the rise of a patient's body temperature to $0.5^oC$ during standard imaging.
+Only combined with either medical or appropriate psychological monitoring the limit can be raised to $1^oC$.
+An ethics committee approval is necessary for even higher values.
+In general, patients should be exposed to RF fields only as strong as their thermoregulatory system is capable to cope with.\\
 
 Finally, magnetic field gradients are applied together with the RF pulse.
 They are switched at high frequencies leading to induced currents in conducting body tissue.
 In principle, those currents stimulate nerves which might result in muscle twitching or pain.
 However, gradient levels are set to avoid stimulation.
-During studies some subtle biological effects have been reported, but there was no evidence pointing towards harm caused by short term exposures.
+During have reported some subtle biological effects, but there was no evidence pointing towards harm caused by short term exposures.
 At the same time, patients suffering from epilepsy might show increased sensibility to induced electric fields in the cortex and should be imaged with caution. \cite{Maidment2014}
 Some patients might be allergic to contrast agents used for specific MRI examinations.
-Here, safety procedures are similar what is usually done during administration of regular drugs. 
+Here, safety procedures are similar to those performed during administration of regular drugs. 
 
 \subsubsection{Open bore MRI scanners}
 
 The radiation oncology department of the Vienna General Hospital (AKH) is equipped with an $0.35  T$ open-bore, c-arm MRI scanner (see Section \ref{sec:magnetom} for more details).
-This open design has proven to drastically improve the well-being of patients who experience anxiety in closed-bore scanners which is why the number of incomplete MR examinations due to a claustrophobic events is low. \cite{Enders2011a, Bangard2007}
+This open design has proven to drastically improve the well-being of patients experiencing anxiety in closed-bore scanners.
+For this reason, the number of incomplete MR examinations due to a claustrophobic events is relatively low. \cite{Enders2011a, Bangard2007}
 Besides, patients who would not fit in closed designed scanners can be imaged.
-Furthermore, brachytherapy patients can be placed in the scanner with applicators attached.
+Furthermore, brachytherapy patients can be placed in the scanner with applicators attached (see chapter \ref{sec:brachy} for more details).
 
-This scanner's field is weaker than the field closed bore scanner widely used (typically 1-3 Tesla).
+This scanner's magnetic field is weaker than the fields of closed-bore scanners that are widely used (typically 1-3 Tesla).
 High field strengths result in greater resolution, better Signal to Noise (SNR) ratio and faster imaging time.
 Generally, diagnostics benefit from greater image quality.
-However, at some point diagnostic accuracy stops increasing with field strength.
+However, at some point, diagnostic accuracy stops increasing with field strength.
 At the same time significant improvements can be achieved at low fields.
 A ``combination of field independent polarisation [...] with frequency optimized MRI detection coils [...] results in low-field MRI sensitivity approaching and even rivalling that of high-field MRI.'' \cite{Coffey2013}
 
 Low field MRI scanners are also typically characterised by less distorted images. \cite{https://link.springer.com/article/10.1007/PL00002385}
 
 Apart from the often satisfactory image quality, there are considerable cost advantages to the use of lower field MRI.
-The initial purchase price and the ongoing maintenance expenses are considerably lower than those of high field scanners which often use superconducting magnets cooled with liquid helium. \cite{Rutt1996}
+The initial purchase price and the ongoing maintenance expenses are considerably lower than those of high field scanners, which often use superconducting magnets cooled with liquid helium. \cite{Rutt1996}
 Permanent magnets might be weaker, but do not require constant cooling.
-Low fields allow facilities to build smaller rooms and magnetic objects are less dangerous.
+Also, low fields allow facilities to build smaller rooms and magnetic objects are less dangerous.
 
 
 \subsubsection{Diffusion Weighed Imaging - an example for non morphologic Imaging}
 
-Despite the fact this type of MR imaging was not used for this thesis, it will be mentioned here as an example of the vast range of measurements possible with MRI techniques.
-\\
+Despite the fact that this type of MR imaging was not used for this thesis, it will be mentioned here as an example of the vast range of measurements possible with MRI techniques.\\
+
 % https://www.youtube.com/watch?v=J_aamnpRJE8
 % mri - from picture to proton S. 331 (im pdf auf 344)
 Diffusion weighted (DW) imaging quantifies molecular diffusion in the body.
 This imaging technique uses MRI technology differently:
-Additionally to the gradients needed to select a slice (strength $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two long strong consecutive and opposite gradients (strength $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
+Additionally to the gradients needed to select a slice (strength $~3-5\, mT/m$, duration $2-4\, ms$), the sequence for DW imaging applies two long, strong, consecutive and opposite gradients (strength $~30-50\, mT/m$, duration $20\, ms$) during which molecules may move due to diffusion.
 After those two gradients (which, usually, will be applied in all three Cartesian directions), the remaining signal (net magnetisation) is measured by the receiver coil.
 
 Molecules which are restricted in their movement will experience two equally strong but opposite magnetic fields.
 The first will cause them to precess with a certain speed (linear with field strength), effectively changing their phase.
-The second will cause them to precess exactly the other way around (same strength, but other direction), effectively returning them to their initial state.
-Now, they will again be in phase and result in a net magnetisation which is not zero, visible as bright areas on the scan.
+The second will cause them to precess exactly the other way around (same strength, but other direction), returning them to their initial state.
+Now they will again be in phase and result in a net magnetisation which is not zero, but visible as bright areas on the scan.
 
-Those molecules which are free to move, however, will not experience a constant field strength.
+Those molecules which are free to move, however, will not experience a constant field strength, because the field has a gradient.
 As they move through the body they will precess at varying speeds during the first and then at different speeds during the second gradient.
-As a result, they will be out of phase when the net magnetisation is measured by the receiver coil, not causing bright areas in the scan.
+As a result, they will be out of phase when the net magnetisation is measured by the receiver coil, and will not cause bright areas in the scan.
 
 DW imaging can be used to diagnose acute strokes (brain infarct), because areas with restricted diffusion (blocked blood flow) show a strong signal compared to healthy tissue with normal diffusion.
 Another interpretation of low diffusion (high measured signal) can be the increased cellular density (so dense that free diffusion of water molecules is suppressed) which is characteristic for cancerous tissue.\\
@@ -543,40 +535,44 @@ The difference between the DW and the not DW weighted sequences reflects the act
 Radiation therapy utilizes ionizing radiation to damage and kill cancer cells in order to stop them from multiplying.
 This prevents the growth of tumours, makes them shrink in size and hopefully cures the patient. 
 
-During treatment planning, 3-D models of the patient are used to define targets (regions where the dose should go) and organs at risk (where the dose should not go).
+During radiotherapy treatment planning (RTP), 3-D models of the patient are used to define targets (regions where the dose should go) and organs at risk (where the dose should not go).
 This ensures that vulnerable organs are spared from radiation while making sure the tumours receive sufficient dose.
-Moreover, methods to quantify the amount of radiation that different body parts absorbed are needed, because the actual treatment might be different to the plan.\\
+Moreover, methods to quantify the amount of radiation that different body parts absorbed are needed, because the actual treatment might differ from the plan.\\
+
+While travelling through matter most types of radiation release energy mainly due to coulomb interactions with the outer shell electrons of atoms.
+Knowing the electron density of the targeted tissue area is therefore essential.
+In order to reach a specific penetration depth, the particles' initial energy has to be chosen accordingly.
+The necessity to treat the tumour with a required amount of radiation leads to a radiation therapy treatment plan.
 
 There are two well established methods for applying the radiation.
 External beam radiotherapy (EBRT) is performed from afar:
 Gantries are able to position the radiation source around the patient in a way covering virtually any possible angle.
-During treatment, the smaller parts of the total dose are administered from many different locations.
-The sum of those individual treatments result in the required dose distribution.
-Figure \ref{plan} shows an example of two differently calculated treatment plans.
+During a treatment session, fractions of the total dose are administered from many different locations.
+The sum of those individual treatments results in the required dose distribution.
+Figure \ref{fig:plan} shows an example of two differently calculated treatment plans.
 
-In conventional EBRT, photons (x-rays) in the range of 4MeV to 20MeV are used to administer the necessary dose at the location of the tumour.
-Unfortunately, radiation interacts with all cells it is passing through until it is fully absorbed.
+In conventional EBRT, photons (X-rays) in the range of 4MeV to 20MeV are used to deposit the necessary dose at the location of the tumour.
+Unfortunately, radiation interacts with all cells it passes until it is fully absorbed.
 It releases its energy along its entire path while travelling through the patient.
-This may result in energy being transferred to cells all the way from the point of entry to the point where the (weakened) ray leaves the patient.
-
-Charged particles (e.g. protons or carbon ions) minimise the damage done to healthy tissue due to their distinctive behaviour in energy loss called ``Bragg Peak''.
+This behaviour may result in energy being transferred to cells all the way from the point of entry to the point where the (weakened) ray leaves the patient.
+Other types of ionising radiation are also used, but less common.
+Electrons and low energy X-rays are favoured for some superficial tumour; rare methods using neutrons and even muons also exist.
+Charged particle therapy (using e.g. protons or carbon ions) is on the rise, but far from reaching the popularity of X-rays.
+This type of radiation minimises the damage done to healthy tissue due to its distinctive behaviour in energy loss called ``Bragg Peak''.
 They release most of their energy only shortly before being stopped completely.
-\cite{Nakamura2010} This effect can be used to spare tissue lying behind the tumour from radiation entirely and also reduce the amount of energy transferred to those lying before. \cite{Paganetti2005}
-A comparison between the behaviour of x-rays and protons is shown in figure \ref{fig:bragg}.\\
+\cite{Nakamura2010} This effect can be used to spare tissue lying behind the tumour from radiation entirely and also reduce the amount of energy transferred to organs located before. \cite{Paganetti2005}
+A comparison between the behaviour of X-rays and protons is shown in figure \ref{fig:bragg}.\\
 
 Brachytherapy, on the other hand, is when the radiation source is placed close to or inside of the patient.
-Either the source is moved close to the target area using applicators (temporary treatment) or implanted permanently.
+The source is either moved close to the target area using applicators (temporary treatment) or implanted permanently.
 The latter method is done by inserting so called "seeds" (sealed metal containers with radioactive material) directly into the target area where they release high amounts of radiation.
 Over time they become less active and eventually the treatment stops automatically.
-These rice seed sized implants can remain in the body without causing any harm.
+These rice grain sized implants can remain in the body without causing any harm.
 Treatment of prostate and cervix cancer is often done with this technique.
-In comparison to EBRT, Brachytherapy allows higher doses while at the same time minimising the radiation reaching organs at risk - precise dose distributions can be achieved.
-At the same time not all cancer types can be treated this way.
-For some, a non-invasive method (EBRT) is the only option.\\
+In comparison to EBRT, Brachytherapy allows higher doses while at the same time minimising the radiation reaching organs at risk; precise dose distributions can be achieved.
+At the same time, not all cancer types can be treated this way.
+For some, a non-invasive method (e.g. EBRT) is a better alternative.\\
 
-Other types of ionising radiation are also, but less common.
-Electrons and low energy X-rays are favoured for some superficial tumours, rare methods using neutrons and even muons also exist.
-Charged particle therapy is on the rise, but still not as common as X-rays.
 
 \begin{figure}[!h]
 	\centering
@@ -586,58 +582,44 @@ Charged particle therapy is on the rise, but still not as common as X-rays.
 	\label{fig:bragg}
 \end{figure}
 
-While travelling through matter both types of radiation release energy mostly due to coulomb interactions with the outer shell electrons of atoms.
-Knowing the electron density of the targeted tissue area is therefore essential.
-In order to reach a specific penetration depth, the particles' initial energy has to be chosen accordingly.
-The necessity to treat the tumour with a required amount of radiation leads to a Radiation Therapy Treatment Plan which can be visualised (see Figure \ref{fig:plan}).
-
 \begin{figure}[!tbh]
 	\centering
 	\includegraphics[width=\textwidth]{Plans.png}
-	\caption{Example of Radio Therapy Plan: colored areas represent different values of radiation administered during treatment (image source: \cite{piotr})}
+	\caption{Example of Radiotherapy treatment plan: coloured areas represent dose values deposited during treatment. The plans were calculated using different planning techniques (IMPT and VMAT). (image source: \cite{piotr})}
 	\label{fig:plan}
 \end{figure}
 
-
+\clearpage
 
 %\subsection{Types of radiation therapy}
 %\todo{(Based on the IAEA Handbook Radiation Oncology Physics) Tele – is typically delivered in the range of few to some 20MV with linear accelerators (describe briefly the dose depth curve and that to be able to accumulate dose in the target and spare the OAR normally multiple number of beams is combined), typically photons are used but also electrons can be produced to treat superficial targets. For the latter also a low energy X-rays can be utilized – orthovoltage units. Then there are also havier particles to utilize like protons, neutrons or light ions – here few words about the Bragg peak. }
 
 
 \subsection{Role of CT}
-\todo{Generally the paragraph is carrying the right message but is should be better organised. Some of that you already mentioned before in the chapter about CT. Make use of this and put the two arguments in more elegant words.}
 
-Until recently, radiotherapy treatment planning (RTP) relied almost entirely on Computer Tomography (CT).
+Until recently, radiotherapy treatment planning (RTP) relied almost entirely on CT.
 There are two main reasons for this:
 
-Firstly, CT uses low energy x-rays to create a 3D image of the patient.
-The luminosity value (brightness) assigned to each voxel corresponds to the local radiodensity recorded in Hounsfield units ($HU$).
-Materials with a higher radiodensity (e.g. bones) absorb more x-ray photons than those with less (e.g. water, brain-matter).
-Calculating the electron density using data obtained with CT is an straightforward task and used widely for RTP. \cite{Constantinou2012, Schneider1996}
-In order not to induce new cancer cells in healthy tissue during EBRT, the radiation beams are carefully targeted using the measured radiodensity. 
-This way the absorbed dose accumulates in the cancer regions, while the nearby healthy tissue receives less radiation.
-
+Firstly, calculating the electron density using data obtained with CT is an straightforward task.
 Secondly, CT images generate 3D images with little distortion. Exact geometries are needed for correct RTP.
-Distorted images might lead to wrong calculations of how much energy is needed for the radiation to accumulate exactly at the target region.
-If, for example, bone structure is depicted as thicker than it really is, RTP would suggest a treatment which would deposit more energy behind the tumour than intended. The opposite holds for cases where tissue appears to be thinner, which would result in areas lying before the tumour being irradiated.
-This is why CT images are preferred as they show little to no distortion.
-
+It is the most reliable approach to create precise radiotherapy treatment plans. \cite{Constantinou2012, Schneider1996}
 
 \subsection{Role of MRI}
-Today RTP often combines CT images with data acquired using Magnetic Resonance Imaging (MRI).
-MR images also record luminosity values, but they do not correspond to $HU$ (which is directly related to radiodensity, measured by CT).
-The signal intensity depends on other factors (see \ref{sec:MRI}) and even varies between MRI scanners.
+MR images also record luminosity values, but they do not correspond to radiodensity.
 Due to the better visibility of tumours on MR images, RTP often uses combined data from both imaging modalities.
+Additional information derived from DW MRI can also support response prediction and assessment.
 However, there are some difficulties arising from combining CT and MRI for EBRT:
 In order to profit from separately acquired data, the resulting images must be aligned (registered) either manually or automatically.
 This is a hard task since non-rigid objects (organs) change their shape and location between measurements which may lead to inaccuracies.
-\todo{Write a snetence that there are algorithms supporting non rigid registration but that there is still space for a lot of imporvement. Therefore typically rigid registration is performed locally to support taget and OAR definition.}
-Therefore MRI-only radiation therapy protocols are being developed:
-A way to that is when MRI data is used to create a Pseudo-CT, which contains information about electron density.
+Algorithms supporting non-rigid registrations are already under development, but there is still room for improvement.
+For now, only local rigid registration is capable of reliable target and organ at risk definition.
+
+Alternatively, MRI-only radiation therapy protocols are being developed:
+One way of doing this is to use MRI data to create a Pseudo-CT, which contains information about electron density.
 Comparisons to using CTs and MRI-based pseudo CTs have shown acceptable deviations for X-ray therapy.
 In charged particle therapy the resulting dose gain in healthy tissue and dose loss in cancer regions owed to inaccurately assigned electron density values is bigger.
-However, current development is promising. \cite{Rank2013, Stanescu2006, Nyholm2015, Greer2015, Chen2004}
-\todo{Add that in that way one can also save time and money by only performing one imaging - MRI insetead of CT and MRI. And also there is benefit of not adding dose and the quantitative fictional parameters from DW-MRI or DCE-MRI support response prediction and assessment.}
+However, further improvement of accuracy promises to reduce time and money needed for RTP when CT is no longer needed.
+Furthermore, patients would be spared the additional dose of CT examinations.  \cite{Rank2013, Stanescu2006, Nyholm2015, Greer2015, Chen2004}
 
 
 \section{Aim of this work}
@@ -645,6 +627,10 @@ The idea of only using MRI for treatment planning is approaching the clinics, bu
 
 Due to the possible image distortion, great care needs to be taken and the MR images must be verified before they are used for RT target definition and dose calculation.
 The available MRI scanner at the AKH is equipped with an on board correction algorithm which is supposed to reduce distortion.
+See figure \ref{fig:rendered_dist} for an example of how this correction affects an image.
+Distorted images might lead to wrong calculations of how much energy is needed for the radiation to accumulate exactly at the target region.
+If, for example, bone structure is depicted as thicker than it really is, RTP would suggest a treatment which would deposit more energy behind the tumour than intended.
+The opposite holds for cases where tissue appears to be thinner, which would result in areas lying before the tumour being irradiated.
 
 The goal of this work is to:
 find an optimal (providing satisfactory image quality and convenience of use) liquid filling for the rod cavities in an already existing custom designed distortion phantom provided by the AKH Vienna to be able to acquire the reference CT image and test MR acquisitions.
@@ -656,6 +642,24 @@ Therefore, this work focuses mainly on the assessment of the acquired imaging da
 However, possible fillings have to be produced and tested.
 Similar approaches are being used for distortion correction by other facilities. \cite{Price2015, Petersch2004, Torfeh2015, Wang2004, Wang2004b, Mizowaki2000}
 
+
+\begin{figure}[!thb]
+\centering
+  \begin{subfigure}[b]{0.49\textwidth}
+  \centering
+    \includegraphics[scale=1.2]{rendered/rendered_MR.png}
+    \caption{MR scan with no distortion correction}
+    \label{fig:rendered_MR}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\textwidth}
+  \centering
+      \includegraphics[scale=1.2]{rendered/rendered_MR_corr.png}
+    \caption{MR scan after internal distortion correction}
+    \label{fig:rendered_MR_corr}
+  \end{subfigure}
+  \caption{Rendered MR scan showing the difference before (a) and after (b) applying the build-in distortion correction.}
+  \label{fig:rendered_dist}
+\end{figure}
 
 
 %to me \footnote{Auszug aus \citetitle{BohemRhap}~\cite{BohemRhap} von \citeauthor{Queen}~\cite{Queen} }\\

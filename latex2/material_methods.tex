@@ -162,7 +162,7 @@ The AKH's design is made up from an array of replaceable, fillable plastic rods.
     \caption{CT}
     \label{fig:sagittal_comparison_ct}
   \end{subfigure}
-  \caption{Comparison: MRI only shows liquid filling, CT also the plastic rod and pane (horizontal black bar crossing middle and right rod);\\ (\textbf{a:}) \textit{MRI} - filled rod, plastic not visible (field of view too small to show entire rod); (\textbf{b:}) \textit{CT} - empty rod, plastic visible; (\textbf{c:}) \textit{CT} - filled rod, plastic and filling visible}
+  \caption{Comparison (inverted colours): MRI only shows liquid filling, CT also the plastic rod and pane (horizontal black bar crossing middle and right rod);\\ (\textbf{a:}) \textit{MRI} - filled rod, plastic not visible (field of view too small to show entire rod); (\textbf{b:}) \textit{CT} - empty rod, plastic visible; (\textbf{c:}) \textit{CT} - filled rod, plastic and filling visible}
   \label{fig:sagittal_comparison}
 \end{figure}
 
@@ -171,7 +171,7 @@ The AKH's design is made up from an array of replaceable, fillable plastic rods.
 The phantom was build to fit the largest available rigid coil for the MRI scanner.
 Three parallel acrylic glass panes in the shape of the coil serve as a frame for the plastic rods.
 In the middle an empty area was reserved for an optional additional smaller phantom (not used for this work).
-Figure \ref{fig:photo_ph3} shows a picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
+Figure \ref{fig:rendered_CT} shows a rendered CT picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
 More than 300 plastic rods (length: 50cm, outer diameter: 8mm, inner diameter: 4mm, volume: approx. 6ml) could be placed in the phantom.
 See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
 The bottom part of each rod was sealed with a glued plastic plug, the top could be closed with a plastic screw.
@@ -184,10 +184,17 @@ This way there is another way of checking the alignment during the prototyping p
 
 \begin{figure}[!bp]
 \centering
-\includegraphics[width=\textwidth]{photo/ph3_CT-scanner.png}
-\caption{Picture of phantom on CT table}
-\label{fig:photo_ph3}
+\includegraphics[width=\textwidth]{rendered/rendered_CT.png}
+\caption{Rendered CT image of phantom}
+\label{fig:rendered_CT}
 \end{figure}
+
+%\begin{figure}[!bp]
+%\centering
+%\includegraphics[width=\textwidth]{photo/ph3_CT-scanner.png}
+%\caption{Picture of phantom on CT table}
+%\label{fig:photo_ph3}
+%\end{figure}
 
 \begin{figure}[!tbp]
 \centering
@@ -199,7 +206,7 @@ This way there is another way of checking the alignment during the prototyping p
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=0.8\textwidth]{slicer3D/full_phantom/rod_schematic.png}
-\caption{A schematic of an empty plastic rod as they are used for the phantom. On the left the rod ends with a glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
+\caption{A schematic of an empty plastic rod as they are used for the phantom (inverted colours). On the left the rod ends with a glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
 \label{fig:rod_schematic}
 \end{figure}
 
@@ -218,7 +225,7 @@ This way there is another way of checking the alignment during the prototyping p
     \caption{MRI scan}
     \label{fig:pills_MR}
   \end{subfigure}
-  \caption{CT (a) MR (b) coronal images showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
+  \caption{CT (a) MR (b) coronal images (inverted colours) showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
   \label{fig:pills}
 \end{figure}
 
@@ -444,10 +451,8 @@ The python script can be used to:
  \item visualise individual rod slices
  \item plot the average/peak brightness, warp, or DC along the rod
  \item write warp and DC values for each slice in a combined ".txt" file
- \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation, see figure \ref{fig:colour-map}).
+ \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation, see figure \ref{fig:colour-map} \todo{ref to colour map}).
 \end{itemize}
-
-\todo{add figure with colour coded map}
 
 \subsection{Detection of irregularities}
 
@@ -466,7 +471,7 @@ In the future a more sophisticated approach should be implemented where the scri
 \subsubsection{Irregular slices and their COM and DC values}
 As irregular slices cannot be used to asses distortion caused by the scanner, numbers describing their distortion are not of interest.
 Instead of calculating DC, COM and warp numbers, they will all be set to "$-1$".
-The position of the COM cannot lie outside the image, yet coordinates '-1,-1' would indicate this.
+The position of the COM cannot lie outside the image, yet coordinates "($-1,-1$)" would indicate this.
 Similarly, the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers.
 All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
 The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
