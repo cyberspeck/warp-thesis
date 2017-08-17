@@ -1,51 +1,107 @@
-pathCT = "../data_final/CT_x1/"
-pathMR = "../data_final/MR_x1/"
-pathCT_x4 = "../data_final/CT_x4/"
-pathMR_x4 = "../data_final/MR_x4/"
-pathCT_x9 = "../data_final/CT_x9/"
-pathMR_x9 = "../data_final/MR_x9/"
-pathCT_x16 = "../data_final/CT_x16/"
-pathMR_x16 = "../data_final/MR_x16/"
-pathCT_x25 = "../data_final/CT_x25/"
-pathMR_x25 = "../data_final/MR_x25/"
-pathCT_x100 = "../data_final/CT_x100/"
-pathMR_x100 = "../data_final/MR_x100/"
-idxSlice = 10
 
-CT = Volume(path=pathCT, method="CT", resample=1, ref=idxSlice)
-CT_x4 = Volume(path=pathCT_x4, method="CT", resample=4, ref=idxSlice)
-CT_x9 = Volume(path=pathCT_x9, method="CT", resample=9, ref=idxSlice)
-CT_x16 = Volume(path=pathCT_x16, method="CT", resample=16, ref=idxSlice)
-CT_x25 = Volume(path=pathCT_x25, method="CT", resample=25, ref=idxSlice)
-CT_x100 = Volume(path=pathCT_x100, method="CT", resample=100, ref=idxSlice)
+idxSlice = 200
+ph2_CT = Volume(path="../data/phantom2/CT_x1", method="CT", resample=1, ref=idxSlice)
+ph2_CT_x4 = Volume(path="../data/phantom2/CT_x4", method="CT", resample=4, ref=idxSlice)
+ph2_CT_x9 = Volume(path="../data/phantom2/CT_x9", method="CT", resample=9, ref=idxSlice)
+ph2_CT_x25 = Volume(path="../data/phantom2/CT_x25", method="CT", resample=25, ref=idxSlice)
+ph2_CT_x100 = Volume(path="../data/phantom2/CT_x100", method="CT", resample=100, ref=idxSlice)
 
-MR = Volume(path=pathMR, method="MR", resample=1, ref=idxSlice)
-MR_x4 = Volume(path=pathMR_x4, method="MR", resample=4, ref=idxSlice)
-MR_x9 = Volume(path=pathMR_x9, method="MR", resample=9, ref=idxSlice)
-MR_x16 = Volume(path=pathMR_x16, method="MR", resample=16, ref=idxSlice)
-MR_x25 = Volume(path=pathMR_x25, method="MR", resample=25, ref=idxSlice)
-MR_x100 = Volume(path=pathMR_x100, method="MR", resample=100, ref=idxSlice)
+ph2_MR = Volume(path="../data/phantom2/MR_x1", method="MR", resample=1, ref=idxSlice)
+ph2_MR_x4 = Volume(path="../data/phantom2/MR_x4", method="MR", resample=4, ref=idxSlice)
+ph2_MR_x9 = Volume(path="../data/phantom2/MR_x9", method="MR", resample=9, ref=idxSlice)
+ph2_MR_x25 = Volume(path="../data/phantom2/MR_x25", method="MR", resample=25, ref=idxSlice)
+ph2_MR_x100 = Volume(path="../data/phantom2/MR_x100", method="MR", resample=100, ref=idxSlice)
 
-vol_list = [[CT, CT_x4, CT_x9, CT_x25, CT_x100],[MR, MR_x4, MR_x9, MR_x25, MR_x100]]
+vol_list = [[ph2_CT, ph2_CT_x4, ph2_CT_x9, ph2_CT_x25, ph2_CT_x100],[ph2_MR, ph2_MR_x4, ph2_MR_x9, ph2_MR_x25, ph2_MR_x100]]
 modality, sets = np.shape(vol_list)
 
-sliceNumbers = np.arange(CT.zSize, dtype=int)
-warp = np.zeros((sets, CT.zSize, 2))
-warpMagnitude = np.zeros((sets, CT.zSize, 1))
+length = ph2_CT.zSize
+spacing = ph2_CT.zSpace
+sliceNumbers = np.arange(length, dtype=int)
 
-for i in range(sets):
+# for data centered around iso-centre, this is real x-axis:
+iso = 183
+dist = ( (sliceNumbers - iso ) ).round(2)
+
+
+warp_simple = np.zeros((sets, length, 2))
+warp_iter = np.zeros((sets, length, 2))
+warpMagnitude_simple = np.zeros((sets, length, 1))
+warpMagnitude_iter = np.zeros((sets, length, 1))
+lows_CT = np.zeros((sets, 2))
+radii_CT = np.zeros((sets, 2))
+lows_MR = np.zeros((sets, 4))
+radii_MR = np.zeros((sets, 4))
+
+# 2 DC for CT, 3 DC for MR (2 using MR.centroid, 1 using CT.centroid!)
+DC_CT = np.zeros((sets, length, 2))
+DC_CT_average = np.zeros((sets, 2))
+DC_MR = np.zeros((sets, length, 4))
+DC_MR_average = np.zeros((sets, 4))
+
+for i in range(sets): 
     vol_list[0][i].getCentroid()
+    CT_DC_simple = vol_list[0][i].getDice()
+    CT_DC_simple_average = vol_list[0][i].diceAverage
+    CT_lower_simple = vol_list[0][i].lower
+    CT_radius_simple = vol_list[0][i].bestRadius
+    
     vol_list[1][i].getCentroid()
-
-for i in range(sets):
+    MR_DC_simple = vol_list[1][i].getDice()
+    MR_DC_simple_average = vol_list[1][i].diceAverage
+    MR_lower_simple = vol_list[1][i].lower
+    MR_radius_simple = vol_list[1][i].bestRadius
+    MR_DC_simple_CT_COM = vol_list[1][i].getDice(centroid=vol_list[0][i].centroid)
+    MR_DC_simple_CT_COM_average = vol_list[1][i].diceAverage
+    MR_lower_simple_CT_COM = vol_list[1][i].lower
+    MR_radius_simple_CT_COM = vol_list[1][i].bestRadius
     # this calculates the coordinate difference of MR.centroid relative to CT.centroid
-    warp[i] = fun.sitk_coordShift(vol_list[0][i].centroid, vol_list[1][i].centroid)
+    warp_simple[i] = fun.sitk_coordShift(vol_list[0][i].centroid, vol_list[1][i].centroid)
     # this calculates the norm (=absolute distance) between the centroids in each slice
-    warpMagnitude[i] = fun.sitk_coordDist(warp[i])
+    warpMagnitude_simple[i] = fun.sitk_coordDist(warp_simple[i])
+    
+
+    vol_list[0][i].getCentroid(percentLimit='auto', plot=True, iterations=6, top=0.20)
+    CT_DC_iter = vol_list[0][i].dice
+    CT_DC_iter_average = vol_list[0][i].diceAverage
+    CT_lower_iter = vol_list[0][i].lower
+    CT_radius_iter = vol_list[0][i].bestRadius
+    
+    vol_list[1][i].getCentroid(percentLimit='auto', plot=True, iterations=6, top=0.20)
+    MR_DC_iter = vol_list[1][i].dice
+    MR_DC_iter_average = vol_list[1][i].diceAverage
+    MR_lower_iter = vol_list[1][i].lower
+    MR_radius_iter = vol_list[1][i].bestRadius
+    MR_DC_iter_CT_COM = vol_list[1][i].getDice(centroid=vol_list[0][i].centroid)
+    MR_DC_iter_CT_COM_average = vol_list[1][i].diceAverage
+    MR_lower_iter_CT_COM = vol_list[1][i].lower
+    MR_radius_iter_CT_COM = vol_list[1][i].bestRadius
+    
+    # this calculates the coordinate difference of MR.centroid relative to CT.centroid
+    warp_iter[i] = fun.sitk_coordShift(vol_list[0][i].centroid, vol_list[1][i].centroid)
+    # this calculates the norm (=absolute distance) between the centroids in each slice
+    warpMagnitude_iter[i] = fun.sitk_coordDist(warp_iter[i])
+    
+    
+    DC_CT[i] = np.column_stack((CT_DC_simple,CT_DC_iter))
+    DC_CT_average[i] = CT_DC_simple_average,CT_DC_iter_average
+    
+    DC_MR[i] = np.column_stack((MR_DC_simple, MR_DC_iter, MR_DC_simple_CT_COM, MR_DC_iter_CT_COM))
+    DC_MR_average[i] = MR_DC_simple_average, MR_DC_iter_average, MR_DC_simple_CT_COM_average, MR_DC_iter_CT_COM_average
+    lows_CT[i] = CT_lower_simple, CT_lower_iter
+    lows_MR[i] = MR_lower_simple, MR_lower_iter, MR_lower_simple_CT_COM, MR_lower_iter_CT_COM
+    radii_CT[i] = CT_radius_simple, CT_radius_iter
+    radii_MR[i] = MR_radius_simple, MR_radius_iter, MR_radius_simple_CT_COM, MR_radius_iter_CT_COM
 
 i=4
+
+
 fig = plt.figure()
-plt.xlim(xmin=0, xmax=CT.zSize)
-plt.plot(warp[i])
-plt.ylabel(u"warpMagnitude [mm]")
-plt.xlabel(u"slice")
+#plt.ylim(ymin=-2.1, ymax=.5)
+plt.xlim(xmin=dist[0], xmax=dist[-1])
+plt.plot(dist, warp_iter[i])
+plt.legend(('x-shift', 'y-shift'),loc=3)
+plt.ylabel(u"warp [mm]")
+plt.xlabel(u"z-axis [mm]")
+#plt.title('Economic Cost over Time')
+#plt.show()
