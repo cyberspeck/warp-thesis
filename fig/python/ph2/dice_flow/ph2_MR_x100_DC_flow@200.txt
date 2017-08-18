@@ -1,0 +1,26 @@
+
+import FunITK as fun
+from FunITK import Volume
+import datetime
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+idxSlice = 200
+#ph2_CT = Volume(path="../data/phantom2/CT_x1", method="CT", resample=1, ref=idxSlice)
+#ph2_CT_x4 = Volume(path="../data/phantom2/CT_x4", method="CT", resample=4, ref=idxSlice)
+#ph2_CT_x9 = Volume(path="../data/phantom2/CT_x9", method="CT", resample=9, ref=idxSlice)
+#ph2_CT_x25 = Volume(path="../data/phantom2/CT_x25", method="CT", resample=25, ref=idxSlice)
+#ph2_CT_x100 = Volume(path="../data/phantom2/CT_x100", method="CT", resample=100, ref=idxSlice)
+
+#ph2_MR = Volume(path="../data/phantom2/MR_x1", method="MR", resample=1, ref=idxSlice)
+#ph2_MR_x4 = Volume(path="../data/phantom2/MR_x4", method="MR", resample=4, ref=idxSlice)
+#ph2_MR_x9 = Volume(path="../data/phantom2/MR_x9", method="MR", resample=9, ref=idxSlice)
+#ph2_MR_x25 = Volume(path="../data/phantom2/MR_x25", method="MR", resample=25, ref=idxSlice)
+ph2_MR_x100 = Volume(path="../data/phantom2/MR_x100", method="MR", resample=100, ref=idxSlice)
+
+
+ph2_MR_x100.getCentroid()
+ph2_MR_x100.getDice(show=idxSlice)
+ph2_MR_x100.showCentroid()
+ph2_MR_x100.showCentroid(img=ph2_MR_x100.mask)

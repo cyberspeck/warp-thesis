@@ -449,8 +449,8 @@ The python script can be used to:
   \subitem location shift (refered to as "warp")
   \subitem dice coefficient (the "DC" refers to an object's roundness)
  \item visualise individual rod slices
- \item plot the average/peak brightness, warp, or DC along the rod
- \item write warp and DC values for each slice in a combined ".txt" file
+ \item plot the average/peak brightness, warp, or \texttt{DC} along the rod
+ \item write warp and \texttt{DC}  for each slice in a combined ".txt" file
  \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation, see figure \ref{fig:colour-map} \todo{ref to colour map}).
 \end{itemize}
 
@@ -464,15 +464,15 @@ Ideally, it is located near the iso centre and has a brightness that is represen
 
 The script will compare each slice of the volume to the reference slice individually, starting at one end (\textbf{2.}).
 To decide whether a particular slice is "irregular", it's average brightness will be compared to the reference slice's (\textbf{4.}).
-If the difference exceeds a certain value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its DC or centre of mass (COM).
+If the difference exceeds a certain value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its \texttt{DC} or centre of mass (COM).
 A value of 40 was found to be yield good results for CT scans.
 In the future a more sophisticated approach should be implemented where the script chooses a suitable value based on the image modality and the image size.
 
 \subsubsection{Irregular slices and their COM and DC values}
 As irregular slices cannot be used to asses distortion caused by the scanner, numbers describing their distortion are not of interest.
-Instead of calculating DC, COM and warp numbers, they will all be set to "$-1$".
-The position of the COM cannot lie outside the image, yet coordinates "($-1,-1$)" would indicate this.
-Similarly, the value referred to as \textit{warpMagnitude} and the DC are defined to be positive numbers.
+Instead of calculating \texttt{DC}, \texttt{COM} and warp numbers, they will all be set to "$-1$".
+The \texttt{COM} cannot lie outside the image, yet coordinates "($-1,-1$)" would indicate this.
+Similarly, the value referred to as \texttt{warpMagnitude} and the \texttt{DC} are defined to be positive numbers.
 All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
 The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
 To be consistent, they are still set to "$-1$".
@@ -482,8 +482,11 @@ It is essential to bear this in mind when interpreting the script's output.
 \tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=18em, text centered, minimum height=4em]
 \tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=12em, text centered, minimum height=5em]
 \tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{puffs} = [cloud, cloud puffs=13.5, minimum width=4cm, minimum height=1.5cm, align=center, fill=green!10]
+\tikzstyle{blocky} = [rectangle, draw, fill=yellow!10, text width=14em, text centered, minimum height=4em]
 \tikzstyle{decisionr} = [diamond, draw, aspect=3, fill=red!20, text width=18em, text badly centered, node distance=2.5cm, inner sep=0pt]
 \tikzstyle{decisiong} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{decisiony} = [diamond, draw, aspect=3, fill=yellow!10, text width=10em, text badly centered, node distance=2.5cm, inner sep=0pt]
 \tikzstyle{line} = [draw, very thick, color=black!80, -latex']
 %\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
 
@@ -491,15 +494,15 @@ It is essential to bear this in mind when interpreting the script's output.
     \centering
 	\begin{tikzpicture}[node distance = 3cm, auto]
     % Place nodes
-    \node [blockb] (1) {\textbf{1.} Calculate average brightness of user defined reference slice: \texttt{average(ref)}};
-    \node [blockb, below of=1, node distance=2.2cm] (2) {\textbf{2.} Initialise loop to start with slice \texttt{i=0} (first slice of Volume)};
-    \node [cloud, below of=2, node distance=2.8cm] (3) {\textbf{3.} Calculate average brightness of slice \#\texttt{i}:\\ \texttt{average(i)}};
-    \node [blockb, right of=3, text width=8em, node distance=8cm] (repeat!) {Repeat comparison with next slice\\ \texttt{i $\rightarrow$ i + 1}};
-    \node [decisionr, below of=3, node distance=3.5cm] (4) {\textbf{4.} \texttt{|average(ref) - average(i)|}};
-    \node [cloud, left of=4, text width=6em, node distance=7cm, xshift=3cm, yshift=-3cm] (5a) {\textbf{5a.} mark slice \#\texttt{i} as 'regular'};
-    \node [cloud, right of=4, text width=6em, node distance=7cm, xshift=-3cm, yshift=-3cm] (5b) {\textbf{5b.} mark slice \#\texttt{i} as 'irregular'};
-    \node [decisionr, below of=4, yshift=-3cm] (6) {\textbf{6.} Has script reached\\ the last slice of the Volume?};
-    \node [blockb, text width=20em, below of=6, yshift=-1cm] (7) {\textbf{7.} End of irregularieties check};
+    \node [blockb] (1) {\textbf{(1)} Calculate average brightness of user defined reference slice: \texttt{average(ref)}};
+    \node [blockb, below of=1, node distance=2.2cm] (2) {\textbf{(2)} Initialise loop to start with slice \texttt{i=0} (first slice of Volume)};
+    \node [cloud, below of=2, node distance=2.8cm] (3) {\textbf{(3)} Calculate average brightness of slice \#\texttt{i}:\\ \texttt{average(i)}};
+    \node [blockb, right of=3, text width=8em, node distance=7cm] (repeat!) {Repeat comparison with next slice\\ \texttt{i $\rightarrow$ i + 1}};
+    \node [decisionr, below of=3, node distance=3.5cm] (4) {\textbf{(4)} \texttt{|average(ref) - average(i)|}};
+    \node [cloud, left of=4, text width=6em, node distance=7cm, xshift=3cm, yshift=-3cm] (5a) {\textbf{(5a)} mark slice \#\texttt{i} as 'regular'};
+    \node [cloud, right of=4, text width=6em, node distance=7cm, xshift=-3cm, yshift=-3cm] (5b) {\textbf{(5b)} mark slice \#\texttt{i} as 'irregular'};
+    \node [decisionr, below of=4, yshift=-3cm] (6) {\textbf{(6)} Has script reached\\ the last slice of the Volume?};
+    \node [blockb, text width=20em, below of=6, yshift=-1cm] (7) {\textbf{(7)} End of irregularieties check};
     % Draw edges
     \path [line] (1) -- (2);
     \path [line] (2) -- (3);
@@ -524,19 +527,19 @@ Ideally, each slice (z = const.) should depict the bright circular profile of th
 \\
 Two phenomena were chosen to reflect the amount of distortion occurring in each slice of the MRI scans.
 The distance which the rod appears to be shifted in the MRI slice compared to the CT slice is referred to as "warp".
-The rod's deformation (deviation from circular profile) is described using the dice-coefficient "DC" (also known as Sorensen-Index).
+The rod's deformation (deviation from circular profile) is described using the dice-coefficient "\textit{DC}" (also known as Sorensen-Index).
 
 
 \subsection{Calculation: dice coefficient (DC)}
 \label{sec:DC}
 
-The DC was chosen as indicator for the deviation from a circular profile.
+The \texttt{DC} was chosen as indicator for the deviation from a circular profile.
 The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of it's module called "metric" was adapted. \cite{MedPy_dc-code}\\
 
 
-The calculation of the DC is performed for each slice individually.
+The calculation of the \texttt{DC} is performed for each slice individually.
 Additionally, to asses the overall distortion occurring along the rod, the average of all those values is also saved.
-As this aspect of distortion does not need a reference scan, the DC is measured for CT and MRI images separately.
+As this aspect of distortion does not need a reference scan, the \texttt{DC} is measured for CT and MRI images separately.
 The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 
 \begin{align}
@@ -547,67 +550,111 @@ It compares a binary image (input A) to a circle (reference B).
 In a binary image there are only 2 possible pixel values: "0" and "1".
 However, in the original image, values lie in a range between 0 (or -1024 in CT) and 1000 or higher.
 In order to reduce the true image to a binary image A, the script needs to split the pixels in 2 groups.
-A copy of the original picture is created where all pixels with a value above a certain threshold are set to the value of "1".
+A copy of the original picture is created where all pixels with a value above a certain  \texttt{threshold} are set to the value of "1".
 These are regarded as part of the rod.
 Those which are darker are set to "0".
-(See section \ref{sec:COM} for details on how the threshold is calculated).
+(See section \ref{sec:COM} for details on how the  \texttt{threshold} is calculated).
 Ideally, this procedure separates the surrounding dark area from the bright rod.
 This way the new binary image A still shows were the rod is, but it lost all information on the actual brightness.
 
 Reference B is a circle with its midpoint placed at the centre of mass (COM) of the rod.
-The COM is calculated using those pixels which exceed the threshold, but weighted with their actual brightness (not using the binary image)
+The \texttt{COM} is calculated using those pixels which exceed the  \texttt{threshold}, but weighted with their actual brightness (not using the binary image)
 
 This way the script is supposed to place the reference circle B in the centre of the input image A.
-The position of the circle's centre and its radius highly influence the outcome.
+The position of the circle's centre and its radius highly influence the outcome. (See chapter \ref{sec:discussion_DC} for a more thorough discussion.)
 
-The DC ranges from 0 to 1.
+The \texttt{DC} ranges from 0 to 1.
 A value of 1 indicates a perfect circular shape.
-A low DC, on the other hand, means the shape differs greatly from a circle and could be caused by many things such as:
+A low \texttt{DC}, on the other hand, means the shape differs greatly from a circle and could be caused by many things such as:
 little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of the rod from background; a small circle with a radius close to a only a few pixels.
 
 The obvious choice for the radius of the reference circle B is to use the true size of the physical rod.
 For CT images this would be 4mm, for MRI images it would be 2mm.
-The script calculates the DC using various radii close to those values and returns the result yielding in the highest average DC for the whole rod.
-For CT images it chooses values between 3.5 and 4.5, for MRI it varies from 1.8 to 3.8.
-This boundaries could be changed in the future.
-
+The script calculates the \texttt{DC} using various radii close to those values and returns the result yielding in the highest average \texttt{DC} for the whole rod.
+Figures \ref{fig:ph2_CT_DC-15iter}, \ref{fig:ph2_MR_DC-15iter} and \ref{fig:ph2_MR_CT-COM_DC-15iter} show how the \texttt{DC} change for different radii.
 
 \subsection{Calculation: warp \& centre of mass (COM)}
 \label{sec:COM}
 
 To calculate the location shift between rods shown in CT and MRI, the coordinates of the centre of mass (COM) were subtracted.
-The x- and y-shift (\textit{warpXY}) measured in each slice was saved in an array.
-Furthermore, the absolute value of the coordinate shift (\textit{warpMagnitude}) was calculated.\\
+The x- and y-shift (\texttt{warpXY}) measured in each slice was saved in an array.
+Furthermore, the absolute value of the coordinate shift (\texttt{warpMagnitude}) was calculated.\\
 
-The calculation of the COM is done with help of the "scipy" python package.
-Its module "ndimage" contains the function "$center\_of\_mass()$", which returns the COM's coordinates of a given input array.
-The values assigned to voxels in CT images lie in the range from -1024 HU (air) to around 200 HU (plastic rod).
-Before a meaningful result can be obtained, the values need to be shifted to be $>$ 0.
-Additionally, only pixels representing the rod or the liquid should be used for the calculation.
+The calculation of the \texttt{COM} is done with help of the "scipy" python package.
+Its module "ndimage" contains the function "$center\_of\_mass()$", which returns the \texttt{COM}'s coordinates of a given input array.
+%The values assigned to voxels in CT images lie in the range from -1024 HU (air) to around 200 HU (plastic rod).
+%Before a meaningful result can be obtained, the values need to be shifted to be $>$ 0.
+Only pixels representing the rod or the liquid should be used for the calculation.
 Otherwise the almost black voxels surrounding the rod would influence the result.
-To be regarded as part of the rod, the pixels' value has to reach a certain threshold.
+To be regarded as part of the rod, the pixels' value has to reach a certain  \texttt{threshold}.
 In order to find the relevant pixels two methods were developed:
 
 \begin{description}
  \item[1] calculating the number of pixels based on rod size
- \item[2] finding a COM resulting in good DC
+ \item[2] finding a \texttt{COM} resulting in a good \texttt{DC}
 \end{description}
 
-Both methods rely on a single reference slice to calculate the threshold.
-This reference should be representative for the whole scan, because the threshold deduced from it will be used to find pixels belonging to the rod at any other slice.\\
+Both methods rely on a single reference slice to calculate the  \texttt{threshold}.
+This reference should be representative for the whole scan, because the  \texttt{threshold} deduced from it will be used to find pixels belonging to the rod in all other slice, too.\\
 
 \textbf{add 1:}
 The inner ($2mm$) and outer ($4mm$) radius of the plastic rods are known.
-So is the pixel \textit{spacing}, the size of a voxel in real space ($mm$).
+So is the pixel \texttt{spacing}, the size of a voxel in real space ($mm$).
 Calculating the number of pixels which make up the more or less circular profile of the rod in a slice is calculated as follows:
 
 \begin{align}
  pixelNumber = (radius^2 \cdot \pi) \, / \, (spacing^2)
 \end{align}
 
-For CT images $radius = 4mm$, in MRI scans $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
-Next the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the COM.
-The value of the darkest pixel that is still counted as part of the rod is saved as threshold for future calculations (e.g. finding the DC associated with the COM, see section \ref{sec:DC}).
+For CT images the $radius = 4mm$, in MRI scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
+Next, the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the \texttt{COM}.
+The value of the darkest pixel that is still counted as part of the rod is saved as  \texttt{threshold} for future calculations (e.g. finding the \texttt{DC} associated with the \texttt{COM}, see section \ref{sec:DC}).\\
+
+
+\begin{figure}[!htp]
+    \centering
+	\begin{tikzpicture}[node distance = 2.5cm, auto]
+    % Place nodes    
+    \node [decisiony] (method) {\textbf{(1)} What image modality was used?};
+    \node [blocky, left of=method, text width=11em, node distance=7cm, xshift=4cm, yshift=-3cm] (MR) {\textbf{(2a)} \large \texttt{radius = 2mm}};
+    \node [blocky, right of=method, text width=11em, node distance=7cm, xshift=-4cm, yshift=-3cm] (CT) {\textbf{(2b)} \large \texttt{radius = 4mm}};
+    \node [blocky, below of=method, text width=22em, yshift=-2.7cm] (pixelNumber) {\textbf{(3)} \large \texttt{pixelNumber} = \Large $\frac{radius^2 \cdot \pi}{spacing^2}$ };
+    \node [blocky, below of=pixelNumber, text width=22em] (threshold) {\textbf{(4)}  Obtain value of \texttt{pixelNumber}-th brightest\\ pixel and save it as \texttt{threshold}};
+    \node [blocky, below of=threshold, text width=22em] (COM) {\textbf{(5)} Use all pixels with a value above \texttt{threshold} to calculate the \texttt{COM}'s coordinates};
+%    % Draw edges
+    \path [line] (method.west)  to node [xshift=-1.2cm, yshift=-0.6cm] {MRI} (MR);
+    \path [line] (method.east)  to node {CT} (CT);
+    \path [line] (MR) -- (pixelNumber);
+    \path [line] (CT) -- (pixelNumber);
+    \path [line] (pixelNumber) -- (threshold);
+    \path [line] (threshold) -- (COM);
+	\end{tikzpicture}
+	\caption{Method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size}
+	\label{flo:threshold_simple}
+\end{figure}
+
+\begin{figure}[!htp]
+    \centering
+	\begin{tikzpicture}[node distance = 4cm, auto]
+    % Place nodes
+    \node[] (img) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_img@200.png}};
+    \node [blockb, below of=img, text width=10em] (img_t) {\texttt{original image}};
+    \node [blockb, below of=img_t, xshift=-4cm, text width=16em] (binary_t) {\texttt{binary input image A}:\\pixels where original image is darker than \texttt{threhold} are set to \texttt{0}\\ the others are set to \texttt{1}};
+    \node [blockb, below of=img_t, xshift=4cm, text width=16em] (circle_t) {\texttt{reference circle B} with centre at \texttt{COM} of \texttt{original image}};
+    \node[below of=binary_t] (binary) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_mask@200.png}};
+    \node[below of=circle_t] (circle) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_circle@200.png}};
+    \node [blockb, below of=img_t, yshift=-8cm, text width=10em] (overlap) {calculate the overlap: \\ \large \texttt{DC} = \Large $\frac{2 |A \, \cap \, B|}{|A| + |B|}$};
+    % Draw edges
+    \path [line] (img_t) -- (binary_t);
+    \path [line] (img_t) -- (circle_t);
+    \path [line] (binary) -- (overlap);
+    \path [line] (circle) -- (overlap);
+	\end{tikzpicture}
+	\caption{\texttt{DC} calculation}
+	\label{flo:DC}
+\end{figure}
+
+
 \textbf{add 2:}
 This algorithm is an iteration method.
 Figure \ref{flo:COM-iter} shows in what order the scripts executes individual steps during the iteration.
@@ -617,16 +664,16 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     \centering
 	\begin{tikzpicture}[node distance = 3cm, auto]
     % Place nodes
-    \node [blockb] (init-range) {\textbf{1.} Start with whole range:\\\texttt{min=0\%; max=100\%}};
-    \node [blockb, below of=init-range, node distance=2cm] (init-guess) {\textbf{2. }Guess at middle of range:\\\texttt{guess =  (min+max)/2 = 50\%}};
-    \node [block, below of=init-guess] (getDC) {\textbf{3.} calculate DC for\\upper and lower half\\of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
+    \node [blockb] (init-range) {\textbf{(1)} Start with whole range:\\\texttt{min=0\%; max=100\%}};
+    \node [blockb, below of=init-range, node distance=2cm] (init-guess) {\textbf{(2)} Guess at middle of range:\\\texttt{guess =  (min+max)/2 = 50\%}};
+    \node [block, below of=init-guess] (getDC) {\textbf{(3)} calculate \\\texttt{COM} coordinates and \texttt{DC} for\\upper and lower half\\of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
     \node [blockb, right of=getDC, text width=8em, node distance=6cm] (repeat!) {Repeat\\ iteration step};
-    \node [decisiong, below of=getDC, node distance=3cm] (bigger) {\textbf{4.} which one is bigger?};
-    \node [block, left of=bigger, text width=9em, node distance=7cm, xshift=4cm, yshift=-2.5cm] (lower) {\textbf{5a.} Neglect upper half:\\\texttt{max = guess}};
-    \node [block, right of=bigger, text width=9em, node distance=7cm, xshift=-4cm, yshift=-2.5cm] (upper) {\textbf{5b.} Neglect lower half:\\\texttt{min = guess}};
-    \node [block, below of=bigger, yshift=-2.5cm] (next-guess) {\textbf{6.} New current guess at middle of new range:\\\texttt{guess =  (min+max)/2}};
-    \node [decisiong, below of=next-guess, node distance=2.5cm] (repeat) {\textbf{7.} Repeat?};
-    \node [blockb, text width=20em, below of=repeat] (fin) {\textbf{8.} End of iteration:\\\texttt{return best DC\\ return best guess (as threshold)}};
+    \node [decisiong, below of=getDC, node distance=3.5cm] (bigger) {\textbf{(4)} which one is bigger?};
+    \node [block, left of=bigger, text width=9em, node distance=7cm, xshift=4cm, yshift=-2.5cm] (lower) {\textbf{(5a)} Neglect upper half:\\\texttt{max = guess}};
+    \node [block, right of=bigger, text width=9em, node distance=7cm, xshift=-4cm, yshift=-2.5cm] (upper) {\textbf{(5b)} Neglect lower half:\\\texttt{min = guess}};
+    \node [block, below of=bigger, yshift=-2.2cm] (next-guess) {\textbf{(6)} New current guess at middle of new range:\\\texttt{guess =  (min+max)/2}};
+    \node [decisiong, below of=next-guess, node distance=2.5cm] (repeat) {\textbf{(7)} Repeat?};
+    \node [blockb, text width=20em, below of=repeat] (fin) {\textbf{(8)} End of iteration:\\return best \texttt{DC}\\ return best \texttt{guess} (as \texttt{threshold})\\ return resulting \texttt{COM}};
     % Draw edges
     \path [line] (init-range) -- (init-guess);
     \path [line] (init-guess) -- (getDC);
@@ -640,13 +687,13 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     \path [line] (repeat!) -- (getDC);
     \path [line] (repeat.south) to node {\textbf{no}} (fin);
 	\end{tikzpicture}
-	\caption{Iteration method, finding COM}
+	\caption{Iteration method to find \texttt{threshold}, \texttt{DC} and \texttt{COM}}
 	\label{flo:COM-iter}
 \end{figure}
 
-To begin with, it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$ (\textbf{1.}).
-As a reasonable first guess it assumes that $50\%$ of all pixels belong to the rod (\textbf{2.}).
-Now, in the first iteration (\textbf{3.}), to find out whether more or less pixels would result in a better DC, it considers two new guesses:
+To begin with, it looks at the whole range of possible pixelNumbers, from $0\%$ to $100\%$ (\textbf{1}).
+As a reasonable first guess it assumes that $50\%$ of all pixels belong to the rod (\textbf{2}).
+Now, in the first iteration (\textbf{3}), to find out whether more or less pixels would result in a better \texttt{DC}, it considers two new guesses:
 One halfway from the lower limit ($0\%$) to its current guess ($50\%$) which is:
 
 \begin{align}
@@ -660,25 +707,26 @@ and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) whi
 \end{align}
 
 
-This numbers correspond to a threshold each separating the chosen number of pixels from all darker pixels in the slice.
-Using these thresholds, the script calculates the COM and DC for both possible guesses.
-Comparing the two DCs will decide which guess is closer to representing the rod better (\textbf{4.}).
-If the lower number of pixels yields a better DC (\textbf{5a.}), the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
-If the higher percentage yields a better DC (\textbf{5b.}), the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
-At the end of the iteration (\textbf{6.}), the percentage resulting in the higher DC is saved as the new current guess.
-After this first iteration (\textbf{7.}) the script can either repeat steps 3-6 or end it by returning the best guess and its DC (\textbf{8.}).\\
+Those numbers correspond to a \texttt{threshold} each, separating the chosen percent of brighter pixels from all darker pixels in the slice.
+Using the \texttt{threshold}s, the script calculates the \texttt{COM} and \texttt{DC} for both possible guesses.
+\todo{explain more}
+Comparing the two \texttt{DC}s will decide which guess is closer to representing the rod better (\textbf{4}).
+If the lower number of pixels yields a better \texttt{DC} (\textbf{5a}), the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
+If the higher percentage yields a better \texttt{DC} (\textbf{5b}), the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
+At the end of the iteration (\textbf{6}), the percentage resulting in the higher \texttt{DC} is saved as the new current guess.
+After this first iteration (\textbf{7}) the script can either repeat steps 3-6 or end it by returning the best guess and its \texttt{DC} (\textbf{8}).\\
 
 To get a better understanding, let's suppose the iteration is repeated.
 At the start of the second iteration, the range is smaller (half of the entire range) and the current guess is set exactly in its middle.
-If, for example, the DC for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
-In that case, DC values for the lower half of that range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared to decide which half to eliminate in the third iteration.
-If, on the other hand, the DC for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
-In that case, DC values for $62,5\%$ and $82,5\%$ will be compared.
+If, for example, the \texttt{DC} for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
+In that case, \texttt{DC}s for the lower half of that range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared to decide which half to eliminate in the third iteration.
+If, on the other hand, the \texttt{DC} for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
+In that case, \texttt{DC}s for $62,5\%$ and $82,5\%$ will be compared.
 
-The iteration continues until further steps yield no better DC values or a set number of steps has been performed.
-After the iteration process, the algorithm will return the COM which resulted in the best DC.
-The percentage of pixels that led to this DC is equivalent to a threshold value which is saved for future calculations.
-Figure \ref{fig:COM_iteration} shows the DC values found in the course of trying different percentages during the iteration method.
+The iteration continues until further steps yield no better \texttt{DC} or a set number of steps has been performed.
+After the iteration process, the algorithm will return the \texttt{COM} which resulted in the best DC.
+The percentage of pixels that led to this \texttt{DC} is equivalent to a \texttt{threshold} which is saved for future calculations.
+Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of trying different percentages during the iteration method.
 
 
 \begin{figure}[!thb]
