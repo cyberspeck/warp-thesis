@@ -24,9 +24,9 @@ Figure \ref{fig:coronal} shows a coronal view of the 16 rods filled with the tes
 In Figure \ref{fig:coronal_MR} a trapped air bubble is clearly visible at the lower half of rod \#5.
 Figure \ref{fig:axial} shows an axial view of the tested rods and some surrounding rods.
 In figure \ref{fig:axial_MR} a water filled plastic bottle placed in the middle of the phantom is also visible.
-This was necessary, because the MRI scanner needs sufficient signal to start imaging.
+This was necessary, because the MRI scanner needs sufficient signal for shimming prior to the start of imaging.
 Without the bottle, the limited number of rods used for this scan would not have created enough signal.
-During a future distortion assessment where all available rods (over 300) would be used, they are supposed to result in the required signal strength on their own.
+During a future distortion assessment where all available rods (over 300) are used, they will result in the required signal strength on their own.
  
 \begin{figure}[!tbp]
   \begin{subfigure}[b]{\textwidth}
@@ -108,8 +108,11 @@ The tube could not be used again.
 
 Each rod was free of bubbles directly after sealing.
 All rods containing water based solutions contained some air after 2 months and the amount of liquid continued to decrease further (see table \ref{tab:bubbles}).
-In some of the tested rods the produced air bubbles would stick to the wall. Only after gently hitting the rod they would start moving.
-Knowing the inner diameter $d$ of the rods and measuring the length $l$ of trapped air bubbles, we can approximate the volume of contained gas:
+After 6 months the volume of air further increased (proportionally to the behaviour observed until then).
+Figure \ref{fig:bubbles} shows the rods after a time of over 6 months.
+In some of the tested rods, the occurring air bubbles would stick to the wall.
+Only after gently hitting the rod they would start moving.
+Knowing the inner diameter $d$ of the rods and measuring the length $l$ of trapped air bubbles, their volume can be estimated:
 
 \begin{align}
  V = \frac{d^2}{4}\cdot \pi \cdot l
@@ -184,9 +187,29 @@ It took more than a week until the rod containing the low concentration of agar 
 The viscous consistency made it impossible to coerce it to either end of the rod.
 Liquid \textbf{\#15} on the other hand did not form bubbles at the middle of the rod, but seemed to have dried starting at the end with the plastic stopper.
 
+\begin{figure}[tbh!]
+\centering
+\includegraphics[width=1\linewidth]{photo/rods_bubbles_crop.jpg}
+\caption{Most tested rods (except \#5,\#6 and \#16) after more than 6 months.}
+\label{fig:bubbles}
+\end{figure}
+
+
+\begin{figure}[tbh!]
+\centering
+\includegraphics[width=1\linewidth]{photo/bubbles_cuso.png}
+\caption{Rod \#5 showed some bubbles after 2 months.}
+\label{fig:bubbles_cuso}
+\end{figure}
+
+\begin{figure}[tbh!]
+\centering
+\includegraphics[width=1\linewidth]{photo/oil.png}
+\caption{Rod \#16 contained no bubbles after more than 6 months.}
+\label{fig:bubbles_oil}
+\end{figure}
 
 \section{Distortion assessment}
-All results were obtained by manually cropping the 3D image to depict only a single rod.
 %As described later, resolution might influence the efficiency of the distortion assessment.#	
 %Therefore all calculations were done with the original resolution and interpolated images that have a higher resolution.
 
