@@ -639,7 +639,7 @@ The value of the darkest pixel that is still counted as part of the rod is saved
     \path [line] (threshold) -- (COM);
 	\end{tikzpicture}
 	\caption{Method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size}
-	\label{flo:threshold_simple}
+	\label{flo:COM-simple}
 \end{figure}
 
 \begin{figure}[!htp]
@@ -718,7 +718,7 @@ and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) whi
 
 Those numbers correspond to a \texttt{threshold} each, separating the chosen percent of brighter pixels from all darker pixels in the slice.
 Using the \texttt{threshold}s, the script calculates the \texttt{COM} and \texttt{DC} for both possible guesses.
-\todo{explain more}
+%\todo{explain more}
 Comparing the two \texttt{DC}s will decide which guess is closer to representing the rod better (\textbf{4}).
 If the lower number of pixels yields a better \texttt{DC} (\textbf{5a}), the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
 If the higher percentage yields a better \texttt{DC} (\textbf{5b}), the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
