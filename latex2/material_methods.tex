@@ -555,6 +555,7 @@ The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 \end{align}
 
+Figure \ref{flo:DC} describes the process of calculating the DC.
 It compares a binary image (input A) to a circle (reference B).
 In a binary image there are only 2 possible pixel values: "0" and "1".
 However, in the original image, values lie in a range between 0 (or -1024 in CT) and 1000 or higher.
@@ -566,11 +567,13 @@ Those which are darker are set to "0".
 Ideally, this procedure separates the surrounding dark area from the bright rod.
 This way the new binary image A still shows were the rod is, but it lost all information on the actual brightness.
 
-Reference B is a circle with its midpoint placed at the centre of mass (COM) of the rod.
-The \texttt{COM} is calculated using those pixels which exceed the  \texttt{threshold}, but weighted with their actual brightness (not using the binary image)
+Reference B is a circle with its midpoint typically placed at the centre of mass (COM) of the rod.
+The \texttt{COM} is usually calculated using those pixels which exceed the \texttt{threshold}, but weighted with their actual brightness (not using the binary image)
 
 This way the script is supposed to place the reference circle B in the centre of the input image A.
-The position of the circle's centre and its radius highly influence the outcome. (See chapter \ref{sec:discussion_DC} for a more thorough discussion.)
+The position of the circle's centre and its radius highly influence the outcome.
+Alternatively, the DC for MRI can be calculated with the reference circle B placed in the COM of the corresponding CT image. (See chapter \ref{sec:discussion_DC} for a more thorough discussion.)
+
 
 The \texttt{DC} ranges from 0 to 1.
 A value of 1 indicates a perfect circular shape.
@@ -581,6 +584,27 @@ The obvious choice for the radius of the reference circle B is to use the true s
 For CT images this would be 4mm, for MRI images it would be 2mm.
 The script calculates the \texttt{DC} using various radii close to those values and returns the result yielding in the highest average \texttt{DC} for the whole rod.
 Figures \ref{fig:ph2_CT_DC-15iter}, \ref{fig:ph2_MR_DC-15iter} and \ref{fig:ph2_MR_CT-COM_DC-15iter} show how the \texttt{DC} change for different radii.
+
+\begin{figure}[!htp]
+    \centering
+	\begin{tikzpicture}[node distance = 4cm, auto]
+    % Place nodes
+    \node[] (img) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_img@200.png}};
+    \node [blockb, below of=img, text width=10em] (img_t) {\texttt{original image}};
+    \node [blockb, below of=img_t, xshift=-4cm, text width=16em] (binary_t) {\texttt{binary input image A}:\\pixels where original image is darker than \texttt{threhold} are set to \texttt{0}\\ the others are set to \texttt{1}};
+    \node [blockb, below of=img_t, xshift=4cm, text width=16em] (circle_t) {\texttt{reference circle B}:\\with centre at \texttt{COM} of \texttt{original image}};
+    \node[below of=binary_t] (binary) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_mask@200.png}};
+    \node[below of=circle_t] (circle) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_circle@200.png}};
+    \node [blockb, below of=img_t, yshift=-8cm, text width=10em] (overlap) {calculate the overlap: \\ \large \texttt{DC} = \Large $\frac{2 |A \, \cap \, B|}{|A| + |B|}$};
+    % Draw edges
+    \path [line] (img_t) -- (binary_t);
+    \path [line] (img_t) -- (circle_t);
+    \path [line] (binary) -- (overlap);
+    \path [line] (circle) -- (overlap);
+	\end{tikzpicture}
+	\caption{\texttt{DC} calculation for a MR scan (rod \#5 @ slice 200) yielding a value of $0.9454$}
+	\label{flo:DC}
+\end{figure}
 
 \subsection{Calculation: warp \& centre of mass (COM)}
 \label{sec:COM}
@@ -599,8 +623,8 @@ To be regarded as part of the rod, the pixels' value has to reach a certain  \te
 In order to find the relevant pixels two methods were developed:
 
 \begin{description}
- \item[1] calculating the number of pixels based on rod size
- \item[2] finding a \texttt{COM} resulting in a good \texttt{DC}
+ \item[1] simple: calculating the number of pixels based on rod size
+ \item[2] iteration: finding a \texttt{COM} resulting in a good \texttt{DC}
 \end{description}
 
 Both methods rely on a single reference slice to calculate the  \texttt{threshold}.
@@ -618,7 +642,8 @@ Calculating the number of pixels which make up the more or less circular profile
 For CT images the $radius = 4mm$, in MRI scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
 Next, the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the \texttt{COM}.
 The value of the darkest pixel that is still counted as part of the rod is saved as  \texttt{threshold} for future calculations (e.g. finding the \texttt{DC} associated with the \texttt{COM}, see section \ref{sec:DC}).\\
-
+The method is summarised in figure \ref{flo:COM-simple}.
+Now, the DC can be obtained as described earlier using the now known \texttt{threshold} and COM coordinates.
 
 \begin{figure}[!htp]
     \centering
@@ -638,31 +663,9 @@ The value of the darkest pixel that is still counted as part of the rod is saved
     \path [line] (pixelNumber) -- (threshold);
     \path [line] (threshold) -- (COM);
 	\end{tikzpicture}
-	\caption{Method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size}
+	\caption{Simple method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size}
 	\label{flo:COM-simple}
 \end{figure}
-
-\begin{figure}[!htp]
-    \centering
-	\begin{tikzpicture}[node distance = 4cm, auto]
-    % Place nodes
-    \node[] (img) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_img@200.png}};
-    \node [blockb, below of=img, text width=10em] (img_t) {\texttt{original image}};
-    \node [blockb, below of=img_t, xshift=-4cm, text width=16em] (binary_t) {\texttt{binary input image A}:\\pixels where original image is darker than \texttt{threhold} are set to \texttt{0}\\ the others are set to \texttt{1}};
-    \node [blockb, below of=img_t, xshift=4cm, text width=16em] (circle_t) {\texttt{reference circle B} with centre at \texttt{COM} of \texttt{original image}};
-    \node[below of=binary_t] (binary) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_mask@200.png}};
-    \node[below of=circle_t] (circle) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_circle@200.png}};
-    \node [blockb, below of=img_t, yshift=-8cm, text width=10em] (overlap) {calculate the overlap: \\ \large \texttt{DC} = \Large $\frac{2 |A \, \cap \, B|}{|A| + |B|}$};
-    % Draw edges
-    \path [line] (img_t) -- (binary_t);
-    \path [line] (img_t) -- (circle_t);
-    \path [line] (binary) -- (overlap);
-    \path [line] (circle) -- (overlap);
-	\end{tikzpicture}
-	\caption{\texttt{DC} calculation}
-	\label{flo:DC}
-\end{figure}
-
 
 \textbf{add 2:}
 This algorithm is an iteration method.

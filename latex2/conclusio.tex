@@ -33,3 +33,9 @@ Future improvements should enable the software to take into account all the rods
 This could be done by a auto-trace function which detects individual rods and applies the already implemented algorithms to each of them separately. 
 
 Distortion assessment can be performed using the generated tool, however, it needs to be implemented on more general scale to be able to measure the distortion for all the rods automatically
+
+The two implemented methods of finding COM and DC need to be assessed themselves.
+In order to tell which of the two gets closer to the absolute truth, additional checks should be implemented/performed.
+A possible accuracy test could look like this:
+Two CT scans of the phantom which differ only by a known displacement of one rod are registered and resampled.
+The software tool is used to calculate the COM shift between the images which can be compared to the real displacement.
