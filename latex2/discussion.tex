@@ -151,54 +151,189 @@ The silicon oil (\textbf{\#17}) on, the other side, had a low signal compared to
 \texttt{DC} and warp values calculated with the simple and iteration method do not differ much.
 Moreover, both methods choose very similar thresholds for their calculations (see header of appended '.txt' output file)
 As the simple method uses additional information on the rod's true dimension, it is supposed to yield accurate, reliable results.
-The iteration process, oblivious to the imaging modality, supports this claim as it produces very similar numbers.
+The iteration process, oblivious to the imaging modality, supports this claim as it produces very similar numbers.\\
 
-
-At the moment the iteration method does not take into account the steepness of the DC curve.
-In some cases this might result in neglecting the left hand side close to very low percentages.
-This happens when the maximum lies roughly in the middle of the current range, but a little bit to the left.
-Because the slope is steeper on the left (close to 0\%), a value representing the left hand side (also close to 0\%) yields a much lower result than the value on the right hand side (flat slope).
-This should be taken into account during further improvement of the method. \todo{add figure?!}
+The biggest difference in the results obtained with both methods are the values in the region of the air bubble in rod \#5.
+Slices 303-310 in table \ref{tab:spit-out-5} are where the maximum brightness dropped significantly due to the absence of liquid (see figure \ref{fig:ph2_MR_x100_brightness}).
+The simple method for finding the COM did not manage to calculate coordinates in this region, due to the lack of pixels above the threshold based on the reference slice (which was ~827; see appendix).
+Consequently, warp and the DC for MRI were set to '-1'.
+However, the iteration method tried various thresholds and settled for the one resulting in the highest average DC for the whole scan.
+As slices with values of '-1' influence the average dramatically, the chosen threshold is low enough (~339; see appendix) to include some of the relatively dark pixels in slices 303-310 \\
 
 \subsection{Measured distortion}
+\subsubsection{Rod \#5}
 
-Figure \ref{fig:MR_x100_centroids} visualises the centroid shift in significant slices of rod \#5.
-It is clearly visible that the shift is bigger at the end of the rod (slice 0) compared to a slice close to its middle (slice 150).
-Table \ref{tab:spit-out-5} verifies this.
-Furthermore, the distortion measured at the location of the air bubble (slice 304) shows a maximum for the COM shift and a minimum for the DC.
-These values originate not from true spatial distortion, but are affected heavily by the presence of air.
-In figures \ref{fig:ph2_warpMagnitude_x100} and \ref{fig:ph2_DC_x100} the impact at the area of 110mm to 140mm is clearly visible.
-It is imperative for the distortion assessment to use bubble free rods.
+Figure \ref{fig:MR_x100_centroids} visualises the centroid shift at interesting slices of rod \#5.
+It is clearly visible that the shift is bigger at the end of the rod (slice 0) compared to a slice close to its middle (slice 171).
+The values of $warpM^*$ in table \ref{tab:spit-out-5} verify this (1.0623mm > 0.6926mm).
+Furthermore, the distortion measured at the location of the air bubble (slice 304) shows a maximum for the COM shift ($warpM^*$ = 1.5748mm) and a minimum for the DC ($DC^*_{MR}$ = 0.6762).
+These values originate not from true spatial distortion, but are caused by the presence of gas in the rod.
+Because the bubble was located on top of the liquid, the COM shift is most pronounced in the y direction (up-down) as shown by figure \ref{fig:ph2_warpXY_x100}.
+The overall impact on the area of 110mm to 140mm is clearly visible in figures \ref{fig:ph2_warpMagnitude_x100} and \ref{fig:ph2_DC_x100}.
+In conclusion, it is imperative for the distortion assessment to exclude bubbles from the FOV.
+
+\subsubsection{Rod \#17}
+
+Similar to the findings for rod \#5, the distortion is bigger in the peripheral regions of the FOV (see figure \ref{fig:ph3_DC_x100}).
+Interestingly, the y shift shows is oriented to the opposite direction in front and behind the centre (see figure \ref{fig:ph3_warpXY_x100}).
+This might be a local feature of the distortion and cannot be put in relation, because no distortion map of the entire FOV has been created yet.
+
+As rod \#17 does not contain any air bubbles, the brightness plotted in figure \ref{fig:ph3_MR_x100_brightness} shows no sudden drops.
+However, the left hand side has a drastically lower signal strength than the right.
+The rod was not placed at in the same place as rod \#5, which does not show such a gradient.
+One reason for the low signal strength might be the short duration of the MRI sequence used for this scan resulting in low visibility in outer regions.
+Another possible explanation is that the imaged liquid separated in parts with different density while the rod was stored upright.
+More experiments would be needed to find the cause.
+
+In the region beyond -330, there is a drop of the DC for the CT.
+Investigations revealed that it is caused by sticky tape attached to the rod to hold it in place during transport from the CT scanner to the MRI scanner.
+The values calculated for this area are most likely influenced by this.
+
 
 \subsection{Irregularities}
-\todo{rewrite}
-In the case of a slice located at a plastic pane, the CT image will be mostly very bright, as the plastic results in a high intensity.
-Consequently, this slice will be marked as irregular as the average brightness differs greatly from the reference slice's.
-However, the MRI scan will not show such a increase in brightness at that location, as plastic is not visible for the MRI scanner.
-Here the MRI data will not be marked as irregular, provided there is no other cause for a change in brightness, like an air bubble.
-Such an absence of liquid would result in a drastic decrease of brightness and result in an irregular slice.
-In CT, on the other hand, an air bubble would hardly make a difference, as the surrounding plastic is far brighter than the contained liquid.
+All obtained CT scans include a region where the plastic panes are visible.
+Figure \ref{fig:ph2_CT_x100_pane} shows how the plastic pane makes it impossible to define the rod on the CT image.
+These areas cannot be used for distortion assessment as the COM cannot be calculated reliably.
+Figures \ref{fig:ph2_CT_x100_brightness} and \ref{fig:ph3_CT_x100_brightness} exhibit spikes in the average brightness where the image shows a plastic pane.
+The script recognised this difference and marked all affected slices as 'irregular'.
+Consequently, in table \ref{tab:spit-out-5} and \ref{tab:spit-out-17}, the values of the COM shift ($warp_x$, $warp_y$, $warpM$); the DC for CT using the CT-centroid ($DC_{CT}$); and the DC for MRI using the CT-centroid ($DC_{MR(CT-COM)}$) are all set to '-1'.
 
-\subsection{DC calculation}
-\label{sec:discussion_DC}
+\begin{figure}[!tbp]
+\centering
+	\begin{subfigure}[b]{0.32\textwidth}
+		\includegraphics[width=\linewidth]{../fig/python/ph2/brightness/ph2_CT_pane@175}
+		\caption{slice 175}
+		\label{fig:ph2_CT_x100_pane_0}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.32\textwidth}
+	  \includegraphics[width=\linewidth]{../fig/python/ph2/brightness/ph2_CT_pane@176}
+	  \caption{slice 176}
+	  \label{fig:ph2_CT_x100_pane_1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.32\textwidth}
+	  \includegraphics[width=\linewidth]{../fig/python/ph2/brightness/ph2_CT_pane@177}
+	  \caption{slice 177}
+	  \label{fig:ph2_CT_x100_pane_2}
+	\end{subfigure}
+  \caption{Slices at edge of plastic pane in CT image showing rod \#5 (true colours): a black crescent remains at the bottom where there is a hole in the pane that is not filled with a rod at the moment}
+  \label{fig:ph2_CT_x100_pane}
+\end{figure}
 
-\subsection{COM calculation}
-\todo{rewrite}
+
+\subsection{Effect of resampling}
 
 
+Figures \ref{fig:ph2_warpMagnitude_x1-100} and \ref{fig:ph3_v2_warpMagnitude_x1-100} depict the measured $warpM^*$ of rod \#5 and \#17 for x1 and x100 resample rates.
+The calculated DC is shown in figures \ref{fig:ph2_DC_x1} and \ref{fig:ph3_DC_x1}.
+Figures \ref{fig:ph2_CT_DC-15iter}, \ref{fig:ph2_MR_DC-15iter}, \ref{fig:ph2_MR_CT-COM_DC-15iter}, \ref{fig:ph3_CT_DC-15iter}, \ref{fig:ph3_MR_DC-15iter} and \ref{fig:ph3_MR_CT-COM_DC-15iter} visualise how the maximum DC values increased with higher resample rates.
+The location shift calculated with x1 and x100 resample rate are relatively close.
 
-%Gnerally this graphs are OK, but we discused before you left that there is need to comment of what we actually see on them, as you explained that to me. Also we dicussed that you could add a figure showing a particular slice on which a certain problem occures (why is the extra-high distortion dettected: a bubble or artefact). 
+\subsubsection{Rod \#5}
 
-%We also talked that the XY axes have to properly called, so on X distance from the middle instead of the slice etc. Based on this descriptoion we could write smth clever in the discussion.  
+\begin{table}[!tbh]
+\centering
+\begin{tabular}{l|rr}
+                    & E         & $\sigma$   \\ \hline
+$\Delta warpM^*$ [mm]  & 0.038     & 0.058    \\
+$\Delta DC^*_{CT}$         & 0.002245  & 0.006838 \\
+$\Delta DC^*_{MR}$         & 0.000518  & 0.019070 \\
+$\Delta DC^*_{MR(CT-COM)}$ & -0.008905 & 0.022050
+\end{tabular}
+\caption{Change in calculated distortion due to resample rate; rod \#5}
+\label{tab:Delta-resample_5}
+\end{table}
 
-To get a idea of the occurring distortion one should look at both the absolute value of coordinate shift and the dice-coefficient (DC).
-An air bubble might lead to a incorrect COM.
-Without looking at the dice-coefficient it is hard to tell why this distortion only appears to be present in a few slices.
-If both indicators show unexpected local irregularities, a conclusion might be easier to draw.
+\begin{figure}[!tbh]
+    \centering
+    \includegraphics[scale=0.6]{../fig/python/ph2/warp/warpMagnitude_x1-100_iter.png}
+    \caption{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100}
+    \label{fig:ph2_warpMagnitude_x1-100}
+\end{figure}
+
+\begin{figure}[!bth]
+    \centering
+    \includegraphics[scale=0.6]{../fig/python/ph2/dice/ph2_DC_x1_iter.png}
+    \caption{Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
+    \label{fig:ph2_DC_x1}
+\end{figure}
+
+\begin{figure}[!bth]
+  \centering
+  \includegraphics[scale=0.6]{python/ph2/dice/ph2_CT_DC-15radii_simple_close.png}
+  \caption{Rod \#5: CT average DC of varied radii \& resolutions; simple method}
+  \label{fig:ph2_CT_DC-15iter}
+\end{figure}
+
+\begin{figure}[!tbh]
+  \centering
+    \includegraphics[scale=0.6]{python/ph2/dice/ph2_MR_DC-15radii_simple.png}
+    \caption{Rod \#5: MRI average DC of varied radii \& resolutions; simple method}
+    \label{fig:ph2_MR_DC-15iter}
+\end{figure}
+
+\begin{figure}[!tbh]
+      \centering
+    \includegraphics[scale=0.6]{python/ph2/dice/ph2_MR_DC-15radii_CT_COM_simple_close.png}
+    \caption{Rod \#5: MRI average DC of varied radii \& resolutions (using CT-COM); simple method}
+    \label{fig:ph2_MR_CT-COM_DC-15iter}
+\end{figure}
+
+\clearpage
+
+\subsubsection{Rod \#17}
 
 
+\begin{table}[!tbh]
+\centering
+\begin{tabular}{l|rr}
+                    & E         & $\sigma$   \\ \hline
+$\Delta warpM^*$ [mm]  & 0.005     & 0.025    \\
+$\Delta DC^*_{CT}$         & -0.001849  & 0.007117 \\
+$\Delta DC^*_{MR}$         & 0.004835   & 0.019823  \\
+$\Delta DC^*_{MR(CT-COM)}$ & 0.012554   & 0.019429
+\end{tabular}
+\caption{Change in calculated distortion due to resample rate; rod \#17}
+\label{tab:Delta-resample_17}
+\end{table}
 
-\todo{discuss what is visible on the graphs in results section}
-\todo{interpret data table spit out by script}
-\todo{scale of distortion, bigger on the sides as expected}
-\todo{only x,y direction. future design needs objects going from left to right, too.}
+\begin{figure}[!tbh]
+    \centering
+    \includegraphics[scale=0.6]{../fig/python/ph3_v2/warp/ph3_MR_v2_x1-100_warpMagnitude_iter.png}
+    \caption{Rod \#17: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100}
+    \label{fig:ph3_v2_warpMagnitude_x1-100}
+\end{figure}
+
+
+\begin{figure}[!tbh]
+    \centering
+    \includegraphics[scale=0.6]{../fig/python/ph3_v2/dice/ph3_MR_v2_x1_DC_iter.png}
+    \caption{Rod \#17: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
+    \label{fig:ph3_DC_x1}
+\end{figure}
+
+\begin{figure}[!tbh]
+  \centering
+  \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_CT_DC-15radii_simple_close.png}
+  \caption{Rod \#5: CT average DC of varied radii \& resolutions; simple method}
+  \label{fig:ph3_CT_DC-15iter}
+\end{figure}
+
+\begin{figure}[!tbh]
+  \centering
+    \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_MR_v2_DC-15radii_simple.png}
+    \caption{Rod \#5: MRI average DC of varied radii \& resolutions; simple method}
+    \label{fig:ph3_MR_DC-15iter}
+\end{figure}
+
+\begin{figure}[!tbh]
+      \centering
+    \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_MR_v2_DC-15radii_CT_COM_simple_close.png}
+    \caption{Rod \#5: MRI average DC of varied radii \& resolutions (using CT-COM); simple method}
+    \label{fig:ph3_MR_CT-COM_DC-15iter}
+\end{figure}
+
+
+%\todo{discuss what is visible on the graphs in results section}
+%\todo{interpret data table spit out by script}
+%\todo{scale of distortion, bigger on the sides as expected}
+%\todo{only x,y direction. future design needs objects going from left to right, too.}

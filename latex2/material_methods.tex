@@ -550,8 +550,8 @@ The calculation of the \texttt{DC} is performed for each slice individually.
 Additionally, to asses the overall distortion occurring along the rod, the average of all those values is also saved.
 As this aspect of distortion does not need a reference scan, the \texttt{DC} is measured for CT and MRI images separately.
 The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
-
 \begin{align}
+\label{eq:DC}
 DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 \end{align}
 
@@ -572,8 +572,7 @@ The \texttt{COM} is usually calculated using those pixels which exceed the \text
 
 This way the script is supposed to place the reference circle B in the centre of the input image A.
 The position of the circle's centre and its radius highly influence the outcome.
-Alternatively, the DC for MRI can be calculated with the reference circle B placed in the COM of the corresponding CT image. (See chapter \ref{sec:discussion_DC} for a more thorough discussion.)
-
+If the COM coordinates used to position the reference circle B lie outside of the image (e.g. '-1,-1'), the DC is set to '-1', indicating that no meaningful result could be obtained.
 
 The \texttt{DC} ranges from 0 to 1.
 A value of 1 indicates a perfect circular shape.
@@ -585,17 +584,28 @@ For CT images this would be 4mm, for MRI images it would be 2mm.
 The script calculates the \texttt{DC} using various radii close to those values and returns the result yielding in the highest average \texttt{DC} for the whole rod.
 Figures \ref{fig:ph2_CT_DC-15iter}, \ref{fig:ph2_MR_DC-15iter} and \ref{fig:ph2_MR_CT-COM_DC-15iter} show how the \texttt{DC} change for different radii.
 
-\begin{figure}[!htp]
+\subsubsection{Using the CT COM}
+Alternatively, the DC fo the MR scan can be calculated with the reference circle B placed in the COM of the corresponding CT image.
+This value could be regarded as a combined distortion guide number as it is influenced by the COM shift and the deformation simultaneously.
+One should bear in mind, though, that the meaning of it is neither equivalent to a real \texttt{DC} nor to the warp and should be interpreted with caution.\\
+
+If the CT COM is far from the MR image, A and B have little overlap resulting in a small \texttt{DC}.
+As the implemented \texttt{DC} calculation tries a variety of radii, the circle B could, theoretically, always be chosen big enough to have some overlap with the binary image A.
+However, as B grows, A will stay the same.
+Therefore, only a fraction of B will contribute to the overlap and the rest will counter-act the benefits (see equation \ref{eq:DC}).
+Consequently, the DC would become so small that the script will choose a smaller radius for B.
+
+\begin{figure}[!htb]
     \centering
 	\begin{tikzpicture}[node distance = 4cm, auto]
     % Place nodes
     \node[] (img) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_img@200.png}};
-    \node [blockb, below of=img, text width=10em] (img_t) {\texttt{original image}};
-    \node [blockb, below of=img_t, xshift=-4cm, text width=16em] (binary_t) {\texttt{binary input image A}:\\pixels where original image is darker than \texttt{threhold} are set to \texttt{0}\\ the others are set to \texttt{1}};
-    \node [blockb, below of=img_t, xshift=4cm, text width=16em] (circle_t) {\texttt{reference circle B}:\\with centre at \texttt{COM} of \texttt{original image}};
+    \node [blockb, below of=img, yshift=0.5cm, text width=10em] (img_t) {\texttt{original image}};
+    \node [blockb, below of=img_t, yshift=1cm, xshift=-4cm, text width=16em] (binary_t) {\texttt{binary input image A}:\\pixels where original image is darker than \texttt{threhold} are set to \texttt{0}\\ the others are set to \texttt{1}};
+    \node [blockb, below of=img_t, yshift=1cm, xshift=4cm, text width=16em] (circle_t) {\texttt{reference circle B}:\\with centre at \texttt{COM} of \texttt{original image}};
     \node[below of=binary_t] (binary) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_mask@200.png}};
     \node[below of=circle_t] (circle) {\includegraphics[scale=0.8]{python/ph2/dice_flow/ph2_MR_x100_circle@200.png}};
-    \node [blockb, below of=img_t, yshift=-8cm, text width=10em] (overlap) {calculate the overlap: \\ \large \texttt{DC} = \Large $\frac{2 |A \, \cap \, B|}{|A| + |B|}$};
+    \node [blockb, below of=img_t, yshift=-7cm, text width=10em] (overlap) {calculate the overlap: \\ \large \texttt{DC} = \Large $\frac{2 |A \, \cap \, B|}{|A| + |B|}$};
     % Draw edges
     \path [line] (img_t) -- (binary_t);
     \path [line] (img_t) -- (circle_t);
@@ -623,18 +633,17 @@ To be regarded as part of the rod, the pixels' value has to reach a certain  \te
 In order to find the relevant pixels two methods were developed:
 
 \begin{description}
- \item[1] simple: calculating the number of pixels based on rod size
- \item[2] iteration: finding a \texttt{COM} resulting in a good \texttt{DC}
+ \item[1.] a simple method calculating the number of pixels based on rod size
+ \item[2.] an iteration method finding a \texttt{COM} resulting in a good \texttt{DC}
 \end{description}
 
 Both methods rely on a single reference slice to calculate the  \texttt{threshold}.
-This reference should be representative for the whole scan, because the  \texttt{threshold} deduced from it will be used to find pixels belonging to the rod in all other slice, too.\\
+This reference should be representative for the whole scan, because the  \texttt{threshold} deduced from it will be used to find pixels belonging to the rod in all other slice, too.
 
-\textbf{add 1:}
+\subsubsection{1. Simple Method}
 The inner ($2mm$) and outer ($4mm$) radius of the plastic rods are known.
 So is the pixel \texttt{spacing}, the size of a voxel in real space ($mm$).
 Calculating the number of pixels which make up the more or less circular profile of the rod in a slice is calculated as follows:
-
 \begin{align}
  pixelNumber = (radius^2 \cdot \pi) \, / \, (spacing^2)
 \end{align}
@@ -645,7 +654,7 @@ The value of the darkest pixel that is still counted as part of the rod is saved
 The method is summarised in figure \ref{flo:COM-simple}.
 Now, the DC can be obtained as described earlier using the now known \texttt{threshold} and COM coordinates.
 
-\begin{figure}[!htp]
+\begin{figure}[!htb]
     \centering
 	\begin{tikzpicture}[node distance = 2.5cm, auto]
     % Place nodes    
@@ -667,7 +676,7 @@ Now, the DC can be obtained as described earlier using the now known \texttt{thr
 	\label{flo:COM-simple}
 \end{figure}
 
-\textbf{add 2:}
+\subsubsection{2. Iteration Method}
 This algorithm is an iteration method.
 Figure \ref{flo:COM-iter} shows in what order the scripts executes individual steps during the iteration.
 
@@ -678,7 +687,7 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     % Place nodes
     \node [blockb] (init-range) {\textbf{(1)} Start with whole range:\\\texttt{min=0\%; max=100\%}};
     \node [blockb, below of=init-range, node distance=2cm] (init-guess) {\textbf{(2)} Guess at middle of range:\\\texttt{guess =  (min+max)/2 = 50\%}};
-    \node [block, below of=init-guess] (getDC) {\textbf{(3)} calculate \\\texttt{COM} coordinates and \texttt{DC} for\\upper and lower half\\of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
+    \node [block, below of=init-guess] (getDC) {\textbf{(3)} calculate \\\texttt{COM} coordinates and\\average \texttt{DC} for upper and\\lower half of current range:\\\texttt{DC$_{up}$ = DC @ (guess+max)/2\\ DC$_{lo}$ = DC @ (guess+min)/2}};
     \node [blockb, right of=getDC, text width=8em, node distance=6cm] (repeat!) {Repeat\\ iteration step};
     \node [decisiong, below of=getDC, node distance=3.5cm] (bigger) {\textbf{(4)} which one is bigger?};
     \node [block, left of=bigger, text width=9em, node distance=7cm, xshift=4cm, yshift=-2.5cm] (lower) {\textbf{(5a)} Neglect upper half:\\\texttt{max = guess}};
@@ -707,13 +716,11 @@ To begin with, it looks at the whole range of possible pixelNumbers, from $0\%$ 
 As a reasonable first guess it assumes that $50\%$ of all pixels belong to the rod (\textbf{2}).
 Now, in the first iteration (\textbf{3}), to find out whether more or less pixels would result in a better \texttt{DC}, it considers two new guesses:
 One halfway from the lower limit ($0\%$) to its current guess ($50\%$) which is:
-
 \begin{align}
  \frac{0+50}{2}=25\% 
 \end{align}
 
 and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) which is:
- 
 \begin{align}
  \frac{100+50}{2}=75\%
 \end{align}
@@ -722,20 +729,20 @@ and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) whi
 Those numbers correspond to a \texttt{threshold} each, separating the chosen percent of brighter pixels from all darker pixels in the slice.
 Using the \texttt{threshold}s, the script calculates the \texttt{COM} and \texttt{DC} for both possible guesses.
 %\todo{explain more}
-Comparing the two \texttt{DC}s will decide which guess is closer to representing the rod better (\textbf{4}).
-If the lower number of pixels yields a better \texttt{DC} (\textbf{5a}), the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
-If the higher percentage yields a better \texttt{DC} (\textbf{5b}), the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
-At the end of the iteration (\textbf{6}), the percentage resulting in the higher \texttt{DC} is saved as the new current guess.
-After this first iteration (\textbf{7}) the script can either repeat steps 3-6 or end it by returning the best guess and its \texttt{DC} (\textbf{8}).\\
+Comparing the average over the whole rod for both \texttt{DC}s will decide which guess is closer to representing the rod better (\textbf{4}).
+If the lower number of pixels yields a better average \texttt{DC} (\textbf{5a}), the upper half of the range will be neglected in the next iteration or in other words, the new upper limit takes the value of the former guess ($50\%$).
+If the higher percentage yields a better average \texttt{DC} (\textbf{5b}), the lower half of the range will be neglected in the next iteration, the new lower limit takes the value of the former guess ($50\%$).
+At the end of the iteration (\textbf{6}), the percentage resulting in the higher average \texttt{DC} is saved as the new current guess.
+After this first iteration (\textbf{7}) the script can either repeat steps 3-6 or end it by returning the best guess and its (average) \texttt{DC} (\textbf{8}).\\
 
 To get a better understanding, let's suppose the iteration is repeated.
 At the start of the second iteration, the range is smaller (half of the entire range) and the current guess is set exactly in its middle.
-If, for example, the \texttt{DC} for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
+If, for example, the average \texttt{DC} for $25\%$ was higher than for $75\%$, the next guess will be $25\%$, because the new range goes from $0\%$ to $50\%$.
 In that case, \texttt{DC}s for the lower half of that range ($12,5\%$) and the upper half ($18,5\%$) will be calculated and compared to decide which half to eliminate in the third iteration.
-If, on the other hand, the \texttt{DC} for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
+If, on the other hand, the average \texttt{DC} for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
 In that case, \texttt{DC}s for $62,5\%$ and $82,5\%$ will be compared.
 
-The iteration continues until further steps yield no better \texttt{DC} or a set number of steps has been performed.
+The iteration continues until further steps yield no better average \texttt{DC} or a set number of steps has been performed.
 After the iteration process, the algorithm will return the \texttt{COM} which resulted in the best DC.
 The percentage of pixels that led to this \texttt{DC} is equivalent to a \texttt{threshold} which is saved for future calculations.
 Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of trying different percentages during the iteration method.
@@ -755,7 +762,7 @@ Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of try
      \caption{close up}
      \label{fig:MR_x100_iteration}
   \end{subfigure}
-  \caption{COM iteration method, 8 repetitions}
+  \caption{COM iteration method, 8 repetitions; green dots correspond to upper guesses, blue to lower guesses}
   \label{fig:COM_iteration}
 \end{figure}
 

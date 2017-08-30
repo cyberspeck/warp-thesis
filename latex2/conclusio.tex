@@ -39,3 +39,14 @@ In order to tell which of the two gets closer to the absolute truth, additional 
 A possible accuracy test could look like this:
 Two CT scans of the phantom which differ only by a known displacement of one rod are registered and resampled.
 The software tool is used to calculate the COM shift between the images which can be compared to the real displacement.
+
+At the moment the iteration method does not take into account the steepness of the DC curve.
+In some cases this might result in neglecting the left hand side close to very low percentages.
+This happens when the maximum lies roughly in the middle of the current range, but a little bit to the left.
+Because the slope is steeper on the left (close to 0\%), a value representing the left hand side (also close to 0\%) yields a much lower result than the value on the right hand side (flat slope).
+This should be taken into account during further improvement of the method.
+
+In the current version of the software tool, only changes in the mean brightness are used to characterise irregularities.\\
+
+In cases where the COM cannot be calculated due to the lack of bright pixels, it could be interpolated.
+

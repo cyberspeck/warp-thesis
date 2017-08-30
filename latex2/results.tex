@@ -113,7 +113,6 @@ Figure \ref{fig:bubbles} shows the rods after a time of over 6 months.
 In some of the tested rods, the occurring air bubbles would stick to the wall.
 Only after gently hitting the rod they would start moving.
 Knowing the inner diameter $d$ of the rods and measuring the length $l$ of trapped air bubbles, their volume can be estimated:
-
 \begin{align}
  V = \frac{d^2}{4}\cdot \pi \cdot l
 \end{align}
@@ -244,14 +243,14 @@ All plots were created using the data obtained with the iteration method.
         \centering
  \begin{tabular}{rr||lll|lll||lll|lll}
  slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(CT-COM)}$ & $warp_x^*$ & $warp_y^*$ & $warpM^*$ & $DC^*_{CT}$	& $DC^*_{MR}$ & $DC^*_{MR(CT-COM)}$\\ \hline
-0      & -183 & -0.1046 & -1.115  & 1.1199 & 0.983  & 0.8444 & 0.6102 & -0.1047 & -1.0571 & 1.0623 & 0.9945 & 0.9504 & 0.6024 \\
-1      & -182 & -0.1205 & -1.1132 & 1.1197 & 0.9807 & 0.8547 & 0.6091 & -0.1199 & -1.0527 & 1.0595 & 0.9929 & 0.9496 & 0.6072 \\
-2      & -181 & -0.1278 & -1.1107 & 1.1181 & 0.9819 & 0.8666 & 0.6135 & -0.1334 & -1.0472 & 1.0556 & 0.9925 & 0.9501 & 0.6119 \\
+0      & -183 & -0.1046 & -1.115  & 1.1199 & 0.983  & 0.8444 & 0.6102 & -0.1047 & -1.0571 & 1.0623 & 0.9945 & 0.9504 & 0.7546 \\
+1      & -182 & -0.1205 & -1.1132 & 1.1197 & 0.9807 & 0.8547 & 0.6091 & -0.1199 & -1.0527 & 1.0595 & 0.9929 & 0.9496 & 0.7573 \\
+2      & -181 & -0.1278 & -1.1107 & 1.1181 & 0.9819 & 0.8666 & 0.6135 & -0.1334 & -1.0472 & 1.0556 & 0.9925 & 0.9501 & 0.7583 \\
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
 \hline
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
-171    & -12  & 0.0025  & -0.6891 & 0.6891 & 0.9786 & 0.9421 & 0.7848 & -0.0261 & -0.6921 & 0.6926 & 0.9941 & 0.9528 & 0.78   \\
-172    & -11  & 0.0089  & -0.6825 & 0.6825 & 0.9723 & 0.9425 & 0.7862 & -0.026  & -0.6869 & 0.6874 & 0.9898 & 0.9527 & 0.7836 \\
+171    & -12  & 0.0025  & -0.6891 & 0.6891 & 0.9786 & 0.9421 & 0.7848 & -0.0261 & -0.6921 & 0.6926 & 0.9941 & 0.9528 & 0.8437 \\
+172    & -11  & 0.0089  & -0.6825 & 0.6825 & 0.9723 & 0.9425 & 0.7862 & -0.026  & -0.6869 & 0.6874 & 0.9898 & 0.9527 & 0.8445 \\
 173    & -10  & -1      & -1      & -1     & -1     & 0.9421 & -1     & -1      & -1      & -1     & -1     & 0.9529 & -1     \\
 174    & -9   & -1      & -1      & -1     & -1     & 0.9433 & -1     & -1      & -1      & -1     & -1     & 0.9535 & -1     \\
 :      & :    & :       & :       & :      & :      &        &        & :       & :       & :      &        &        &        \\
@@ -259,48 +258,71 @@ All plots were created using the data obtained with the iteration method.
 :      & :    & :       & :       & :      & :      &        &        & :       & :       & :      &        &        &        \\
 192    & 9    & -1      & -1      & -1     & -1     & 0.9468 & -1     & -1      & -1      & -1     & -1     & 0.9517 & -1     \\
 193    & 10   & -1      & -1      & -1     & -1     & 0.9472 & -1     & -1      & -1      & -1     & -1     & 0.9525 & -1     \\
-194    & 11   & 0.0379  & -0.709  & 0.71   & 0.9707 & 0.9481 & 0.778  & 0.0072  & -0.7123 & 0.7123 & 0.9878 & 0.9531 & 0.7756 \\
-195    & 12   & 0.0364  & -0.7048 & 0.7058 & 0.9731 & 0.9465 & 0.7789 & 0.0053  & -0.7131 & 0.7132 & 0.9905 & 0.9535 & 0.7749 \\
+194    & 11   & 0.0379  & -0.709  & 0.71   & 0.9707 & 0.9481 & 0.778  & 0.0072  & -0.7123 & 0.7123 & 0.9878 & 0.9531 & 0.8349 \\
+195    & 12   & 0.0364  & -0.7048 & 0.7058 & 0.9731 & 0.9465 & 0.7789 & 0.0053  & -0.7131 & 0.7132 & 0.9905 & 0.9535 & 0.8345 \\
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
 \hline
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
-301    & 118  & 0.2997  & -0.8702 & 0.9204 & 0.9838 & 0.4306 & 0.409  & 0.1153  & -0.7938 & 0.8021 & 0.9909 & 0.8851 & 0.408  \\
-302    & 119  & 0.3943  & -1.1317 & 1.1984 & 0.981  & 0.145  & 0.1459 & 0.1144  & -0.8896 & 0.8969 & 0.9903 & 0.8631 & 0.1443 \\
-303    & 120  & -1      & -1      & -1     & 0.9817 & -1     & 0      & 0.1093  & -1.0022 & 1.0081 & 0.9915 & 0.832  & 0      \\
-304    & 121  & -1      & -1      & -1     & 0.9809 & -1     & 0      & 0.0979  & -1.1751 & 1.1792 & 0.9928 & 0.7853 & 0      \\
-305    & 122  & -1      & -1      & -1     & 0.9826 & -1     & 0      & 0.0881  & -1.4076 & 1.4104 & 0.9918 & 0.7164 & 0      \\
-306    & 123  & -1      & -1      & -1     & 0.982  & -1     & 0      & 0.0787  & -1.5728 & 1.5748 & 0.9918 & 0.6762 & 0      \\
-307    & 124  & -1      & -1      & -1     & 0.9812 & -1     & 0      & 0.0866  & -1.5327 & 1.5351 & 0.9917 & 0.7164 & 0      \\
-308    & 125  & -1      & -1      & -1     & 0.9805 & -1     & 0      & 0.0927  & -1.5189 & 1.5218 & 0.9925 & 0.7516 & 0      \\
-309    & 126  & -1      & -1      & -1     & 0.9811 & -1     & 0      & 0.0915  & -1.4745 & 1.4773 & 0.9922 & 0.7849 & 0      \\
-310    & 127  & 0.3786  & -2.0028 & 2.0383 & 0.981  & 0.0755 & 0.0219 & 0.0792  & -1.4414 & 1.4436 & 0.9915 & 0.8148 & 0.0204 \\
-311    & 128  & 0.3434  & -1.9836 & 2.0131 & 0.9808 & 0.1647 & 0.0613 & 0.0819  & -1.3987 & 1.401  & 0.9916 & 0.843  & 0.0599 \\
+301    & 118  & 0.2997  & -0.8702 & 0.9204 & 0.9838 & 0.4306 & 0.409  & 0.1153  & -0.7938 & 0.8021 & 0.9909 & 0.8851 & 0.7757 \\
+302    & 119  & 0.3943  & -1.1317 & 1.1984 & 0.981  & 0.145  & 0.1459 & 0.1144  & -0.8896 & 0.8969 & 0.9903 & 0.8631 & 0.7477 \\
+303    & 120  & -1      & -1      & -1     & 0.9817 & -1     & 0      & 0.1093  & -1.0022 & 1.0081 & 0.9915 & 0.832  & 0.7129 \\
+304    & 121  & -1      & -1      & -1     & 0.9809 & -1     & 0      & 0.0979  & -1.1751 & 1.1792 & 0.9928 & 0.7853 & 0.6619 \\
+305    & 122  & -1      & -1      & -1     & 0.9826 & -1     & 0      & 0.0881  & -1.4076 & 1.4104 & 0.9918 & 0.7164 & 0.5901 \\
+306    & 123  & -1      & -1      & -1     & 0.982  & -1     & 0      & 0.0787  & -1.5728 & 1.5748 & 0.9918 & 0.6762 & 0.5439 \\
+307    & 124  & -1      & -1      & -1     & 0.9812 & -1     & 0      & 0.0866  & -1.5327 & 1.5351 & 0.9917 & 0.7164 & 0.5705 \\
+308    & 125  & -1      & -1      & -1     & 0.9805 & -1     & 0      & 0.0927  & -1.5189 & 1.5218 & 0.9925 & 0.7516 & 0.5913 \\
+309    & 126  & -1      & -1      & -1     & 0.9811 & -1     & 0      & 0.0915  & -1.4745 & 1.4773 & 0.9922 & 0.7849 & 0.6167 \\
+310    & 127  & 0.3786  & -2.0028 & 2.0383 & 0.981  & 0.0755 & 0.0219 & 0.0792  & -1.4414 & 1.4436 & 0.9915 & 0.8148 & 0.6361 \\
+311    & 128  & 0.3434  & -1.9836 & 2.0131 & 0.9808 & 0.1647 & 0.0613 & 0.0819  & -1.3987 & 1.401  & 0.9916 & 0.843  & 0.6576 \\
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
 \hline
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
-393    & 210  & 0.1083  & -0.2563 & 0.2783 & 0.9822 & 0.9527 & 0.9048 & 0.0989  & -0.2569 & 0.2753 & 0.9943 & 0.9675 & 0.9016 \\
-394    & 211  & 0.1147  & -0.263  & 0.2869 & 0.9808 & 0.9522 & 0.9024 & 0.1039  & -0.2608 & 0.2808 & 0.9917 & 0.9681 & 0.8993 \\
-395    & 212  & 0.1214  & -0.2454 & 0.2738 & 0.9815 & 0.9552 & 0.9089 & 0.1114  & -0.2424 & 0.2668 & 0.9921 & 0.9691 & 0.9067
+393    & 210  & 0.1083  & -0.2563 & 0.2783 & 0.9822 & 0.9527 & 0.9048 & 0.0989  & -0.2569 & 0.2753 & 0.9943 & 0.9675 & 0.9294 \\
+394    & 211  & 0.1147  & -0.263  & 0.2869 & 0.9808 & 0.9522 & 0.9024 & 0.1039  & -0.2608 & 0.2808 & 0.9917 & 0.9681 & 0.9287 \\
+395    & 212  & 0.1214  & -0.2454 & 0.2738 & 0.9815 & 0.9552 & 0.9089 & 0.1114  & -0.2424 & 0.2668 & 0.9921 & 0.9691 & 0.9311
  \end{tabular}
-        \caption{rod \#5: script generated data; all distances in [$mm$]}
+        \caption{rod \#5: script generated data; dist and $warp$ in [$mm$]}
         \label{tab:spit-out-5}
       \end{minipage}
     }
   \end{table}
 
-\begin{figure}[!tp]
+\begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{python/ph2/brightness/ph2_CT_x100_brightness.png}
     \caption{Rod \#5: brightness, CT x100}
     \label{fig:ph2_CT_x100_brightness}
 \end{figure}
 
-\begin{figure}[!tp]
+\begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{python/ph2/brightness/ph2_MR_x100_brightness.png}
     \caption{Rod \#5: brightness, MRI x100}
     \label{fig:ph2_MR_x100_brightness}
 \end{figure}
+
+
+\begin{figure}[!bth]
+  \centering
+  \includegraphics[scale=0.6]{python/ph2/warp/warpXY_x100_iter.png}
+  \caption{Rod \#5: warp XY [$mm$] (iteration method), CT-MRI x100}
+  \label{fig:ph2_warpXY_x100}
+\end{figure}
+
+\begin{figure}[!tbh]
+    \centering
+    \includegraphics[scale=0.6]{python/ph2/warp/warpMagnitude_x100_iter.png}
+    \caption{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x100}
+    \label{fig:ph2_warpMagnitude_x100}
+\end{figure}
+
+\begin{figure}[!bth]
+    \centering
+    \includegraphics[scale=0.6]{python/ph2/dice/ph2_DC_x100_iter.png}
+    \caption{Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100}
+    \label{fig:ph2_DC_x100}
+\end{figure}
+
 
 \begin{figure}[!tbp]
   \begin{subfigure}[b]{0.32\textwidth}
@@ -338,52 +360,7 @@ All plots were created using the data obtained with the iteration method.
   \label{fig:MR_x100_centroids}
 \end{figure}
 
-
-\begin{figure}[!bp]
-  \centering
-  \includegraphics[scale=0.6]{python/ph2/warp/warpXY_x100_iter.png}
-  \caption{Rod \#5: warp XY [$mm$] (iteration method), CT-MRI x100}
-  \label{fig:ph2_warpXY_x100}
-\end{figure}
-
-\begin{figure}[!tp]
-    \centering
-    \includegraphics[scale=0.6]{python/ph2/warp/warpMagnitude_x100_iter.png}
-    \caption{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x100}
-    \label{fig:ph2_warpMagnitude_x100}
-\end{figure}
-
-\begin{figure}[!bp]
-    \centering
-    \includegraphics[scale=0.6]{python/ph2/dice/ph2_DC_x100_iter.png}
-    \caption{Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
-    \label{fig:ph2_DC_x100}
-\end{figure}
-
-\begin{figure}[!bp]
-  \centering
-  \includegraphics[scale=0.6]{python/ph2/dice/ph2_CT_DC-15radii_simple_close.png}
-  \caption{Rod \#5: CT DC of varied radii \& resolutions}
-  \label{fig:ph2_CT_DC-15iter}
-\end{figure}
-
-\begin{figure}[!tbp]
-  \centering
-    \includegraphics[scale=0.6]{python/ph2/dice/ph2_MR_DC-15radii_simple.png}
-    \caption{Rod \#5: MRI DC of varied radii \& resolutions}
-    \label{fig:ph2_MR_DC-15iter}
-\end{figure}
-
-\begin{figure}[!tbp]
-      \centering
-    \includegraphics[scale=0.6]{python/ph2/dice/ph2_MR_DC-15radii_CT_COM_simple_close.png}
-    \caption{Rod \#5: MRI DC of varied radii \& resolutions (using CT-COM)}
-    \label{fig:ph2_MR_CT-COM_DC-15iter}
-\end{figure}
-
-\cleardoublepage
-
-
+\clearpage
 
 \subsection{rod \#17}
 
@@ -401,14 +378,14 @@ All plots were created using the data obtained with the iteration method.
        \centering
 \begin{tabular}{rr||lll|lll||lll|lll}
 slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(CT-COM)}$ & $warp_x^*$ & $warp_y^*$ & $warpM^*$ & $DC^*_{CT}$	& $DC^*_{MR}$ & $DC^*_{MR(CT-COM)}$\\ \hline
-0      & -361 & 2.9415  & 0.4286  & 2.9725 & 0.9676 & 0.033  & 0.0062 & 3.3112  & 0.8531  & 3.4193 & 0.944  & 0.6126 & 0.0069 \\
-1      & -360 & 2.94    & 0.4294  & 2.9712 & 0.9706 & 0.0331 & 0.0062 & 3.3129  & 0.8427  & 3.4184 & 0.9456 & 0.6126 & 0.0077 \\
-2      & -359 & 2.9441  & 0.4224  & 2.9742 & 0.9725 & 0.0391 & 0.0077 & 3.2904  & 0.8202  & 3.3911 & 0.9475 & 0.6121 & 0.0084 \\
+0      & -361 & 2.9415  & 0.4286  & 2.9725 & 0.9676 & 0.033  & 0.0062 & 3.3112  & 0.8531  & 3.4193 & 0.944  & 0.6126 & 0.3313 \\
+1      & -360 & 2.94    & 0.4294  & 2.9712 & 0.9706 & 0.0331 & 0.0062 & 3.3129  & 0.8427  & 3.4184 & 0.9456 & 0.6126 & 0.3308 \\
+2      & -359 & 2.9441  & 0.4224  & 2.9742 & 0.9725 & 0.0391 & 0.0077 & 3.2904  & 0.8202  & 3.3911 & 0.9475 & 0.6121 & 0.3346 \\
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
 \hline
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
-351    & -10  & -0.2049 & -0.0356 & 0.208  & 0.9896 & 0.9165 & 0.9091 & -0.2696 & -0.1097 & 0.2911 & 0.9901 & 0.9294 & 0.9106 \\
-352    & -9   & -0.2217 & -0.0174 & 0.2223 & 0.9937 & 0.916  & 0.9112 & -0.282  & -0.0942 & 0.2973 & 0.9834 & 0.9283 & 0.9141 \\
+351    & -10  & -0.2049 & -0.0356 & 0.208  & 0.9896 & 0.9165 & 0.9091 & -0.2696 & -0.1097 & 0.2911 & 0.9901 & 0.9294 & 0.9248 \\
+352    & -9   & -0.2217 & -0.0174 & 0.2223 & 0.9937 & 0.916  & 0.9112 & -0.282  & -0.0942 & 0.2973 & 0.9834 & 0.9283 & 0.9251 \\
 353    & -8   & -1      & -1      & -1     & -1     & 0.916  & -1     & -1      & -1      & -1     & -1     & 0.9274 & -1     \\
 354    & -7   & -1      & -1      & -1     & -1     & 0.9144 & -1     & -1      & -1      & -1     & -1     & 0.9258 & -1     \\
 355    & -6   & -1      & -1      & -1     & -1     & 0.912  & -1     & -1      & -1      & -1     & -1     & 0.9229 & -1     \\
@@ -430,16 +407,16 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
 371    & 10   & -1      & -1      & -1     & -1     & 0.915  & -1     & -1      & -1      & -1     & -1     & 0.9105 & -1     \\
 372    & 11   & -1      & -1      & -1     & -1     & 0.92   & -1     & -1      & -1      & -1     & -1     & 0.915  & -1     \\
 373    & 12   & -1      & -1      & -1     & -1     & 0.9268 & -1     & -1      & -1      & -1     & -1     & 0.9187 & -1     \\
-374    & 13   & -0.2506 & 0.1242  & 0.2797 & 0.9911 & 0.9281 & 0.9168 & -0.2511 & 0.0942  & 0.2682 & 0.9867 & 0.9212 & 0.9166 \\
-375    & 14   & -0.2181 & 0.1166  & 0.2473 & 0.9858 & 0.9298 & 0.9225 & -0.223  & 0.0966  & 0.243  & 0.9937 & 0.9231 & 0.9223 \\
+374    & 13   & -0.2506 & 0.1242  & 0.2797 & 0.9911 & 0.9281 & 0.9168 & -0.2511 & 0.0942  & 0.2682 & 0.9867 & 0.9212 & 0.9397 \\
+375    & 14   & -0.2181 & 0.1166  & 0.2473 & 0.9858 & 0.9298 & 0.9225 & -0.223  & 0.0966  & 0.243  & 0.9937 & 0.9231 & 0.9436 \\
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
 \hline
 :      &      &         &         &        &        &        &        &         &         &        &        &        &        \\
-609    & 248  & 3.0734  & 0.7814  & 3.1712 & 0.9838 & 0.917  & 0.3481 & 3.0773  & 0.9077  & 3.2084 & 0.9967 & 0.9221 & 0.3466 \\
-610    & 249  & 3.1422  & 0.7546  & 3.2315 & 0.984  & 0.9269 & 0.328  & 3.1288  & 0.8802  & 3.2503 & 0.9967 & 0.9312 & 0.3277 \\
-611    & 250  & 3.2214  & 0.7399  & 3.3053 & 0.9834 & 0.9359 & 0.3064 & 3.1835  & 0.8563  & 3.2967 & 0.9971 & 0.9282 & 0.3072     
+609    & 248  & 3.0734  & 0.7814  & 3.1712 & 0.9838 & 0.917  & 0.3481 & 3.0773  & 0.9077  & 3.2084 & 0.9967 & 0.9221 & 0.5231 \\
+610    & 249  & 3.1422  & 0.7546  & 3.2315 & 0.984  & 0.9269 & 0.328  & 3.1288  & 0.8802  & 3.2503 & 0.9967 & 0.9312 & 0.5192 \\
+611    & 250  & 3.2214  & 0.7399  & 3.3053 & 0.9834 & 0.9359 & 0.3064 & 3.1835  & 0.8563  & 3.2967 & 0.9971 & 0.9282 & 0.5145
 \end{tabular}
-       \caption{rod \#17: script generated data; all distances in [$mm$]}
+       \caption{rod \#17: script generated data; dist and $warp$ in [$mm$]}
        \label{tab:spit-out-17}
      \end{minipage}
    }
@@ -452,7 +429,7 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
     \label{fig:ph3_CT_x100_brightness}
 \end{figure}
 
-\begin{figure}[!tbp]
+\begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{python/ph3_v2/ph3_MR_v2_x100_brightness.png}
     \caption{Rod \#17: brightness, MRI x100}
@@ -460,7 +437,7 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
 \end{figure}
 
 
-\begin{figure}[!hbp]
+\begin{figure}[!hbt]
   \centering
   \includegraphics[scale=0.6]{python/ph3_v2/warp/ph3_MR_v2_x100_warpXY_iter.png}
   \caption{Rod \#17: warp XY [$mm$] (iteration method), CT-MRI x100}
@@ -477,30 +454,10 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
 \begin{figure}[!htb]
      \centering
      \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_MR_v2_x100_DC_iter.png}
-     \caption{Rod \#17: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
+     \caption{Rod \#17: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100}
      \label{fig:ph3_DC_x100}
 \end{figure}
 
-\begin{figure}[!bth]
-  \centering
-  \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_CT_DC-15radii_simple_close.png}
-  \caption{Rod \#5: CT DC of varied radii \& resolutions}
-  \label{fig:ph3_CT_DC-15iter}
-\end{figure}
-
-\begin{figure}[!tbh]
-  \centering
-    \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_MR_v2_DC-15radii_simple.png}
-    \caption{Rod \#5: MRI DC of varied radii \& resolutions}
-    \label{fig:ph3_MR_DC-15iter}
-\end{figure}
-
-\begin{figure}[!tbh]
-      \centering
-    \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_MR_v2_DC-15radii_CT_COM_simple_close.png}
-    \caption{Rod \#5: MRI DC of varied radii \& resolutions (using CT-COM)}
-    \label{fig:ph3_MR_CT-COM_DC-15iter}
-\end{figure}
 
 \todo{PIOTR: create colour coded images}
 

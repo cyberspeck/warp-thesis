@@ -64,7 +64,6 @@ Its energy is transferred to the nucleus resulting in the emission of either a p
 \subsubsection{Attenuation}
 The aforementioned interactions result in a gradual decrease of radiation intensity as it travels through matter.
 The combined effect is described by Beer's law:
-
 \begin{align}
 I(x) = I_0 e^{-\mu(h\nu,Z)x}
 \end{align}
@@ -74,7 +73,6 @@ The different probabilities for the interactions to occur is implicitly consider
 
 For a photon being transmitted through matter with varying properties, the attenuation coefficient changes, too.
 After travelling a distance $d$, the intensity can be expressed as:
-
 \begin{align}
 \label{eq:mu_int}
 %I(x) = I_0 e^{- \int_{0}^{d} \mu(x)dx}
@@ -246,7 +244,6 @@ The entire model can then be regarded as a 3-D matrix, with the attenuation coef
 Figure \ref{fig:voxel_matrix} represents a ($4, 4, 1$) matrix.
 It depicts the path an X-ray may follow passing through voxels with different values $\mu_i$.
 This discretisation allows us to change equation \ref{eq:mu_int} to:
-
 \begin{align}
 \label{eq:mu_sum}
 I(x) = I_0 e^{- \sum\limits_{i=1}^{N_X} \mu_i \Delta x}
@@ -266,7 +263,6 @@ For convenience, the computed numbers are converted to Hounsfield Units which ar
 \subsubsection{Hounsfield Units}
 
 In a final CT scan, voxel values are recorded in Hounsfield Units (HU), which relate to the attenuation of water at room temperature:
-
 \begin{align}
 HU_{material} = \frac{\mu_{material} - \mu_{water}}{\mu_{water}} \cdot 1000
 \end{align}
