@@ -24,29 +24,46 @@ The long-term behaviour of the mix might lead to adverse properties and should b
 In the current set-up, it seems best to fill the rods of the phantom type of oil that does not rot and yields high signal.
 The tested synthetic motor oil (\textbf{\#16}) fits those requirements.
 
+\section{Recommended resample rates}
+
+The accuracy of the distortion assessment, especially of the DC calculation, can be enhanced by using interpolated scans.
+Resample rates of x4, x9, x25 and x100 were used to create finer images which were all analysed using the same algorithms.
+The original resolution (x1) might be sufficient for the COM shift calculation, but the DC curve gains significant smoothness at already x4 finer resolution.
+This small interpolation could be already enough to yield acceptable accuracy while keeping necessary computing power low.
+A future distortion assessment of the whole FOV with 300 individual rods would profit from a effective procedure at low resolution.
+Using the simple method to find the COM would use less time, too.
 
     
 \section{Future improvement of software tool}
 
 The developed tool took a simplified approach to the problem by looking only at a single rod.
-Future improvements should enable the software to take into account all the rods automatically.
-This could be done by a auto-trace function which detects individual rods and applies the already implemented algorithms to each of them separately. 
-
-Distortion assessment can be performed using the generated tool, however, it needs to be implemented on more general scale to be able to measure the distortion for all the rods automatically
+Distortion assessment can be performed using the generated tool, however, it needs to be implemented on more general scale to be able to measure the distortion for all the rods automatically.
+This could be done by a auto-trace function which detects individual rods and applies the already implemented algorithms to each of them separately.\\
 
 The two implemented methods of finding COM and DC need to be assessed themselves.
-In order to tell which of the two gets closer to the absolute truth, additional checks should be implemented/performed.
+In order to tell which of the two gets closer to the absolute truth, additional checks should be performed.
 A possible accuracy test could look like this:
 Two CT scans of the phantom which differ only by a known displacement of one rod are registered and resampled.
-The software tool is used to calculate the COM shift between the images which can be compared to the real displacement.
+The software tool is used to calculate the COM shift between the images which can be compared to the real displacement.\\
 
 At the moment the iteration method does not take into account the steepness of the DC curve.
 In some cases this might result in neglecting the left hand side close to very low percentages.
 This happens when the maximum lies roughly in the middle of the current range, but a little bit to the left.
 Because the slope is steeper on the left (close to 0\%), a value representing the left hand side (also close to 0\%) yields a much lower result than the value on the right hand side (flat slope).
-This should be taken into account during further improvement of the method.
+This should be taken into account during further improvement of the method.\\
 
-In the current version of the software tool, only changes in the mean brightness are used to characterise irregularities.\\
+In the current version of the software tool, only changes in the mean brightness are used to characterise irregularities.
+It might be usefull to consider drops in the peak brightness as irregularities, too.
+This way, the distortion would not be calculated in the region of an air bubble.
+For the time being, running the script over those regions might aid troubleshooting and give better understanding how to improve the code.\\
 
-In cases where the COM cannot be calculated due to the lack of bright pixels, it could be interpolated.
+%In cases where the COM cannot be calculated, it could be interpolated using neighbouring slices.
+
+\section{Scale of distortion}
+
+The obtained values for the occurring spatial distortion report a COM shift below $1.5mm$ in the extended centre part of the assessed region (from -259mm to 207mm; simple method; rod \#16).
+This does not rule out the possibility of using the MR scanner for radiotherapy planning.
+Whether the distortion is small enough to guarantee accurate treatment planning can only be discussed after a map for the entire FOV has been created.
+
+
 
