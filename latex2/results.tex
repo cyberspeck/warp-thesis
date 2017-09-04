@@ -233,7 +233,6 @@ It was decided to use this rod, because it had a reasonably good signal strength
 This situation provided data containing a irregularity (bubble) and was therefore well suited for testing some of the software tool's capabilities and limitations.
 Figure \ref{fig:ph2_CT_x100_brightness} and \ref{fig:ph2_MR_x100_brightness} show the brightness of the rod on CT and MR scans.
 Figures \ref{fig:MR_x100_centroids}, \ref{fig:ph2_warpXY_x100}, \ref{fig:ph2_warpMagnitude_x100} and \ref{fig:ph2_DC_x100} visualise the calculated output.
-Figures \ref{fig:ph2_CT_DC-15iter},  \ref{fig:ph2_MR_DC-15iter} and \ref{fig:ph2_MR_CT-COM_DC-15iter} reflect how varying the resolution affected the output.
 All plots were created using the data obtained with the iteration method.
 
  \begin{table}[p]
@@ -368,7 +367,6 @@ After deciding which of the possible liquids might be a suitable choice for the 
 This second data set shows the rod containing liquid \#16.
 Figure \ref{fig:ph3_CT_x100_brightness} and \ref{fig:ph3_MR_x100_brightness} show the brightness of the rod on CT and MR scans.
 Figures \ref{fig:ph3_warpXY_x100}, \ref{fig:ph3_warpMagnitude_x100} and \ref{fig:ph3_DC_x100} visualise the spatial distortion assessed using the iteration method.
-Figures \ref{fig:ph3_CT_DC-15iter},  \ref{fig:ph3_MR_DC-15iter} and \ref{fig:ph3_MR_CT-COM_DC-15iter} reflect how varying the resolution affected the output.
 All plots were created using the data obtained with the iteration method.
 
 \begin{table}[p]
@@ -422,6 +420,13 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
    }
  \end{table}
 
+\begin{figure}[!htb]
+     \centering
+     \includegraphics[width=1\linewidth]{python/ph3_v2/MHD_rendered.png}
+     \caption{Rod \#16: colour coded map; colours reflect $warpM^*$; based on x100}
+     \label{fig:colour-map}
+\end{figure}
+
 \begin{figure}[!thb]
     \centering
     \includegraphics[scale=0.6]{python/ph3_v2/ph3_CT_x100_brightness.png}
@@ -458,7 +463,5 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
      \label{fig:ph3_DC_x100}
 \end{figure}
 
-
-\todo{PIOTR: create colour coded images}
 
 \cleardoublepage

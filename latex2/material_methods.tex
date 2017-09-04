@@ -13,30 +13,78 @@
 %  e.g. software: version, functionality
 % o Also describe used data (patient cohort) even if they were taken from other studies
 
-\section{Scanners}
+\section{Scanners and Imaging protocols}
 
-The radiation oncology department of the Vienna General Hospital (AKH) owns a open-bore, c-arm MRI scanner and a CT scanner (used as reference).
-They are listed in Table \ref{tab:scanners}.
+The radiation oncology department of the Vienna General Hospital (AKH) owns a CT scanner and a open-bore, c-arm MRI scanner.
 
-\begin{table}[h]
+\subsection{MR}
+
+Following the general practice of phantom measurements, and the AAPM recommendations on phantom filling materials [AAPM 1990 and 2010]/ \cite{Jackson2009} oils or water with addition of paramagnetic substances (to reduce the spin-lattice relaxations times) were chosen (generally short T1 time of ~200-400 ms).
+This, combined with a T1-weighted test sequence, improves the efficiency of the measurements assuring relatively high SNR in short time.
+To further improve image quality, the averaging parameter of the test sequence was set to XX.
+This setting practically means the measurement is repeated and averaged $n$ times by the scanners software.
+Remaining sequence parameters were optimized to yield a acceptable resolution for the chosen ROI setting (which is relatively large as it covers the whole phantom).
+The test sequence was chosen in a way, such as to deviate as little as possible from a typically used clinical imaging setting.
+However, to fully understand and investigate the possible image distortions, each clinically used sequence should be commissioned with a distortion phantom.
+Detailed sequence parameters are listed in table \ref{tab:MR-scanner}
+
+
+\begin{table}[!tbh]
 \centering
-\begin{tabular}{llll}
-System	& product name	& company	& coil [internal W x H]		\\
-\toprule
-MRI	& Magnetom C!	& Siemens	& Body/Spine Array Coil XL	\\
-	&		&		& [50 x 30.5 cm (19.7 x 12 in)]	\\
-CT	&		&		& --------
+\begin{tabular}{r|l}
+system			& MR				\\
+manufacturer	& Siemens			\\
+product name	& Magnetom C!		\\
+coil			& Body/Spine Array Coil XL	\\
+$[$internal W x H$]$& $[$50 x 30.5 cm (19.7 x 12 in)$]$	\\
+orientation		& axial	\\
+sequence		& T1 weighted 3D-FLASH Vibe	\\
+				& (Volumetric interpolated breath-hold)	\\
+slice thickness	& 2.3 mm	\\
+pixel spacing	& 2.3 mm	\\
+matrix			& 128 x 120 \\
+repetition time & 7,07ms	\\
+echo time		& 2,7	\\
+bandwidth		& 240	\\
+flip angle		& 6 deg	\\
+averages $n$	& 4	\\
+acquisition time& ~17.5 min
 \end{tabular}
-\caption{used scanners}
-\label{tab:scanners}
+\caption{MR scanner and used protocol}
+\label{tab:MR-scanner}
 \end{table}
 
 \begin{figure}[tbh!]
 \centering
 \includegraphics[width=0.6\linewidth]{scanner/coil}
-\caption{(1) upper part, Body/Spine Array Coil; (2,3) central positioning markers; (4) lower part, Body/Spine Array Coil; (5) connection ports; (6) colour label}
+\caption{MR scanner coil: (1) upper part, Body/Spine Array Coil; (2,3) central positioning markers; (4) lower part, Body/Spine Array Coil; (5) connection ports; (6) colour label}
 \label{fig:coil}
 \end{figure}
+
+\clearpage
+
+\subsection{CT}
+To generate a reference CT image set a typically used clinical pelvis imaging protocol for radiation therapy planning (with increased resolution 0.6 mm) was used (cf. table \ref{tab:CT-scanner}).
+
+
+\begin{table}[!tbh]
+\centering
+\begin{tabular}{r|l}
+system			& CT				\\
+manufacturer	& Siemens			\\
+product name	& SOMATOM Definition AS		\\
+software version& syngo CT 2013B	\\
+protocol		& Prostatae\_VMATAdult	\\
+slice thickness	& 0.6 mm	\\
+row spacing		& 0.801mm 512	\\
+column spacing	& 0.801mm 512	\\
+kVP				& 120kV	\\
+x-ray tube current	&	19 mA	\\
+convolution kernel	&	I30f, 3
+\end{tabular}
+\caption{CT scanner and used protocol}
+\label{tab:CT-scanner}
+\end{table}
 
 
 \subsection{MRI scanner - field distribution}
@@ -107,44 +155,6 @@ Patient are positioned as to place the ROI at the isocentre, the area where the 
     \caption{Magnetom C! field gradient\\ top view along y-axis (see fig. \ref{fig:scanner_top}) \cite{magnetom_handbook}}
     \label{fig:gradient_top}
 \end{figure}
-
-
-% diagrams as sets of subfigures:
-%\begin{figure}[!htb]
-%\centering
-%  \begin{subfigure}[b]{\textwidth}
-%  	\centering
-%    \includegraphics[scale=1]{scanner/scanner_gradient-front.jpg}
-%    \caption{field gradient - front view (see fig. \ref{fig:scanner_front})}
-%    \label{fig:gradient_front}
-%  \end{subfigure}
-%  \begin{subfigure}[b]{\textwidth}
-%  	\centering
-%    \includegraphics[scale=1]{scanner/scanner_gradient-top.jpg}
-%    \caption{view along y-axis,\\ field gradient - top view (see fig. \ref{fig:scanner_top})}
-%    \label{fig:gradient_top}
-%  \end{subfigure}
-%  \caption{Magnetom C! field gradient}
-%  \label{fig:scanner}
-%\end{figure}
-%
-%\begin{figure}[!htb]
-%\centering
-%  \begin{subfigure}[b]{\textwidth}
-%    	\centering
-%        \includegraphics[scale=1]{scanner/scanner_gradient-side.jpg}
-%        \caption{field gradient}
-%        \label{fig:gradient_side}
-%  \end{subfigure}
-%  \begin{subfigure}[b]{\textwidth}
-%  	\centering
-%      \includegraphics[scale=1]{scanner/scanner_field-strength.jpg}
-%      \caption{field strength}
-%    \label{fig:strength_side}
-%  \end{subfigure}
-%  \caption{Magnetom C! field gradient and strength - side view (see fig. \ref{fig:scanner_side})}
-%  \label{fig:scanner_gradient}
-%\end{figure}
 
 
 \section{Custom build phantom}
@@ -304,26 +314,6 @@ In order to minimise the amount of gas dissolved, the liquids were brought to bo
 After injecting the solution in the rods, they were left to cool down.
 Before closing, the rods were topped up completely (no trapped air bubbles).
 The oil based liquids, \textbf{\#16} and \textbf{\#17}, were not brought to boil.
-
-
-\section{Sequences}
-\todo{why T1 weighted sequence? why this particular sequence? Influence on signal of water/oil, components.}
-
-Following the suggestions given in the Report of AAPM MR Subcommittee TG1 "MR Acceptance Testing and
-Quality Control" \cite{Jackson2009}, T1 weighted sequences were chosen to evaluate the possible solutions. (Table \ref{tab:settings})
-
-\begin{table}[h]
-\centering
-\begin{tabular}{@{}lllll@{}}
-System & ---  & --- &  --- & --- \\
-\toprule
-MRI    & -   & -   & -   & -    \\
-CT     & -   & -   & -   &
-\end{tabular}
-\caption{used sequences}
-\label{tab:settings}
-\end{table}
-
 
 
 \section{Pre-processing MRI and CT scans}
