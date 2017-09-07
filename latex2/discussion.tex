@@ -244,27 +244,22 @@ Now that the appearance of the curves has been addressed, how the calculated dis
 
 \subsubsection{Rod \#5}
 
-\todo{interpret table \ref{tab:Delta-resample_5}}
+Table \ref{tab:Delta-resample_5} lists the expectancy and standard deviation ($\sigma_\Delta$) of the difference between the calculated distortion for x1 and x100 resample rate of rod \#5:
 
-Table \ref{tab:Delta-resample_5} lists the expectancy and standard deviation of the difference between calculated distortion for x1 and x100 resample rate of rod \#5.
-To put them in perspective, we will also look at the actual warp and DC values:
+The COM shift mostly lies in a range of 0.5 to 0.7mm; $\sigma_\Delta$ is approximately one order of magnitude smaller.
+To verify whether this hints at increased accuracy or not, an external reference would be needed.
+In any case, a difference of less than $0.1mm$ would not influence treatment planning and can be regarded a negligible.
 
-The value of the COM shift lies in a range of 0.5 to 0.7mm in the isocentre, the standard deviation between x1 and x100 is approximately one order of magnitude smaller.
-Which of the resample rates resulted in the better number is hard to say without a external reference.
-However, a difference less than $0.1mm$ is unlikely to play a significantly role in treatment planning and can be regarded a negligible.
-
-The value of the MR DC lies between 0.9 and 1 (except for the air bubble region).
-The standard deviation of the difference arising from using x1 and x100 resample rate is approximately a 45th of the average DC value ($0.9/0,02$). This is small enough to be neglected.
-
+The value of the MRI DC lies between 0.9 and 1 (except for the air bubble region); $\sigma_\Delta$ is roughly a 45th of the average DC value ($0.9/0,02$). This is small enough to be neglected, too.
 
 \begin{table}[!tbh]
  \centering
 \begin{tabular}{l|rr}
-                    & E         & $\sigma$   \\ \hline
+                    & E         & $\sigma_\Delta$   \\ \hline
 $\Delta warpM^*$ [mm]  & 0.038     & 0.058    \\
-$\Delta DC^*_{CT}$         & 0.002245  & 0.006838 \\
-$\Delta DC^*_{MR}$         & 0.000518  & 0.019070 \\
-$\Delta DC^*_{MR(CT-COM)}$ & -0.008905 & 0.022050
+%$\Delta DC^*_{CT}$         & 0.002245  & 0.006838 \\
+$\Delta DC^*_{MRI}$         & 0.000518  & 0.019070 \\
+$\Delta DC^*_{MRI(CT-COM)}$ & -0.008905 & 0.022050
 \end{tabular}
 \caption{Expectancy and standard deviation of difference between calculated distortion for x1 and x100 resample rate; rod \#5}
 \label{tab:Delta-resample_5}
@@ -295,22 +290,20 @@ $\Delta DC^*_{MR(CT-COM)}$ & -0.008905 & 0.022050
 
 \subsubsection{Rod \#16}
 
-Table \ref{tab:Delta-resample_16} lists the expectancy and standard deviation of the difference between calculated distortion for x1 and x100 resample rate of rod \#16.
-Again, to put them in perspective, we will also look at the actual warp and DC values:
+Table \ref{tab:Delta-resample_16} lists the expectancy and standard deviation $\sigma_\Delta$ of the difference between calculated distortion for x1 and x100 resample rate of rod \#16:
 
-Similar to rod \#5, the standard deviation for the change of the COM shift is approximately one order of magnitude smaller than the occuring warp.
-The difference is less than $0.1mm$ and can therefore also be regarded a negligible.
+Just like with rod \#5, $\sigma_\Delta$ for the COM shift is approximately one order of magnitude smaller than the occurring warp and can therefore also be regarded a negligible.
 
-Just like with rod \#5, for the MR DC the standard deviation the of the difference arising from using x1 and x100 resample rate is approximately a 45th of the average DC value ($0.9/0,02$). This is small enough to be neglected.
+Similarly, $\sigma_\Delta$ for the MRI DC is approximately a 45th of the average DC value ($0.9/0,02$) and can be neglected.
 
 \begin{table}[!tbh]
 \centering
 \begin{tabular}{l|rr}
-                    & E         & $\sigma$   \\ \hline
+                    & E         & $\sigma_\Delta$   \\ \hline
 $\Delta warpM^*$ [mm]  & 0.005     & 0.025    \\
-$\Delta DC^*_{CT}$         & -0.001849  & 0.007117 \\
-$\Delta DC^*_{MR}$         & 0.004835   & 0.019823  \\
-$\Delta DC^*_{MR(CT-COM)}$ & 0.012554   & 0.019429
+%$\Delta DC^*_{CT}$         & -0.001849  & 0.007117 \\
+$\Delta DC^*_{MRI}$         & 0.004835   & 0.019823  \\
+$\Delta DC^*_{MRI(CT-COM)}$ & 0.012554   & 0.019429
 \end{tabular}
 \caption{Expectancy and standard deviation of difference between calculated distortion for x1 and x100 resample rate; rod \#16}
 \label{tab:Delta-resample_16}
@@ -322,7 +315,6 @@ $\Delta DC^*_{MR(CT-COM)}$ & 0.012554   & 0.019429
     \caption{Rod \#16: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100}
     \label{fig:ph3_v2_warpMagnitude_x1-100}
 \end{figure}
-
 
 \begin{figure}[!tbh]
     \centering
