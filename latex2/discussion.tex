@@ -240,12 +240,25 @@ While the original resolution might be sufficient for the calculation of the COM
 It is easier to spot significant changes as the plot shows less jumps.
 At the same time, the computing time for calculations scales with the resolution of the images and should be kept minimal, because a future assessment would include more than 300 individual rods.
 
+Now that the appearance of the curves has been addressed, how the calculated distortion varies with increased resample rate will be discussed.
+
 \subsubsection{Rod \#5}
 
 \todo{interpret table \ref{tab:Delta-resample_5}}
 
+Table \ref{tab:Delta-resample_5} lists the expectancy and standard deviation of the difference between calculated distortion for x1 and x100 resample rate of rod \#5.
+To put them in perspective, we will also look at the actual warp and DC values:
+
+The value of the COM shift lies in a range of 0.5 to 0.7mm in the isocentre, the standard deviation between x1 and x100 is approximately one order of magnitude smaller.
+Which of the resample rates resulted in the better number is hard to say without a external reference.
+However, a difference less than $0.1mm$ is unlikely to play a significantly role in treatment planning and can be regarded a negligible.
+
+The value of the MR DC lies between 0.9 and 1 (except for the air bubble region).
+The standard deviation of the difference arising from using x1 and x100 resample rate is approximately a 45th of the average DC value ($0.9/0,02$). This is small enough to be neglected.
+
+
 \begin{table}[!tbh]
-\centering
+ \centering
 \begin{tabular}{l|rr}
                     & E         & $\sigma$   \\ \hline
 $\Delta warpM^*$ [mm]  & 0.038     & 0.058    \\
@@ -253,7 +266,7 @@ $\Delta DC^*_{CT}$         & 0.002245  & 0.006838 \\
 $\Delta DC^*_{MR}$         & 0.000518  & 0.019070 \\
 $\Delta DC^*_{MR(CT-COM)}$ & -0.008905 & 0.022050
 \end{tabular}
-\caption{Change in calculated distortion due to resample rate; rod \#5; x1 compared to x100}
+\caption{Expectancy and standard deviation of difference between calculated distortion for x1 and x100 resample rate; rod \#5}
 \label{tab:Delta-resample_5}
 \end{table}
 
@@ -267,14 +280,14 @@ $\Delta DC^*_{MR(CT-COM)}$ & -0.008905 & 0.022050
 \begin{figure}[!bth]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/dice/ph2_DC_x1_iter.png}
-    \caption{Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM); x1}
+    \caption{Rod \#5; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
     \label{fig:ph2_DC_x1}
 \end{figure}
 
 \begin{figure}[!bth]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/dice/ph2_DC_x4_iter.png}
-    \caption{Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM); x4}
+    \caption{Rod \#5; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
     \label{fig:ph2_DC_x4}
 \end{figure}
 
@@ -282,7 +295,13 @@ $\Delta DC^*_{MR(CT-COM)}$ & -0.008905 & 0.022050
 
 \subsubsection{Rod \#16}
 
-\todo{interpret table \ref{tab:Delta-resample_16}}
+Table \ref{tab:Delta-resample_16} lists the expectancy and standard deviation of the difference between calculated distortion for x1 and x100 resample rate of rod \#16.
+Again, to put them in perspective, we will also look at the actual warp and DC values:
+
+Similar to rod \#5, the standard deviation for the change of the COM shift is approximately one order of magnitude smaller than the occuring warp.
+The difference is less than $0.1mm$ and can therefore also be regarded a negligible.
+
+Just like with rod \#5, for the MR DC the standard deviation the of the difference arising from using x1 and x100 resample rate is approximately a 45th of the average DC value ($0.9/0,02$). This is small enough to be neglected.
 
 \begin{table}[!tbh]
 \centering
@@ -293,7 +312,7 @@ $\Delta DC^*_{CT}$         & -0.001849  & 0.007117 \\
 $\Delta DC^*_{MR}$         & 0.004835   & 0.019823  \\
 $\Delta DC^*_{MR(CT-COM)}$ & 0.012554   & 0.019429
 \end{tabular}
-\caption{Change in calculated distortion due to resample rate; rod \#16}
+\caption{Expectancy and standard deviation of difference between calculated distortion for x1 and x100 resample rate; rod \#16}
 \label{tab:Delta-resample_16}
 \end{table}
 
@@ -308,18 +327,13 @@ $\Delta DC^*_{MR(CT-COM)}$ & 0.012554   & 0.019429
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/dice/ph3_MR_v2_x1_DC_iter.png}
-    \caption{Rod \#16: DC (iteration method) for CT \& MRI \& MRI (using CT COM); x1}
+    \caption{Rod \#16; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
     \label{fig:ph3_DC_x1}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/dice/ph3_MR_v2_x4_DC_iter.png}
-    \caption{Rod \#16: DC (iteration method) for CT \& MRI \& MRI (using CT COM); x4}
+    \caption{Rod \#16; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
     \label{fig:ph3_DC_x4}
 \end{figure}
-
-%\todo{discuss what is visible on the graphs in results section}
-%\todo{interpret data table spit out by script}
-%\todo{scale of distortion, bigger on the sides as expected}
-%\todo{only x,y direction. future design needs objects going from left to right, too.}
