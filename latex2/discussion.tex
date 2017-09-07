@@ -208,10 +208,18 @@ This might be a local feature of the distortion and cannot be put in relation, b
 
 As rod \#16 does not contain any air bubbles, the brightness plotted in figure \ref{fig:ph3_MR_x100_brightness} shows no sudden drops.
 However, the left hand side has a drastically lower signal strength than the right.
-The rod was not placed at in the same place as rod \#5, which does not show such a gradient.
-One reason for the low signal strength might be the short duration of the MRI sequence used for this scan resulting in low visibility in outer regions.
-Another possible explanation is that the imaged liquid separated into parts with different density earlier while the rod was stored upright.
-More experiments would be needed to find the cause.
+A closer look revealed that rod \#16 contained oil of two different colours.
+It seems that some residue of the other oil, which was injected into rod \#17, was still present in the syringe when rod \#16 was filled.
+To avoid this, the injecting syringe and the capillary were flushed with the next liquid before injection.
+This procedure was not enough to clean it thoroughly.
+The liquids separated into parts with different density while the rod was stored upright and were still distributed unevenly during imaging.
+To avoid this problem in the future, a new and unused syringe should be used for filling.\\
+
+It is likely, that this will have influenced the calculated warp and DC as the lighter oil (which results in a different signal strenght) will have floated on top of the other resulting in an unwanted shift of the calculated COM.
+This might explain why the y shift changes its orientation close to the iso centre as this is the point where the signal intensity starts to change, too.
+To be sure of the actual impact of the oil mix on the distortion assessment, a new rod should be filled and the imaging repeated.
+For now, the already gained results will be used as no new measurement could be obtained in the limited time that the scanner is available for such experiments.
+
 
 In the region beyond -330, there is a drop of the DC for the CT.
 Investigations revealed that this is caused by sticky tape attached to the rod to hold it in place during transport from the CT scanner to the MRI scanner.
@@ -230,7 +238,7 @@ A resample rate of x4, on the other hand, is already much closer to the quality 
 
 While the original resolution might be sufficient for the calculation of the COM shift, the DC calculation benefits a lot from a interpolated image.
 It is easier to spot significant changes as the plot shows less jumps.
-At the same time, the computing time for calculations scale with the resolution of the images and should be kept minimal, because a future assessment would include more than 300 individual rods.
+At the same time, the computing time for calculations scales with the resolution of the images and should be kept minimal, because a future assessment would include more than 300 individual rods.
 
 \subsubsection{Rod \#5}
 
@@ -245,7 +253,7 @@ $\Delta DC^*_{CT}$         & 0.002245  & 0.006838 \\
 $\Delta DC^*_{MR}$         & 0.000518  & 0.019070 \\
 $\Delta DC^*_{MR(CT-COM)}$ & -0.008905 & 0.022050
 \end{tabular}
-\caption{Change in calculated distortion due to resample rate; rod \#5}
+\caption{Change in calculated distortion due to resample rate; rod \#5; x1 compared to x100}
 \label{tab:Delta-resample_5}
 \end{table}
 

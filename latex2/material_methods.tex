@@ -21,7 +21,7 @@ The radiation oncology department of the Vienna General Hospital (AKH) owns a CT
 
 Following the general practice of phantom measurements, and the AAPM recommendations on phantom filling materials [AAPM 1990 and 2010]/ \cite{Jackson2009} oils or water with addition of paramagnetic substances (to reduce the spin-lattice relaxations times) were chosen (generally short T1 time of ~200-400 ms).
 This, combined with a T1-weighted test sequence, improves the efficiency of the measurements assuring relatively high SNR in short time.
-To further improve image quality, the averaging parameter of the test sequence was set to XX.
+To further improve image quality, the averaging parameter of the test sequence was set to 4.
 This setting practically means the measurement is repeated and averaged $n$ times by the scanners software.
 Remaining sequence parameters were optimized to yield a acceptable resolution for the chosen ROI setting (which is relatively large as it covers the whole phantom).
 The test sequence was chosen in a way, such as to deviate as little as possible from a typically used clinical imaging setting.
@@ -64,7 +64,7 @@ acquisition time& ~17.5 min
 \clearpage
 
 \subsection{CT}
-To generate a reference CT image set a typically used clinical pelvis imaging protocol for radiation therapy planning (with increased resolution 0.6 mm) was used (cf. table \ref{tab:CT-scanner}).
+To generate a reference CT image set a typically used clinical pelvis imaging protocol for radiation therapy planning (with increased resolution 0.6 mm) was used (see table \ref{tab:CT-scanner}).
 
 
 \begin{table}[!tbh]
@@ -203,7 +203,7 @@ This way there is another way of checking the alignment during the prototyping p
 \begin{figure}[!bp]
 \centering
 \includegraphics[width=\textwidth]{rendered/rendered_CT.png}
-\caption{Rendered CT image of phantom}
+\caption{Rendered CT image of phantom [courtesy of Piotr Andrzejewski]}
 \label{fig:rendered_CT}
 \end{figure}
 
@@ -742,14 +742,14 @@ Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of try
 \centering
   \begin{subfigure}[b]{1\textwidth}
   \centering
-    \includegraphics[scale=0.7]{python/ph2/COM_iter/ph2_CT_x100_COM_iter-far.png}
+    \includegraphics[scale=0.65]{python/ph2/COM_iter/ph2_CT_x100_COM_iter-far.png}
     \caption{full iteration process}
     \label{fig:CT_x100_iteration}
   \end{subfigure}
   \begin{subfigure}[b]{1\textwidth}
   \centering
-    \includegraphics[scale=0.7]{python/ph2/COM_iter/ph2_CT_x100_COM_iter.png}
-     \caption{close up}
+    \includegraphics[scale=0.65]{python/ph2/COM_iter/ph2_CT_x100_COM_iter.png}
+     \caption{close up of same iteration as in (a)}
      \label{fig:MR_x100_iteration}
   \end{subfigure}
   \caption{COM iteration method, 8 repetitions; green dots correspond to upper guesses, blue to lower guesses}
