@@ -17,7 +17,7 @@ Some institutions build their own to fulfil exactly the requirements of a given 
 The scanner used at the AKH is a relatively rare model, which is why no off-the-shelf phantom that would fit its coil is available.
 
 A previously used phantom did not fill the whole FOV, while at the same time weighing about 45kg.
-This was due to the fact that it resembled a cuboid water tank with a thin plastic rod construction inside.
+This was due to the fact that it resembled a cuboid water tank with a thin filled or solid plastic rod construction inside.
 As the peripheral zones of the FOV are those where distortion is most pronounced, a bigger phantom was needed to assess those regions.
 The new design deals reaches the outer regions and weighs much less at the same time.\\
 
@@ -37,12 +37,12 @@ The AKH's design however relies on replaceable rods, which makes it a novelty.
 Interestingly, all water based solutions seemed to have evaporated partly.
 As the rod filled with liquid \textbf{\#15} has dried starting at the end with the plastic stopper, it seems likely that, at least in this particular case, the plastic stopper did not effectively close the rod.
 It might also be that the rod itself does not prevent volatile liquids from escaping slowly.
-This was tested in a small experiment where an empty, closed rod was placed underwater.
+This was tested in a small experiment where an empty, closed rod was placed underwater. \todo{correct}
 After some time, water bubbles formed along its wall.
 An airtight container might have led to other conclusions regarding the formation of air bubbles.
 It is hard to tell if they were caused by evaporation only or if dissolved gases played a role, too.
 Whatever the reasons are, the use of water based liquids seems to be suboptimal.
-Despite this, the observed behaviour will still be discussed as a future airtight phantom design might benefit from drawn conclusions.
+Despite this, the observed behaviour will still be discussed as different phantom design might benefit from drawn conclusions.
 
 \section{Tested solutions}
 
@@ -83,7 +83,7 @@ Primovist (\textbf{\#11} to \textbf{\#13}) is a common contrast agent used for M
 The major drawback is its tendency to separate from the water and stick to the container's wall.
 This results in low signal at the centre and high signal along the wall, which would not necessarily pose a problem, but as the liquid forms bubbles, it is not guaranteed that the walls would be covered homogeneously.
 The uneven distribution might result in wrong calculations, especially if the software tool is not programmed to cope with this behaviour.
-At the same time the removal would be hardly possible.
+At the same time the removal of such a solution would be hardly possible.
 
 \subsubsection{Handling dissolved gas}
 Unfortunately, dissolved gases may eventually leave the liquid and form air bubbles trapped in the rod.
@@ -108,13 +108,13 @@ Agar and agarose are commonly used as basic reference material for MRI phantoms 
 %Since the produced gel cannot be removed from the rods as easily as liquid candidates, and forming air bubbles were also not moving, agar is not suited for this phantom.
 
 \subsubsection{Non water-based liquids}
-As an alternative 2 oils were proposed.
+As an alternative to water based solutions, two oils were proposed.
 Since oil is neither soluble in air, nor able to evaporate, a rod completely filled with oil should stay free from air bubbles.
 Yet, oil is not as easily removed from a rod as a water based liquid.
 At the same time, it might not be necessary to ever replace the oil.
 Once filled, the rods could be used until the surrounding plastic breaks or starts leaking.
 Using vegetable oil would be a non-toxic solution, but has been ruled out as a filling from the beginning, because it would eventually rot.
-Mineral oil on the other hand does not rot, however, it might be toxic if consumed.
+Synthetic oil on the other hand does not rot, however, it might be toxic if consumed.
 %As the generic motor (\textbf{\#16}) oil resulted in the highest signal intensity of all candidates it seems to be a good alternative to water based liquids.
 %The silicon oil (\textbf{\#17}) on, the other side, had a low signal compared to most candidates and is therefore not suited.
 
@@ -215,14 +215,14 @@ This procedure was not enough to clean it thoroughly.
 The liquids separated into parts with different density while the rod was stored upright and were still distributed unevenly during imaging.
 To avoid this problem in the future, a new and unused syringe should be used for filling.\\
 
-It is likely, that this will have influenced the calculated warp and DC as the lighter oil (which results in a different signal strenght) will have floated on top of the other resulting in an unwanted shift of the calculated COM.
+It is likely, that this influenced the calculated warp and DC as the lighter oil (which results in a different signal strength) floated on top of the other, resulting in an unwanted shift of the calculated COM.
 This might explain why the y shift changes its orientation close to the iso centre as this is the point where the signal intensity starts to change, too.
 To be sure of the actual impact of the oil mix on the distortion assessment, a new rod should be filled and the imaging repeated.
 For now, the already gained results will be used as no new measurement could be obtained in the limited time that the scanner is available for such experiments.
 
 
 In the region beyond -330, there is a drop of the DC for the CT.
-Investigations revealed that this is caused by sticky tape attached to the rod to hold it in place during transport from the CT scanner to the MRI scanner.
+Investigations revealed that this is caused by adhesive tape attached to the rod to hold it in place during transport from the CT scanner to the MRI scanner.
 The values calculated for this area are most likely influenced by this.
 
 
@@ -240,15 +240,21 @@ While the original resolution might be sufficient for the calculation of the COM
 It is easier to spot significant changes as the plot shows less jumps.
 At the same time, the computing time for calculations scales with the resolution of the images and should be kept minimal, because a future assessment would include more than 300 individual rods.
 
-Now that the appearance of the curves has been addressed, how the calculated distortion varies with increased resample rate will be discussed.
+Now that the appearance of the curves has been addressed, it will be discussed how the calculated distortion varies with increased resample rate.
 
 \subsubsection{Rod \#5}
 
 Table \ref{tab:Delta-resample_5} lists the expectancy and standard deviation ($\sigma_\Delta$) of the difference between the calculated distortion for x1 and x100 resample rate of rod \#5:
 
+The expectancy value $E$ was calculated as the sum of the difference in each slice over the number of slices; it is the average difference.
+A random deviation should result in some slices with positive and some with negative local differences.
+Therefore, the average should be close to zero.
+Otherwise, an increased resample rate would either result in an overall drop or rise of measured distortion.
+Indeed, $E$ is relatively small compared to the typical COM shift (even smaller than $\sigma_\Delta$), which indicates that the increased resample rate does only result in a smoother curve, but not in very different values overall.
+
 The COM shift mostly lies in a range of 0.5 to 0.7mm; $\sigma_\Delta$ is approximately one order of magnitude smaller.
 To verify whether this hints at increased accuracy or not, an external reference would be needed.
-In any case, a difference of less than $0.1mm$ would not influence treatment planning and can be regarded a negligible.
+In any case, a difference of less than $0.1mm$ would not influence treatment planning and can be regarded negligible.
 
 The value of the MRI DC lies between 0.9 and 1 (except for the air bubble region); $\sigma_\Delta$ is roughly a 45th of the average DC value ($0.9/0,02$). This is small enough to be neglected, too.
 
@@ -268,21 +274,21 @@ $\Delta DC^*_{MRI(CT-COM)}$ & -0.008905 & 0.022050
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/warp/warpMagnitude_x1-100_iter.png}
-    \caption{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100}
+    \caption{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100; plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
     \label{fig:ph2_warpMagnitude_x1-100}
 \end{figure}
 
 \begin{figure}[!bth]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/dice/ph2_DC_x1_iter.png}
-    \caption{Rod \#5; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
+    \caption{Rod \#5; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
     \label{fig:ph2_DC_x1}
 \end{figure}
 
 \begin{figure}[!bth]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/dice/ph2_DC_x4_iter.png}
-    \caption{Rod \#5; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
+    \caption{Rod \#5; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
     \label{fig:ph2_DC_x4}
 \end{figure}
 
@@ -291,6 +297,8 @@ $\Delta DC^*_{MRI(CT-COM)}$ & -0.008905 & 0.022050
 \subsubsection{Rod \#16}
 
 Table \ref{tab:Delta-resample_16} lists the expectancy and standard deviation $\sigma_\Delta$ of the difference between calculated distortion for x1 and x100 resample rate of rod \#16:
+
+Again, the expectancy $E$ is relatively small; hinting at a low overall shift of the calculated values.
 
 Just like with rod \#5, $\sigma_\Delta$ for the COM shift is approximately one order of magnitude smaller than the occurring warp and can therefore also be regarded a negligible.
 
@@ -312,20 +320,20 @@ $\Delta DC^*_{MRI(CT-COM)}$ & 0.012554   & 0.019429
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/warp/ph3_MR_v2_x1-100_warpMagnitude_iter.png}
-    \caption{Rod \#16: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100}
+    \caption{Rod \#16: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100; plastic pane from $-8mm$ to $12mm$}
     \label{fig:ph3_v2_warpMagnitude_x1-100}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/dice/ph3_MR_v2_x1_DC_iter.png}
-    \caption{Rod \#16; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
+    \caption{Rod \#16; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-8mm$ to $12mm$}
     \label{fig:ph3_DC_x1}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/dice/ph3_MR_v2_x4_DC_iter.png}
-    \caption{Rod \#16; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM)}
+    \caption{Rod \#16; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-8mm$ to $12mm$}
     \label{fig:ph3_DC_x4}
 \end{figure}

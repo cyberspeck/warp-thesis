@@ -76,8 +76,8 @@ product name	& SOMATOM Definition AS		\\
 software version& syngo CT 2013B	\\
 protocol		& Prostatae\_VMATAdult	\\
 slice thickness	& 0.6 mm	\\
-row spacing		& 0.801mm 512	\\
-column spacing	& 0.801mm 512	\\
+row spacing		& 0.801mm; 512	\\
+column spacing	& 0.801mm; 512	\\
 kVP				& 120kV	\\
 x-ray tube current	&	19 mA	\\
 convolution kernel	&	I30f, 3
@@ -217,7 +217,7 @@ This way there is another way of checking the alignment during the prototyping p
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=\textwidth]{slicer3D/full_phantom/axial_CT_pane.png}
-\caption{An axial view of one of three plastic panes that make up the frame of the phantom. This scan shows how the pane looks like with no rods inserted.}
+\caption{An axial view of one of three plastic panes that make up the frame of the phantom. This scan shows how the pane looks like with no rods inserted. A little 'x' in one of the holes slightly to the right of the lower part of the pane marks where rod \#5 was inserted later for imaging (see section \ref{sec:rod5}); a little 'z' in the centre of the upper area indicates where rod \#16 was inserted for another imaging sequence (see section \ref{sec:rod16}).}
 \label{fig:axial_CT_pane}
 \end{figure}
 
@@ -450,7 +450,7 @@ The python script can be used to:
  \item visualise individual rod slices
  \item plot the average/peak brightness, warp, or \texttt{DC} along the rod
  \item write warp and \texttt{DC}  for each slice in a combined ".txt" file
- \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation, see figure \ref{fig:colour-map} \todo{ref to colour map}).
+ \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation, see figure \ref{fig:colour-map}).
 \end{itemize}
 
 \subsection{Detection of irregularities}
@@ -572,7 +572,6 @@ little overlap (e.g. a ring or crescent shape); a very dark image hindering deli
 The obvious choice for the radius of the reference circle B is to use the true size of the physical rod.
 For CT images this would be 4mm, for MRI images it would be 2mm.
 The script calculates the \texttt{DC} using various radii close to those values and returns the result yielding in the highest average \texttt{DC} for the whole rod.
-Figures \ref{fig:ph2_CT_DC-15iter}, \ref{fig:ph2_MR_DC-15iter} and \ref{fig:ph2_MR_CT-COM_DC-15iter} show how the \texttt{DC} change for different radii.
 
 \subsubsection{Using the CT COM}
 Alternatively, the DC fo the MR scan can be calculated with the reference circle B placed in the COM of the corresponding CT image.

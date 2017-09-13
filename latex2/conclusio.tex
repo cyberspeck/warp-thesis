@@ -5,12 +5,12 @@
 %  Outlook
 %  open questions
 %  Next steps
-\section{Liquid for phantom}
+\section{Filling for phantom}
 
 As topping up over 300 rods regularly is too time consuming, and all water-based liquids continued to evaporate, they are not long-term solution for this phantom.
 They are, however, useful for prototyping.
 For short time experiments with this phantom (not airtight rods) \textbf{\#5} is recommended, because the soap allows the air to be moved out of the FOV.
-If a new set of rods with airtight walls were obtained, adding ascorbic acid to the solution (a combination of \textbf{\#5} and \textbf{\#8}) might be an even better filling:
+If another set of rods with airtight walls were obtained, adding ascorbic acid to the solution (a combination of \textbf{\#5} and \textbf{\#8}) might be an even better filling:
 \begin{itemize}
 \item  distilled water
 \item  $0.36 \, g/L$ of $NaCl$
@@ -29,7 +29,7 @@ The tested synthetic motor oil (\textbf{\#16}) fits those requirements.
 The accuracy of the distortion assessment, especially of the DC calculation, can be enhanced by using interpolated scans.
 Resample rates of x4, x9, x25 and x100 were used to create finer images which were all analysed using the same algorithms.
 The original resolution (x1) might be sufficient for the COM shift calculation, but the DC curve gains significant smoothness at already x4 finer resolution.
-This small interpolation could be already enough to yield acceptable accuracy while keeping necessary computing power low.
+This small interpolation could be already enough to increase accuracy while keeping necessary computing power low.
 A future distortion assessment of the whole FOV with 300 individual rods would profit from a effective procedure at low resolution.
 Using the simple method to find the COM would use less time, too.
 
@@ -43,7 +43,7 @@ This could be done by a auto-trace function which detects individual rods and ap
 The two implemented methods of finding COM and DC need to be assessed themselves.
 In order to tell which of the two gets closer to the absolute truth, additional checks should be performed.
 A possible accuracy test could look like this:
-Two CT scans of the phantom which differ only by a known displacement of one rod are registered and resampled.
+two CT scans of the phantom which differ only by a known displacement of one rod are registered and resampled.
 The software tool is used to calculate the COM shift between the images which can be compared to the real displacement.\\
 
 At the moment the iteration method does not take into account the steepness of the DC curve.
@@ -61,9 +61,9 @@ For the time being, running the script over those regions might aid troubleshoot
 
 \section{Scale of distortion}
 
-The obtained values for the occurring spatial distortion report a COM shift below $1mm$ in a region of at least $40cm$ (from -283mm to 185mm; simple method; rod \#16).
+For the investigated position of the rod (rod \#16), the obtained values for the occurring spatial distortion report a COM shift below $1mm$ in a region of at least $40cm$ (from -283mm to 185mm; simple method).
 This does not rule out the possibility of using the MR scanner for radiotherapy planning.
 Whether the distortion is small enough to guarantee accurate treatment planning can only be discussed after a map for the entire FOV has been created.
 
-
+\todo{append code with extensive comments}
 
