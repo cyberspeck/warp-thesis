@@ -12,6 +12,7 @@
 %\usepackage{textalpha} % Damit können griechische Zeichen direkt im Text verwendet werden (siehe zeichen.txt)
 %\usepackage{paralist} % Für compactitem und compactenum
 \usepackage{xstring} % Für IF in Titelseite
+\usepackage{url}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
@@ -26,10 +27,12 @@
 \usepackage[pdftex]{hyperref} % Links richtig anzeigen. Sowohl innerhalb des Dokuments (Fußzeilen, Formeln), als auch ins Internet
 
 \usepackage[ % Biblatex für die Zitate und Referenzen
-	backend=bibtex,
-	maxbibnames=99,
-	backend=biber, % 	original setting, didn't work
-	%hyperref=true		not quite sure what that does
+%	maxbibnames=99,
+	backend=biber,
+	style=numeric-comp,
+	hyperref=true,
+	sorting=none,
+	sortcites,
 	]
 	{biblatex}
 %\usepackage{cite} %Biblatex alt - alternative vong valle valle valle czamler
