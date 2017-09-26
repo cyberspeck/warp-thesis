@@ -60,7 +60,6 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \input{results.tex}
 \input{discussion.tex}
 \input{conclusio.tex}
-\input{appendix.tex}
 
 \cleardoublepage
 %\pagenumbering{roman} \setcounter{page}{1}
@@ -68,7 +67,9 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \printbibliography
 %\input{thanks.tex}
 
-%\appendix
-%\input{appendix01.tex}
+\input{appendix.tex}
+\includepdf[pages=-]{pdfs/FunITK.pdf}
+\includepdf[pages=-]{pdfs/rod_5.pdf}
+\includepdf[pages=-]{pdfs/rod_16.pdf}
 
 \end{document}
