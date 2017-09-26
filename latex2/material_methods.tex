@@ -333,13 +333,7 @@ Its voxel's size were changed to match the CT voxels and both scans exported.
 \item Using the module 'resample scalar volume' a number of interpolated (setting: 'bspline') higher resolution pairs (CT/MRI) were created.
 \item All new pairs and the cropped original CT/MRI pair were exported with 'create a dicom series' and saved in a separate folder each.
 \end{enumerate}
-
-\begin{figure}[!tbp]
-\centering
-\includegraphics[width=0.8\textwidth]{algorithm/data_prep.jpg}
-\caption{Steps performed before analysing data with script \todo{remake}}
-\label{fig:data_prep}
-\end{figure}
+\vspace*{0.5cm}
 
 After this procedure a number of pairs based on the original CT and MRI were available, all of which had the same number of slices along the z-axis parallel to the phantom's rods.
 They only differ in the number of pixels making up each slice, their resolution varying from the original up to a hundred times finer.
@@ -367,6 +361,39 @@ x100   & 0.60 & 0.2 	& 0.1
 \label{tab:spacing}
 \end{table}
 
+\begin{figure}[!thb]
+
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=.2]{rendered/CT-full.png}
+    \caption{CT}
+    \label{fig:CT_full}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=.2]{rendered/MR-full.png}
+    \caption{MR}
+    \label{fig:MR_full}
+  \end{subfigure}
+  \caption{rendered image, after steps 1-3}
+  \label{fig:rendering}
+\end{figure}
+  
+\begin{figure}[!thb]
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=.2]{rendered/CT-rod.png}
+    \caption{CT}
+    \label{fig:CT_rod}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[scale=.2]{rendered/MR-rod.png}
+    \caption{MR}
+    \label{fig:MR_rod}
+  \end{subfigure}
+  
+  \caption{rendered image, after steps 4 and 5}
+  \label{fig:rendering}
+\end{figure}
 
 \begin{figure}[!thb]
   \begin{subfigure}[b]{0.32\textwidth}
@@ -403,7 +430,7 @@ x100   & 0.60 & 0.2 	& 0.1
     \caption{MRI x100}
     \label{fig:MRI_x100}
   \end{subfigure}
-  \caption{CT/MRI axial images of the same rod (filling \#5, inverted colours). The images on the very left show the original (CT) resolution, the resolution of those in the middle and the right were increased by resampling (9 times and 100 times finer)}
+  \caption{CT/MRI axial images of the same rod (filling \#5, inverted colours) after steps 6 and 7. The images on the very left show the original (CT) resolution, the resolution of those in the middle and the right were increased by resampling (9 times and 100 times finer)}
   \label{fig:resample}
 \end{figure}
 \clearpage
