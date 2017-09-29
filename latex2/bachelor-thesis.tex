@@ -48,7 +48,9 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \pagenumbering{gobble} % Keine Seitenzahl drucken
 \titlePageTUWienPhysik
 
+\pagenumbering{roman} \setcounter{page}{1}
 \input{abstract.tex}
+\input{preface.tex}
 \tableofcontents \newpage
 \cleardoublepage % Macht, dass openright funktioniert.
 % \chapter macht das automatisch \tableofcontents und \printbibliography machen das nicht.
@@ -62,14 +64,20 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \input{conclusio.tex}
 
 \cleardoublepage
-%\pagenumbering{roman} \setcounter{page}{1}
+
 %\nocite{*}
 \printbibliography
+	% http://www.doi2bib.org/#/doi
+	% https://manas.tungare.name/software/isbn-to-bibtex/
+	
 %\input{thanks.tex}
-
 \input{appendix.tex}
+\addcontentsline{toc}{section}{Python Script}	% https://tex.stackexchange.com/questions/119719/add-an-item-in-the-table-of-contents
 \includepdf[pages=-]{pdfs/FunITK.pdf}
+\addcontentsline{toc}{section}{Generated data}
+\addcontentsline{toc}{subsection}{rod \#5}
 \includepdf[pages=-]{pdfs/rod_5.pdf}
+\addcontentsline{toc}{subsection}{rod \#16}
 \includepdf[pages=-]{pdfs/rod_16.pdf}
 
 \end{document}
