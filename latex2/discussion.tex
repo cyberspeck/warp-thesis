@@ -30,7 +30,7 @@ Commercially available phantoms often resemble water filled tanks containing pla
 This design results in stronger signal, but exceeds practical weight.
 There are few brands offering solutions utilising liquid fiducial markers in the shape of pellets.
 They are arranged in a regular pattern surrounded by air or plastic.
-The AKH's design however relies on replaceable rods, which makes it a novelty.
+The AKH's design, however, relies on replaceable rods, which makes it a novelty.
 
 \subsection{Observed issues}
 
@@ -189,6 +189,8 @@ These areas cannot be used for distortion assessment as the COM cannot be calcul
 Figures \ref{fig:ph2_CT_x100_brightness} and \ref{fig:ph3_CT_x100_brightness} exhibit spikes in the average brightness where the image shows a plastic pane.
 The script recognised this difference and marked all affected slices as 'irregular'.
 Consequently, in table \ref{tab:spit-out-5} and \ref{tab:spit-out-16}, the values of the COM shift ($warp_x$, $warp_y$, $warpM$); the DC for CT using the CT-centroid ($DC_{CT}$); and the DC for MRI using the CT-centroid ($DC_{MR(CT-COM)}$) are all set to '-1'.
+
+In the future, the threshold value used to determine a significant change in brightness could be automatically chosen based on the image modality and the image size.
 
 \subsection{Measured distortion - Rod \#5}
 

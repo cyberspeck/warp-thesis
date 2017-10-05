@@ -15,7 +15,7 @@
 
 \section{Scanners and Imaging protocols}
 
-The radiation oncology department of the Vienna General Hospital (AKH) owns a CT scanner and a open-bore, c-arm MRI scanner.
+For this thesis a CT scanner and an open-bore, c-arm MRI scanner in the radiation oncology department of the Vienna General Hospital (AKH) were used.
 
 \subsection{MR}
 
@@ -54,12 +54,6 @@ acquisition time& ~17.5 min
 \label{tab:MR-scanner}
 \end{table}
 
-\begin{figure}[tbh!]
-\centering
-\includegraphics[width=0.6\linewidth]{scanner/coil}
-\caption{MR scanner coil: (1) upper part, Body/Spine Array Coil; (2,3) central positioning markers; (4) lower part, Body/Spine Array Coil; (5) connection ports; (6) colour label [image source: (with kind support of Siemens Healthineers)]}
-\label{fig:coil}
-\end{figure}
 
 \clearpage
 
@@ -90,9 +84,9 @@ convolution kernel	&	I30f, 3
 \subsection{MRI scanner - field distribution}
 \label{sec:magnetom}
 
-The Magnetom C! MRI scanner comes with a handbook which contains diagrams of the magnetic field strength (fig. \ref{fig:strength_side}) and its gradient (fig. \ref{fig:gradient_side}, \ref{fig:gradient_top} and \ref{fig:gradient_front}).
+Diagrams of the magnetic field strength are depicted in figure \ref{fig:strength_side}); its gradient in figures \ref{fig:gradient_side}, \ref{fig:gradient_top} and \ref{fig:gradient_front}).
 Figure \ref{fig:scanner} shows an image and different views of the scanner and the planes along which the field strength and gradient are displayed.
-Patient are positioned as to place the ROI at the isocentre, the area where the B0 field is most homogeneous (where there is a low gradient).
+For imaging, the patient is positioned as to place the ROI at the isocentre, the area where the $B_0$ field is most homogeneous (where there is a low gradient).
 
 \begin{figure}[!htb]
 \centering
@@ -190,12 +184,12 @@ The phantom was build to fit the largest available rigid coil for the MRI scanne
 Three parallel acrylic glass panes in the shape of the coil serve as a frame for the plastic rods.
 In the middle an empty area was reserved for an optional additional smaller phantom (not used for this work).
 Figure \ref{fig:rendered_CT} shows a rendered CT picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
-More than 300 plastic rods (length: 50cm, outer diameter: 8mm, inner diameter: 4mm, volume: approx. 6ml) could be placed in the phantom.
+More than 300 plastic rods (length: $50\,cm$, outer diameter: $8\,mm$, inner diameter: $4\,mm$, volume: approx. $6\,ml$) could be placed in the phantom.
 See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
 The bottom part of each rod was sealed with a glued plastic plug, the top could be closed with a plastic screw.
 Frame and rods were already build and assembled before the author started working on this project.
 
-Additionally to the rods which would be used to assess the distortion, a number of vitamin-e pills were attached to the frame as reference markers (see figure \ref{fig:pills}).
+Additionally, to the rods which would be used to assess the distortion, a number of vitamin-e pills\footnote{soft gel capsules consisting of mostly water and glycerin bound by adding e.g. gelatin or pullulan (polysaccharide polymer; food additive E1204) \cite{pillshere}} were attached to the frame as reference markers (see figure \ref{fig:pills}).
 These pills are visible in both CT and MRI images and were used to align them (see section \ref{sec:prep}).
 This way there is another way of checking the alignment during the prototyping process in addition to the rods.
 
@@ -260,6 +254,7 @@ They are listed in Table \ref{tab:solutions}.
 \begin{tabular}{@{}l|rrrrrr@{}}
 No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & Primovist [volume-\%]\\
 \toprule
+water based: \\
 \#1  &             &                   &      &               &           &		\\
 \#2  & 3.6         & 1.96              &      &               &           &		\\
 \#3  & 3.6         & 3.92              &      &               &           &		\\
@@ -276,6 +271,7 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
 \#14 & 3.6         & 1.96              &      &               &  0.5      &		\\
 \#15 & 3.6         & 1.96              &      &               &   20      &		\\
 \midrule
+non water based: \\
 \#16 & \multicolumn{2}{r}{Motor Oil:}   & \multicolumn{4}{l}{\textit{Castrol Power1}}      \\
 \#17 & \multicolumn{2}{r}{Silicon Oil:} & \multicolumn{4}{l}{\textit{Charge: 15HLVY023}}   \\ \bottomrule
 \end{tabular}
@@ -283,26 +279,6 @@ No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & P
 \label{tab:solutions}
 \end{table}
 
-\newpage
-\begin{enumerate}[label=\textbf{\#\arabic*}]
- \item \textit{distilled water}
- \item $NaCl$ + $CuSO_4\cdot5H_2O$
- \item increased concentration of $CuSO_4\cdot5H_2O$
- \item further increased concentration of $CuSO_4\cdot5H_2O$
- \item generic washing-up \textit{soap} added to \textbf{\#2}
- \item increased \textit{soap} concentration
- \item further increased \textit{soap} concentration
- \item \textit{ascorbic acid} added to \textbf{\#2}
- \item increased \textit{ascorbic acid} concentration
- \item further increased \textit{ascorbic acid} concentration
- \item \textit{Primovist}
- \item increased amount of \textit{Primovist}
- \item further increased amount of \textit{Primovist}
- \item \textit{agar}
- \item increased \textit{agar} concentration
- \item synthetic motor oil
- \item silicon oil
-\end{enumerate}
 
 Being closed at one end and having a capillary shape (small diameter) makes it impossible to fill the rods by simply pouring the liquid through the opening.
 Instead of adding the fluid at the top, it has to be injected starting at the bottom.
@@ -315,19 +291,26 @@ After injecting the solution in the rods, they were left to cool down.
 Before closing, the rods were topped up completely (no trapped air bubbles).
 The oil based liquids, \textbf{\#16} and \textbf{\#17}, were not brought to boil.
 
+\section{Used software applications}
+
+Prior to analysing the data, the scans had to be prepared.
+For this task, two applications were used:
+\begin{itemize}
+\item \textit{MIRADA}: a commercial software solution for both diagnostic imaging and radiation oncology \cite{mirada} was used to align CT and MR images.
+\item \textit{3D Slicer}: (Versions: Slicer-4.5.0-1-linux-amd64, Slicer-4.6.2-win-amd64) a "free and open source software package for visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} was used to crop and resample images, quickly read values and visualise the results.
+\end{itemize}
+
 
 \section{Pre-processing MRI and CT scans}
 \label{sec:prep}
 
-% what application used to align CT and MRI
-Prior to analysing the data, the scans had to be prepared.
-Figures \ref{fig:rendering1-3}, \ref{fig:rendering4-5} and \ref{fig:resample} show a few stages in the image processing work flow.
+Figures \ref{fig:rendering1-3}, \ref{fig:rendering4-5} and \ref{fig:resample} show the most important stages in the image processing work flow performed to prepare the data for the developed script.
 
 \begin{enumerate}[label=\textbf{Step \arabic*}]
 \item After loading the CT and MRI scan into \textit{MIRADA}, they were aligned using the vitamin-e pills, yielding maximum overlap in the centre of the image.
 \item Next, as the MRI image had a lower resolution than the CT scan, the MRI scan was resampled.
 Its voxel's size were changed to match the CT voxels and both scans exported.
-\item Both layers (MRI and CT) were loaded into \textit{3D Slicer} (Versions: Slicer-4.5.0-1-linux-amd64, Slicer-4.6.2-win-amd64)
+\item Both layers (MRI and CT) were loaded into \textit{3D Slicer}.
 \item Its module 'annotations' was used to set a new region of interest (ROI) to include only a single rod.
 \item With the module called 'crop volume' (setting: voxel based cropping) the scans were reduced to show only the selected ROI.
 \item Using the module 'resample scalar volume' a number of interpolated (setting: 'bspline') higher resolution pairs (CT/MRI) were created.
@@ -353,9 +336,8 @@ resample factor  & z (not affected) &  y (same as x) & x \\
 x1     & 0.60 & 0.98	& 0.98	\\
 x4     & 0.60 & 0.49	& 0.49	\\
 x9     & 0.60 & 0.33	& 0.33	\\
-% x16    & 0.60 & 0.244	& 0.24	\\
 x25    & 0.60 & 0.2 	& 0.2	\\
-x100   & 0.60 & 0.2 	& 0.1
+x100   & 0.60 & 0.1 	& 0.1
 \end{tabular}
 \caption{pixel Spacing (rounded values) [$mm$]}
 \label{tab:spacing}
@@ -430,7 +412,7 @@ x100   & 0.60 & 0.2 	& 0.1
     \caption{MRI x100}
     \label{fig:MRI_x100}
   \end{subfigure}
-  \caption{CT/MRI axial images of the same rod (filling \#5, inverted colours) after steps 6 and 7. The images on the very left show the original (CT) resolution, the resolution of those in the middle and the right were increased by resampling (9 times and 100 times finer)}
+  \caption{CT/MRI axial images of the same rod (filling \#5, inverted colours) after steps 6 and 7. The images on the very left show the original (CT) resolution, the resolution of those in the middle and the right were increased by resampling (9 times and 100 times finer);\\ pixel lengths: x1 $\rightarrow 0.98\, mm$, x9 $\rightarrow0.33\, mm$, x100 $\rightarrow0.1\, mm$  }
   \label{fig:resample}
 \end{figure}
 \clearpage
@@ -442,9 +424,8 @@ x100   & 0.60 & 0.2 	& 0.1
 
 In order to asses the distortion of the MRI scanner, a software tool was programmed.
 It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
-\textit{SimpleITK} is a object-oriented "C++ library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} It's versatility is one of the reasons why this approach was favoured.
-It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer} , a "free and open source software package for
-visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} For this work 3D Slicer was used to crop and resample images, quickly read values and visualise the results.
+\textit{SimpleITK} is a object-oriented "C\texttt{++} library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} Its versatility is one of the reasons why this approach was favoured.
+It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer}.
 Documentation and code examples of SimpleITK can be found at \cite{InsightSoftwareConsortium, Kyriakou-SimpleITK}
 An alternative way to handle DICOM data in Python would be Pydicom. \cite{Pydicom, Kyriakou-Pydicom-VTK} 
 
@@ -480,70 +461,6 @@ The python script can be used to:
  \item export a rod shaped scan where the pixel values reflect the distortion occurring in each slice instead of their brightness as a ".mha" file (useful for visualisation, see figure \ref{fig:colour-map}).
 \end{itemize}
 
-\subsection{Detection of irregularities}
-
-The method to find irregularities is described in figure \ref{flo:irregular}.
-After loading the image data, the script calculates the mean brightness of a reference slice (which was chosen by the user) (\textbf{1.}).
-This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
-It is the user's responsibility to make sure the reference is free from any such objects.
-Ideally, it is located near the isocentre and has a brightness that is representative for the whole image.
-
-The script will compare each slice of the volume to the reference slice individually, starting at one end (\textbf{2.}).
-To decide whether a particular slice is "irregular", it's average brightness will be compared to the reference slice's (\textbf{4.}).
-If the difference exceeds a certain value (\textbf{5b.}), the current slice will be marked as irregular and consequently won't be used to calculate its \texttt{DC} or centre of mass (COM).
-A value of 40 was found to be yield good results for CT scans.
-In the future a more sophisticated approach should be implemented where the script chooses a suitable value based on the image modality and the image size.
-
-\subsubsection{Irregular slices and their COM and DC values}
-As irregular slices cannot be used to asses distortion caused by the scanner, numbers describing their distortion are not of interest.
-Instead of calculating \texttt{DC}, \texttt{COM} and warp numbers, they will all be set to "$-1$".
-The \texttt{COM} cannot lie outside the image, yet coordinates "($-1,-1$)" would indicate this.
-Similarly, the value referred to as \texttt{warpMagnitude} and the \texttt{DC} are defined to be positive numbers.
-All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
-The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
-To be consistent, they are still set to "$-1$".
-It is essential to bear this in mind when interpreting the script's output.
-
-% Define block styles
-\tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=18em, text centered, minimum height=4em]
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=12em, text centered, minimum height=5em]
-\tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{puffs} = [cloud, cloud puffs=13.5, minimum width=4cm, minimum height=1.5cm, align=center, fill=green!10]
-\tikzstyle{blocky} = [rectangle, draw, fill=yellow!10, text width=14em, text centered, minimum height=4em]
-\tikzstyle{decisionr} = [diamond, draw, aspect=3, fill=red!20, text width=18em, text badly centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{decisiong} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{decisiony} = [diamond, draw, aspect=3, fill=yellow!10, text width=10em, text badly centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{line} = [draw, very thick, color=black!80, -latex']
-%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
-
-\begin{figure}[p]
-    \centering
-	\begin{tikzpicture}[node distance = 3cm, auto]
-    % Place nodes
-    \node [blockb] (1) {\textbf{(1)} Calculate average brightness of user defined reference slice: \texttt{average(ref)}};
-    \node [blockb, below of=1, node distance=2.2cm] (2) {\textbf{(2)} Initialise loop to start with slice \texttt{i=0} (first slice of Volume)};
-    \node [cloud, below of=2, node distance=2.8cm] (3) {\textbf{(3)} Calculate average brightness of slice \#\texttt{i}:\\ \texttt{average(i)}};
-    \node [blockb, right of=3, text width=8em, node distance=7cm] (repeat!) {Repeat comparison with next slice\\ \texttt{i $\rightarrow$ i + 1}};
-    \node [decisionr, below of=3, node distance=3.5cm] (4) {\textbf{(4)} \texttt{|average(ref) - average(i)|}};
-    \node [cloud, left of=4, text width=6em, node distance=7cm, xshift=3cm, yshift=-3cm] (5a) {\textbf{(5a)} mark slice \#\texttt{i} as 'regular'};
-    \node [cloud, right of=4, text width=6em, node distance=7cm, xshift=-3cm, yshift=-3cm] (5b) {\textbf{(5b)} mark slice \#\texttt{i} as 'irregular'};
-    \node [decisionr, below of=4, yshift=-3cm] (6) {\textbf{(6)} Has script reached\\ the last slice of the Volume?};
-    \node [blockb, text width=20em, below of=6, yshift=-1cm] (7) {\textbf{(7)} End of irregularieties check};
-    % Draw edges
-    \path [line] (1) -- (2);
-    \path [line] (2) -- (3);
-    \path [line] (3) -- (4);
-    \path [line] (4.east)  to node {{\texttt{> 40}}} (5b);
-    \path [line] (4.west)  to node [xshift=-1.3cm, yshift=-0.5cm] {\textbf{\texttt{< 40}}} (5a);
-    \path [line] (5a) -- (6);
-    \path [line] (5b) -- (6);
-    \path [line] (6.east) -| node [xshift=-1cm, yshift=-0.5cm] {\textbf{no}} (repeat!);
-    \path [line] (repeat!) -- (3);
-    \path [line] (6.south) to node {\textbf{yes}} (7);
-	\end{tikzpicture}
-	\caption{Check for irregularities}
-	\label{flo:irregular}
-\end{figure}
 
 \subsubsection{Measuring distortion}
 
@@ -560,7 +477,7 @@ The rod's deformation (deviation from circular profile) is described using the d
 \label{sec:DC}
 
 The \texttt{DC} was chosen as indicator for the deviation from a circular profile.
-The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of it's module called "metric" was adapted. \cite{MedPy_dc-code}\\
+The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of its module called "metric" was adapted. \cite{MedPy_dc-code}\\
 
 
 The calculation of the \texttt{DC} is performed for each slice individually.
@@ -575,13 +492,13 @@ DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 Figure \ref{flo:DC} describes the process of calculating the DC.
 It compares a binary image (input A) to a circle (reference B).
 In a binary image there are only 2 possible pixel values: "0" and "1".
-However, in the original image, values lie in a range between 0 (or -1024 in CT) and 1000 or higher.
-In order to reduce the true image to a binary image A, the script needs to split the pixels in 2 groups.
+However, in e.g. a CT image, values lie in a range between -1024 and 1000 or higher.
+In order to reduce the original image to a binary image A, the script needs to split the pixels in 2 groups.
 A copy of the original picture is created where all pixels with a value above a certain  \texttt{threshold} are set to the value of "1".
 These are regarded as part of the rod.
 Those which are darker are set to "0".
-(See section \ref{sec:COM} for details on how the  \texttt{threshold} is calculated).
-Ideally, this procedure separates the surrounding dark area from the bright rod.
+(See section \ref{sec:COM} for details on how the \texttt{threshold} is calculated).
+Ideally, this procedure separates the surrounding dark area from the bright rod by using a suitable \texttt{threshold}.
 This way the new binary image A still shows were the rod is, but it lost all information on the actual brightness.
 
 Reference B is a circle with its midpoint typically placed at the centre of mass (COM) of the rod.
@@ -596,8 +513,8 @@ A value of 1 indicates a perfect circular shape.
 A low \texttt{DC}, on the other hand, means the shape differs greatly from a circle and could be caused by many things such as:
 little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of the rod from background; a small circle with a radius close to a only a few pixels.
 
-The obvious choice for the radius of the reference circle B is to use the true size of the physical rod.
-For CT images this would be 4mm, for MRI images it would be 2mm.
+The obvious choice for the radius of the reference circle B is to use the size of the physical rod/liquid as it is should be visible on the scan.
+For CT images this would be $4\,mm$ (outer diameter of the plastic rod), for MRI images it would be $2\,mm$ (inner diameter of the plasic rod, equivalent to the diameter of enclosed liquid).
 The script calculates the \texttt{DC} using various radii close to those values and returns the result yielding in the highest average \texttt{DC} for the whole rod.
 
 \subsubsection{Using the CT COM}
@@ -664,7 +581,7 @@ Calculating the number of pixels which make up the more or less circular profile
  pixelNumber = (radius^2 \cdot \pi) \, / \, (spacing^2)
 \end{align}
 
-For CT images the $radius = 4mm$, in MRI scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction.
+For CT images the $radius = 4mm$, in MRI scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction (developed script is only capable to process images with isotropic pixels pacing, as it usually is the case).
 Next, the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the \texttt{COM}.
 The value of the darkest pixel that is still counted as part of the rod is saved as  \texttt{threshold} for future calculations (e.g. finding the \texttt{DC} associated with the \texttt{COM}, see section \ref{sec:DC}).\\
 The method is summarised in figure \ref{flo:COM-simple}.
@@ -688,7 +605,7 @@ Now, the DC can be obtained as described earlier using the now known \texttt{thr
     \path [line] (pixelNumber) -- (threshold);
     \path [line] (threshold) -- (COM);
 	\end{tikzpicture}
-	\caption{Simple method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size}
+	\caption{Simple method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size (inner diameter: $2\,mm$, outer diameter: $4\,mm$)}
 	\label{flo:COM-simple}
 \end{figure}
 
@@ -733,12 +650,12 @@ As a reasonable first guess it assumes that $50\%$ of all pixels belong to the r
 Now, in the first iteration (\textbf{3}), to find out whether more or less pixels would result in a better \texttt{DC}, it considers two new guesses:
 One halfway from the lower limit ($0\%$) to its current guess ($50\%$) which is:
 \begin{align}
- \frac{0+50}{2}=25\% 
+  \frac{lower + current}{2} &= \frac{0+50}{2}=25\% 
 \end{align}
 
 and one halfway from the upper limit ($100\%$) to its current guess ($50\%$) which is:
 \begin{align}
- \frac{100+50}{2}=75\%
+ \frac{upper + current}{2} &= \frac{100+50}{2}=75\%
 \end{align}
 
 
@@ -783,3 +700,71 @@ Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of try
 \end{figure}
 
 % image of COM shift
+
+
+\subsection{Detection of irregularities}
+
+The method to find irregularities is described in figure \ref{flo:irregular}.
+After loading the image data, the script calculates the mean brightness of a reference slice (which was chosen by the user) (\textbf{1.}).
+This reference slice will be used to decide if and which other slices might show irregularities, for example air bubbles, markers, or plastic panes.
+It is the user's responsibility to make sure the reference is free from any such objects.
+Ideally, it is located near the isocentre and has a brightness that is representative for the whole image.
+
+The script will compare each slice of the volume to the reference slice individually (\textbf{2.}).
+To decide whether a particular slice is "irregular", its average brightness will be compared to the reference slice's (\textbf{4.}).
+If the difference exceeds a certain value (\textbf{5b.}), the current slice will be marked as irregular and consequently will not be used to calculate its \texttt{DC} or centre of mass (COM).
+A value of $40\,HU$ was found to be yield good results for CT scans.
+
+
+\subsubsection{Irregular slices: centre of mass \& dice coefficient}
+As irregular slices cannot be used to asses distortion caused by the scanner, numbers describing their distortion are not of interest.
+Instead of calculating \texttt{DC}, \texttt{COM} coordinates and warp regularly (based on the actual pixels in the slice), the values of these quantities are all set to "$-1$".
+This is done, because the relevant slice was marked as not suited for distortion assessment. \\
+
+The \texttt{COM} cannot lie outside the image, yet coordinates "($-1,-1$)" would indicate this (pixel coordinates are defined to be always positive in x and y direction).
+Similarly, the value referred to as \texttt{warpMagnitude} (absolute distance between MRI and CT COM) and the \texttt{DC} are defined to be positive numbers.
+All three are therefore easily understood to be invalid, indicating that the particular slice was marked as "irregular".
+The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
+To be consistent, they are still set to "$-1$".
+It is essential to bear this in mind when interpreting the script's output.
+
+% Define block styles
+\tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=18em, text centered, minimum height=4em]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=12em, text centered, minimum height=5em]
+\tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{puffs} = [cloud, cloud puffs=13.5, minimum width=4cm, minimum height=1.5cm, align=center, fill=green!10]
+\tikzstyle{blocky} = [rectangle, draw, fill=yellow!10, text width=14em, text centered, minimum height=4em]
+\tikzstyle{decisionr} = [diamond, draw, aspect=3, fill=red!20, text width=18em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{decisiong} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{decisiony} = [diamond, draw, aspect=3, fill=yellow!10, text width=10em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{line} = [draw, very thick, color=black!80, -latex']
+%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
+
+\begin{figure}[p]
+    \centering
+	\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes
+    \node [blockb] (1) {\textbf{(1)} Calculate average brightness of user defined reference slice: \texttt{average(ref)}};
+    \node [blockb, below of=1, node distance=2.2cm] (2) {\textbf{(2)} Initialise loop to start with slice \texttt{i=0} (first slice of Volume)};
+    \node [cloud, below of=2, node distance=2.8cm] (3) {\textbf{(3)} Calculate average brightness of slice \#\texttt{i}:\\ \texttt{average(i)}};
+    \node [blockb, right of=3, text width=8em, node distance=7cm] (repeat!) {Repeat comparison with next slice\\ \texttt{i $\rightarrow$ i + 1}};
+    \node [decisionr, below of=3, node distance=3.5cm] (4) {\textbf{(4)} \texttt{|average(ref) - average(i)|}};
+    \node [cloud, left of=4, text width=6em, node distance=7cm, xshift=3cm, yshift=-3cm] (5a) {\textbf{(5a)} mark slice \#\texttt{i} as 'regular'};
+    \node [cloud, right of=4, text width=6em, node distance=7cm, xshift=-3cm, yshift=-3cm] (5b) {\textbf{(5b)} mark slice \#\texttt{i} as 'irregular'};
+    \node [decisionr, below of=4, yshift=-3cm] (6) {\textbf{(6)} Has script reached\\ the last slice of the Volume?};
+    \node [blockb, text width=20em, below of=6, yshift=-1cm] (7) {\textbf{(7)} End of irregularieties check};
+    % Draw edges
+    \path [line] (1) -- (2);
+    \path [line] (2) -- (3);
+    \path [line] (3) -- (4);
+    \path [line] (4.east)  to node {{\texttt{> 40}}} (5b);
+    \path [line] (4.west)  to node [xshift=-1.3cm, yshift=-0.5cm] {\textbf{\texttt{< 40}}} (5a);
+    \path [line] (5a) -- (6);
+    \path [line] (5b) -- (6);
+    \path [line] (6.east) -| node [xshift=-1cm, yshift=-0.5cm] {\textbf{no}} (repeat!);
+    \path [line] (repeat!) -- (3);
+    \path [line] (6.south) to node {\textbf{yes}} (7);
+	\end{tikzpicture}
+	\caption{Check for irregularities}
+	\label{flo:irregular}
+\end{figure}

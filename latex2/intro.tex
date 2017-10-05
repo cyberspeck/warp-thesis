@@ -315,7 +315,7 @@ Another aspect of image quality is the 'low contrast resolution' of the scan.
 It directly relates to how much structures and their surroundings have to differ in signal intensity to be clearly distinguishable by doctors.
 The quality of the 'low contrast resolution' is mainly limited by noise.
 Noise is a random pattern underlying the actual signal and is always present to some extent.
-It's prominence in the final image is described by the Signal to Noise Ratio (SNR).
+Its prominence in the final image is described by the Signal to Noise Ratio (SNR).
 If the SNR is too low, fine structures blend with the noise and cannot be distinguished. 
 Strategies to achieve a high SNR include raising the initial photon flux (intensity) or employing contrast agents.
 The intensity is governed by the tube current, which is limited by the heat capacity of the tube and health considerations regarding the patient dose.
@@ -399,10 +399,19 @@ This is why soft tissue appears as bright areas in MRI, whereas bone material ha
 Most the scanners are build to house a receiver coil in the gantry and they are able to measure the signal using only this one coil.
 However, in practise, to obtain a stronger signal, a smaller coil is typically placed closer to the source of the signal, the patient.
 As the region of interest (ROI) is usually limited to a specific organ, receiver coils are available in different sizes and shapes, often designed to fit the patient with a comfortable but narrow space in between.
+
+
 To get even closer, so called 'surface coils' can be placed on the patient.
 'Spine coils' are sometimes hidden in the table on which the patient lies during the examination.
 Typically, for creating images of a patient's head, coils with a fixed arc-like geometry are used.
-This type of coil was also used for the data acquisition of this thesis.
+This type of coil (see figure \ref{fig:coil}) was used for the data acquisition of this thesis.
+
+\begin{figure}[tbh!]
+\centering
+\includegraphics[width=0.6\linewidth]{scanner/coil}
+\caption{MR scanner coil: (1) upper part, Body/Spine Array Coil; (2,3) central positioning markers; (4) lower part, Body/Spine Array Coil; (5) connection ports; (6) colour label [image source: Siemens Healthineers]}
+\label{fig:coil}
+\end{figure}
 
 Studies have shown that delineating certain types of tumours, for example prostate cancer, is more accurate using MR images than using CT. \cite{Rasch1999, Debois1999, Roach1996}
 
