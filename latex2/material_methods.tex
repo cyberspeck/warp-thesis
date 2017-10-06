@@ -528,6 +528,20 @@ However, as B grows, A will stay the same.
 Therefore, only a fraction of B will contribute to the overlap and the rest will counter-act the benefits (see equation \ref{eq:DC}).
 Consequently, the DC would become so small that the script will choose a smaller radius for B.
 
+
+% Define block styles
+\tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=18em, text centered, minimum height=4em]
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=12em, text centered, minimum height=5em]
+\tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{puffs} = [cloud, cloud puffs=13.5, minimum width=4cm, minimum height=1.5cm, align=center, fill=green!10]
+\tikzstyle{blocky} = [rectangle, draw, fill=yellow!10, text width=14em, text centered, minimum height=4em]
+\tikzstyle{decisionr} = [diamond, draw, aspect=3, fill=red!20, text width=18em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{decisiong} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{decisiony} = [diamond, draw, aspect=3, fill=yellow!10, text width=10em, text badly centered, node distance=2.5cm, inner sep=0pt]
+\tikzstyle{line} = [draw, very thick, color=black!80, -latex']
+%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
+
+
 \begin{figure}[!htb]
     \centering
 	\begin{tikzpicture}[node distance = 4cm, auto]
@@ -675,7 +689,7 @@ In that case, \texttt{DC}s for the lower half of that range ($12,5\%$) and the u
 If, on the other hand, the average \texttt{DC} for $75\%$ was higher, the next guess will then be $75\%$, because the new range goes from $50\%$ to $75\%$.
 In that case, \texttt{DC}s for $62,5\%$ and $82,5\%$ will be compared.
 
-The iteration continues until further steps yield no better average \texttt{DC} or a set number of steps has been performed.
+The iteration continues until further steps yield no better average \texttt{DC} or a set number of steps (default setting limit is set to five iterations) has been performed.
 After the iteration process, the algorithm will return the \texttt{COM} which resulted in the best DC.
 The percentage of pixels that led to this \texttt{DC} is equivalent to a \texttt{threshold} which is saved for future calculations.
 Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of trying different percentages during the iteration method.
@@ -727,18 +741,6 @@ All three are therefore easily understood to be invalid, indicating that the par
 The values representing x- and y-shift, on the other hand, are allowed to be negative or positive.
 To be consistent, they are still set to "$-1$".
 It is essential to bear this in mind when interpreting the script's output.
-
-% Define block styles
-\tikzstyle{blockb} = [rectangle, draw, fill=blue!15, text width=18em, text centered, minimum height=4em]
-\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=12em, text centered, minimum height=5em]
-\tikzstyle{block} = [rectangle, draw, fill=green!10, text width=14em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{puffs} = [cloud, cloud puffs=13.5, minimum width=4cm, minimum height=1.5cm, align=center, fill=green!10]
-\tikzstyle{blocky} = [rectangle, draw, fill=yellow!10, text width=14em, text centered, minimum height=4em]
-\tikzstyle{decisionr} = [diamond, draw, aspect=3, fill=red!20, text width=18em, text badly centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{decisiong} = [diamond, draw, aspect=2, fill=green!10, text width=4.5em, text badly centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{decisiony} = [diamond, draw, aspect=3, fill=yellow!10, text width=10em, text badly centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{line} = [draw, very thick, color=black!80, -latex']
-%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, text width=14em, node distance=2.5cm, minimum height=2em]
 
 \begin{figure}[p]
     \centering
