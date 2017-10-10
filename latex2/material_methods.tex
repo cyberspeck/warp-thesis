@@ -291,6 +291,16 @@ After injecting the solution in the rods, they were left to cool down.
 Before closing, the rods were topped up completely (no trapped air bubbles).
 The oil based liquids, \textbf{\#16} and \textbf{\#17}, were not brought to boil.
 
+\subsection{Handling of bubbles}
+
+On the second day of working with the filled rods the one containing liquid \textbf{\#6} broke (leakage).
+It happened when delicately knocking it against on the table while standing upright.
+This was intended to mobilise bubbles that sticked to the wall and make them travel vertically to on end of the rod. (see table \ref{tab:bubbles})
+The plastic stopper on the lower end came loose.
+The rod containing filling \textbf{\#6} was not replaced.
+Consequently, all CT/MRI images used to asses signal intensities of the tested solutions show only 16 rods.
+
+
 \section{Used software applications}
 
 Prior to analysing the data, the scans had to be prepared.
@@ -699,21 +709,19 @@ Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of try
 \centering
   \begin{subfigure}[b]{1\textwidth}
   \centering
-    \includegraphics[scale=0.65]{python/ph2/COM_iter/ph2_CT_x100_COM_iter-far.png}
+    \includegraphics[scale=0.65]{python/ph3_v2/ph3_v2_CT_x100_COM_iter-far.png}
     \caption{full iteration process}
-    \label{fig:CT_x100_iteration}
+    \label{fig:CT_x100_iteration-far}
   \end{subfigure}
   \begin{subfigure}[b]{1\textwidth}
   \centering
-    \includegraphics[scale=0.65]{python/ph2/COM_iter/ph2_CT_x100_COM_iter.png}
+    \includegraphics[scale=0.65]{python/ph3_v2/ph3_v2_CT_x100_COM_iter.png}
      \caption{close up of same iteration as in (a)}
-     \label{fig:MR_x100_iteration}
+     \label{fig:CT_x100_iteration}
   \end{subfigure}
-  \caption{COM iteration method, 8 repetitions; green dots correspond to upper guesses, blue to lower guesses}
+  \caption{COM iteration method, 5 repetitions; red triangles correspond to upper guesses, blue dots to lower guesses}
   \label{fig:COM_iteration}
 \end{figure}
-
-% image of COM shift
 
 
 \subsection{Detection of irregularities}
@@ -770,3 +778,4 @@ It is essential to bear this in mind when interpreting the script's output.
 	\caption{Check for irregularities}
 	\label{flo:irregular}
 \end{figure}
+
