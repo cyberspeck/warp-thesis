@@ -1,12 +1,24 @@
-\chapter*{Kurzzusammenfassung} 
+%\chapter*{Kurzzusammenfassung} 
 
 %Purpose, Materials and Methods, Results, Conclusion
-deutsch?\\
+%deutsch?\\
 \let\oldcleardoublepage\cleardoublepage
 \renewcommand\cleardoublepage{}
 
 \chapter*{\abstractname}% Korrekter Name für den Abstract in der jeweiligen Sprache
 
-english\\
+For radiotherapy treatment planning, knowledge concerning the reliability of the utilised image modality is crucial.
+Even though MRI scanners promise superior soft tissue contrast, the geometric precision is not as accurate as CT imaging.
+To assess the spatial distortion of a 0.35T MRI scanner, a software tool was developed which uses a custom designed phantom to calculate the occurring deformation and overall shift compared to CT scans.
+This was accomplished with use of the freely available python library SimpleITK.
+As the implemented tool is not yet able to calculate the distortion throughout the whole field of view, a conclusion whether treatment planning based solely on this scanner would be feasible is not possible at this point.
+However, additionally to the development of the script, candidates for a suitable filling of the phantom were produced and tested.
+Without a filling, the phantom is made up by a acrylic frame and more than 300 hollow rods.
+As the plastic material itself is not visible on MR images, the rods need to be filled with a liquid resulting in acceptable signal intensity.
+Synthetic oil was found to yield exceptional signal strength while promising long term reliability.
+Water based liquids, on the other hand, pose the issue of evaporation and forming of gas bubbles caused by dissolved gases.
+Possible solutions dealing with those problems are not ruled out entirely, especially if thicker rod walls were able to stop the evaporation entirely.
+Adding ascorbic acid to a solution of $CuSO_4\cdot5H_2O$ and $NaCl$ might limit the forming of bubbles while soap mobilises them so they can easily be moved to on end of the phantom which is outside of the field of view. 
+
 \let\cleardoublepage\oldcleardoublepage
 \newpage
