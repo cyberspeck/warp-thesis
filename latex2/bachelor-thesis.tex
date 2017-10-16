@@ -22,6 +22,13 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \addtolength{\textheight}{1.0cm}
 
 \addbibresource{../bib/library.bib}
+
+%https://tex.stackexchange.com/questions/86384/pdfpages-hyperref-contents-link-jumps-to-wrong-part-of-page
+\setcounter{errorcontextlines}{\maxdimen}
+\makeatletter
+\newcommand*{\@pdfpagephantomsection}[2][]{\edef\@currentHref{\AM@linkname.\AM@page}\addcontentsline{toc}{section}{\protect\numberline{}#1}}
+\makeatother
+
 \begin{document}
 
 \AbschlussarbeitTUWienPhysikTitlePage{
@@ -78,13 +85,14 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 	
 %\input{thanks.tex}
 \input{appendix.tex}
-\addcontentsline{toc}{section}{Python Script}	% https://tex.stackexchange.com/questions/119719/add-an-item-in-the-table-of-contents
-\includepdf[pages=-]{pdfs/FunITK.pdf}
-\addcontentsline{toc}{section}{Generated data}
-\addcontentsline{toc}{subsection}{rod \#5}
-\includepdf[pages=-]{pdfs/rod_5.pdf}
-\addcontentsline{toc}{subsection}{rod \#16}
-\includepdf[pages=-]{pdfs/rod_16.pdf}
+%https://tex.stackexchange.com/questions/119719/add-an-item-in-the-table-of-contents
+
+\includepdf[pages=-, link, addtotoc={1, pdfpagephantomsection, 1, Python - Class and functions, Fun}]{pdfs/FunITK.pdf}
+\includepdf[pages=-, link, addtotoc={1, pdfpagephantomsection, 1, Python - rod \#5, gen5}]{pdfs/ph2_x1-100_print.pdf}
+\includepdf[pages=-, link, addtotoc={1, pdfpagephantomsection, 1, Python - rod \#16, gen16}]{pdfs/ph3_v2_x1-100_print.pdf}
+
+\includepdf[pages=-, link, addtotoc={1, pdfpagephantomsection, 1, Output - rod \#5, data5}]{pdfs/rod_5.pdf}
+\includepdf[pages=-, link, addtotoc={1, pdfpagephantomsection, 1, Output - rod \#16, data16}]{pdfs/rod_16.pdf}
 
 \end{document}
 
