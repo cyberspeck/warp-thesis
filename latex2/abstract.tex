@@ -1,4 +1,25 @@
-%\chapter*{Kurzzusammenfassung} 
+\chapter*{Kurzzusammenfassung} 
+
+Ziel dieser Arbeit war die Entwicklung einer Software zur Berechnung der geometischen Verzerrung eines $0,35\, T$ MRT Scanners.
+Für den Erfolg von Tele- und Brachytherapie ist die Genauigkeit der genutzten bildgebenden Verfahren bei der Erstellung von Bestrahlungsplänen mitbestimmend.
+CT Aufnahmen sind geometrisch unverzerrt, und können daher zur Korrektur von MRT Aufnahmen verwendet werden.
+So kann die erhöhte Genauigkeit bei der Abgrenzung von Tumoren mithilfe des hohen Weichteilkontrastes bei MRT Bildern in die Berechnung einfließen.
+Moderne MRT scanner sind mit Algorithmen ausgestattet, die einen Großteil der Verzerrung korrigieren.
+Durch den Verzicht auf CT würde nicht nur Zeit und Geld eingespart, sondern auch die dem Patienten zugeführte Strahlenbelastung reduziert werden.
+
+Um die Verzerrung des MRT scanners zu bestimmen wurden MRT und CT Bilder eines eigens konzipierten und gefertigten Phantoms erstellt und verglichen.
+Dafür wurden sie zunächst registriert und mit einem Interpolationsverfahren neu berechnet und in höheren Auflösungen gespeichert.
+Anschließend bestimmte das entwickelte Programm die relative Verschiebung und Verformung unter Verwendung der frei verfügbaren Python Bibliothek {SimpleITK}.
+Das eingesetzte Phantom bilden ein Rahmen aus Plexiglass und mehr als 300 Röhren.
+Da für MRT Plastik unsichtbar ist, müssen die Röhren mit einer geeigneten Flüssigkeit gefüllt werden.
+Diese sollte ein ausreichend starkes Signal liefern und auf Dauer keine Gasblasen bilden.
+
+Für die Verwendung als ungünstig erwiesen sich fast alle auf Wasser basierende Flüssigkeiten, da sie einerseits bei zu dünnen Rohrwänden verdampfen können, andererseits darin gelöste Gase frei werden können.
+Bei dickeren Wänden jedoch könnte eine Lösung von $CuSO_4\cdot5H_2O$ und $NaCl$ in Wasser mit etwas Seife und Vitamin C die Anforderungen erfüllen. Die gelösten Salze führen zu ausreichender Signalstärke während Vitamin C der Bildung von Sauerstoff-Bläschen entgegen wirkt.
+Sollten dennoch Blasen entstehen, führt die Seife zu ausreichend Mobilität, sodass sie durch Kippen des Phantoms an ein Ende und somit aus dem Bildbereich bewegt werden können.
+Die Verzerrung des $0,35\, T$ MRT scanners konnte nicht bewertet werden, da das Entwickelte Programm vorerst nicht den gesamten Bildbereich evaluieren kann.
+Für die Berechnung der geometrischen Abweichung wird die Interpolation auf das 4-fache der ursprünglichen Auflösung empfohlen, da dies bei vergleichsweiser geringem Rechenaufwand zu signifikanter Verbesserung der Genauigkeit führt.
+
 
 %Purpose, Materials and Methods, Results, Conclusion
 %deutsch?\\
@@ -9,14 +30,15 @@
 
 For radiotherapy treatment planning, knowledge concerning the reliability of the utilised imaging modality is crucial.
 Even though MR scanners promise superior soft tissue contrast, the geometric precision is not as accurate as CT imaging.
-To assess the spatial distortion of a 0.35T MR scanner, a software tool was developed which uses a custom designed phantom to calculate the occurring deformation and overall shift compared to CT scans.
+To assess the spatial distortion of a $0.35\, T$ MR scanner, a software tool was developed.
+It compares the MR and reference CT images of a custom designed phantom to calculate the occurring deformation and overall shift.
 This was accomplished with use of the freely available python library {SimpleITK}.\\
 Images obtained from CT and MR scans were registered and resampled to a higher resolution prior to being processed by the software tool.
 While increased pixel numbers result in longer computing time, interpolated data lead to more detailed information.
 A 4 times higher resolution is recommended as it strikes a balance between limiting the CPU workload and enhancing the outputs accuracy.
-As the implemented tool is not yet able to calculate the distortion throughout the whole field of view (this would have exceeded the scope of this thesis), a conclusion whether treatment planning based solely on this scanner would be feasible, is not possible at this point.\\
+As the implemented tool is not yet able to calculate the distortion throughout the whole field of view, a conclusion whether treatment planning based solely on this scanner would be feasible, is not possible at this point.\\
 
-Additionally to the development of the script, candidates for a suitable filling of the phantom were produced and tested.
+Additionally to the development of the script, candidates for a suitable liquid of the phantom were produced and tested.
 Without a filling, the phantom is made up only by acrylic glass parts; namely a frame and more than 300 hollow rods.
 As the plastic material itself is not visible on MR images, the rods need to be filled with a liquid resulting in acceptable signal intensity.
 Synthetic oil was found to yield exceptional signal strength while promising long term reliability.

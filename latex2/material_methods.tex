@@ -189,7 +189,7 @@ See figure \ref{fig:rod_schematic} for a schematic sketch of one rod.
 The bottom part of each rod was sealed with a glued plastic plug, the top could be closed with a plastic screw.
 Frame and rods were already build and assembled before the author started working on this project.
 
-Additionally, to the rods which would be used to assess the distortion, a number of vitamin-e pills\footnote{soft gel capsules consisting of mostly water and glycerin bound by adding e.g. gelatin or pullulan (polysaccharide polymer; food additive E1204) \cite{pillshere}} were attached to the frame as reference markers (see figure \ref{fig:pills}).
+Additionally, to the rods which would be used to assess the distortion, a number of vitamin pills\footnote{soft gel capsules containing vitamin E and A \cite{pillshere}} were attached to the frame as reference markers (see figure \ref{fig:pills}).
 These pills are visible in both CT and MRI images and were used to align them (see section \ref{sec:prep}).
 This way there is another way of checking the alignment during the prototyping process in addition to the rods.
 
@@ -306,7 +306,7 @@ Consequently, all CT/MRI images used to asses signal intensities of the tested s
 Prior to analysing the data, the scans had to be prepared.
 For this task, two applications were used:
 \begin{itemize}
-\item \textit{MIRADA}: a commercial software solution for both diagnostic imaging and radiation oncology \cite{mirada} was used to align CT and MR images.
+\item \textit{MIRADA RTx}: a commercial software solution for both diagnostic imaging and radiation oncology \cite{mirada} was used to align CT and MR images.
 \item \textit{3D Slicer}: (Versions: Slicer-4.5.0-1-linux-amd64, Slicer-4.6.2-win-amd64) a "free and open source software package for visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} was used to crop and resample images, quickly read values and visualise the results.
 \end{itemize}
 
@@ -502,7 +502,7 @@ DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
 Figure \ref{flo:DC} describes the process of calculating the DC.
 It compares a binary image (input A) to a circle (reference B).
 In a binary image there are only 2 possible pixel values: "0" and "1".
-However, in e.g. a CT image, values lie in a range between -1024 and 1000 or higher.
+However, in a CT image, values most often lie in a range between -1024 and 1000 or higher.
 In order to reduce the original image to a binary image A, the script needs to split the pixels in 2 groups.
 A copy of the original picture is created where all pixels with a value above a certain  \texttt{threshold} are set to the value of "1".
 These are regarded as part of the rod.
