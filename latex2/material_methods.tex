@@ -569,7 +569,7 @@ Consequently, the DC would become so small that the script will choose a smaller
     \path [line] (binary) -- (overlap);
     \path [line] (circle) -- (overlap);
 	\end{tikzpicture}
-	\caption{\texttt{DC} calculation for a MR scan (rod \#5 @ slice 200) yielding a value of $0.9454$}
+	\caption[Flowchart: \texttt{DC} calculation for an MR scan yielding a value of $0.9454$.]{Flowchart: \texttt{DC} calculation for an MR scan (rod \#5 @ slice 200) yielding a value of $0.9454$}
 	\label{flo:DC}
 \end{figure}
 
@@ -629,7 +629,7 @@ Now, the DC can be obtained as described earlier using the now known \texttt{thr
     \path [line] (pixelNumber) -- (threshold);
     \path [line] (threshold) -- (COM);
 	\end{tikzpicture}
-	\caption{Simple method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size (inner diameter: $2\,mm$, outer diameter: $4\,mm$)}
+	\caption[Flowchart: Simple method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size.]{Flowchart: Simple method to find \texttt{threshold} for \texttt{COM} calculation based on real rod size (inner diameter: $2\,mm$, outer diameter: $4\,mm$).}
 	\label{flo:COM-simple}
 \end{figure}
 
@@ -665,7 +665,7 @@ Figure \ref{flo:COM-iter} shows in what order the scripts executes individual st
     \path [line] (repeat!) -- (getDC);
     \path [line] (repeat.south) to node {\textbf{no}} (fin);
 	\end{tikzpicture}
-	\caption{Iteration method to find \texttt{threshold}, \texttt{DC} and \texttt{COM}}
+	\caption{Flowchart: Iteration method to find \texttt{threshold}, \texttt{DC} and \texttt{COM}.}
 	\label{flo:COM-iter}
 \end{figure}
 
@@ -719,7 +719,7 @@ Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of try
      \caption{close up of same iteration as in (a)}
      \label{fig:CT_x100_iteration}
   \end{subfigure}
-  \caption[COM iteration method, 5 repetitions.]{COM iteration method, 5 repetitions; red triangles correspond to upper guesses, blue dots to lower guesses.}
+  \caption[Example of COM iteration method, 5 repetitions.]{Example of COM iteration method, 5 repetitions; red triangles correspond to upper guesses, blue dots to lower guesses.}
   \label{fig:COM_iteration}
 \end{figure}
 
@@ -775,7 +775,7 @@ It is essential to bear this in mind when interpreting the script's output.
     \path [line] (repeat!) -- (3);
     \path [line] (6.south) to node {\textbf{yes}} (7);
 	\end{tikzpicture}
-	\caption{Check for irregularities}
+	\caption{Flowchart: Check for irregularities.}
 	\label{flo:irregular}
 \end{figure}
 

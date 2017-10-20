@@ -5,21 +5,21 @@ Ziel dieser Arbeit war die Entwicklung einer Software zur Berechnung der geometi
 Für den Erfolg von Tele- und Brachytherapie ist die Genauigkeit der genutzten bildgebenden Verfahren bei der Erstellung von Bestrahlungsplänen mitbestimmend.
 CT Aufnahmen sind geometrisch unverzerrt, und können daher zur Korrektur von MRT Aufnahmen verwendet werden.
 So kann die erhöhte Genauigkeit bei der Abgrenzung von Tumoren mithilfe des hohen Weichteilkontrastes bei MRT Bildern in die Berechnung einfließen.
-Moderne MRT scanner sind mit Algorithmen ausgestattet, die einen Großteil der Verzerrung korrigieren.
+Moderne MRT Scanner sind mit Algorithmen ausgestattet, die einen Großteil der Verzerrung korrigieren.
 Durch den Verzicht auf CT würde nicht nur Zeit und Geld eingespart, sondern auch die dem Patienten zugeführte Strahlenbelastung reduziert werden.
 
-Um die Verzerrung des MRT scanners zu bestimmen, wurden MRT und CT Bilder eines eigens konzipierten und gefertigten Phantoms erstellt und verglichen.
+Um die Verzerrung des MRT Scanners zu bestimmen, wurden MRT und CT Bilder eines eigens konzipierten und gefertigten Phantoms erstellt und verglichen.
 Dafür wurden sie zunächst registriert und mit einem Interpolationsverfahren neu berechnet und in höheren Auflösungen gespeichert.
 Anschließend bestimmte das entwickelte Programm die relative Verschiebung und Verformung unter Verwendung der frei verfügbaren Python Bibliothek {SimpleITK}.
-Das Phantom bilden ein Rahmen aus Plexiglass und mehr als 300 Röhren.
-Da Plastik für MRT unsichtbar ist, wurden die Röhren mit einer geeigneten Flüssigkeit gefüllt.
+Das Phantom besteht aus einem Rahmen mit mehr als 300 Röhren aus Kunststoff.
+Da Kunststoff für MRT nicht sichtbar ist, wurden die Röhren mit einer geeigneten Flüssigkeit gefüllt.
 Diese sollte ein ausreichend starkes Signal liefern und auf Dauer keine Gasblasen bilden.
 
 Für die Verwendung als ungünstig erwiesen sich fast alle auf Wasser basierende Flüssigkeiten, da sie einerseits bei zu dünnen Rohrwänden verdampfen, andererseits darin gelöste Gase frei werden können.
-Bei dickeren Wänden jedoch könnte eine Lösung von $CuSO_4\cdot5H_2O$ und $NaCl$ in Wasser mit etwas Seife und Vitamin C die Anforderungen erfüllen. Die gelösten Salze führen zu ausreichender Signalstärke während Vitamin C der Bildung von Sauerstoff-Bläschen entgegen wirkt.
+Bei dickeren Wänden hingegen könnte eine Lösung von $CuSO_4\cdot5H_2O$ und $NaCl$ in Wasser mit etwas Seife und Vitamin C die Anforderungen erfüllen. Die gelösten Salze führen zu ausreichender Signalstärke während Vitamin C der Bildung von Sauerstoff-Bläschen entgegen wirkt.
 Sollten dennoch Blasen entstehen, führt die Seife zu ausreichend Mobilität, sodass sie durch Kippen des Phantoms an ein Ende und somit aus dem Bildbereich bewegt werden können.
-Die Verzerrung des $0,35\, T$ MRT scanners konnte nicht bewertet werden, da das Entwickelte Programm vorerst nicht den gesamten Bildbereich evaluieren kann.
-Für die Berechnung der geometrischen Abweichung wird die Interpolation auf das 4-fache der ursprünglichen Auflösung empfohlen, da dies bei vergleichsweise geringem Rechenaufwand bereits zu signifikanter Verbesserung der Genauigkeit führt.
+Die Verzerrung des $0,35\, T$ MRT Scanners konnte nicht bewertet werden, da das entwickelte Programm vorerst nicht den gesamten Bildbereich evaluieren kann.
+Für die Berechnung der geometrischen Abweichung wird die Interpolation auf das Vierfache der ursprünglichen Auflösung empfohlen, da dies bei vergleichsweise geringem Rechenaufwand bereits zu signifikanter Verbesserung der Genauigkeit führt.
 
 %Purpose, Materials and Methods, Results, Conclusion
 %deutsch?\\

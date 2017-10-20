@@ -108,7 +108,7 @@ In an attempt to limit the forming of gas, \textit{agar} was used in solutions \
 Agar and agarose are commonly used as basic reference material for MRI phantoms \cite{Bucciolini1989, Mathur-DeVre1985}
 %Since the produced gel cannot be removed from the rods as easily as liquid candidates, and forming air bubbles were also not moving, agar is not suited for this phantom.
 
-\subsubsection{Non water-based liquids}
+\subsubsection{Non water based liquids}
 As an alternative to water based solutions, two oils were proposed.
 Since oil is neither soluble in air, nor able to evaporate, a rod completely filled with oil should stay free from air bubbles.
 Yet, oil is not as easily removed from a rod as a water based liquid.
@@ -180,7 +180,7 @@ As slices with values of '-1' influence the average dramatically, the chosen thr
 	  \caption{slice 177}
 	  \label{fig:ph2_CT_x100_pane_2}
 	\end{subfigure}
-  \caption{Slices at edge of plastic pane in CT image showing rod \#5 (true colours): a black crescent remains at the bottom where there is a hole in the pane that is not filled with a rod at the moment}
+  \caption[Slices at edge of plastic pane in CT image.]{Slices at edge of plastic pane in CT image showing rod \#5 (true colours): a black crescent remains at the bottom where there is a hole in the pane that is not filled with a rod at the moment.}
   \label{fig:ph2_CT_x100_pane}
 \end{figure}
 
@@ -194,7 +194,7 @@ Consequently, in table \ref{tab:spit-out-5} and \ref{tab:spit-out-16}, the value
 
 In the future, the threshold value used to determine a significant change in brightness could be automatically chosen based on the image modality and the image size.
 
-\subsection{Measured distortion - Rod \#5}
+\subsection{Measured distortion - rod \#5}
 
 Figure \ref{fig:MR_x100_centroids} visualises the centroid shift at interesting slices of rod \#5.
 It is clearly visible that the shift is bigger at the end of the rod (slice 0) compared to a slice close to its middle (slice 171).
@@ -205,7 +205,7 @@ Since the bubble floated on top of the liquid, the COM shift is most pronounced 
 The overall impact on the area of 110mm to 140mm is clearly visible in figures \ref{fig:ph2_warpMagnitude_x100} and \ref{fig:ph2_DC_x100}.
 In conclusion, it is imperative for the distortion assessment to exclude bubbles from the FOV.
 
-\subsection{Measured distortion - Rod \#16}
+\subsection{Measured distortion - rod \#16}
 
 Similar to the findings for rod \#5, the distortion is bigger in the peripheral regions of the FOV (see figure \ref{fig:ph3_DC_x100}).
 Interestingly, the y shift changes its orientation around the centre (see figure \ref{fig:ph3_warpXY_x100}).
@@ -265,6 +265,7 @@ The value of the MRI DC lies between 0.9 and 1 (except for the air bubble region
 
 \begin{table}[!tbh]
  \centering
+ \caption{Expectancy and standard deviation of difference between calculated distortion for x1 and x100 resample rate; rod \#5.}
 \begin{tabular}{l|rr}
                     & E         & $\sigma_\Delta$   \\ \hline
 $\Delta warpM^*$ [mm]  & 0.038     & 0.058    \\
@@ -272,28 +273,27 @@ $\Delta warpM^*$ [mm]  & 0.038     & 0.058    \\
 $\Delta DC^*_{MRI}$         & 0.000518  & 0.019070 \\
 $\Delta DC^*_{MRI(CT-COM)}$ & -0.008905 & 0.022050
 \end{tabular}
-\caption{Expectancy and standard deviation of difference between calculated distortion for x1 and x100 resample rate; rod \#5}
 \label{tab:Delta-resample_5}
 \end{table}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/warp/warpMagnitude_x1-100_iter.png}
-    \caption{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100; plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
+    \caption[Rod \#5; x1 and x100: warp Magnitude (iteration method).]{Rod \#5; x1 and x100: warp Magnitude [$mm$] (iteration method); plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$.}
     \label{fig:ph2_warpMagnitude_x1-100}
 \end{figure}
 
 \begin{figure}[!bth]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/dice/ph2_DC_x1_iter.png}
-    \caption{Rod \#5; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
+    \caption[Rod \#5; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM).]{Rod \#5; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$.}
     \label{fig:ph2_DC_x1}
 \end{figure}
 
 \begin{figure}[!bth]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph2/dice/ph2_DC_x4_iter.png}
-    \caption{Rod \#5; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
+    \caption[Rod \#5; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM).]{Rod \#5; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$.}
     \label{fig:ph2_DC_x4}
 \end{figure}
 
@@ -325,20 +325,20 @@ $\Delta DC^*_{MRI(CT-COM)}$ & 0.012554   & 0.019429
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/warp/ph3_MR_v2_x1-100_warpMagnitude_iter.png}
-    \caption{Rod \#16: warp Magnitude [$mm$] (iteration method), CT-MRI x1 and x100; plastic pane from $-8mm$ to $12mm$}
+    \caption[Rod \#16; x1 and x100: warp Magnitude (iteration method).]{Rod \#16; x1 and x100: warp Magnitude [$mm$] (iteration method); plastic pane from $-8mm$ to $12mm$.}
     \label{fig:ph3_v2_warpMagnitude_x1-100}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/dice/ph3_MR_v2_x1_DC_iter.png}
-    \caption{Rod \#16; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-8mm$ to $12mm$}
+    \caption[Rod \#16; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM).]{Rod \#16; x1: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-8mm$ to $12mm$.}
     \label{fig:ph3_DC_x1}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{../fig/python/ph3_v2/dice/ph3_MR_v2_x4_DC_iter.png}
-    \caption{Rod \#16; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-8mm$ to $12mm$}
+    \caption[Rod \#16; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM).]{Rod \#16; x4: DC (iteration method) for CT \& MRI \& MRI (using CT COM); plastic pane from $-8mm$ to $12mm$.}
     \label{fig:ph3_DC_x4}
 \end{figure}
