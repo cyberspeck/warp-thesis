@@ -1,5 +1,6 @@
-\chapter*{Kurzzusammenfassung} 
 
+
+\chapter*{Kurzzusammenfassung} 
 Ziel dieser Arbeit war die Entwicklung einer Software zur Berechnung der geometischen Verzerrung eines $0,35\, T$ MRT Scanners.
 Für den Erfolg von Tele- und Brachytherapie ist die Genauigkeit der genutzten bildgebenden Verfahren bei der Erstellung von Bestrahlungsplänen mitbestimmend.
 CT Aufnahmen sind geometrisch unverzerrt, und können daher zur Korrektur von MRT Aufnahmen verwendet werden.
@@ -7,19 +8,18 @@ So kann die erhöhte Genauigkeit bei der Abgrenzung von Tumoren mithilfe des hoh
 Moderne MRT scanner sind mit Algorithmen ausgestattet, die einen Großteil der Verzerrung korrigieren.
 Durch den Verzicht auf CT würde nicht nur Zeit und Geld eingespart, sondern auch die dem Patienten zugeführte Strahlenbelastung reduziert werden.
 
-Um die Verzerrung des MRT scanners zu bestimmen wurden MRT und CT Bilder eines eigens konzipierten und gefertigten Phantoms erstellt und verglichen.
+Um die Verzerrung des MRT scanners zu bestimmen, wurden MRT und CT Bilder eines eigens konzipierten und gefertigten Phantoms erstellt und verglichen.
 Dafür wurden sie zunächst registriert und mit einem Interpolationsverfahren neu berechnet und in höheren Auflösungen gespeichert.
 Anschließend bestimmte das entwickelte Programm die relative Verschiebung und Verformung unter Verwendung der frei verfügbaren Python Bibliothek {SimpleITK}.
-Das eingesetzte Phantom bilden ein Rahmen aus Plexiglass und mehr als 300 Röhren.
-Da für MRT Plastik unsichtbar ist, müssen die Röhren mit einer geeigneten Flüssigkeit gefüllt werden.
+Das Phantom bilden ein Rahmen aus Plexiglass und mehr als 300 Röhren.
+Da Plastik für MRT unsichtbar ist, wurden die Röhren mit einer geeigneten Flüssigkeit gefüllt.
 Diese sollte ein ausreichend starkes Signal liefern und auf Dauer keine Gasblasen bilden.
 
-Für die Verwendung als ungünstig erwiesen sich fast alle auf Wasser basierende Flüssigkeiten, da sie einerseits bei zu dünnen Rohrwänden verdampfen können, andererseits darin gelöste Gase frei werden können.
+Für die Verwendung als ungünstig erwiesen sich fast alle auf Wasser basierende Flüssigkeiten, da sie einerseits bei zu dünnen Rohrwänden verdampfen, andererseits darin gelöste Gase frei werden können.
 Bei dickeren Wänden jedoch könnte eine Lösung von $CuSO_4\cdot5H_2O$ und $NaCl$ in Wasser mit etwas Seife und Vitamin C die Anforderungen erfüllen. Die gelösten Salze führen zu ausreichender Signalstärke während Vitamin C der Bildung von Sauerstoff-Bläschen entgegen wirkt.
 Sollten dennoch Blasen entstehen, führt die Seife zu ausreichend Mobilität, sodass sie durch Kippen des Phantoms an ein Ende und somit aus dem Bildbereich bewegt werden können.
 Die Verzerrung des $0,35\, T$ MRT scanners konnte nicht bewertet werden, da das Entwickelte Programm vorerst nicht den gesamten Bildbereich evaluieren kann.
-Für die Berechnung der geometrischen Abweichung wird die Interpolation auf das 4-fache der ursprünglichen Auflösung empfohlen, da dies bei vergleichsweiser geringem Rechenaufwand zu signifikanter Verbesserung der Genauigkeit führt.
-
+Für die Berechnung der geometrischen Abweichung wird die Interpolation auf das 4-fache der ursprünglichen Auflösung empfohlen, da dies bei vergleichsweise geringem Rechenaufwand bereits zu signifikanter Verbesserung der Genauigkeit führt.
 
 %Purpose, Materials and Methods, Results, Conclusion
 %deutsch?\\
@@ -27,16 +27,15 @@ Für die Berechnung der geometrischen Abweichung wird die Interpolation auf das 
 \renewcommand\cleardoublepage{}
 
 \chapter*{\abstractname}
-
 For radiotherapy treatment planning, knowledge concerning the reliability of the utilised imaging modality is crucial.
 Even though MR scanners promise superior soft tissue contrast, the geometric precision is not as accurate as CT imaging.
 To assess the spatial distortion of a $0.35\, T$ MR scanner, a software tool was developed.
 It compares the MR and reference CT images of a custom designed phantom to calculate the occurring deformation and overall shift.
-This was accomplished with use of the freely available python library {SimpleITK}.\\
+This was accomplished with use of the freely available python library {SimpleITK}.
 Images obtained from CT and MR scans were registered and resampled to a higher resolution prior to being processed by the software tool.
 While increased pixel numbers result in longer computing time, interpolated data lead to more detailed information.
 A 4 times higher resolution is recommended as it strikes a balance between limiting the CPU workload and enhancing the outputs accuracy.
-As the implemented tool is not yet able to calculate the distortion throughout the whole field of view, a conclusion whether treatment planning based solely on this scanner would be feasible, is not possible at this point.\\
+As the implemented tool is not yet able to calculate the distortion throughout the whole field of view, a conclusion whether treatment planning based solely on this scanner would be feasible, is not possible at this point.
 
 Additionally to the development of the script, candidates for a suitable liquid of the phantom were produced and tested.
 Without a filling, the phantom is made up only by acrylic glass parts; namely a frame and more than 300 hollow rods.
@@ -45,7 +44,7 @@ Synthetic oil was found to yield exceptional signal strength while promising lon
 In comparison, water based liquids are less suited.
 Not only do they leak from the rods due to evaporation, but they also contain dissolved gases which lead to the formation of gas bubbles.
 Possible solutions dealing with these problems are not ruled out entirely, especially if thicker rod walls were able to eliminate evaporation completely.
-Adding ascorbic acid to a solution of $CuSO_4\cdot5H_2O$ and $NaCl$ might limit the forming of bubbles while soap separates them from the walls so they can easily be moved from the field of view.\\
+Adding ascorbic acid to a solution of $CuSO_4\cdot5H_2O$ and $NaCl$ might limit the forming of bubbles while soap separates them from the walls so they can easily be moved from the field of view.
 
 The approach taken with this software tool alongside the preparation of a suitable phantom pave the way for a comprehensive analysis of the MR scanner's geometric distortion.
 Even though more development is necessary, the groundwork for accomplishing this task has been laid.

@@ -32,7 +32,7 @@ During a future distortion assessment where all available rods (over 300) are us
     \caption{MR: The rods appear to be thinner than in the CT scan, because only the liquid filling is visible. The tested liquids result in different signal intensity (brightness); all plastic parts (rods and panes) are not visible; there is a trapped air bubble visible in rod \#5.}
     \label{fig:coronal_MR}
   \end{subfigure}
-  \caption{Coronal CT/MRI (inverted colours; same scale; cropped images) images of 16 rods (tested liquids, numbering starting from the right, \#6 excluded) + 2 reference rods (filled with water) on the sides.}
+  \caption[Coronal images of 16 rods fileld with tested liquids.]{Coronal CT/MRI (inverted colours; same scale; cropped images) images of 16 rods (tested liquids, numbering starting from the right, \#6 excluded) + 2 reference rods (filled with water) on the sides.}
   \label{fig:coronal}
 \end{figure}
 
@@ -47,7 +47,7 @@ During a future distortion assessment where all available rods (over 300) are us
     \caption{MRI: The black circle in the centre depicts a water bottle which was placed in the middle of the phantom (necessary for MRI scanner to start imaging).}
     \label{fig:axial_MR}
   \end{subfigure}
-  \caption{axial CT/MRI (inverted colours, same scale) images of the 16 rods filled with tested liquids (numbering starting from the right, \#6 excluded); surrounded by reference rods (filled with water) and one empty rod (marked with arrow) which is not visible on the MRI scan}
+  \caption[Axial images of 16 rods fileld with tested liquids.]{Axial CT/MRI (inverted colours, same scale) images of the 16 rods filled with tested liquids (numbering starting from the right, \#6 excluded); surrounded by reference rods (filled with water) and one empty rod (marked with arrow) which is not visible on the MRI scan.}
   \label{fig:axial}
 \end{figure}
 
@@ -85,7 +85,7 @@ No. & Min  & Max  & Mean   & Median & $\sigma$ \\ \midrule
 16  & 1102 & 1967 & 1509   & 1483.5 & 325.8    \\
 17  & 356  & 938  & 629.6  & 602    & 223.6    \\ \bottomrule
 \end{tabular}
-\caption{liquid visibility on MRI scan}
+\caption{Liquid visibility on MRI scan.}
 \label{tab:visibility}
 \end{table}
 
@@ -152,11 +152,11 @@ No. & bubbles	& hit req.	& bubbles 	& hit req.	& bubbles 	& hit req.	\\
 \#16  & no	&   		& no		&		& no		&		\\
 \bottomrule
 \end{tabular}
-\caption{Observations made in the first week regarding the mechanical properties of the tested solutions. Some rods contained bubbles which would move simply from buoyancy (when the rod was tilted or put upright), others required a knock to detach from the walls ('hit req.')}
+\caption[Observations made in the first week regarding the mechanical properties of the tested solutions]{Observations made in the first week regarding the mechanical properties of the tested solutions. Some rods contained bubbles which would move simply from buoyancy (when the rod was tilted or put upright), others required a knock to detach from the walls ('hit req.').}
 \label{tab:bubbles1}
 \end{table}
 
-\footnotetext{liquid exhibited brown colouring}
+\footnotetext{liquid exhibited brown colouring.}
 \clearpage
 
 \begin{table}[tbh!]
@@ -285,7 +285,7 @@ All plots were created using the data obtained with the iteration method.
 394    & 211  & 0.1147  & -0.263  & 0.2869 & 0.9808 & 0.9522 & 0.9024 & 0.1039  & -0.2608 & 0.2808 & 0.9917 & 0.9681 & 0.9287 \\
 395    & 212  & 0.1214  & -0.2454 & 0.2738 & 0.9815 & 0.9552 & 0.9089 & 0.1114  & -0.2424 & 0.2668 & 0.9921 & 0.9691 & 0.9311
  \end{tabular}
-        \caption{rod \#5: script generated data; dist and $warp$ in [$mm$]}
+        \caption[Rod \#5: script generated data.]{rod \#5: script generated data; dist and $warp$ in [$mm$].}
         \label{tab:spit-out-5}
       \end{minipage}
     }
@@ -294,14 +294,14 @@ All plots were created using the data obtained with the iteration method.
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{python/ph2/brightness/ph2_CT_x100_brightness.png}
-    \caption{Rod \#5: brightness of all pixels in each slice along z-axis, CT x100; the plastic pane fills the area from $-10mm$ to $10mm$.}
+    \caption[Rod \#5: brightness along z-axis, CT x100.]{Rod \#5: brightness of all pixels in each slice along z-axis, CT x100; the plastic pane fills the area from $-10mm$ to $10mm$.}
     \label{fig:ph2_CT_x100_brightness}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{python/ph2/brightness/ph2_MR_x100_brightness.png}
-    \caption{Rod \#5: brightness of all pixels in each slice along z-axis, MRI x100; drop of max brightness at around $110mm$ to $135mm$ is due to air bubble.}
+    \caption[Rod \#5: brightness along z-axis, MRI x100.]{Rod \#5: brightness of all pixels in each slice along z-axis, MRI x100; drop of max brightness at around $110mm$ to $135mm$ is due to air bubble.}
     \label{fig:ph2_MR_x100_brightness}
 \end{figure}
 
@@ -309,21 +309,21 @@ All plots were created using the data obtained with the iteration method.
 \begin{figure}[!bth]
   \centering
   \includegraphics[scale=0.6]{python/ph2/warp/warpXY_x100_iter.png}
-  \caption{Rod \#5: warp XY [$mm$] (iteration method), CT-MRI x100; plastic pane present from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$.}
+  \caption[Rod \#5: warp XY (iteration method), CT-MRI x100.]{Rod \#5: warp XY [$mm$] (iteration method), CT-MRI x100; plastic pane present from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$.}
   \label{fig:ph2_warpXY_x100}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{python/ph2/warp/warpMagnitude_x100_iter.png}
-    \caption{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x100; plastic pane present from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
+    \caption[Rod \#5: warp Magnitude (iteration method), CT-MRI x100.]{Rod \#5: warp Magnitude [$mm$] (iteration method), CT-MRI x100; plastic pane present from $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$.}
     \label{fig:ph2_warpMagnitude_x100}
 \end{figure}
 
 \begin{figure}[!bth]
     \centering
     \includegraphics[scale=0.6]{python/ph2/dice/ph2_DC_x100_iter.png}
-    \caption{Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100; plastic pane at $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$}
+    \caption[Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100.]{Rod \#5: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100; plastic pane at $-10mm$ to $10mm$, bubble at about $110mm$ to $135mm$.}
     \label{fig:ph2_DC_x100}
 \end{figure}
 
@@ -359,7 +359,7 @@ All plots were created using the data obtained with the iteration method.
     \caption{MRI @ 304}
     \label{fig:MR_x100_centroids@304}
   \end{subfigure}
-  \caption{MRI x100 scan of rod filled with \#5 (true colours). The dark blue dot represents the MRI centroid, the bright red dot represents the CT centroid.
+  \caption[Rod \#5: images showing the location of MRI/CT centroids at various slices along z-axis; x100]{Rod \#5: images showing the location of MRI/CT centroids at various slices along z-axis; x100 (true colours). The dark blue dot represents the MRI centroid, the bright red dot represents the CT centroid.
   			\\ Slice 171 is located approximately at the isocentre, 0 on the very end of the image, 304 on the other but also close to an air bubble.}
   \label{fig:MR_x100_centroids}
 \end{figure}
@@ -421,7 +421,7 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
 610    & 249  & 3.1422  & 0.7546  & 3.2315 & 0.984  & 0.9269 & 0.328  & 3.1288  & 0.8802  & 3.2503 & 0.9967 & 0.9312 & 0.5192 \\
 611    & 250  & 3.2214  & 0.7399  & 3.3053 & 0.9834 & 0.9359 & 0.3064 & 3.1835  & 0.8563  & 3.2967 & 0.9971 & 0.9282 & 0.5145
 \end{tabular}
-       \caption{rod \#16: script generated data; dist and $warp$ in [$mm$]}
+       \caption[Rod \#16: script generated data.]{rod \#5: script generated data; dist and $warp$ in [$mm$].}
        \label{tab:spit-out-16}
      \end{minipage}
    }
@@ -437,14 +437,14 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
 \begin{figure}[!thb]
     \centering
     \includegraphics[scale=0.6]{python/ph3_v2/ph3_CT_x100_brightness.png}
-    \caption{Rod \#16: brightness of all pixels in each slice along z-axis, CT x100}
+    \caption[Rod \#16: brightness along z-axis, CT x100.]{Rod \#16: brightness of all pixels in each slice along z-axis, CT x100; the plastic pane fills the area from $-10mm$ to $10mm$.}
     \label{fig:ph3_CT_x100_brightness}
 \end{figure}
 
 \begin{figure}[!tbh]
     \centering
     \includegraphics[scale=0.6]{python/ph3_v2/ph3_MR_v2_x100_brightness.png}
-    \caption{Rod \#16: brightness of all pixels in each slice along z-axis, MRI x100}
+    \caption[Rod \#16: brightness along z-axis, MRI x100.]{Rod \#16: brightness of all pixels in each slice along z-axis, MRI x100}
     \label{fig:ph3_MR_x100_brightness}
 \end{figure}
 
@@ -452,21 +452,21 @@ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(C
 \begin{figure}[!hbt]
   \centering
   \includegraphics[scale=0.6]{python/ph3_v2/warp/ph3_MR_v2_x100_warpXY_iter.png}
-  \caption{Rod \#16: warp XY [$mm$] (iteration method), CT-MRI x100; plastic pane fills region from $-8mm$ to $12mm$}
+  \caption[Rod \#16: warp XY (iteration method), CT-MRI x100.]{Rod \#16: warp XY [$mm$] (iteration method), CT-MRI x100; plastic pane fills region from $-8mm$ to $12mm$}
   \label{fig:ph3_warpXY_x100}
 \end{figure}
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[scale=0.6]{python/ph3_v2/warp/ph3_MR_v2_x100_warpMagnitude_iter.png}
-    \caption{Rod \#16: warp Magnitude [$mm$] (iteration method), CT-MRI x100; plastic pane fills region from $-8mm$ to $12mm$}
+    \caption[Rod \#16: warp Magnitude (iteration method), CT-MRI x100.]{Rod \#16: warp Magnitude (iteration method), CT-MRI x100; plastic pane fills region from $-8mm$ to $12mm$}
     \label{fig:ph3_warpMagnitude_x100}
 \end{figure}
 
 \begin{figure}[!htb]
      \centering
      \includegraphics[scale=0.6]{python/ph3_v2/dice/ph3_MR_v2_x100_DC_iter.png}
-     \caption{Rod \#16: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100; plastic pane fills region from $-8mm$ to $12mm$}
+     \caption[Rod \#16: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100.]{Rod \#16: DC (iteration method) for CT \& MRI \& MRI (using CT COM), x100; plastic pane fills region from $-8mm$ to $12mm$}
      \label{fig:ph3_DC_x100}
 \end{figure}
 

@@ -56,9 +56,12 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \titlePageTUWienPhysik
 
 \pagenumbering{roman} \setcounter{page}{1}
+\tableofcontents \newpage
+%\input{acknowledgements.tex}
+\listoffigures
+\listoftables
 \input{abstract.tex}
 \input{preface.tex}
-\tableofcontents \newpage
 \cleardoublepage % Macht, dass openright funktioniert.
 % \chapter macht das automatisch \tableofcontents und \printbibliography machen das nicht.
 % Falls es Probleme gibt hilft auch der Befehl \blankpage (siehe header.tex)
