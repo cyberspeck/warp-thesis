@@ -31,12 +31,13 @@ Detailed sequence parameters are listed in table \ref{tab:MR-scanner}
 
 \begin{table}[!tbh]
 \centering
+\caption{MR scanner and used protocol.}
 \begin{tabular}{r|l}
-system			& MR				\\
+system			& MRI				\\
+\toprule
 manufacturer	& Siemens			\\
 product name	& Magnetom C!		\\
-coil			& Body/Spine Array Coil XL	\\
-$[$internal W x H$]$& $[$50 x 30.5 cm (19.7 x 12 in)$]$	\\
+coil $[$internal W x H$]$	& Body/Spine Array Coil XL $[$50 x 30.5 cm (19.7 x 12 in)$]$	\\
 orientation		& axial	\\
 sequence		& T1 weighted 3D-FLASH Vibe	\\
 				& (Volumetric interpolated breath-hold)	\\
@@ -48,23 +49,21 @@ echo time		& 2,7	\\
 bandwidth		& 240	\\
 flip angle		& 6 deg	\\
 averages $n$	& 4	\\
-acquisition time& ~17.5 min
+acquisition time& 17.5 min
 \end{tabular}
-\caption{MR scanner and used protocol}
 \label{tab:MR-scanner}
 \end{table}
 
 
-\clearpage
-
 \subsection{CT}
 To generate a reference CT image set a typically used clinical pelvis imaging protocol for radiation therapy planning (with increased resolution 0.6 mm) was used (see table \ref{tab:CT-scanner}).
 
-
 \begin{table}[!tbh]
 \centering
+\caption{CT scanner and used protocol.}
 \begin{tabular}{r|l}
 system			& CT				\\
+\toprule
 manufacturer	& Siemens			\\
 product name	& SOMATOM Definition AS		\\
 software version& syngo CT 2013B	\\
@@ -76,7 +75,6 @@ kVP				& 120kV	\\
 x-ray tube current	&	19 mA	\\
 convolution kernel	&	I30f, 3
 \end{tabular}
-\caption{CT scanner and used protocol}
 \label{tab:CT-scanner}
 \end{table}
 
@@ -251,6 +249,7 @@ They are listed in Table \ref{tab:solutions}.
 
 \begin{table}[!hbt]
 \centering
+\caption[The composition of all tested solutions.]{The composition of all tested solutions.\\(components in $g/L$; exception: Primovist in volume-\%)}
 \begin{tabular}{@{}l|rrrrrr@{}}
 No.   & $NaCl$   & $CuSO_4\cdot5H_2O$          & Soap & Ascorbic Acid & Agar & Primovist [volume-\%]\\
 \toprule
@@ -273,9 +272,8 @@ water based: \\
 \midrule
 non water based: \\
 \#16 & \multicolumn{2}{r}{Motor Oil:}   & \multicolumn{4}{l}{\textit{Castrol Power1}}      \\
-\#17 & \multicolumn{2}{r}{Silicon Oil:} & \multicolumn{4}{l}{\textit{Charge: 15HLVY023}}   \\ \bottomrule
+\#17 & \multicolumn{2}{r}{Silicon Oil:} & \multicolumn{4}{l}{\textit{Charge: 15HLVY023}}
 \end{tabular}
-\caption{The composition of all tested solutions.\\(components in $g/L$; exception: Primovist in volume-\%)}
 \label{tab:solutions}
 \end{table}
 
@@ -340,6 +338,7 @@ Dark pixels have a high density/intensity value, white pixels are equivalent to 
 
 \begin{table}[!htb]
 \centering
+\caption[Pixel Spacing and resample rates.]{Pixel Spacing and resample rates (rounded values) [$mm$].}
 \begin{tabular}{l|l|l|l}
 resample factor  & z (not affected) &  y (same as x) & x \\
 \toprule
@@ -349,7 +348,6 @@ x9     & 0.60 & 0.33	& 0.33	\\
 x25    & 0.60 & 0.2 	& 0.2	\\
 x100   & 0.60 & 0.1 	& 0.1
 \end{tabular}
-\caption{pixel Spacing (rounded values) [$mm$]}
 \label{tab:spacing}
 \end{table}
 

@@ -65,10 +65,11 @@ Only \textbf{\#1}, \textbf{\#9}, \textbf{\#10}, \& \textbf{\#16} resulted in sig
 
 \begin{table}[!htb]
 \centering
-\caption{Liquid visibility on MRI scan.}
+\caption{Visibility of liquids on MR scans.}
 \begin{tabular}{@{}l|lllll@{}}
 \toprule
-No. & Min  & Max  & Mean   & Median & $\sigma$ \\ \midrule
+No. & Min  & Max  & Mean   & Median & $\sigma$ \\
+\toprule
 1   & 182  & 371  & 288    & 269    & 69.8     \\
 2   & 1044 & 1921 & 1443.8 & 1405   & 312.9    \\
 3   & 941  & 2075 & 1451.2 & 1394.5 & 413.2    \\
@@ -84,7 +85,7 @@ No. & Min  & Max  & Mean   & Median & $\sigma$ \\ \midrule
 14  & 800  & 2062 & 1383   & 1335   & 473.1    \\
 15  & 1156 & 1829 & 1476.2 & 1460   & 272.7    \\
 16  & 1102 & 1967 & 1509   & 1483.5 & 325.8    \\
-17  & 356  & 938  & 629.6  & 602    & 223.6    \\ \bottomrule
+17  & 356  & 938  & 629.6  & 602    & 223.6
 \end{tabular}
 \label{tab:visibility}
 \end{table}
@@ -150,8 +151,7 @@ No. & bubbles	& hit req.	& bubbles 	& hit req.	& bubbles 	& hit req.	\\
 \#14  & no	&   		& yes		& no		& yes		& yes		\\
 \#15  & no	&   		& no		&		& no		&		\\
 \#16  & no	&   		& no		&		& no		&		\\
-\#16  & no	&   		& no		&		& no		&		\\
-\bottomrule
+\#16  & no	&   		& no		&		& no		&
 \end{tabular}
 \label{tab:bubbles1}
 \end{table}
@@ -163,7 +163,6 @@ No. & bubbles	& hit req.	& bubbles 	& hit req.	& bubbles 	& hit req.	\\
 \centering
 \caption{Accumulated air in observed rods.}
 \begin{tabular}{l|lr}
-\multicolumn{3}{c}{}								\\
 & \multicolumn{2}{c}{\textit{after 2 months}}					\\ 
 No. & length of trapped bubble $l$ [$mm$] 	& approx. volume $V$ [$mm^3$]	\\
 \toprule
@@ -183,8 +182,7 @@ No. & length of trapped bubble $l$ [$mm$] 	& approx. volume $V$ [$mm^3$]	\\
 \#14  & 1.5+0.5 (big immobile bubble, at center)	& 25.13				\\
 \#15  & 3.4 (agar gel dried)			& 42.73				\\
 \#16  & 0					& 0.00				\\
-\#17  & 0.5					& 6.28				\\
-\bottomrule
+\#17  & 0.5					& 6.28
 \end{tabular}
 \label{tab:bubbles2}
 \end{table}
@@ -247,7 +245,7 @@ All plots were created using the data obtained with the iteration method.
       	\caption[Rod \#5: script generated data.]{Rod \#5: script generated data; dist and $warp$ in [$mm$].}
         \centering
  \begin{tabular}{rr||lll|lll||lll|lll}
- slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(CT-COM)}$ & $warp_x^*$ & $warp_y^*$ & $warpM^*$ & $DC^*_{CT}$	& $DC^*_{MR}$ & $DC^*_{MR(CT-COM)}$\\ \hline
+ slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(CT-COM)}$ & $warp_x^*$ & $warp_y^*$ & $warpM^*$ & $DC^*_{CT}$	& $DC^*_{MR}$ & $DC^*_{MR(CT-COM)}$\\ \toprule
 0      & -183 & -0.1046 & -1.115  & 1.1199 & 0.983  & 0.8444 & 0.6102 & -0.1047 & -1.0571 & 1.0623 & 0.9945 & 0.9504 & 0.7546 \\
 1      & -182 & -0.1205 & -1.1132 & 1.1197 & 0.9807 & 0.8547 & 0.6091 & -0.1199 & -1.0527 & 1.0595 & 0.9929 & 0.9496 & 0.7573 \\
 2      & -181 & -0.1278 & -1.1107 & 1.1181 & 0.9819 & 0.8666 & 0.6135 & -0.1334 & -1.0472 & 1.0556 & 0.9925 & 0.9501 & 0.7583 \\
@@ -383,7 +381,7 @@ All plots were created using the data obtained with the iteration method.
        \centering
        \caption[Rod \#16: script generated data.]{Rod \#16: script generated data; dist and $warp$ in [$mm$].}
 \begin{tabular}{rr||lll|lll||lll|lll}
-slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(CT-COM)}$ & $warp_x^*$ & $warp_y^*$ & $warpM^*$ & $DC^*_{CT}$	& $DC^*_{MR}$ & $DC^*_{MR(CT-COM)}$\\ \hline
+slice	& dist & $warp_x$ & $warp_y$ & $warpM$ & $DC_{CT}$ & $DC_{MR}$ & $DC_{MR(CT-COM)}$ & $warp_x^*$ & $warp_y^*$ & $warpM^*$ & $DC^*_{CT}$	& $DC^*_{MR}$ & $DC^*_{MR(CT-COM)}$\\ \toprule
 0      & -361 & 2.9415  & 0.4286  & 2.9725 & 0.9676 & 0.033  & 0.0062 & 3.3112  & 0.8531  & 3.4193 & 0.944  & 0.6126 & 0.3313 \\
 1      & -360 & 2.94    & 0.4294  & 2.9712 & 0.9706 & 0.0331 & 0.0062 & 3.3129  & 0.8427  & 3.4184 & 0.9456 & 0.6126 & 0.3308 \\
 2      & -359 & 2.9441  & 0.4224  & 2.9742 & 0.9725 & 0.0391 & 0.0077 & 3.2904  & 0.8202  & 3.3911 & 0.9475 & 0.6121 & 0.3346 \\
