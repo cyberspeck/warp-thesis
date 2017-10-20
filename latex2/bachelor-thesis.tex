@@ -2,7 +2,6 @@
 bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseitig für Seitenränder, Bindcorrection
 \input{header.tex}
 \input{titlepage.tex}
-\writeIn{english} % Siehe header.tex. Setzt Dokumentsprache und damit Sprache von "Abstract", "Inhaltsverzeichnis", Datumsangaben etc.
 
 \hypersetup{ % Setzt einige Werte die in den Eigenschaften des PDF gespeichert sind.
 	pdfauthor = {David Blacher},
@@ -31,6 +30,7 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 
 \begin{document}
 
+\begin{otherlanguage}{german}
 \AbschlussarbeitTUWienPhysikTitlePage{
 	titel={Software implementation of the quality assurance tool for magnetic resonance imaging distortion assessment},
 	institut={AKH},
@@ -54,6 +54,7 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 
 \pagenumbering{gobble} % Keine Seitenzahl drucken
 \titlePageTUWienPhysik
+\end{otherlanguage}
 
 \pagenumbering{roman} \setcounter{page}{1}
 \tableofcontents \newpage

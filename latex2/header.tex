@@ -52,7 +52,7 @@
 \usepackage{listings} % Zur Darstellung von Programmcode
 \usepackage{pdflscape} % Querformat Seiten
 
-\newcommand{\writeIn}[1]{\usepackage[#1]{babel}} % Definiert einen neuen Befehl um die Sprache des Dokuments zu setzen
+\usepackage[german,british]{babel}
 
 \usepackage{color} % Farben für den todo Befehl
 \newcommand{\todo}[1]{{\color{blue}(TODO: #1)}} % Einfach \todo{Text} verwenden! Cerulean
@@ -60,6 +60,7 @@
 
 %Joschis Addons
 \usepackage{pgfplots} % für diagramme
+\pgfplotsset{compat=1.9} % more recent version, not backwards compatible?
 \usepackage[section]{placeins} %Ermöglicht den Befehl FloatBarrier; bei \section{} automatisch schon dabei
 \usepackage{colortbl} %Für hintergrundfarben bei Tabellen Ermöglicht \rowcolor command
 %\usepackage[compact]{titlesec} %Whitespace rund um überschriften verringern
