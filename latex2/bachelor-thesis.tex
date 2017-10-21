@@ -3,6 +3,11 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \input{header.tex}
 \input{titlepage.tex}
 
+%https://tex.stackexchange.com/questions/223508/adjusting-spacing-around-section-subsection-titles-with-koma-script
+\RedeclareSectionCommand[
+beforeskip=-1sp,
+afterskip=1.5\baselineskip]{chapter}
+
 \hypersetup{ % Setzt einige Werte die in den Eigenschaften des PDF gespeichert sind.
 	pdfauthor = {David Blacher},
 	pdftitle = {Bachelorarbeit - MRI distortion assessment},
@@ -57,8 +62,7 @@ bibliography=totoc,BCOR=10mm]{scrreprt} % Schriftgröße, Seitenformat, Zweiseit
 \end{otherlanguage}
 
 \pagenumbering{roman} \setcounter{page}{1}
-\tableofcontents \newpage
-%\input{acknowledgements.tex}
+\tableofcontents
 \listoffigures
 \listoftables
 \input{abstract.tex}
