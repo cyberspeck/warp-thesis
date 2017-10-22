@@ -11,7 +11,7 @@
 
 \section{Phantom design}
 
-To be able to assess the spacial distortion of an MRI scan, a rigid object with known dimensions needs to be scanned so the cross referencing to the ground truth can be performed.
+To be able to assess the spacial distortion of an MR scan, a rigid object with known dimensions needs to be scanned so the cross referencing to the ground truth can be performed.
 Such phantoms are commercially available, but often expensive and designed for a specific calibration protocol.
 Some institutions build their own to fulfil exactly the requirements of a given application.
 The scanner used at the AKH is a relatively rare model, which is why no off-the-shelf phantom that would fit its coil is available.
@@ -24,7 +24,7 @@ The new design deals reaches the outer regions and weighs much less at the same 
 Due to the underlying physics, plastics are not visible in MR scans, but CT scans visualize them. 
 See figure \ref{fig:sagittal_comparison} for a comparison (MRI/CT visibility).
 Therefore, it was decided to use plastic rods with a suitable fluid filling.
-Such a liquid should be easily produced, non-toxic and yielding sufficient signal in MRI scans.
+Such a liquid should be easily produced, non-toxic and yielding sufficient signal in MR scans.
 
 Commercially available phantoms often resemble water tanks containing rigid plastic grids used as reference.
 While this design results in stronger signal, its weight might be considered as inconvenient.
@@ -49,8 +49,8 @@ Despite this, the observed behaviour will still be discussed as different phanto
 
 For measuring the position of the rods in the CT scans, the plastic rods without filling would be enough already.
 That is why the visibility of the liquids on CT is not important at all.
-Hollow plastic rods would not be visible on the MRI scans, though.
-From now on 'signal (strength)' or 'visibility' will refer to MRI scans only (see table \ref{tab:visibility}).
+Hollow plastic rods would not be visible on the MR scans, though.
+From now on 'signal (strength)' or 'visibility' will refer to MR scans only (see table \ref{tab:visibility}).
 
 \subsection{Thoughts about choosing possible candidates}
 
@@ -58,7 +58,7 @@ The tested solutions were chosen for a number of reasons:
 \begin{itemize}
 \item Generally, imaging techniques aims for a high signal-to-noise ratio. Therefore, liquids resulting in brighter pixels are favoured.
 \item The amount of gas in the rods should be minimised.
-\item If air bubbles form, tilting the entire phantom slightly should be enough to move them to one side. The FOV of the MRI scanner is too small to show the entire phantom anyway.
+\item If air bubbles form, tilting the entire phantom slightly should be enough to move them to one side. The FOV of the MR scanner is too small to show the entire phantom anyway.
 \item Most tested fluids are based on water, as they are easily removed from the rods leaving little residue.
 Therefore, filling the rods again with a different liquid would be possible if ever needed.
 \item Preferably, the components which are chosen to be used for the entire phantom should be non-toxic.
@@ -80,7 +80,7 @@ Regarding the toxicity of $CuSO_4\cdot5H_2O$, the minimum dose to have caused ac
 
 \vspace{1cm}
 
-Primovist (\textbf{\#11} to \textbf{\#13}) is a common contrast agent used for MRI scans \cite{VanBeers2012, Rohrer, primovist} intended to yield an even stronger signal than $CuSO_4\cdot5H_2O$ based liquids.
+Primovist (\textbf{\#11} to \textbf{\#13}) is a common contrast agent used for MR scans \cite{VanBeers2012, Rohrer, primovist} intended to yield an even stronger signal than $CuSO_4\cdot5H_2O$ based liquids.
 The major drawback is its tendency to separate from the water and stick to the container's wall.
 This results in low signal at the centre and high signal along the wall, which would not necessarily pose a problem, but as the liquid forms bubbles, it is not guaranteed that the walls would be covered homogeneously.
 The uneven distribution might result in wrong calculations, especially if the software tool is not programmed to cope with this behaviour.
@@ -127,7 +127,7 @@ Considering the low visibility of \textbf{\#9}, the only suitable water based li
 At the same time, long-term observations performed in an airtight container might have shown that even \textbf{\#8} only delays the process.
 In the case of the used rods, such a conclusion cannot be drawn with certainty.
 
-The rod containing the highest concentration of ascorbic acid showed a yellow colouring, caused by dehydroascorbic acid which is the result of a oxygenation process.
+The rod containing the highest concentration of ascorbic acid showed a yellow colouring, caused by dehydroascorbic acid which is the result of an oxygenation process.
 However, as the high concentration in \textbf{\#9} and \textbf{\#10} led to a radical reduction in signal with the tested MRI sequence, this solutions is not considered a suitable filling anyway.
 
 Primovist (\textbf{\#11} to \textbf{\#13}) lead to a good signal, but its limited mobility of air bubbles; its tendency to accumulate along the wall rule it out as a candidate.
@@ -227,7 +227,7 @@ For now, the already gained results will be used as no new measurement could be 
 
 
 In the region beyond -330, there is a drop of the DC for the CT.
-Investigations revealed that this is caused by adhesive tape attached to the rod to hold it in place during transport from the CT scanner to the MRI scanner.
+Investigations revealed that this is caused by adhesive tape attached to the rod to hold it in place during transport from the CT scanner to the MR scanner.
 The values calculated for this area are most likely influenced by this.
 
 
@@ -237,11 +237,11 @@ The values calculated for this area are most likely influenced by this.
 Figures \ref{fig:ph2_warpMagnitude_x1-100} and \ref{fig:ph3_v2_warpMagnitude_x1-100} depict the measured $warpM^*$ of rod \#5 and \#16 for x1 and x100 resample rates.
 The location shift calculated with x1 and x100 resample rate are relatively close (see tables \ref{tab:Delta-resample_5} and \ref{tab:Delta-resample_16}).\\
 
-The calculated DCs for the scans in original CT resolution (x1) are shown in figures \ref{fig:ph2_DC_x1} and \ref{fig:ph3_DC_x1} and for a x4 finer resolution in figures \ref{fig:ph2_DC_x4} and \ref{fig:ph3_DC_x4}.
+The calculated DCs for the scans in original CT resolution (x1) are shown in figures \ref{fig:ph2_DC_x1} and \ref{fig:ph3_DC_x1} and for a four times finer resolution in figures \ref{fig:ph2_DC_x4} and \ref{fig:ph3_DC_x4}.
 Compared to the DCs of the x100 resampled scans (figures \ref{fig:ph2_DC_x100} and \ref{fig:ph3_DC_x100}), the low resolution x1 yields significantly less smooth curves.
 A resample rate of x4, on the other hand, is already much closer to the quality of the x100 scans.\\
 
-While the original resolution might be sufficient for the calculation of the COM shift, the DC calculation benefits a lot from a interpolated image.
+While the original resolution might be sufficient for the calculation of the COM shift, the DC calculation benefits a lot from an interpolated image.
 It is easier to spot significant changes as the plot shows less jumps.
 At the same time, the computing time for calculations scales with the resolution of the images and should be kept minimal, because a future assessment would include more than 300 individual rods.
 

@@ -13,9 +13,9 @@
 %  e.g. software: version, functionality
 % o Also describe used data (patient cohort) even if they were taken from other studies
 
-\section{Scanners and Imaging protocols}
+\section{Scanners and imaging protocols}
 
-For this thesis a CT scanner and an open-bore, c-arm MRI scanner in the radiation oncology department of the Vienna General Hospital (AKH) were used.
+For this thesis a CT scanner and an open-bore, c-arm MR scanner in the radiation oncology department of the Vienna General Hospital (AKH) were used.
 
 \subsection{MR}
 
@@ -23,7 +23,7 @@ Following the general practice of phantom measurements, and the AAPM recommendat
 This, combined with a T1-weighted test sequence, improves the efficiency of the measurements assuring relatively high SNR in short time.
 To further improve image quality, the averaging parameter of the test sequence was set to 4.
 This setting practically means the measurement is repeated and averaged $n$ times by the scanners software.
-Remaining sequence parameters were optimized to yield a acceptable resolution for the chosen ROI setting (which is relatively large as it covers the whole phantom).
+Remaining sequence parameters were optimized to yield an acceptable resolution for the chosen ROI setting (which is relatively large as it covers the whole phantom).
 The test sequence was chosen in a way, such as to deviate as little as possible from a typically used clinical imaging setting.
 However, to fully understand and investigate the possible image distortions, each clinically used sequence should be commissioned with a distortion phantom.
 Detailed sequence parameters are listed in table \ref{tab:MR-scanner}
@@ -37,19 +37,19 @@ system			& MRI				\\
 \toprule
 manufacturer	& Siemens			\\
 product name	& Magnetom C!		\\
-coil $[$internal W x H$]$	& Body/Spine Array Coil XL $[$50 x 30.5 cm (19.7 x 12 in)$]$	\\
+coil [internal W x H]	& Body/Spine Array Coil XL [$50\, $x$ \,30.5\, cm$ ($19.7\, $x$ \,12\, $in)]	\\
 orientation		& axial	\\
 sequence		& T1 weighted 3D-FLASH Vibe	\\
 				& (Volumetric interpolated breath-hold)	\\
-slice thickness	& 2.3 mm	\\
-pixel spacing	& 2.3 mm	\\
+slice thickness	& $2.3\, mm$	\\
+pixel spacing	& $2.3\, mm$	\\
 matrix			& 128 x 120 \\
-repetition time & 7,07ms	\\
-echo time		& 2,7	\\
+repetition time & $7.07\, ms$	\\
+echo time		& $2.7\, ms$	\\
 bandwidth		& 240	\\
-flip angle		& 6 deg	\\
+flip angle		& $6\, deg$	\\
 averages $n$	& 4	\\
-acquisition time& 17.5 min
+acquisition time& $17.5\, min$
 \end{tabular}
 \label{tab:MR-scanner}
 \end{table}
@@ -68,18 +68,18 @@ manufacturer	& Siemens			\\
 product name	& SOMATOM Definition AS		\\
 software version& syngo CT 2013B	\\
 protocol		& Prostatae\_VMATAdult	\\
-slice thickness	& 0.6 mm	\\
-row spacing		& 0.801mm; 512	\\
-column spacing	& 0.801mm; 512	\\
-kVP				& 120kV	\\
-x-ray tube current	&	19 mA	\\
+slice thickness	& $0.6\, mm$	\\
+row spacing		& $0.801\, mm$; 512	\\
+column spacing	& $0.801\, mm$; 512	\\
+kVP				& $120\, kV$	\\
+x-ray tube current	&	$19\, mA$	\\
 convolution kernel	&	I30f, 3
 \end{tabular}
 \label{tab:CT-scanner}
 \end{table}
 
 
-\subsection{MRI scanner - field distribution}
+\subsection{MR scanner - field distribution}
 \label{sec:magnetom}
 
 Diagrams of the magnetic field strength are depicted in figure \ref{fig:strength_side}); its gradient in figures \ref{fig:gradient_side}, \ref{fig:gradient_top} and \ref{fig:gradient_front}).
@@ -123,7 +123,7 @@ For imaging, the patient is positioned as to place the ROI at the isocentre, the
 \begin{figure}[!htb]
   	\centering
       \includegraphics[scale=1.1]{scanner/scanner_field-strength.jpg}
-      \caption[Magnetom C! field strength\\ side view along z-axis, distant view. Image source: \cite{magnetom_handbook}]{Magnetom C! field strength\\ side view along z-axis, distant view (see fig. \ref{fig:scanner_side}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
+      \caption[Magnetom C! field strength\\ side view along z-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field strength\\ side view along z-axis (see fig. \ref{fig:scanner_side}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
     \label{fig:strength_side}
 \end{figure}
 
@@ -144,7 +144,7 @@ For imaging, the patient is positioned as to place the ROI at the isocentre, the
 \begin{figure}[!htb]
   	\centering
     \includegraphics[scale=1.1]{scanner/scanner_gradient-top.jpg}
-    \caption[Magnetom C! field gradient\\ top view along y-axis, distant view. Image source: \cite{magnetom_handbook}]{Magnetom C! field gradient\\ top view along y-axis, distant view (see fig. \ref{fig:scanner_top}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
+    \caption[Magnetom C! field gradient\\ top view along y-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field gradient\\ top view along y-axis (see fig. \ref{fig:scanner_top}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
     \label{fig:gradient_top}
 \end{figure}
 
@@ -172,13 +172,13 @@ The AKH's design is made up from an array of replaceable, fillable plastic rods.
     \caption{CT}
     \label{fig:sagittal_comparison_ct}
   \end{subfigure}
-  \caption[Comparison: MRI only shows liquid filling, CT also the plastic rod and pane]{Comparison (inverted colours): MRI only shows liquid filling, CT also the plastic rod and pane (horizontal black bar crossing middle and right rod);\\ (\textbf{a:}) \textit{MRI} - filled rod, plastic not visible (field of view too small to show entire rod); (\textbf{b:}) \textit{CT} - empty rod, plastic visible; (\textbf{c:}) \textit{CT} - filled rod, plastic and filling visible.}
+  \caption[Comparison: MRI only shows filling, CT also the plastic rod and pane]{Comparison (inverted colours): MRI only shows liquid filling, CT also the plastic rod and pane (horizontal black bar crossing middle and right rod);\\ (\textbf{a:}) \textit{MRI} - filled rod, plastic not visible (field of view too small to show entire rod); (\textbf{b:}) \textit{CT} - empty rod, plastic visible; (\textbf{c:}) \textit{CT} - filled rod, plastic and filling visible.}
   \label{fig:sagittal_comparison}
 \end{figure}
 
 \subsection{Frame and rods}
 
-The phantom was build to fit the largest available rigid coil for the MRI scanner.
+The phantom was build to fit the largest available rigid coil for the MR scanner.
 Three parallel acrylic glass panes in the shape of the coil serve as a frame for the plastic rods.
 In the middle an empty area was reserved for an optional additional smaller phantom (not used for this work).
 Figure \ref{fig:rendered_CT} shows a rendered CT picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
@@ -188,7 +188,7 @@ The bottom part of each rod was sealed with a glued plastic plug, the top could 
 Frame and rods were already build and assembled before the author started working on this project.
 
 Additionally, to the rods which would be used to assess the distortion, a number of vitamin pills\footnote{soft gel capsules containing vitamin E and A \cite{pillshere}} were attached to the frame as reference markers (see figure \ref{fig:pills}).
-These pills are visible in both CT and MRI images and were used to align them (see section \ref{sec:prep}).
+These pills are visible in both CT and MR images and were used to align them (see section \ref{sec:prep}).
 This way there is another way of checking the alignment during the prototyping process in addition to the rods.
 
 
@@ -209,14 +209,14 @@ This way there is another way of checking the alignment during the prototyping p
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=\textwidth]{slicer3D/full_phantom/axial_CT_pane.png}
-\caption[Axial view of one of three plastic panes that make up the frame of the phantom.]{An axial view of one of three plastic panes that make up the frame of the phantom. This scan shows how the pane looks like with no rods inserted. A little 'x' in one of the holes slightly to the right of the lower part of the pane marks where rod \#5 was inserted later for imaging (see section \ref{sec:rod5}); a little 'z' in the centre of the upper area indicates where rod \#16 was inserted for another imaging sequence (see section \ref{sec:rod16}).}
+\caption[Axial view of one of the plastic panes making up the frame of the phantom.]{An axial view of one of three plastic panes that make up the frame of the phantom. This scan shows how the pane looks like with no rods inserted. A little 'x' in one of the holes slightly to the right of the lower part of the pane marks where rod \#5 was inserted later for imaging (see section \ref{sec:rod5}); a little 'z' in the centre of the upper area indicates where rod \#16 was inserted for another imaging sequence (see section \ref{sec:rod16}).}
 \label{fig:axial_CT_pane}
 \end{figure}
 
 \begin{figure}[!tbp]
 \centering
 \includegraphics[width=0.8\textwidth]{slicer3D/full_phantom/rod_schematic.png}
-\caption[Schematic of an empty plastic rod]{A schematic of an empty plastic rod as they are used for the phantom (inverted colours). On the left the rod ends with a glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
+\caption[Schematic of an empty plastic rod.]{A schematic of an empty plastic rod as they are used for the phantom (inverted colours). On the left the rod ends with a glued plastic stopper, on the right hand side a plastic screw seals it. The figure does not show true proportions.}
 \label{fig:rod_schematic}
 \end{figure}
 
@@ -232,10 +232,10 @@ This way there is another way of checking the alignment during the prototyping p
   \begin{subfigure}[b]{0.45\textwidth}
   \centering
       \includegraphics[scale=0.6]{slicer3D/pills_here/pills_MRI.png}
-    \caption{MRI scan}
+    \caption{MR scan}
     \label{fig:pills_MR}
   \end{subfigure}
-  \caption[Coronal CT and MRI images showing rods and 2 attached vitamin-e pills]{CT (a) MR (b) coronal images (inverted colours) showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
+  \caption[Coronal CT and MR images showing rods and 2 attached vitamin-e pills]{CT (a) MR (b) coronal images (inverted colours) showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
   \label{fig:pills}
 \end{figure}
 
@@ -296,7 +296,7 @@ It happened when delicately knocking it against on the table while standing upri
 This was intended to mobilise bubbles that sticked to the wall and make them travel vertically to on end of the rod. (see table \ref{tab:bubbles1})
 The plastic stopper on the lower end came loose.
 The rod containing filling \textbf{\#6} was not replaced.
-Consequently, all CT/MRI images used to asses signal intensities of the tested solutions show only 16 rods.
+Consequently, all CT/MR images used to asses signal intensities of the tested solutions show only 16 rods.
 
 
 \section{Used software applications}
@@ -315,9 +315,9 @@ For this task, two applications were used:
 Figures \ref{fig:rendering1-3}, \ref{fig:rendering4-5} and \ref{fig:resample} show the most important stages in the image processing work flow performed to prepare the data for the developed script.
 
 \begin{enumerate}[label=\textbf{Step \arabic*}]
-\item After loading the CT and MRI scan into \textit{MIRADA}, they were aligned using the vitamin-e pills, yielding maximum overlap in the centre of the image.
-\item Next, as the MRI image had a lower resolution than the CT scan, the MRI scan was resampled.
-Its voxel's size were changed to match the CT voxels and both scans exported.
+\item After loading the CT and MR scan into \textit{MIRADA}, they were aligned using the vitamin-e pills, yielding maximum overlap in the centre of the image.
+\item Next, as the MR image had a lower resolution than the CT scan, the MR scan was resampled.
+Its voxel size were changed to match the CT voxels and both scans exported.
 \item Both layers (MRI and CT) were loaded into \textit{3D Slicer}.
 \item Its module 'annotations' was used to set a new region of interest (ROI) to include only a single rod.
 \item With the module called 'crop volume' (setting: voxel based cropping) the scans were reduced to show only the selected ROI.
@@ -330,7 +330,7 @@ After this procedure a number of pairs based on the original CT and MRI were ava
 They only differ in the number of pixels making up each slice, their resolution varying from the original up to a hundred times finer.
 Each pair (CT/MRI) has the same pixel spacing (and resolution) in x and y direction.
 See table \ref{tab:spacing} for more details.
-Figure \ref{fig:resample} depicts 3 CT/MRI scans of a single rod (axial) with different resolutions.
+Figure \ref{fig:resample} depicts 3 CT/MR scans of a single rod (axial) with different resolutions.
 "x1" stands for the original CT scan resolution (MRI resampled to match).
 "x4" is a resolution caused by 1 pixel being split in 4 smaller pixels, "x9" in 9, and so on and so forth.
 For better visibility, images shown as figures in this work are printed with inverted colours.
@@ -364,7 +364,7 @@ x100   & 0.60 & 0.1 	& 0.1
     \caption{MR}
     \label{fig:MR_full}
   \end{subfigure}
-  \caption{Rendered CT/MRI image of phantom after steps 1-3 of pre-processing.}
+  \caption{Rendered CT/MR image of phantom after steps 1-3 of pre-processing.}
   \label{fig:rendering1-3}
 \end{figure}
   
@@ -381,7 +381,7 @@ x100   & 0.60 & 0.1 	& 0.1
     \label{fig:MR_rod}
   \end{subfigure}
   
-  \caption{Rendered CT/MRI image of phantom after steps 4 and 5 of pre-processing.}
+  \caption{Rendered CT/MR image of phantom after steps 4 and 5 of pre-processing.}
   \label{fig:rendering4-5}
 \end{figure}
 
@@ -430,7 +430,7 @@ x100   & 0.60 & 0.1 	& 0.1
 % source activate snowflakes
 % spyder
 
-In order to asses the distortion of the MRI scanner, a software tool was programmed.
+In order to asses the distortion of the MR scanner, a software tool was programmed.
 It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
 \textit{SimpleITK} is a object-oriented "C\texttt{++} library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} Its versatility is one of the reasons why this approach was favoured.
 It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer}.
@@ -451,7 +451,7 @@ This is an extensive list of python packages used to process data after using 3D
 
 \subsubsection{Capabilities - Overview}
 
-The developed software tool is not able to automatically detect individual rods in a CT or MRI scan depicting the whole phantom.
+The developed software tool is not able to automatically detect individual rods in a CT or MR scan depicting the whole phantom.
 Instead the acquired 3D images have to be cropped so they include only a single rod (see section \ref{sec:prep}).
 
 The python script can be used to:
@@ -476,7 +476,7 @@ Since the rods have a cylindrical shape, distortion can only be assessed in radi
 The z-axis is parallel to the rods, x and y are radial.
 Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (and of the plastic rod in CT) surrounded by black pixels (air).
 \\
-Two phenomena were chosen to reflect the amount of distortion occurring in each slice of the MRI scans.
+Two phenomena were chosen to reflect the amount of distortion occurring in each slice of the MR scans.
 The distance which the rod appears to be shifted in the MRI slice compared to the CT slice is referred to as "warp".
 The rod's deformation (deviation from circular profile) is described using the dice-coefficient "\textit{DC}" (also known as Sorensen-Index).
 
@@ -490,7 +490,7 @@ The implementation as python function is based on the open source python package
 
 The calculation of the \texttt{DC} is performed for each slice individually.
 Additionally, to asses the overall distortion occurring along the rod, the average of all those values is also saved.
-As this aspect of distortion does not need a reference scan, the \texttt{DC} is measured for CT and MRI images separately.
+As this aspect of distortion does not need a reference scan, the \texttt{DC} is measured for CT and MR images separately.
 The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
 \begin{align}
 \label{eq:DC}
@@ -522,7 +522,7 @@ A low \texttt{DC}, on the other hand, means the shape differs greatly from a cir
 little overlap (e.g. a ring or crescent shape); a very dark image hindering delineation of the rod from background; a small circle with a radius close to a only a few pixels.
 
 The obvious choice for the radius of the reference circle B is to use the size of the physical rod/liquid as it is should be visible on the scan.
-For CT images this would be $4\,mm$ (outer diameter of the plastic rod), for MRI images it would be $2\,mm$ (inner diameter of the plasic rod, equivalent to the diameter of enclosed liquid).
+For CT images this would be $4\,mm$ (outer diameter of the plastic rod), for MR images it would be $2\,mm$ (inner diameter of the plasic rod, equivalent to the diameter of enclosed liquid).
 The script calculates the \texttt{DC} using various radii close to those values and returns the result yielding in the highest average \texttt{DC} for the whole rod.
 
 \subsubsection{Using the CT COM}
@@ -603,7 +603,7 @@ Calculating the number of pixels which make up the more or less circular profile
  pixelNumber = (radius^2 \cdot \pi) \, / \, (spacing^2)
 \end{align}
 
-For CT images the $radius = 4mm$, in MRI scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction (developed script is only capable to process images with isotropic pixels pacing, as it usually is the case).
+For CT images the $radius = 4mm$, in MR scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction (developed script is only capable to process images with isotropic pixels pacing, as it usually is the case).
 Next, the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the \texttt{COM}.
 The value of the darkest pixel that is still counted as part of the rod is saved as  \texttt{threshold} for future calculations (e.g. finding the \texttt{DC} associated with the \texttt{COM}, see section \ref{sec:DC}).\\
 The method is summarised in figure \ref{flo:COM-simple}.
@@ -717,7 +717,7 @@ Figure \ref{fig:COM_iteration} shows the \texttt{DC}  found in the course of try
      \caption{close up of same iteration as in (a)}
      \label{fig:CT_x100_iteration}
   \end{subfigure}
-  \caption[Example of COM iteration method, 5 repetitions.]{Example of COM iteration method, 5 repetitions; red triangles correspond to upper guesses, blue dots to lower guesses.}
+  \caption[Example of COM iteration method, 5 repetitions.]{Example of COM iteration method, 5 repetitions, x100; red triangles correspond to upper guesses, blue dots to lower guesses.}
   \label{fig:COM_iteration}
 \end{figure}
 

@@ -31,7 +31,7 @@ The accuracy of the distortion assessment, especially of the DC calculation, can
 Resample rates of x4, x9, x25 and x100 were used to create finer images which were all analysed using the same algorithms.
 The original resolution (x1) might be sufficient for the COM shift calculation, but the DC curve gains significant smoothness at already x4 finer resolution.
 This small interpolation could be already enough to increase accuracy while keeping necessary computing power low.
-A future distortion assessment of the whole FOV with 300 individual rods would profit from a effective procedure at low resolution.
+A future distortion assessment of the whole FOV with 300 individual rods would profit from an effective procedure at low resolution.
 Using the simple method to find the COM would use less time, too.
 
     
@@ -39,7 +39,7 @@ Using the simple method to find the COM would use less time, too.
 
 The developed tool took a simplified approach to the problem by looking only at a single rod.
 Distortion assessment can be performed using the generated tool, however, it needs to be implemented on more general scale to be able to measure the distortion for all the rods automatically.
-This could be done by a auto-trace function which detects individual rods and applies the already implemented algorithms to each of them separately.\\
+This could be done by an auto-trace function which detects individual rods and applies the already implemented algorithms to each of them separately.\\
 
 The two implemented methods of finding COM and DC need to be assessed themselves.
 In order to tell which of the two gets closer to the absolute truth, additional checks should be performed.
