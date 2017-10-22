@@ -409,7 +409,7 @@ This type of coil (see figure \ref{fig:coil}) was used for the data acquisition 
 \begin{figure}[tbh!]
 \centering
 \includegraphics[width=0.6\linewidth]{scanner/coil}
-\caption[MR scanner coil. Image source: Siemens Healthineers]{MR scanner coil: (1) upper part, Body/Spine Array Coil; (2,3) central positioning markers; (4) lower part, Body/Spine Array Coil; (5) connection ports; (6) colour label. Image source: Siemens Healthineers}
+\caption[MRI scanner coil. Image source: Siemens Healthineers]{MRI scanner coil: (1) upper part, Body/Spine Array Coil; (2,3) central positioning markers; (4) lower part, Body/Spine Array Coil; (5) connection ports; (6) colour label. Image source: Siemens Healthineers}
 \label{fig:coil}
 \end{figure}
 
@@ -428,7 +428,7 @@ Organs might appear shifted, elongated or shrunk.
 The effect is most prominent along the outer edges of the scanner's field-of-view (FOV).
 In the isocentre (middle) of the scanner, the distortion is smaller, because here the field is least aberrant.
 For most applications, small position shifts and deformations are of minor importance.
-MR scanners usually come equipped with an internal distortion correction algorithm.
+MRI scanners usually come equipped with an internal distortion correction algorithm.
 Figure \ref{fig:dist_compare} shows the unmodified and the corrected version of an image coming from such a scanner.
 Those methods are developed by the company designing the scanners.
 Knowing the technical details enables them to write tailor-fit scripts which drastically reduce the distortion.
@@ -447,20 +447,20 @@ The trade-off is that fine structures might get lost.
 \label{fig:dist_compare}
 \end{figure}
 
-%Field of view (FOV) of the MR scanner is smaller than the CT scanner's.
+%Field of view (FOV) of the MRI scanner is smaller than the CT scanner's.
 
 
 \subsubsection{Health considerations}
 
-Strong, static magnetic fields (typically up to $3\, T$) are present around MR scanners at all times, and precautions have to be taken to ensure safety for patients and medical personnel.
-Ferromagnetic materials (such as steel and iron) can become dangerous projectiles in vicinity of the MR scanner.
+Strong, static magnetic fields (typically up to $3\, T$) are present around MRI scanners at all times, and precautions have to be taken to ensure safety for patients and medical personnel.
+Ferromagnetic materials (such as steel and iron) can become dangerous projectiles in vicinity of the MRI scanner.
 They must be excluded from the room housing the magnet without exception.\\
 
 %It is also important to remember that medical implants, including but not restricted to cardiac pacemakers and hearing-aids, might malfunction or become damaged in strong fields regardless whether they contain ferromagnetic materials.
 %Patients with such implants might still be imaged with scanners utilising weak fields up to $0.5\, T$.
 
 The RF pulses repeatedly put spins in excited states, transferring energy to the human body.
-MR scanners are designed to limit the rise of a patient's body temperature to $0.5\,^o$C during standard imaging.
+MRI scanners are designed to limit the rise of a patient's body temperature to $0.5\,^o$C during standard imaging.
 Only combined with either medical or appropriate psychological monitoring the limit can be raised to $1\,^o$C.
 An ethics committee approval is necessary for even higher values.
 In general, patients should be exposed to RF fields only as strong as their thermoregulatory system is capable to cope with.\\
@@ -474,9 +474,9 @@ At the same time, patients suffering from epilepsy might show increased sensibil
 Some patients might be allergic to contrast agents used for specific MRI examinations.
 Here, safety procedures are similar to those performed during administration of regular drugs. 
 
-\subsubsection{Open bore MR scanners}
+\subsubsection{Open bore MRI scanners}
 
-The radiation oncology department of the Vienna General Hospital (AKH) is equipped with a $0.35\, T$ open-bore, c-arm MR scanner (see Section \ref{sec:magnetom} for more details).
+The radiation oncology department of the Vienna General Hospital (AKH) is equipped with a $0.35\, T$ open-bore, c-arm MRI scanner (see Section \ref{sec:magnetom} for more details).
 This open design has proven to drastically improve the well-being of patients experiencing anxiety in closed-bore scanners.
 For this reason, the number of incomplete MR examinations due to a claustrophobic events is relatively low. \cite{Enders2011, Bangard2007}
 Besides, patients who would not fit in closed designed scanners can be imaged.
@@ -490,7 +490,7 @@ However, at some point, diagnostic accuracy stops increasing with field strength
 At the same time significant improvements can be achieved at low fields.
 A ``combination of field independent polarisation [...] with frequency optimized MRI detection coils [...] results in low-field MRI sensitivity approaching and even rivalling that of high-field MRI.'' \cite{Coffey2013}
 
-Low field MR scanners are also typically characterised by less distorted images. \cite{Fransson2001}
+Low field MRI scanners are also typically characterised by less distorted images. \cite{Fransson2001}
 
 Apart from the often satisfactory image quality, there are considerable cost advantages to the use of lower field MRI.
 The initial purchase price and the ongoing maintenance expenses are considerably lower than those of high field scanners, which often use superconducting magnets cooled with liquid helium. \cite{Rutt1996}
@@ -622,7 +622,7 @@ Furthermore, patients would be spared the additional dose of CT examinations.  \
 The idea of only using MRI for treatment planning is approaching the clinics, but there are still some issues that need to be addressed.
 
 Due to the possible image distortion, great care needs to be taken and the MR images must be verified before they are used for RT target definition and dose calculation.
-The available MR scanner at the AKH is equipped with an on board correction algorithm which is supposed to reduce distortion.
+The available MRI scanner at the AKH is equipped with an on board correction algorithm which is supposed to reduce distortion.
 See figure \ref{fig:rendered_dist} for an example of how this correction affects an image.
 Distorted images might lead to wrong calculations of how much energy is needed for the radiation to accumulate exactly at the target region.
 If, for example, bone structure is depicted as thicker than it really is, RTP would suggest a treatment which would deposit more energy behind the tumour than intended.
@@ -643,16 +643,16 @@ Similar approaches are being used for distortion correction by other facilities.
   \begin{subfigure}[b]{0.49\textwidth}
   \centering
     \includegraphics[scale=1.2]{rendered/rendered_MR.png}
-    \caption{MR scan with no distortion correction}
+    \caption{MRI scan with no distortion correction}
     \label{fig:rendered_MR}
   \end{subfigure}
   \begin{subfigure}[b]{0.49\textwidth}
   \centering
       \includegraphics[scale=1.2]{rendered/rendered_MR_corr.png}
-    \caption{MR scan after internal distortion correction}
+    \caption{MRI scan after internal distortion correction}
     \label{fig:rendered_MR_corr}
   \end{subfigure}
-  \caption[Rendered MR image before and after applying build-in distortion correction. Image source: Courtesy Piotr Andrzejewski (unpublished data)]{Rendered MR scan showing the difference before (a) and after (b) applying the build-in distortion correction Image source: Courtesy Piotr Andrzejewski (unpublished data)}
+  \caption[Rendered MR image before and after applying build-in distortion correction. Image source: Courtesy Piotr Andrzejewski (unpublished data)]{Rendered MRI scan showing the difference before (a) and after (b) applying the build-in distortion correction Image source: Courtesy Piotr Andrzejewski (unpublished data)}
   \label{fig:rendered_dist}
 \end{figure}
 

@@ -11,7 +11,7 @@
 
 \section{Phantom design}
 
-To be able to assess the spacial distortion of an MR scan, a rigid object with known dimensions needs to be scanned so the cross referencing to the ground truth can be performed.
+To be able to assess the spacial distortion of an MRI scan, a rigid object with known dimensions needs to be scanned so the cross referencing to the ground truth can be performed.
 Such phantoms are commercially available, but often expensive and designed for a specific calibration protocol.
 Some institutions build their own to fulfil exactly the requirements of a given application.
 The scanner used at the AKH is a relatively rare model, which is why no off-the-shelf phantom that would fit its coil is available.
@@ -21,10 +21,10 @@ This was due to the fact that it resembled a cuboid water tank with a thin fille
 As the peripheral zones of the FOV are those where distortion is most pronounced, a bigger phantom was needed to assess those regions.
 The new design deals reaches the outer regions and weighs much less at the same time.\\
 
-Due to the underlying physics, plastics are not visible in MR scans, but CT scans visualize them. 
+Due to the underlying physics, plastics are not visible in MRI scans, but CT scans visualize them. 
 See figure \ref{fig:sagittal_comparison} for a comparison (MRI/CT visibility).
 Therefore, it was decided to use plastic rods with a suitable fluid filling.
-Such a liquid should be easily produced, non-toxic and yielding sufficient signal in MR scans.
+Such a liquid should be easily produced, non-toxic and yielding sufficient signal in MRI scans.
 
 Commercially available phantoms often resemble water tanks containing rigid plastic grids used as reference.
 While this design results in stronger signal, its weight might be considered as inconvenient.
@@ -49,8 +49,8 @@ Despite this, the observed behaviour will still be discussed as different phanto
 
 For measuring the position of the rods in the CT scans, the plastic rods without filling would be enough already.
 That is why the visibility of the liquids on CT is not important at all.
-Hollow plastic rods would not be visible on the MR scans, though.
-From now on 'signal (strength)' or 'visibility' will refer to MR scans only (see table \ref{tab:visibility}).
+Hollow plastic rods would not be visible on the MRI scans, though.
+From now on 'signal (strength)' or 'visibility' will refer to MRI scans only (see table \ref{tab:visibility}).
 
 \subsection{Thoughts about choosing possible candidates}
 
@@ -58,7 +58,7 @@ The tested solutions were chosen for a number of reasons:
 \begin{itemize}
 \item Generally, imaging techniques aims for a high signal-to-noise ratio. Therefore, liquids resulting in brighter pixels are favoured.
 \item The amount of gas in the rods should be minimised.
-\item If air bubbles form, tilting the entire phantom slightly should be enough to move them to one side. The FOV of the MR scanner is too small to show the entire phantom anyway.
+\item If air bubbles form, tilting the entire phantom slightly should be enough to move them to one side. The FOV of the MRI scanner is too small to show the entire phantom anyway.
 \item Most tested fluids are based on water, as they are easily removed from the rods leaving little residue.
 Therefore, filling the rods again with a different liquid would be possible if ever needed.
 \item Preferably, the components which are chosen to be used for the entire phantom should be non-toxic.
@@ -80,7 +80,7 @@ Regarding the toxicity of $CuSO_4\cdot5H_2O$, the minimum dose to have caused ac
 
 \vspace{1cm}
 
-Primovist (\textbf{\#11} to \textbf{\#13}) is a common contrast agent used for MR scans \cite{VanBeers2012, Rohrer, primovist} intended to yield an even stronger signal than $CuSO_4\cdot5H_2O$ based liquids.
+Primovist (\textbf{\#11} to \textbf{\#13}) is a common contrast agent used for MRI scans \cite{VanBeers2012, Rohrer, primovist} intended to yield an even stronger signal than $CuSO_4\cdot5H_2O$ based liquids.
 The major drawback is its tendency to separate from the water and stick to the container's wall.
 This results in low signal at the centre and high signal along the wall, which would not necessarily pose a problem, but as the liquid forms bubbles, it is not guaranteed that the walls would be covered homogeneously.
 The uneven distribution might result in wrong calculations, especially if the software tool is not programmed to cope with this behaviour.
@@ -227,7 +227,7 @@ For now, the already gained results will be used as no new measurement could be 
 
 
 In the region beyond -330, there is a drop of the DC for the CT.
-Investigations revealed that this is caused by adhesive tape attached to the rod to hold it in place during transport from the CT scanner to the MR scanner.
+Investigations revealed that this is caused by adhesive tape attached to the rod to hold it in place during transport from the CT scanner to the MRI scanner.
 The values calculated for this area are most likely influenced by this.
 
 

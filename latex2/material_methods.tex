@@ -15,9 +15,9 @@
 
 \section{Scanners and imaging protocols}
 
-For this thesis a CT scanner and an open-bore, c-arm MR scanner in the radiation oncology department of the Vienna General Hospital (AKH) were used.
+For this thesis a CT scanner and an open-bore, c-arm MRI scanner in the radiation oncology department of the Vienna General Hospital (AKH) were used.
 
-\subsection{MR}
+\subsection{MRI}
 
 Following the general practice of phantom measurements, and the AAPM recommendations on phantom filling materials [AAPM 1990 and 2010]/ \cite{Jackson2009} oils or water with addition of paramagnetic substances (to reduce the spin-lattice relaxations times) were chosen (generally short T1 time of ~200-400 ms).
 This, combined with a T1-weighted test sequence, improves the efficiency of the measurements assuring relatively high SNR in short time.
@@ -31,7 +31,7 @@ Detailed sequence parameters are listed in table \ref{tab:MR-scanner}
 
 \begin{table}[!tbh]
 \centering
-\caption{MR scanner and used protocol.}
+\caption{MRI scanner and used protocol.}
 \begin{tabular}{r|l}
 system			& MRI				\\
 \toprule
@@ -79,7 +79,7 @@ convolution kernel	&	I30f, 3
 \end{table}
 
 
-\subsection{MR scanner - field distribution}
+\subsection{MRI scanner - field distribution}
 \label{sec:magnetom}
 
 Diagrams of the magnetic field strength are depicted in figure \ref{fig:strength_side}); its gradient in figures \ref{fig:gradient_side}, \ref{fig:gradient_top} and \ref{fig:gradient_front}).
@@ -123,28 +123,28 @@ For imaging, the patient is positioned as to place the ROI at the isocentre, the
 \begin{figure}[!htb]
   	\centering
       \includegraphics[scale=1.1]{scanner/scanner_field-strength.jpg}
-      \caption[Magnetom C! field strength\\ side view along z-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field strength\\ side view along z-axis (see fig. \ref{fig:scanner_side}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
+      \caption[Magnetom C! field strength, side view along z-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field strength,\\ side view along z-axis (see fig. \ref{fig:scanner_side}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
     \label{fig:strength_side}
 \end{figure}
 
 \begin{figure}[!htb]
     	\centering
         \includegraphics[scale=1.1]{scanner/scanner_gradient-side.jpg}
-        \caption[Magnetom C! field gradient\\ side view along z-axis. Image source: \cite{magnetom_handbook}]]{Magnetom C! field gradient\\ side view along z-axis (see fig. \ref{fig:scanner_side}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
+        \caption[Magnetom C! field gradient, side view along z-axis. Image source: \cite{magnetom_handbook}]]{Magnetom C! field gradient,\\ side view along z-axis (see fig. \ref{fig:scanner_side}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
         \label{fig:gradient_side}
 \end{figure}
 
 \begin{figure}[!htb]
   	\centering
     \includegraphics[scale=1.1]{scanner/scanner_gradient-front.jpg}
-    \caption[Magnetom C! field gradient\\ front view along x-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field gradient\\ front view along x-axis (see fig. \ref{fig:scanner_front}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
+    \caption[Magnetom C! field gradient, front view along x-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field gradient,\\ front view along x-axis (see fig. \ref{fig:scanner_front}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
     \label{fig:gradient_front}
     \end{figure}
 
 \begin{figure}[!htb]
   	\centering
     \includegraphics[scale=1.1]{scanner/scanner_gradient-top.jpg}
-    \caption[Magnetom C! field gradient\\ top view along y-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field gradient\\ top view along y-axis (see fig. \ref{fig:scanner_top}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
+    \caption[Magnetom C! field gradient, top view along y-axis. Image source: \cite{magnetom_handbook}]{Magnetom C! field gradient,\\ top view along y-axis (see fig. \ref{fig:scanner_top}). Image source: \cite{magnetom_handbook} (with kind support of Siemens Healthineers)}
     \label{fig:gradient_top}
 \end{figure}
 
@@ -178,7 +178,7 @@ The AKH's design is made up from an array of replaceable, fillable plastic rods.
 
 \subsection{Frame and rods}
 
-The phantom was build to fit the largest available rigid coil for the MR scanner.
+The phantom was build to fit the largest available rigid coil for the MRI scanner.
 Three parallel acrylic glass panes in the shape of the coil serve as a frame for the plastic rods.
 In the middle an empty area was reserved for an optional additional smaller phantom (not used for this work).
 Figure \ref{fig:rendered_CT} shows a rendered CT picture of the phantom. See also figure \ref{fig:axial_CT_pane} showing a CT image of one pane (with no rods inserted). \\
@@ -232,7 +232,7 @@ This way there is another way of checking the alignment during the prototyping p
   \begin{subfigure}[b]{0.45\textwidth}
   \centering
       \includegraphics[scale=0.6]{slicer3D/pills_here/pills_MRI.png}
-    \caption{MR scan}
+    \caption{MRI scan}
     \label{fig:pills_MR}
   \end{subfigure}
   \caption[Coronal CT and MR images showing rods and 2 attached vitamin-e pills]{CT (a) MR (b) coronal images (inverted colours) showing rods and 2 attached vitamin-e pills visible on the right hand side of the rods. In the CT scan the plastic pane and adhesive tape used to hold the pills in place are also visible.}
@@ -305,7 +305,7 @@ Prior to analysing the data, the scans had to be prepared.
 For this task, two applications were used:
 \begin{itemize}
 \item \textit{MIRADA RTx}: a commercial software solution for both diagnostic imaging and radiation oncology \cite{mirada} was used to align CT and MR images.
-\item \textit{3D Slicer}: (Versions: Slicer-4.5.0-1-linux-amd64, Slicer-4.6.2-win-amd64) a "free and open source software package for visualisation and medical image computing". \cite{3DSlicer, Kikinis2012} was used to crop and resample images, quickly read values and visualise the results.
+\item \textit{3D Slicer}: (Versions: Slicer-4.5.0-1-linux-amd64, Slicer-4.6.2-win-amd64) a "free and open source software package for visualisation and medical image computing". \cite{Fedorov2012, Kikinis2013, } was used to crop and resample images, quickly read values and visualise the results.
 \end{itemize}
 
 
@@ -315,8 +315,8 @@ For this task, two applications were used:
 Figures \ref{fig:rendering1-3}, \ref{fig:rendering4-5} and \ref{fig:resample} show the most important stages in the image processing work flow performed to prepare the data for the developed script.
 
 \begin{enumerate}[label=\textbf{Step \arabic*}]
-\item After loading the CT and MR scan into \textit{MIRADA}, they were aligned using the vitamin-e pills, yielding maximum overlap in the centre of the image.
-\item Next, as the MR image had a lower resolution than the CT scan, the MR scan was resampled.
+\item After loading the CT and MRI scan into \textit{MIRADA}, they were aligned using the vitamin-e pills, yielding maximum overlap in the centre of the image.
+\item Next, as the MR image had a lower resolution than the CT scan, the MRI scan was resampled.
 Its voxel size were changed to match the CT voxels and both scans exported.
 \item Both layers (MRI and CT) were loaded into \textit{3D Slicer}.
 \item Its module 'annotations' was used to set a new region of interest (ROI) to include only a single rod.
@@ -330,7 +330,7 @@ After this procedure a number of pairs based on the original CT and MRI were ava
 They only differ in the number of pixels making up each slice, their resolution varying from the original up to a hundred times finer.
 Each pair (CT/MRI) has the same pixel spacing (and resolution) in x and y direction.
 See table \ref{tab:spacing} for more details.
-Figure \ref{fig:resample} depicts 3 CT/MR scans of a single rod (axial) with different resolutions.
+Figure \ref{fig:resample} depicts 3 CT/MRI scans of a single rod (axial) with different resolutions.
 "x1" stands for the original CT scan resolution (MRI resampled to match).
 "x4" is a resolution caused by 1 pixel being split in 4 smaller pixels, "x9" in 9, and so on and so forth.
 For better visibility, images shown as figures in this work are printed with inverted colours.
@@ -430,12 +430,12 @@ x100   & 0.60 & 0.1 	& 0.1
 % source activate snowflakes
 % spyder
 
-In order to asses the distortion of the MR scanner, a software tool was programmed.
+In order to asses the distortion of the MRI scanner, a software tool was programmed.
 It is written in Python 2.7 and uses the \textit{SimpleITK} package to read and process \textit{DICOM} ("\textit{Digital Imaging and Communications in Medicine}") files. \cite{Python, DICOM}
-\textit{SimpleITK} is a object-oriented "C\texttt{++} library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{SimpleITK, SimpleITK_started} Its versatility is one of the reasons why this approach was favoured.
+\textit{SimpleITK} is a object-oriented "C\texttt{++} library with wrappers for Python, Java, CSharp, R, Tcl and Ruby". \cite{Lowekamp2013, SimpleITK, SimpleITK_started} Its versatility is one of the reasons why this approach was favoured.
 It is a simplified layer built on top of the National Library of Medicine Insight Segmentation and Registration Toolkit (ITK). SimpleITK is also used by Applications like \textit{3D Slicer}.
 Documentation and code examples of SimpleITK can be found at \cite{InsightSoftwareConsortium, Kyriakou-SimpleITK}
-An alternative way to handle DICOM data in Python would be Pydicom. \cite{Pydicom, Kyriakou-Pydicom-VTK} 
+An alternative way to handle DICOM data in Python would be Pydicom. \cite{Mason2011, Pydicom, Kyriakou-Pydicom-VTK} 
 
 This is an extensive list of python packages used to process data after using 3D Slicer:
 \begin{itemize}
@@ -451,7 +451,7 @@ This is an extensive list of python packages used to process data after using 3D
 
 \subsubsection{Capabilities - Overview}
 
-The developed software tool is not able to automatically detect individual rods in a CT or MR scan depicting the whole phantom.
+The developed software tool is not able to automatically detect individual rods in a CT or MRI scan depicting the whole phantom.
 Instead the acquired 3D images have to be cropped so they include only a single rod (see section \ref{sec:prep}).
 
 The python script can be used to:
@@ -476,7 +476,7 @@ Since the rods have a cylindrical shape, distortion can only be assessed in radi
 The z-axis is parallel to the rods, x and y are radial.
 Ideally, each slice (z = const.) should depict the bright circular profile of the liquid (and of the plastic rod in CT) surrounded by black pixels (air).
 \\
-Two phenomena were chosen to reflect the amount of distortion occurring in each slice of the MR scans.
+Two phenomena were chosen to reflect the amount of distortion occurring in each slice of the MRI scans.
 The distance which the rod appears to be shifted in the MRI slice compared to the CT slice is referred to as "warp".
 The rod's deformation (deviation from circular profile) is described using the dice-coefficient "\textit{DC}" (also known as Sorensen-Index).
 
@@ -485,13 +485,13 @@ The rod's deformation (deviation from circular profile) is described using the d
 \label{sec:DC}
 
 The \texttt{DC} was chosen as indicator for the deviation from a circular profile.
-The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of its module called "metric" was adapted. \cite{MedPy_dc-code}\\
+The implementation as python function is based on the open source python package "Medpy". \cite{MedPy} A part of its module called "metric" was adapted \cite{MedPy_dc-doc}.\\
 
 
 The calculation of the \texttt{DC} is performed for each slice individually.
 Additionally, to asses the overall distortion occurring along the rod, the average of all those values is also saved.
 As this aspect of distortion does not need a reference scan, the \texttt{DC} is measured for CT and MR images separately.
-The dice coefficient or Sorensen index \cite{MedPy_dc-doc} is defined as:
+The dice coefficient or Sorensen indexis defined as:
 \begin{align}
 \label{eq:DC}
 DC = \frac{2 |A \, \cap \, B|}{|A| + |B|}
@@ -526,7 +526,7 @@ For CT images this would be $4\,mm$ (outer diameter of the plastic rod), for MR 
 The script calculates the \texttt{DC} using various radii close to those values and returns the result yielding in the highest average \texttt{DC} for the whole rod.
 
 \subsubsection{Using the CT COM}
-Alternatively, the DC fo the MR scan can be calculated with the reference circle B placed in the COM of the corresponding CT image.
+Alternatively, the DC fo the MRI scan can be calculated with the reference circle B placed in the COM of the corresponding CT image.
 This value could be regarded as a combined distortion guide number as it is influenced by the COM shift and the deformation simultaneously.
 One should bear in mind, though, that the meaning of it is neither equivalent to a real \texttt{DC} nor to the warp and should be interpreted with caution.\\
 
@@ -567,7 +567,7 @@ Consequently, the DC would become so small that the script will choose a smaller
     \path [line] (binary) -- (overlap);
     \path [line] (circle) -- (overlap);
 	\end{tikzpicture}
-	\caption[Flowchart: \texttt{DC} calculation for an MR scan yielding a value of $0.9454$.]{Flowchart: \texttt{DC} calculation for an MR scan (rod \#5 @ slice 200) yielding a value of $0.9454$}
+	\caption[Flowchart: \texttt{DC} calculation for an MRI scan yielding a value of $0.9454$.]{Flowchart: \texttt{DC} calculation for an MRI scan (rod \#5 @ slice 200) yielding a value of $0.9454$}
 	\label{flo:DC}
 \end{figure}
 
@@ -603,7 +603,7 @@ Calculating the number of pixels which make up the more or less circular profile
  pixelNumber = (radius^2 \cdot \pi) \, / \, (spacing^2)
 \end{align}
 
-For CT images the $radius = 4mm$, in MR scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction (developed script is only capable to process images with isotropic pixels pacing, as it usually is the case).
+For CT images the $radius = 4mm$, in MRI scans the $radius = 2mm$. $spacing$ is the pixel spacing in x and y direction (developed script is only capable to process images with isotropic pixels pacing, as it usually is the case).
 Next, the pixels are sorted by brightness. The top $pixelNumber$ pixels are then used to calculate the \texttt{COM}.
 The value of the darkest pixel that is still counted as part of the rod is saved as  \texttt{threshold} for future calculations (e.g. finding the \texttt{DC} associated with the \texttt{COM}, see section \ref{sec:DC}).\\
 The method is summarised in figure \ref{flo:COM-simple}.

@@ -29,11 +29,11 @@ Für die Berechnung der Verzerrung wird Interpolation auf das Vierfache der ursp
 
 \chapter*{\abstractname}
 For radiotherapy treatment planning, knowledge concerning the reliability of the utilised imaging modality is crucial.
-Even though MR scanners promise superior soft tissue contrast, the geometric precision is not as accurate as CT imaging.
-To assess the spatial distortion of a $0.35\, T$ MR scanner, a software tool was developed.
+Even though MRI scanners promise superior soft tissue contrast, the geometric precision is not as accurate as CT imaging.
+To assess the spatial distortion of a $0.35\, T$ MRI scanner, a software tool was developed.
 It compares the MR and reference CT images of a custom designed phantom to calculate the occurring deformation and overall shift.
 This was accomplished with use of the freely available python library SimpleITK.
-Images obtained from CT and MR scans were registered and resampled to a higher resolution prior to being processed by the software tool.
+Images obtained from CT and MRI scans were registered and resampled to a higher resolution prior to being processed by the software tool.
 While increased pixel numbers result in longer computing time, interpolated data lead to more detailed information.
 A 4 times higher resolution is recommended as it strikes a balance between limiting the CPU workload and enhancing the outputs accuracy.
 As the implemented tool is not yet able to calculate the distortion throughout the whole field of view, a conclusion whether treatment planning based solely on this scanner would be feasible, is not possible at this point.
@@ -47,7 +47,7 @@ Not only do they leak from the rods due to evaporation, but they also contain di
 Possible solutions dealing with these problems are not ruled out entirely, especially if thicker rod walls were able to eliminate evaporation completely.
 Adding ascorbic acid to a solution of $CuSO_4\cdot5H_2O$ and $NaCl$ might limit the forming of bubbles while soap separates them from the walls so they can easily be moved from the field of view.
 
-The approach taken with this software tool alongside the preparation of a suitable phantom pave the way for a comprehensive analysis of the MR scanner's geometric distortion.
+The approach taken with this software tool alongside the preparation of a suitable phantom pave the way for a comprehensive analysis of the MRI scanner's geometric distortion.
 Even though more development is necessary, the groundwork for accomplishing this task has been laid.
 
 

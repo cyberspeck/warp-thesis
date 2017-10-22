@@ -17,7 +17,7 @@ Figure \ref{fig:coronal} shows a coronal view of the 16 rods filled with the tes
 In Figure \ref{fig:coronal_MR} a trapped air bubble is clearly visible at the lower half of rod \#5.
 Figure \ref{fig:axial} shows an axial view of the tested rods and some surrounding rods.
 In figure \ref{fig:axial_MR} a water filled plastic bottle placed in the middle of the phantom is also visible.
-This was necessary, because the MR scanner needs sufficient signal for shimming prior to the start of imaging.
+This was necessary, because the MRI scanner needs sufficient signal for shimming prior to the start of imaging.
 Without the bottle, the limited number of rods used for this scan would not have created enough signal.
 During a future distortion assessment where all available rods (over 300) are used, they will result in the required signal strength on their own.
  
@@ -44,28 +44,28 @@ During a future distortion assessment where all available rods (over 300) are us
   \end{subfigure}
   \begin{subfigure}[b]{\textwidth}
     \includegraphics[width=\textwidth]{slicer3D/full_phantom/axial_MR-arrow.png}
-    \caption{MRI: The black circle in the centre depicts a water bottle which was placed in the middle of the phantom (necessary for MR scanner to start imaging).}
+    \caption{MRI: The black circle in the centre depicts a water bottle which was placed in the middle of the phantom (necessary for MRI scanner to start imaging).}
     \label{fig:axial_MR}
   \end{subfigure}
-  \caption[Axial images of rods filled with tested liquids.]{Axial CT/MRI (inverted colours, same scale) images of the 16 rods filled with tested liquids (numbering starting from the right, \#6 excluded); surrounded by reference rods (filled with water) and one empty rod (marked with arrow) which is not visible on the MR scan.}
+  \caption[Axial images of rods filled with tested liquids.]{Axial CT/MRI (inverted colours, same scale) images of the 16 rods filled with tested liquids (numbering starting from the right, \#6 excluded); surrounded by reference rods (filled with water) and one empty rod (marked with arrow) which is not visible on the MRI scan.}
   \label{fig:axial}
 \end{figure}
 
 
 \section{Tested solutions}
 
-\subsection{Visibility on CT/MR scans}
+\subsection{Visibility on CT/MRI scans}
 
 It should be noticed that in the CT image there is little difference in brightness between the tested liquids.
 The plastic rods themselves result in brighter pixels than any of the tested solutions.
 
-On MR scans most liquids had a mean and a max brightness value above $1000$ (see table \ref{tab:visibility}).\\
+On MRI scans most liquids had a mean and a max brightness value above $1000$ (see table \ref{tab:visibility}).\\
 Only \textbf{\#1}, \textbf{\#9}, \textbf{\#10}, \& \textbf{\#16} resulted in significantly less signal (below < $1000$).
 
 
 \begin{table}[!htb]
 \centering
-\caption{Visibility of liquids on MR scans.}
+\caption{Visibility of liquids on MRI scans.}
 \begin{tabular}{@{}l|lllll@{}}
 \toprule
 No. & Min  & Max  & Mean   & Median & $\sigma$ \\
@@ -234,7 +234,7 @@ From the first MRI and CT scans, only the rod containing liquid \#5 was analysed
 The hole in which it was placed is marked with a little 'x' in figure \ref{fig:axial_CT_pane}.
 It was decided to use this rod, because it had a reasonably good signal strength and it contained a small air bubble.
 This situation provided data containing an irregularity (bubble) and was therefore well suited for testing some of the software tool's capabilities and limitations.
-Figure \ref{fig:ph2_CT_x100_brightness} and \ref{fig:ph2_MR_x100_brightness} show the brightness of the rod on CT and MR scans.
+Figure \ref{fig:ph2_CT_x100_brightness} and \ref{fig:ph2_MR_x100_brightness} show the brightness of the rod on CT and MRI scans.
 Figures \ref{fig:MR_x100_centroids}, \ref{fig:ph2_warpXY_x100}, \ref{fig:ph2_warpMagnitude_x100} and \ref{fig:ph2_DC_x100} visualise the calculated output.
 All plots were created using the data obtained with the iteration method.
 
@@ -370,7 +370,7 @@ All plots were created using the data obtained with the iteration method.
 After deciding which of the possible liquids might be a suitable choice for the future use of the phantom, another set of MRI and CT scans was taken.
 This second data set shows the rod containing liquid \#16.
 The hole in which it was placed is marked with a little 'z' in figure \ref{fig:axial_CT_pane}.
-Figure \ref{fig:ph3_CT_x100_brightness} and \ref{fig:ph3_MR_x100_brightness} show the brightness of the rod on CT and MR scans.
+Figure \ref{fig:ph3_CT_x100_brightness} and \ref{fig:ph3_MR_x100_brightness} show the brightness of the rod on CT and MRI scans.
 Figures \ref{fig:ph3_warpXY_x100}, \ref{fig:ph3_warpMagnitude_x100} and \ref{fig:ph3_DC_x100} visualise the spatial distortion assessed using the iteration method.
 All plots were created using the data obtained with the iteration method.
 
