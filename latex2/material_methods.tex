@@ -595,7 +595,7 @@ In order to find the relevant pixels two methods were developed:
 Both methods rely on a single reference slice to calculate the  \texttt{threshold}.
 This reference should be representative for the whole scan, because the  \texttt{threshold} deduced from it will be used to find pixels belonging to the rod in all other slice, too.
 
-\subsubsection{1. Simple Method}
+\subsubsection{1. Simple method}
 The inner ($2mm$) and outer ($4mm$) radius of the plastic rods are known.
 So is the pixel \texttt{spacing}, the size of a voxel in real space ($mm$).
 Calculating the number of pixels which make up the more or less circular profile of the rod in a slice is calculated as follows:
@@ -631,7 +631,7 @@ Now, the DC can be obtained as described earlier using the now known \texttt{thr
 	\label{flo:COM-simple}
 \end{figure}
 
-\subsubsection{2. Iteration Method}
+\subsubsection{2. Iteration method}
 This algorithm is an iteration method.
 Figure \ref{flo:COM-iter} shows in what order the scripts executes individual steps during the iteration.
 
